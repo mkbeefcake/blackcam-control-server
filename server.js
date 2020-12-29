@@ -35,11 +35,12 @@ io.on('connection', (socket) => {
 
     /** Disconnect handler */
     socket.on('disconnect', () => {
-        console.log('Socket is disconnected : ' + socket.id);                
-        io.emit('device-removed', socket.id, '');
+        console.log('Socket is disconnected : ' + socket.id);
 
         delete socketList[socket.id];
         console.log('Socket List = ' + JSON.stringify(socketList));
+
+        io.emit('device-removed', socket.id, JSON.stringify(socketList));
     }); 
 
     /** camera device name */
