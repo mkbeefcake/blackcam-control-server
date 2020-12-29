@@ -19,8 +19,24 @@
         <!-- CSS -->
         <link href="{{ asset('black') }}/css/black-dashboard.css?v=1.0.0" rel="stylesheet" />
         <link href="{{ asset('black') }}/css/theme.css" rel="stylesheet" />
+
+        <script src="{{ asset('black') }}/js/core/jquery.min.js"></script>
+        <script src="{{ asset('black') }}/js/core/popper.min.js"></script>
+        <script src="{{ asset('black') }}/js/core/bootstrap.min.js"></script>
+        <script src="{{ asset('black') }}/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+        <!--  Google Maps Plugin    -->
+        <!-- Place this tag in your head or just before your close body tag. -->
+        {{-- <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script> --}}
+        <!-- Chart JS -->
+        {{-- <script src="{{ asset('black') }}/js/plugins/chartjs.min.js"></script> --}}
+        <!--  Notifications Plugin    -->
+        <script src="{{ asset('black') }}/js/plugins/bootstrap-notify.js"></script>
+
+        <script src="{{ asset('black') }}/js/black-dashboard.min.js?v=1.0.0"></script>
+        <script src="{{ asset('black') }}/js/theme.js"></script>
     </head>
     <body class="{{ $class ?? '' }}">
+        @stack('socketjs')
         @auth()
             <div class="wrapper">
                     @include('layouts.navbars.sidebar')
@@ -50,22 +66,6 @@
                 </div>
             </div>
         @endauth
-        <script src="{{ asset('black') }}/js/core/jquery.min.js"></script>
-        <script src="{{ asset('black') }}/js/core/popper.min.js"></script>
-        <script src="{{ asset('black') }}/js/core/bootstrap.min.js"></script>
-        <script src="{{ asset('black') }}/js/plugins/perfect-scrollbar.jquery.min.js"></script>
-        <!--  Google Maps Plugin    -->
-        <!-- Place this tag in your head or just before your close body tag. -->
-        {{-- <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script> --}}
-        <!-- Chart JS -->
-        {{-- <script src="{{ asset('black') }}/js/plugins/chartjs.min.js"></script> --}}
-        <!--  Notifications Plugin    -->
-        <script src="{{ asset('black') }}/js/plugins/bootstrap-notify.js"></script>
-
-        <script src="{{ asset('black') }}/js/black-dashboard.min.js?v=1.0.0"></script>
-        <script src="{{ asset('black') }}/js/theme.js"></script>
-
-        @stack('js')
 
         <script>
             $(document).ready(function() {

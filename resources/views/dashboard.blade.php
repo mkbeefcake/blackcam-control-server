@@ -1,4 +1,4 @@
-@extends('layouts.app', ['pageSlug' => 'dashboard'])
+@extends('layouts.app')
 
 @section('content')
     <div class="row">
@@ -117,11 +117,47 @@
     </div>
 @endsection
 
-@push('js')
-    <script src="{{ asset('black') }}/js/plugins/chartjs.min.js"></script>
+@push('socketjs')
+    <script src="{{ asset('black') }}/js/socket.io.js"></script>
     <script>
-        $(document).ready(function() {
-          demo.initDashboardPageCharts();
+    $(function(){
+        var socket = io("http://127.0.0.1:11000");
+        socket.on('echo', function(msg) {
+            socket.emit('peername', 'admin');
         });
+
+        socket.on('status', function(msg) {
+            console.log('status callback is called');
+            $('#messages').append($('<li>').text(msg));
+        });
+        socket.on('device-added', function(socketId, msg) {
+            console.log('device-added callback is called');
+            if (socket.id == socketId) {
+                console.log('This is me');
+                // $('#status').append($('<li>').text('This is me'));
+            }
+            else {
+                $('#messages').append($('<li>').text('Bluemagic camera device : ' + socketId + ' is connected'));
+            }
+        });
+        socket.on('device-removed', function(socketId, msg){
+            console.log('device-removed callback is called');
+            $('#messages').append($('<li>').text('Bluemagic camera device : ' + socketId + ' is disconnected'));
+        });
+
+        $('#autofocus').click(function() {
+            var command = {
+                type : 'auto-focus'
+            };
+            socket.emit('admin', null, JSON.stringify(command));
+        })
+        $('#record').click(function() {
+            var command = {
+                type : 'record'
+            };
+            socket.emit('admin', null, JSON.stringify(command));
+        })
+
+    })
     </script>
 @endpush
