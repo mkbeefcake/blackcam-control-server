@@ -134,10 +134,10 @@
             console.log('device-added callback is called');
             if (socket.id == socketId) {
                 console.log('This is me');
-                // $('#status').append($('<li>').text('This is me'));
             }
             else {
-                console.log('New device: ' + msg);                
+                console.log('New device: ' + msg);
+                refreshCameraList(JSON.parse(msg));
             }
         });
         socket.on('device-removed', function(socketId, msg){

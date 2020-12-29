@@ -14,3 +14,9 @@
         </ul>
     </div>
 </div>
+<script>
+function refreshCameraList(cameraList) {
+    alert("refreshcameralist is called");
+}
+
+</script>
