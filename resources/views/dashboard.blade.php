@@ -45,7 +45,7 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <button class="btn btn-primary">Auto Focus</button>
+                    <button class="btn btn-primary" id="btnAutoFocus">Auto Focus</button>
                 </div>
             </div>
         </div>
@@ -78,7 +78,7 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <button class="btn btn-primary">Record</button>
+                    <button class="btn btn-primary" id="btnRecord">Record</button>
                 </div>
             </div>
         </div>
@@ -142,19 +142,21 @@
         });
         socket.on('device-removed', function(socketId, msg){
             console.log('device-removed callback is called');
-            $('#messages').append($('<li>').text('Bluemagic camera device : ' + socketId + ' is disconnected'));
+            refreshCameraList(JSON.parse(msg));
         });
 
-        $('#autofocus').click(function() {
+        $('#btnAutoFocus').click(function() {
             var command = {
                 type : 'auto-focus'
             };
+            alert('btnAutoFocus is called');
             socket.emit('admin', null, JSON.stringify(command));
         })
-        $('#record').click(function() {
+        $('#btnRecord').click(function() {
             var command = {
                 type : 'record'
             };
+            alert('btnRecord is called');
             socket.emit('admin', null, JSON.stringify(command));
         })
 
