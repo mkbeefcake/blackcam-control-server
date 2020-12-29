@@ -15,12 +15,11 @@
     </div>
 </div>
 <script>
-$(function(){
-    
-    function refreshCameraList(cameraList) {
-        for (const [key, value] of Object.entries(cameraList)) {
-            console.log(key, value);
-        }   
-    }
-})
+
+function refreshCameraList(cameraList) {
+    for (const [key, value] of Object.entries(cameraList)) {
+        console.log(key, value);
+    }   
+}
+
 </script>
