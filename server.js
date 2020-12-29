@@ -38,8 +38,11 @@ io.on('connection', (socket) => {
 
     /** Disconnect handler */
     socket.on('disconnect', () => {
-        console.log('Socket is disconnected : ' + socket.id);
+        console.log('Socket is disconnected : ' + socket.id);                
         io.emit('device-removed', socket.id, '');
+
+        delete socketList[socket.id];
+        console.log('Socket List = ' + JSON.stringify(socketList));
     }); 
 
     /** camera device status channel */
@@ -50,7 +53,7 @@ io.on('connection', (socket) => {
     /** camera device name */
     socket.on('peername', (peername) => {
         socketList[socket.id] = peername;        
-        console.log('Peer name = ' + JSON.stringify(socketList));
+        console.log('Socket List = ' + JSON.stringify(socketList));
     });
     
     /** admin control communication channel */
