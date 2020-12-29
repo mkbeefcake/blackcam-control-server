@@ -11,11 +11,13 @@
 <script>
 
 function refreshCameraList(cameraList) {
+    var child = "";
     for (const [key, value] of Object.entries(cameraList)) {
         console.log(key, value);
         $('#cameraList').empty();
-        $('#cameraList').append("<li><a id='" + key + "'><i class='tim-icons icon-camera-18'></i><p>" + value + "</p></a></li>");
-    }   
+        child += "<li><a id='" + key + "'><i class='tim-icons icon-camera-18'></i><p>" + value + "</p></a></li>";
+    }
+    $('#cameraList').append(child);
 }
 
 </script>
