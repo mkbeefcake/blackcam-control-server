@@ -31,10 +31,7 @@ redis.on('message', function (channel, message) {
 var socketList = {};
 io.on('connection', (socket) => {
     console.log('New device is connected : ' + socket.id);
-
-    /** Welcome message to admin */
     socket.emit('echo', 'Thanks for your joined.');
-    io.emit('device-added', socket.id, '');
 
     /** Disconnect handler */
     socket.on('disconnect', () => {
@@ -49,6 +46,8 @@ io.on('connection', (socket) => {
     socket.on('peername', (peername) => {
         socketList[socket.id] = peername;        
         console.log('Socket List = ' + JSON.stringify(socketList));
+
+        io.emit('device-added', socket.id, JSON.stringify(socketList));
     });
     
     /** camera device status channel */
