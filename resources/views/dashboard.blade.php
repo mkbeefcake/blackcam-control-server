@@ -137,7 +137,7 @@
                 // $('#status').append($('<li>').text('This is me'));
             }
             else {
-                $('#messages').append($('<li>').text('Bluemagic camera device : ' + socketId + ' is connected'));
+                console.log('New device: ' + msg);                
             }
         });
         socket.on('device-removed', function(socketId, msg){
