@@ -5,12 +5,6 @@
             <a href="{{ route('home') }}" class="simple-text logo-normal">{{ __('Camera List') }}</a>
         </div>
         <ul class="nav" id="cameraList">
-            <li>
-                <a id="">
-                    <i class="tim-icons icon-camera-18"></i>
-                    <p>{{ __('camera 1') }}</p>
-                </a>
-            </li>
         </ul>
     </div>
 </div>
