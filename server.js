@@ -45,17 +45,17 @@ io.on('connection', (socket) => {
         console.log('Socket List = ' + JSON.stringify(socketList));
     }); 
 
-    /** camera device status channel */
-    socket.on('status', (status) => {
-
-    });
-
     /** camera device name */
     socket.on('peername', (peername) => {
         socketList[socket.id] = peername;        
         console.log('Socket List = ' + JSON.stringify(socketList));
     });
     
+    /** camera device status channel */
+    socket.on('status', (status) => {
+
+    });
+
     /** admin control communication channel */
     socket.on('admin', (socketId, msg) => {
         console.log(msg);
