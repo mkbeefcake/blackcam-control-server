@@ -15,8 +15,12 @@
     </div>
 </div>
 <script>
-function refreshCameraList(cameraList) {
-    alert("refreshcameralist is called");
-}
-
+$(function(){
+    
+    function refreshCameraList(cameraList) {
+        for (const [key, value] of Object.entries(cameraList)) {
+            console.log(key, value);
+        }   
+    }
+})
 </script>
