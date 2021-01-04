@@ -53,7 +53,9 @@ io.on('connection', (socket) => {
     
     /** camera device status channel */
     socket.on('status', (status) => {
+        console.log(socket.id + " : " + status);
 
+        io.emit('status', socket.id, status);
     });
 
     /** admin control communication channel */

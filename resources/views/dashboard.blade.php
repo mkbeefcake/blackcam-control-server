@@ -89,8 +89,8 @@
                     <h3 class="card-title">System</h3>
                 </div>
                 <div class="card-body">
-                    <label>{{ __('IP Address : 192.168.1.1') }}</label><br/>
-                    <label>{{ __('Operating System: Windows 10') }}</label>
+                    <label id="ipAddress">{{ __('IP Address : 192.168.1.1') }}</label><br/>
+                    <label id="osType" >{{ __('Operating System: Windows 10') }}</label>
                 </div>
             </div>
         </div>
@@ -120,16 +120,16 @@
 @push('socketjs')
     <script src="{{ asset('black') }}/js/socket.io.js"></script>
     <script>
+    var selectedCameraId = "";
+    var socket;
+
     $(function(){
-        var socket = io("http://127.0.0.1:11000");
+        socket = io("http://127.0.0.1:11000");
+        
         socket.on('echo', function(msg) {
             socket.emit('peername', 'admin');
         });
 
-        socket.on('status', function(msg) {
-            console.log('status callback is called');
-            $('#messages').append($('<li>').text(msg));
-        });
         socket.on('device-added', function(socketId, msg) {
             console.log('device-added callback is called');
             if (socket.id == socketId) {
@@ -140,26 +140,57 @@
             }
             refreshCameraList(JSON.parse(msg));
         });
+
         socket.on('device-removed', function(socketId, msg){
             console.log('device-removed callback is called');
             refreshCameraList(JSON.parse(msg));
         });
 
+        socket.on('status', function(socketId, msg) {
+            console.log('status callback is called');
+
+            if (socketId == selectedCameraId) 
+                updateSelectedCamera(JSON.parse(msg));
+        })
+
         $('#btnAutoFocus').click(function() {
+            debugger;
             var command = {
                 type : 'auto-focus'
             };
-            alert('btnAutoFocus is called');
-            socket.emit('admin', null, JSON.stringify(command));
+
+            if (selectedCameraId == "")
+                socket.emit('admin', null, JSON.stringify(command));
+            else
+                socket.emit('admin', selectedCameraId, JSON.stringify(command));
+
+            alert('Sent Auto-Focus command');
         })
+
         $('#btnRecord').click(function() {
+            debugger;
             var command = {
                 type : 'record'
             };
-            alert('btnRecord is called');
-            socket.emit('admin', null, JSON.stringify(command));
+
+            if (selectedCameraId == "")
+                socket.emit('admin', null, JSON.stringify(command));
+            else
+                socket.emit('admin', selectedCameraId, JSON.stringify(command));
+
+            alert('Sent Record command');
         })
 
     })
+
+    function updateSelectedCamera(statusObject) {
+        if (statusObject.type == "get-info") {
+            console.log("updateSelectedCamera is called");
+
+            $('#ipAddress').text('IP Address : ' + statusObject.deviceInfo.ipAddress);
+            $('#osType').text('Operating System: ' + statusObject.deviceInfo.osName);
+        }
+    }
+
     </script>
 @endpush
