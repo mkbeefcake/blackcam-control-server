@@ -45,7 +45,7 @@ io.on('connection', (socket) => {
 
     /** camera device name */
     socket.on('peername', (peername) => {
-        socketList[socket.id] = peername;        
+        socketList[socket.id] = peername;
         console.log('Socket List = ' + JSON.stringify(socketList));
 
         io.emit('device-added', socket.id, JSON.stringify(socketList));

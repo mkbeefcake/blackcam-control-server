@@ -137,8 +137,8 @@
             }
             else {
                 console.log('New device: ' + msg);
-                refreshCameraList(JSON.parse(msg));
             }
+            refreshCameraList(JSON.parse(msg));
         });
         socket.on('device-removed', function(socketId, msg){
             console.log('device-removed callback is called');
