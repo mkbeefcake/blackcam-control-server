@@ -80,8 +80,8 @@
                 <div class="card-body">
                     <button class="btn btn-primary" id="btnRecord">Record</button>
                     <button class="btn btn-primary" id="btnStop">Stop</button>
-                    <label id="transportmode">{{ __('Transport Mode: ') }}</label>
-                    <label id="remainingTime" >{{ __('RemainingTime : ') }}</label>
+                    <label id="transportmode"></label>
+                    <label id="remainingTime"></label>
                 </div>
             </div>
         </div>
@@ -209,12 +209,12 @@
         else if (statusObject.type == "transport-mode") {
             console.log("transport-mode is called");
 
-            $('#transportmode').text('Transport Mode : ' + statusObject.transportMode);
+            $('#transportmode').text(statusObject.transportMode);
         }
         else if (statusObject.type == "remaining-time") {
             console.log("remaining-time is called");
 
-            $('#remainingTime').text('Remaining Time : ' + statusObject.remainingTimeString);
+            $('#remainingTime').text(statusObject.remainingTimeString);
         }
     }
 
