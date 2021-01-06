@@ -79,6 +79,9 @@
                 </div>
                 <div class="card-body">
                     <button class="btn btn-primary" id="btnRecord">Record</button>
+                    <button class="btn btn-primary" id="btnStop">Stop</button>
+                    <label id="transportmode">{{ __('Transport Mode: ') }}</label>
+                    <label id="remainingTime" >{{ __('RemainingTime : ') }}</label>
                 </div>
             </div>
         </div>
@@ -89,8 +92,8 @@
                     <h3 class="card-title">System</h3>
                 </div>
                 <div class="card-body">
-                    <label id="ipAddress">{{ __('IP Address : 192.168.1.1') }}</label><br/>
-                    <label id="osType" >{{ __('Operating System: Windows 10') }}</label>
+                    <label id="ipAddress">{{ __('IP Address : ') }}</label><br/>
+                    <label id="osType" >{{ __('Operating System: ') }}</label>
                 </div>
             </div>
         </div>
@@ -180,15 +183,38 @@
 
             alert('Sent Record command');
         })
+        $('#btnStop').click(function() {
+            debugger;
+            var command = {
+                type : 'preview'
+            };
+
+            if (selectedCameraId == "")
+                socket.emit('admin', null, JSON.stringify(command));
+            else
+                socket.emit('admin', selectedCameraId, JSON.stringify(command));
+
+            alert('Sent Record command');
+        })
 
     })
 
     function updateSelectedCamera(statusObject) {
         if (statusObject.type == "get-info") {
-            console.log("updateSelectedCamera is called");
+            console.log("get-info is called");
 
             $('#ipAddress').text('IP Address : ' + statusObject.deviceInfo.ipAddress);
             $('#osType').text('Operating System: ' + statusObject.deviceInfo.osName);
+        }
+        else if (statusObject.type == "transport-mode") {
+            console.log("transport-mode is called");
+
+            $('#transportmode').text('Transport Mode : ' + statusObject.transportMode);
+        }
+        else if (statusObject.type == "remaining-time") {
+            console.log("remaining-time is called");
+
+            $('#remainingTime').text('Remaining Time : ' + statusObject.remainingTimeString);
         }
     }
 
