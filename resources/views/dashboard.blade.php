@@ -194,7 +194,7 @@
             else
                 socket.emit('admin', selectedCameraId, JSON.stringify(command));
 
-            alert('Sent Record command');
+            alert('Sent Stop command');
         })
 
     })
