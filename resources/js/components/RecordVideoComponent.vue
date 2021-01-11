@@ -22,8 +22,10 @@
         <div class="card-body">
             <button class="btn btn-primary" id="btnRecord">Record</button>
             <button class="btn btn-primary" id="btnStop">Stop</button>
-            <label id="transportmode"></label>
-            <label id="remainingTime"></label>
+            <div class="form-group">
+                <label id="transportmode"></label>
+                <label id="remainingTime"></label>
+            </div>
         </div>
     </div>
 </template>

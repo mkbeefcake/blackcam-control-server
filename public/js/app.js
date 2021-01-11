@@ -2101,6 +2101,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2155,6 +2159,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
 //
 //
 //
@@ -2286,9 +2292,135 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      title: 'Set Video Mode',
+      showVideoMode: true,
+      showWhiteBalance: false,
+      showRangeMode: false,
+      showShapenLevel: false,
+      showRecordFormat: false
+    };
+  },
   mounted: function mounted() {
     console.log('RecordVideo-Component mounted.');
+  },
+  methods: {
+    videoMode: function videoMode(event) {
+      this.title = "Set Video Mode";
+      this.showVideoMode = true;
+      this.showWhiteBalance = this.showRangeMode = this.showShapenLevel = this.showRecordFormat = false;
+    },
+    whiteBalance: function whiteBalance(event) {
+      this.title = "Set White Balance";
+      1;
+      this.showWhiteBalance = true;
+      this.showVideoMode = this.showRangeMode = this.showShapenLevel = this.showRecordFormat = false;
+    },
+    rangeMode: function rangeMode(event) {
+      this.title = "Set Range Mode";
+      this.showRangeMode = true;
+      this.showVideoMode = this.showWhiteBalance = this.showShapenLevel = this.showRecordFormat = false;
+    },
+    shapenLevel: function shapenLevel(event) {
+      this.title = "Set Sharpen Level";
+      this.showShapenLevel = true;
+      this.showVideoMode = this.showWhiteBalance = this.showRangeMode = this.showRecordFormat = false;
+    },
+    recordFormat: function recordFormat(event) {
+      this.title = "Set Record Format";
+      this.showRecordFormat = true;
+      this.showVideoMode = this.showWhiteBalance = this.showRangeMode = this.showShapenLevel = false;
+    }
   }
 });
 
@@ -38102,16 +38234,7 @@ var render = function() {
             "div",
             { staticClass: "form-group", attrs: { id: "manual-focus-body" } },
             [
-              _c("label", [_vm._v("Manual Focus ")]),
-              _vm._v(" "),
-              _c("input", {
-                staticClass: "form-control",
-                attrs: {
-                  type: "text",
-                  name: "name",
-                  placeholder: "Range: 0.0 ~ 1.0"
-                }
-              }),
+              _vm._m(5),
               _vm._v(" "),
               _c(
                 "button",
@@ -38132,13 +38255,13 @@ var render = function() {
               staticClass: "table-responsive ps",
               attrs: { id: "aperture-body" }
             },
-            [_vm._m(5)]
+            [_vm._m(6)]
           )
         : _vm._e(),
       _vm._v(" "),
       this.showZoom
         ? _c("div", { staticClass: "form-group", attrs: { id: "zoom-body" } }, [
-            _vm._m(6)
+            _vm._m(7)
           ])
         : _vm._e(),
       _vm._v(" "),
@@ -38209,6 +38332,21 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("span", { staticClass: "d-block d-sm-none" }, [
       _c("i", { staticClass: "tim-icons icon-tap-02" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-sm-3" }, [
+        _c("label", [_vm._v("Manual Focus ")]),
+        _vm._v(" "),
+        _c("input", {
+          staticClass: "form-control",
+          attrs: { type: "text", name: "name", placeholder: "Range: 0.0 ~ 1.0" }
+        })
+      ])
     ])
   },
   function() {
@@ -38481,9 +38619,11 @@ var staticRenderFns = [
           [_vm._v("Stop")]
         ),
         _vm._v(" "),
-        _c("label", { attrs: { id: "transportmode" } }),
-        _vm._v(" "),
-        _c("label", { attrs: { id: "remainingTime" } })
+        _c("div", { staticClass: "form-group" }, [
+          _c("label", { attrs: { id: "transportmode" } }),
+          _vm._v(" "),
+          _c("label", { attrs: { id: "remainingTime" } })
+        ])
       ])
     ])
   }
@@ -38556,7 +38696,11 @@ var render = function() {
   return _c("div", { staticClass: "card" }, [
     _c("div", { staticClass: "card-header" }, [
       _c("div", { staticClass: "row" }, [
-        _vm._m(0),
+        _c("div", { staticClass: "col-sm-6 text-left" }, [
+          _c("h5", { staticClass: "card-category" }, [_vm._v("Video")]),
+          _vm._v(" "),
+          _c("h3", { staticClass: "card-title" }, [_vm._v(_vm._s(this.title))])
+        ]),
         _vm._v(" "),
         _c("div", { staticClass: "col-sm-6" }, [
           _c(
@@ -38571,7 +38715,7 @@ var render = function() {
                 {
                   staticClass: "btn btn-sm btn-primary btn-simple active",
                   attrs: { id: "0" },
-                  on: { click: _vm.auto }
+                  on: { click: _vm.videoMode }
                 },
                 [
                   _c("input", {
@@ -38584,10 +38728,10 @@ var render = function() {
                       staticClass:
                         "d-none d-sm-block d-md-block d-lg-block d-xl-block"
                     },
-                    [_vm._v("mode")]
+                    [_vm._v("Video Mode")]
                   ),
                   _vm._v(" "),
-                  _vm._m(1)
+                  _vm._m(0)
                 ]
               ),
               _vm._v(" "),
@@ -38596,7 +38740,7 @@ var render = function() {
                 {
                   staticClass: "btn btn-sm btn-primary btn-simple active",
                   attrs: { id: "1" },
-                  on: { click: _vm.focus }
+                  on: { click: _vm.whiteBalance }
                 },
                 [
                   _c("input", { attrs: { type: "radio", name: "options" } }),
@@ -38610,7 +38754,7 @@ var render = function() {
                     [_vm._v("White Balance")]
                   ),
                   _vm._v(" "),
-                  _vm._m(2)
+                  _vm._m(1)
                 ]
               ),
               _vm._v(" "),
@@ -38619,7 +38763,7 @@ var render = function() {
                 {
                   staticClass: "btn btn-sm btn-primary btn-simple",
                   attrs: { id: "2" },
-                  on: { click: _vm.aperture }
+                  on: { click: _vm.rangeMode }
                 },
                 [
                   _c("input", {
@@ -38636,7 +38780,7 @@ var render = function() {
                     [_vm._v("Range Mode")]
                   ),
                   _vm._v(" "),
-                  _vm._m(3)
+                  _vm._m(2)
                 ]
               ),
               _vm._v(" "),
@@ -38645,7 +38789,7 @@ var render = function() {
                 {
                   staticClass: "btn btn-sm btn-primary btn-simple",
                   attrs: { id: "3" },
-                  on: { click: _vm.zoom }
+                  on: { click: _vm.shapenLevel }
                 },
                 [
                   _c("input", {
@@ -38662,7 +38806,7 @@ var render = function() {
                     [_vm._v("Shapen Level")]
                   ),
                   _vm._v(" "),
-                  _vm._m(4)
+                  _vm._m(3)
                 ]
               ),
               _vm._v(" "),
@@ -38671,7 +38815,7 @@ var render = function() {
                 {
                   staticClass: "btn btn-sm btn-primary btn-simple",
                   attrs: { id: "4" },
-                  on: { click: _vm.stabilisation }
+                  on: { click: _vm.recordFormat }
                 },
                 [
                   _c("input", {
@@ -38688,7 +38832,7 @@ var render = function() {
                     [_vm._v("Record Format")]
                   ),
                   _vm._v(" "),
-                  _vm._m(5)
+                  _vm._m(4)
                 ]
               )
             ]
@@ -38697,20 +38841,86 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "card-body" })
+    _c("div", { staticClass: "card-body" }, [
+      this.showVideoMode
+        ? _c(
+            "div",
+            { staticClass: "form-group", attrs: { id: "video-mode-body" } },
+            [
+              _vm._m(5),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary",
+                  attrs: { id: "btnManualFocus" }
+                },
+                [_vm._v("Video Mode")]
+              )
+            ]
+          )
+        : _vm._e(),
+      _vm._v(" "),
+      this.showWhiteBalance
+        ? _c(
+            "div",
+            { staticClass: "form-group", attrs: { id: "white-balance-body" } },
+            [
+              _vm._m(6),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary",
+                  attrs: { id: "btnWhiteBalance" }
+                },
+                [_vm._v("White Balance")]
+              )
+            ]
+          )
+        : _vm._e(),
+      _vm._v(" "),
+      this.showRangeMode
+        ? _c(
+            "div",
+            { staticClass: "form-group", attrs: { id: "range-mode-body" } },
+            [
+              _vm._m(7),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary",
+                  attrs: { id: "btnRangeMode" }
+                },
+                [_vm._v("Range Mode")]
+              )
+            ]
+          )
+        : _vm._e(),
+      _vm._v(" "),
+      this.showShapenLevel
+        ? _c(
+            "div",
+            { staticClass: "form-group", attrs: { id: "sharpen-level-body" } },
+            [
+              _vm._m(8),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary",
+                  attrs: { id: "btnSharpenLevel" }
+                },
+                [_vm._v("Sharpen Level")]
+              )
+            ]
+          )
+        : _vm._e()
+    ])
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-sm-6 text-left" }, [
-      _c("h5", { staticClass: "card-category" }, [_vm._v("Video")]),
-      _vm._v(" "),
-      _c("h3", { staticClass: "card-title" }, [_vm._v("Video Mode")])
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -38749,6 +38959,152 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("span", { staticClass: "d-block d-sm-none" }, [
       _c("i", { staticClass: "tim-icons icon-tap-02" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-sm-3" }, [
+        _c("label", [_vm._v("Frame rate")]),
+        _vm._v(" "),
+        _c("select", { staticClass: "form-control", attrs: { id: "rate" } }, [
+          _c("option", { attrs: { value: "24" } }, [_vm._v("24")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "25" } }, [_vm._v("25")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "30" } }, [_vm._v("30")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "50" } }, [_vm._v("50")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "60" } }, [_vm._v("60")])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-sm-3" }, [
+        _c("label", [_vm._v("M rate")]),
+        _vm._v(" "),
+        _c("select", { staticClass: "form-control", attrs: { id: "rate" } }, [
+          _c("option", { attrs: { value: "0" } }, [_vm._v("Regular")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "1" } }, [_vm._v("M-rate")])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-sm-3" }, [
+        _c("label", [_vm._v("Dimensions")]),
+        _vm._v(" "),
+        _c("select", { staticClass: "form-control", attrs: { id: "rate" } }, [
+          _c("option", { attrs: { value: "0" } }, [_vm._v("NTSC")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "1" } }, [_vm._v("PAL")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "2" } }, [_vm._v("720")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "3" } }, [_vm._v("1080")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "4" } }, [_vm._v("2k DCI")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "5" } }, [_vm._v("2k16:9")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "6" } }, [_vm._v("UHD")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "7" } }, [_vm._v("3k Anamorphic")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "8" } }, [_vm._v("4k DCI")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "9" } }, [_vm._v("4k 16:9")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "10" } }, [_vm._v("4.6k 2.4:1")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "11" } }, [_vm._v("4.6k")])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-sm-3" }, [
+        _c("label", [_vm._v("Interlaced")]),
+        _vm._v(" "),
+        _c("select", { staticClass: "form-control", attrs: { id: "rate" } }, [
+          _c("option", { attrs: { value: "0" } }, [_vm._v("Progressive")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "1" } }, [_vm._v("Interlaced")])
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-sm-3" }, [
+        _c("label", [_vm._v("Color Temperature")]),
+        _vm._v(" "),
+        _c("input", {
+          staticClass: "form-control",
+          attrs: {
+            type: "text",
+            name: "name",
+            placeholder: "Range: 2500 ~ 10000"
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-sm-3" }, [
+        _c("label", [_vm._v("Tint")]),
+        _vm._v(" "),
+        _c("input", {
+          staticClass: "form-control",
+          attrs: { type: "text", name: "name", placeholder: "Range: -50 ~ 50" }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-sm-3" }, [
+        _c("label", [_vm._v("Range Mode")]),
+        _vm._v(" "),
+        _c(
+          "select",
+          { staticClass: "form-control", attrs: { id: "rangeMode" } },
+          [
+            _c("option", { attrs: { value: "0" } }, [_vm._v("Film")]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "1" } }, [_vm._v("Video")]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "2" } }, [_vm._v("Extended Video")])
+          ]
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-sm-3" }, [
+        _c("label", [_vm._v("Sharpen Level")]),
+        _vm._v(" "),
+        _c(
+          "select",
+          { staticClass: "form-control", attrs: { id: "sharpenLevel" } },
+          [
+            _c("option", { attrs: { value: "0" } }, [_vm._v("Off")]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "1" } }, [_vm._v("Low")]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "2" } }, [_vm._v("Medium")]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "3" } }, [_vm._v("High")])
+          ]
+        )
+      ])
     ])
   }
 ]

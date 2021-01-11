@@ -47,13 +47,17 @@
             </div>
         </div>
     </div>
-    <div class="card-body">        
+    <div class="card-body">
         <div class="form-group" id="auto-focus-body" v-if="this.showAuto">
             <button class="btn btn-primary" id="btnAutoFocus">Auto Focus</button>
         </div>
         <div class="form-group" id="manual-focus-body" v-if="this.showManual">
-            <label>Manual Focus </label>
-            <input type="text" name="name" class="form-control" placeholder="Range: 0.0 ~ 1.0">
+            <div class="row">
+                <div class="col-sm-3">
+                    <label>Manual Focus </label>
+                    <input type="text" name="name" class="form-control" placeholder="Range: 0.0 ~ 1.0">
+                </div>
+            </div>
             <button class="btn btn-primary" id="btnManualFocus">Manual Focus</button>
         </div>
         <div class="table-responsive ps" id="aperture-body" v-if="this.showAperture">
