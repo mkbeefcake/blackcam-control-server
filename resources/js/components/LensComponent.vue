@@ -91,7 +91,7 @@
                 <tbody>
                     <tr>
                         <td>Set absolute zoom (mm)</td>
-                        <td><input type="text" class="form-control" v-model="absoluteZoomMM" placeholder="Range: 0.0 ~ max"></td>
+                        <td><input type="text" class="form-control" v-model="absoluteZoomMM" placeholder="Range: 0 ~ max"></td>
                         <td><button class="btn btn-primary" id="btnSetZoomMM" v-on:click="setAbsoluteZoomMM" >Set</button></td>
                     </tr>
                     <tr>

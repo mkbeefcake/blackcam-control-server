@@ -38596,7 +38596,7 @@ var render = function() {
                         }
                       ],
                       staticClass: "form-control",
-                      attrs: { type: "text", placeholder: "Range: 0.0 ~ max" },
+                      attrs: { type: "text", placeholder: "Range: 0 ~ max" },
                       domProps: { value: _vm.absoluteZoomMM },
                       on: {
                         input: function($event) {
