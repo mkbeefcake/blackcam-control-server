@@ -55,20 +55,6 @@
                 updateSelectedCamera(JSON.parse(msg));
         })
 
-        $('#btnAutoFocus').click(function() {
-            debugger;
-            var command = {
-                type : 'auto-focus'
-            };
-
-            if (selectedCameraId == "")
-                socket.emit('admin', null, JSON.stringify(command));
-            else
-                socket.emit('admin', selectedCameraId, JSON.stringify(command));
-
-            alert('Sent Auto-Focus command');
-        })
-
         $('#btnRecord').click(function() {
             debugger;
             var command = {

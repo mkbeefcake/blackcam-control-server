@@ -2144,6 +2144,104 @@ __webpack_require__.r(__webpack_exports__);
       this.title = "Stabilisation";
       this.showStabilisation = true;
       this.showAuto = this.showManual = this.showAperture = this.showZoom = false;
+    },
+    sendLensCommand: function sendLensCommand(command) {
+      if (selectedCameraId == "") socket.emit('admin', null, JSON.stringify(command));else socket.emit('admin', selectedCameraId, JSON.stringify(command));
+    },
+    setAutoFocus: function setAutoFocus(event) {
+      debugger;
+      var command = {
+        type: 'auto-focus'
+      };
+      this.sendLensCommand(command);
+      alert('Sent Auto-Focus command');
+    },
+    setManualFocus: function setManualFocus(event) {
+      debugger;
+      var command = {
+        type: 'manual-focus',
+        manualFocus: this.manualFocusValue
+      };
+      this.sendLensCommand(command);
+      alert('Sent Manual-Focus command');
+    },
+    setApertureFStop: function setApertureFStop(event) {
+      debugger;
+      var command = {
+        type: 'aperture-fstop',
+        apertureFStop: this.apertureFStop
+      };
+      this.sendLensCommand(command);
+      alert('Sent Aperture (f-Stop) command');
+    },
+    setApertureNormalised: function setApertureNormalised(event) {
+      debugger;
+      var command = {
+        type: 'aperture-normalised',
+        apertureNormalised: this.apertureNormalised
+      };
+      this.sendLensCommand(command);
+      alert('Sent Aperture (Normalised) command');
+    },
+    setApertureOrdinal: function setApertureOrdinal(event) {
+      debugger;
+      var command = {
+        type: 'aperture-ordinal',
+        apertureOrdinal: this.apertureOrdinal
+      };
+      this.sendLensCommand(command);
+      alert('Sent Aperture (Ordinal) command');
+    },
+    setAutoAperture: function setAutoAperture(event) {
+      debugger;
+      var command = {
+        type: 'auto-aperture'
+      };
+      this.sendLensCommand(command);
+      alert('Sent Auto aperture command');
+    },
+    setAbsoluteZoomMM: function setAbsoluteZoomMM(event) {
+      debugger;
+      var command = {
+        type: 'absolute-zoom-mm',
+        absoluteZoomMM: this.absoluteZoomMM
+      };
+      this.sendLensCommand(command);
+      alert('Sent Absolute Zoom (mm) command');
+    },
+    setAbsoluteZoomNormalised: function setAbsoluteZoomNormalised(event) {
+      debugger;
+      var command = {
+        type: 'absolute-zoom-normalised',
+        absoluteZoomNormalised: this.absoluteZoomNormalised
+      };
+      this.sendLensCommand(command);
+      alert('Sent Absolute Zoom (Normalised) command');
+    },
+    setContinuousZoomSpeed: function setContinuousZoomSpeed(event) {
+      debugger;
+      var command = {
+        type: 'continuous-zoom-speed',
+        continuousZoomSpeed: this.continuousZoomSpeed
+      };
+      this.sendLensCommand(command);
+      alert('Sent Continuous Zoom (Speed) command');
+    },
+    enableStabilisation: function enableStabilisation(event) {
+      debugger;
+      var command = {
+        type: 'enable-stabilisation'
+      };
+      this.sendLensCommand(command);
+      alert('Sent Enable Stabilisation command');
+    },
+    disableStabilisation: function disableStabilisation(event) {
+      debugger;
+      var command = {
+        type: 'disable-stabilisation'
+      };
+      this.sendLensCommand(command);
+      alert('Sent Disable Stabilisation command');
     }
   }
 });
@@ -38266,7 +38364,8 @@ var render = function() {
                 "button",
                 {
                   staticClass: "btn btn-primary",
-                  attrs: { id: "btnAutoFocus" }
+                  attrs: { id: "btnAutoFocus" },
+                  on: { click: _vm.setAutoFocus }
                 },
                 [_vm._v("Auto Focus")]
               )
@@ -38279,13 +38378,40 @@ var render = function() {
             "div",
             { staticClass: "form-group", attrs: { id: "manual-focus-body" } },
             [
-              _vm._m(5),
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col-sm-3" }, [
+                  _c("label", [_vm._v("Manual Focus ")]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.manualFocusValue,
+                        expression: "manualFocusValue"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "text", placeholder: "Range: 0.0 ~ 1.0" },
+                    domProps: { value: _vm.manualFocusValue },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.manualFocusValue = $event.target.value
+                      }
+                    }
+                  })
+                ])
+              ]),
               _vm._v(" "),
               _c(
                 "button",
                 {
                   staticClass: "btn btn-primary",
-                  attrs: { id: "btnManualFocus" }
+                  attrs: { id: "btnManualFocus" },
+                  on: { click: _vm.setManualFocus }
                 },
                 [_vm._v("Manual Focus")]
               )
@@ -38300,13 +38426,283 @@ var render = function() {
               staticClass: "table-responsive ps",
               attrs: { id: "aperture-body" }
             },
-            [_vm._m(6)]
+            [
+              _c("table", { staticClass: "table" }, [
+                _c("tbody", [
+                  _c("tr", [
+                    _c("td", [_vm._v("Aperture (f-stop)")]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.apertureFStop,
+                            expression: "apertureFStop"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          type: "text",
+                          placeholder: "Range: -1.0 ~ 16.0"
+                        },
+                        domProps: { value: _vm.apertureFStop },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.apertureFStop = $event.target.value
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-primary",
+                          attrs: { id: "btnSetFStop" },
+                          on: { click: _vm.setApertureFStop }
+                        },
+                        [_vm._v("Set")]
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("td", [_vm._v("Aperture (normalised)")]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.apertureNormalised,
+                            expression: "apertureNormalised"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          type: "text",
+                          placeholder: "Range: 0.0 ~ 1.0"
+                        },
+                        domProps: { value: _vm.apertureNormalised },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.apertureNormalised = $event.target.value
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-primary",
+                          attrs: { id: "btnSetNormalised" },
+                          on: { click: _vm.setApertureNormalised }
+                        },
+                        [_vm._v("Set")]
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("td", [_vm._v("Aperture (ordinal)")]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.apertureOrdinal,
+                            expression: "apertureOrdinal"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "text", placeholder: "Range: 0.0 ~ n" },
+                        domProps: { value: _vm.apertureOrdinal },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.apertureOrdinal = $event.target.value
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-primary",
+                          attrs: { id: "btnSetOrdinal" },
+                          on: { click: _vm.setApertureOrdinal }
+                        },
+                        [_vm._v("Set")]
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("td", [_vm._v("Instantaneous auto Aperture")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("-")]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-primary",
+                          attrs: { id: "btnAutoAperture" },
+                          on: { click: _vm.setAutoAperture }
+                        },
+                        [_vm._v("Set")]
+                      )
+                    ])
+                  ])
+                ])
+              ])
+            ]
           )
         : _vm._e(),
       _vm._v(" "),
       this.showZoom
         ? _c("div", { staticClass: "form-group", attrs: { id: "zoom-body" } }, [
-            _vm._m(7)
+            _c("table", { staticClass: "table" }, [
+              _c("tbody", [
+                _c("tr", [
+                  _c("td", [_vm._v("Set absolute zoom (mm)")]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.absoluteZoomMM,
+                          expression: "absoluteZoomMM"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", placeholder: "Range: 0.0 ~ max" },
+                      domProps: { value: _vm.absoluteZoomMM },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.absoluteZoomMM = $event.target.value
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-primary",
+                        attrs: { id: "btnSetZoomMM" },
+                        on: { click: _vm.setAbsoluteZoomMM }
+                      },
+                      [_vm._v("Set")]
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _c("td", [_vm._v("Set absolute zoom (normalised)")]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.absoluteZoomNormalised,
+                          expression: "absoluteZoomNormalised"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", placeholder: "Range: 0.0 ~ 1.0" },
+                      domProps: { value: _vm.absoluteZoomNormalised },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.absoluteZoomNormalised = $event.target.value
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-primary",
+                        attrs: { id: "btnZoomNormalised" },
+                        on: { click: _vm.setAbsoluteZoomNormalised }
+                      },
+                      [_vm._v("Set")]
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _c("td", [_vm._v("Set continuous zoom (speed)")]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.continuousZoomSpeed,
+                          expression: "continuousZoomSpeed"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", placeholder: "Range: -0.0 ~ 1.0" },
+                      domProps: { value: _vm.continuousZoomSpeed },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.continuousZoomSpeed = $event.target.value
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-primary",
+                        attrs: { id: "btnZoomSpeed" },
+                        on: { click: _vm.setContinuousZoomSpeed }
+                      },
+                      [_vm._v("Set")]
+                    )
+                  ])
+                ])
+              ])
+            ])
           ])
         : _vm._e(),
       _vm._v(" "),
@@ -38319,7 +38715,8 @@ var render = function() {
                 "button",
                 {
                   staticClass: "btn btn-primary",
-                  attrs: { id: "btnEnableStabilisation" }
+                  attrs: { id: "btnEnableStabilisation" },
+                  on: { click: _vm.enableStabilisation }
                 },
                 [_vm._v("Enable")]
               ),
@@ -38328,7 +38725,8 @@ var render = function() {
                 "button",
                 {
                   staticClass: "btn btn-primary",
-                  attrs: { id: "btnDisableStabilisation" }
+                  attrs: { id: "btnDisableStabilisation" },
+                  on: { click: _vm.disableStabilisation }
                 },
                 [_vm._v("Disable")]
               )
@@ -38377,201 +38775,6 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("span", { staticClass: "d-block d-sm-none" }, [
       _c("i", { staticClass: "tim-icons icon-tap-02" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-sm-3" }, [
-        _c("label", [_vm._v("Manual Focus ")]),
-        _vm._v(" "),
-        _c("input", {
-          staticClass: "form-control",
-          attrs: { type: "text", name: "name", placeholder: "Range: 0.0 ~ 1.0" }
-        })
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("table", { staticClass: "table" }, [
-      _c("tbody", [
-        _c("tr", [
-          _c("td", [_vm._v("Aperture (f-stop)")]),
-          _vm._v(" "),
-          _c("td", [
-            _c("input", {
-              staticClass: "form-control",
-              attrs: {
-                type: "text",
-                name: "name",
-                placeholder: "Range: -1.0 ~ 16.0"
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("td", [
-            _c(
-              "button",
-              { staticClass: "btn btn-primary", attrs: { id: "btnSetFStop" } },
-              [_vm._v("Set")]
-            )
-          ])
-        ]),
-        _vm._v(" "),
-        _c("tr", [
-          _c("td", [_vm._v("Aperture (normalised)")]),
-          _vm._v(" "),
-          _c("td", [
-            _c("input", {
-              staticClass: "form-control",
-              attrs: {
-                type: "text",
-                name: "name",
-                placeholder: "Range: 0.0 ~ 1.0"
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("td", [
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-primary",
-                attrs: { id: "btnSetNormalised" }
-              },
-              [_vm._v("Set")]
-            )
-          ])
-        ]),
-        _vm._v(" "),
-        _c("tr", [
-          _c("td", [_vm._v("Aperture (ordinal)")]),
-          _vm._v(" "),
-          _c("td", [
-            _c("input", {
-              staticClass: "form-control",
-              attrs: {
-                type: "text",
-                name: "name",
-                placeholder: "Range: 0.0 ~ n"
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("td", [
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-primary",
-                attrs: { id: "btnSetOrdinal" }
-              },
-              [_vm._v("Set")]
-            )
-          ])
-        ]),
-        _vm._v(" "),
-        _c("tr", [
-          _c("td", [_vm._v("Instantaneous auto Aperture")]),
-          _vm._v(" "),
-          _c("td", [_vm._v("-")]),
-          _vm._v(" "),
-          _c("td", [
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-primary",
-                attrs: { id: "btnAutoAperture" }
-              },
-              [_vm._v("Set")]
-            )
-          ])
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("table", { staticClass: "table" }, [
-      _c("tbody", [
-        _c("tr", [
-          _c("td", [_vm._v("Set absolute zoom (mm)")]),
-          _vm._v(" "),
-          _c("td", [
-            _c("input", {
-              staticClass: "form-control",
-              attrs: {
-                type: "text",
-                name: "name",
-                placeholder: "Range: 0.0 ~ max"
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("td", [
-            _c(
-              "button",
-              { staticClass: "btn btn-primary", attrs: { id: "btnSetZoomMM" } },
-              [_vm._v("Set")]
-            )
-          ])
-        ]),
-        _vm._v(" "),
-        _c("tr", [
-          _c("td", [_vm._v("Set absolute zoom (normalised)")]),
-          _vm._v(" "),
-          _c("td", [
-            _c("input", {
-              staticClass: "form-control",
-              attrs: {
-                type: "text",
-                name: "name",
-                placeholder: "Range: 0.0 ~ 1.0"
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("td", [
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-primary",
-                attrs: { id: "btnZoomNormalised" }
-              },
-              [_vm._v("Set")]
-            )
-          ])
-        ]),
-        _vm._v(" "),
-        _c("tr", [
-          _c("td", [_vm._v("Set continuous zoom (speed)")]),
-          _vm._v(" "),
-          _c("td", [
-            _c("input", {
-              staticClass: "form-control",
-              attrs: {
-                type: "text",
-                name: "name",
-                placeholder: "Range: -0.0 ~ 1.0"
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("td", [
-            _c(
-              "button",
-              { staticClass: "btn btn-primary", attrs: { id: "btnZoomSpeed" } },
-              [_vm._v("Set")]
-            )
-          ])
-        ])
-      ])
     ])
   }
 ]

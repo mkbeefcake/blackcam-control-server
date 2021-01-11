@@ -49,39 +49,39 @@
     </div>
     <div class="card-body">
         <div class="form-group" id="auto-focus-body" v-if="this.showAuto">
-            <button class="btn btn-primary" id="btnAutoFocus">Auto Focus</button>
+            <button class="btn btn-primary" id="btnAutoFocus" v-on:click="setAutoFocus">Auto Focus</button>
         </div>
         <div class="form-group" id="manual-focus-body" v-if="this.showManual">
             <div class="row">
                 <div class="col-sm-3">
                     <label>Manual Focus </label>
-                    <input type="text" name="name" class="form-control" placeholder="Range: 0.0 ~ 1.0">
+                    <input type="text" v-model="manualFocusValue" class="form-control" placeholder="Range: 0.0 ~ 1.0">
                 </div>
             </div>
-            <button class="btn btn-primary" id="btnManualFocus">Manual Focus</button>
+            <button class="btn btn-primary" id="btnManualFocus" v-on:click="setManualFocus">Manual Focus</button>
         </div>
         <div class="table-responsive ps" id="aperture-body" v-if="this.showAperture">
             <table class="table">
                 <tbody>
                     <tr>
                         <td>Aperture (f-stop)</td>
-                        <td><input type="text" name="name" class="form-control" placeholder="Range: -1.0 ~ 16.0"></td>
-                        <td><button class="btn btn-primary" id="btnSetFStop">Set</button></td>
+                        <td><input type="text" class="form-control" v-model="apertureFStop" placeholder="Range: -1.0 ~ 16.0"></td>
+                        <td><button class="btn btn-primary" id="btnSetFStop" v-on:click="setApertureFStop">Set</button></td>
                     </tr>
                     <tr>
                         <td>Aperture (normalised)</td>
-                        <td><input type="text" name="name" class="form-control" placeholder="Range: 0.0 ~ 1.0"></td>
-                        <td><button class="btn btn-primary" id="btnSetNormalised">Set</button></td>
+                        <td><input type="text" class="form-control" v-model="apertureNormalised" placeholder="Range: 0.0 ~ 1.0"></td>
+                        <td><button class="btn btn-primary" id="btnSetNormalised" v-on:click="setApertureNormalised">Set</button></td>
                     </tr>
                     <tr>
                         <td>Aperture (ordinal)</td>
-                        <td><input type="text" name="name" class="form-control" placeholder="Range: 0.0 ~ n"></td>
-                        <td><button class="btn btn-primary" id="btnSetOrdinal">Set</button></td>
+                        <td><input type="text" class="form-control" v-model="apertureOrdinal" placeholder="Range: 0.0 ~ n"></td>
+                        <td><button class="btn btn-primary" id="btnSetOrdinal" v-on:click="setApertureOrdinal">Set</button></td>
                     </tr>
                     <tr>
                         <td>Instantaneous auto Aperture</td>
                         <td>-</td>
-                        <td><button class="btn btn-primary" id="btnAutoAperture">Set</button></td>
+                        <td><button class="btn btn-primary" id="btnAutoAperture" v-on:click="setAutoAperture">Set</button></td>
                     </tr>
                 </tbody>
             </table>
@@ -91,25 +91,25 @@
                 <tbody>
                     <tr>
                         <td>Set absolute zoom (mm)</td>
-                        <td><input type="text" name="name" class="form-control" placeholder="Range: 0.0 ~ max"></td>
-                        <td><button class="btn btn-primary" id="btnSetZoomMM">Set</button></td>
+                        <td><input type="text" class="form-control" v-model="absoluteZoomMM" placeholder="Range: 0.0 ~ max"></td>
+                        <td><button class="btn btn-primary" id="btnSetZoomMM" v-on:click="setAbsoluteZoomMM" >Set</button></td>
                     </tr>
                     <tr>
                         <td>Set absolute zoom (normalised)</td>
-                        <td><input type="text" name="name" class="form-control" placeholder="Range: 0.0 ~ 1.0"></td>
-                        <td><button class="btn btn-primary" id="btnZoomNormalised">Set</button></td>
+                        <td><input type="text" class="form-control" v-model="absoluteZoomNormalised" placeholder="Range: 0.0 ~ 1.0"></td>
+                        <td><button class="btn btn-primary" id="btnZoomNormalised" v-on:click="setAbsoluteZoomNormalised">Set</button></td>
                     </tr>
                     <tr>
                         <td>Set continuous zoom (speed)</td>
-                        <td><input type="text" name="name" class="form-control" placeholder="Range: -0.0 ~ 1.0"></td>
-                        <td><button class="btn btn-primary" id="btnZoomSpeed">Set</button></td>
+                        <td><input type="text" class="form-control" v-model="continuousZoomSpeed" placeholder="Range: -0.0 ~ 1.0"></td>
+                        <td><button class="btn btn-primary" id="btnZoomSpeed" v-on:click="setContinuousZoomSpeed">Set</button></td>
                     </tr>
                 </tbody>
             </table>
         </div>
         <div class="form-group" id="stabilisation-body" v-if="this.showStabilisation">
-            <button class="btn btn-primary" id="btnEnableStabilisation">Enable</button>
-            <button class="btn btn-primary" id="btnDisableStabilisation">Disable</button>
+            <button class="btn btn-primary" id="btnEnableStabilisation" v-on:click="enableStabilisation">Enable</button>
+            <button class="btn btn-primary" id="btnDisableStabilisation" v-on:click="disableStabilisation">Disable</button>
         </div>
     </div>
 </div>
@@ -156,6 +156,118 @@ export default {
             this.showStabilisation = true;
             this.showAuto = this.showManual = this.showAperture = this.showZoom = false;
         },
+        sendLensCommand: function(command) {
+            if (selectedCameraId == "")
+                socket.emit('admin', null, JSON.stringify(command));
+            else
+                socket.emit('admin', selectedCameraId, JSON.stringify(command));
+        },
+        setAutoFocus: function(event) {
+            debugger;
+            var command = {
+                type : 'auto-focus'
+            };
+            
+            this.sendLensCommand(command);
+            alert('Sent Auto-Focus command');
+        },
+        setManualFocus: function(event) {
+            debugger;
+            var command = {
+                type : 'manual-focus',
+                manualFocus: this.manualFocusValue,
+            };
+
+            this.sendLensCommand(command);
+            alert('Sent Manual-Focus command');
+        },
+        setApertureFStop: function(event) {
+            debugger;
+            var command = {
+                type : 'aperture-fstop',
+                apertureFStop: this.apertureFStop
+            };
+
+            this.sendLensCommand(command);
+            alert('Sent Aperture (f-Stop) command');
+        },
+        setApertureNormalised: function(event) {
+            debugger;
+            var command = {
+                type : 'aperture-normalised',
+                apertureNormalised: this.apertureNormalised
+            };
+
+            this.sendLensCommand(command);
+            alert('Sent Aperture (Normalised) command');
+        },
+        setApertureOrdinal: function(event) {
+            debugger;
+            var command = {
+                type : 'aperture-ordinal',
+                apertureOrdinal: this.apertureOrdinal
+            };
+
+            this.sendLensCommand(command);
+            alert('Sent Aperture (Ordinal) command');
+        },
+        setAutoAperture: function(event) {
+            debugger;
+            var command = {
+                type : 'auto-aperture',
+            };
+
+            this.sendLensCommand(command);
+            alert('Sent Auto aperture command');
+        },
+        setAbsoluteZoomMM: function(event) {
+            debugger;
+            var command = {
+                type : 'absolute-zoom-mm',
+                absoluteZoomMM: this.absoluteZoomMM
+            };
+
+            this.sendLensCommand(command);
+            alert('Sent Absolute Zoom (mm) command');
+        },
+        setAbsoluteZoomNormalised: function(event) {
+            debugger;
+            var command = {
+                type : 'absolute-zoom-normalised',
+                absoluteZoomNormalised: this.absoluteZoomNormalised
+            };
+
+            this.sendLensCommand(command);
+            alert('Sent Absolute Zoom (Normalised) command');
+        },
+        setContinuousZoomSpeed: function(event) {
+            debugger;
+            var command = {
+                type : 'continuous-zoom-speed',
+                continuousZoomSpeed: this.continuousZoomSpeed
+            };
+
+            this.sendLensCommand(command);
+            alert('Sent Continuous Zoom (Speed) command');
+        },
+        enableStabilisation: function(event) {
+            debugger;
+            var command = {
+                type : 'enable-stabilisation',
+            };
+
+            this.sendLensCommand(command);
+            alert('Sent Enable Stabilisation command');
+        },
+        disableStabilisation: function(event) {
+            debugger;
+            var command = {
+                type : 'disable-stabilisation',
+            };
+
+            this.sendLensCommand(command);
+            alert('Sent Disable Stabilisation command');
+        }
     }
 }
 </script>
