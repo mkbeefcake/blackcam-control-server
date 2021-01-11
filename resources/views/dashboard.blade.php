@@ -7,6 +7,9 @@
             <lens-component></lens-component>
         </div>
         <div class="col-12">
+            <recordvideo-component></recordvideo-component>
+        </div>
+        <div class="col-12">
             <video-component></video-component>
         </div>
         <div class="col-4">
