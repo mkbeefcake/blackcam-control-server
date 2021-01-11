@@ -2541,20 +2541,7 @@ __webpack_require__.r(__webpack_exports__);
       showWhiteBalance: false,
       showRangeMode: false,
       showShapenLevel: false,
-      showRecordFormat: false,
-      frameRate: "",
-      mRate: "",
-      dimensions: "",
-      interlaced: "",
-      colorTemperature: "",
-      tint: "",
-      rangeMode: "",
-      sharpenLevel: "",
-      recordFrameRate: "",
-      recordSensorFrameRate: "",
-      recordFrameWidth: "",
-      recordFrameHeight: "",
-      recordFlags: ""
+      showRecordFormat: false
     };
   },
   mounted: function mounted() {
