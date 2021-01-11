@@ -134,7 +134,52 @@
                 </div>
                 <button class="btn btn-primary" id="btnSharpenLevel">Sharpen Level</button>
             </div>
-
+            <div class="form-group" id="record-format-body" v-if="this.showRecordFormat">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <label>Frame rate</label>
+                        <select class="form-control" id="rate">
+                            <option value="24">24</option>
+                            <option value="25">25</option>
+                            <option value="30">30</option>
+                            <option value="50">50</option>
+                            <option value="60">60</option>
+                            <option value="120">120</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-3">
+                        <label>Sensor Frame rate</label>
+                        <select class="form-control" id="rate">
+                            <option value="0">0</option>
+                            <option value="24">24</option>
+                            <option value="25">25</option>
+                            <option value="30">30</option>
+                            <option value="50">50</option>
+                            <option value="60">60</option>
+                            <option value="120">120</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-3">
+                        <label>Frame Width</label>
+                        <input type="text" name="name" class="form-control" placeholder="in Pixels">
+                    </div>
+                    <div class="col-sm-3">
+                        <label>Frame Height</label>
+                        <input type="text" name="name" class="form-control" placeholder="in Pixels">
+                    </div>
+                    <div class="col-sm-3">
+                        <label>Flags</label>
+                        <select class="form-control" id="flags">
+                            <option value="0">file-M-rate</option>
+                            <option value="1">sensor-M-rate</option>
+                            <option value="2">sensor-off-speed</option>
+                            <option value="3">interlaced</option>
+                            <option value="4">windowed mode</option>
+                        </select>
+                    </div>
+                </div>
+                <button class="btn btn-primary" id="btnRecordFormat">Record Format</button>
+            </div>
 
         </div>
     </div>

@@ -2380,6 +2380,51 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -38565,43 +38610,6 @@ var staticRenderFns = [
             _c("h5", { staticClass: "card-category" }, [_vm._v("Media")]),
             _vm._v(" "),
             _c("h3", { staticClass: "card-title" }, [_vm._v("Recording....")])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-sm-6" }, [
-            _c(
-              "div",
-              {
-                staticClass: "btn-group btn-group-toggle float-right",
-                attrs: { "data-toggle": "buttons" }
-              },
-              [
-                _c(
-                  "label",
-                  {
-                    staticClass: "btn btn-sm btn-primary btn-simple active",
-                    attrs: { id: "0" }
-                  },
-                  [
-                    _c("input", {
-                      attrs: { type: "radio", name: "options", checked: "" }
-                    }),
-                    _vm._v(" "),
-                    _c(
-                      "span",
-                      {
-                        staticClass:
-                          "d-none d-sm-block d-md-block d-lg-block d-xl-block"
-                      },
-                      [_vm._v("Record")]
-                    ),
-                    _vm._v(" "),
-                    _c("span", { staticClass: "d-block d-sm-none" }, [
-                      _c("i", { staticClass: "tim-icons icon-single-02" })
-                    ])
-                  ]
-                )
-              ]
-            )
           ])
         ])
       ]),
@@ -38916,6 +38924,25 @@ var render = function() {
               )
             ]
           )
+        : _vm._e(),
+      _vm._v(" "),
+      this.showRecordFormat
+        ? _c(
+            "div",
+            { staticClass: "form-group", attrs: { id: "record-format-body" } },
+            [
+              _vm._m(9),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary",
+                  attrs: { id: "btnRecordFormat" }
+                },
+                [_vm._v("Record Format")]
+              )
+            ]
+          )
         : _vm._e()
     ])
   ])
@@ -39104,6 +39131,84 @@ var staticRenderFns = [
             _c("option", { attrs: { value: "3" } }, [_vm._v("High")])
           ]
         )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-sm-3" }, [
+        _c("label", [_vm._v("Frame rate")]),
+        _vm._v(" "),
+        _c("select", { staticClass: "form-control", attrs: { id: "rate" } }, [
+          _c("option", { attrs: { value: "24" } }, [_vm._v("24")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "25" } }, [_vm._v("25")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "30" } }, [_vm._v("30")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "50" } }, [_vm._v("50")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "60" } }, [_vm._v("60")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "120" } }, [_vm._v("120")])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-sm-3" }, [
+        _c("label", [_vm._v("Sensor Frame rate")]),
+        _vm._v(" "),
+        _c("select", { staticClass: "form-control", attrs: { id: "rate" } }, [
+          _c("option", { attrs: { value: "0" } }, [_vm._v("0")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "24" } }, [_vm._v("24")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "25" } }, [_vm._v("25")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "30" } }, [_vm._v("30")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "50" } }, [_vm._v("50")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "60" } }, [_vm._v("60")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "120" } }, [_vm._v("120")])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-sm-3" }, [
+        _c("label", [_vm._v("Frame Width")]),
+        _vm._v(" "),
+        _c("input", {
+          staticClass: "form-control",
+          attrs: { type: "text", name: "name", placeholder: "in Pixels" }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-sm-3" }, [
+        _c("label", [_vm._v("Frame Height")]),
+        _vm._v(" "),
+        _c("input", {
+          staticClass: "form-control",
+          attrs: { type: "text", name: "name", placeholder: "in Pixels" }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-sm-3" }, [
+        _c("label", [_vm._v("Flags")]),
+        _vm._v(" "),
+        _c("select", { staticClass: "form-control", attrs: { id: "flags" } }, [
+          _c("option", { attrs: { value: "0" } }, [_vm._v("file-M-rate")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "1" } }, [_vm._v("sensor-M-rate")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "2" } }, [_vm._v("sensor-off-speed")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "3" } }, [_vm._v("interlaced")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "4" } }, [_vm._v("windowed mode")])
+        ])
       ])
     ])
   }
