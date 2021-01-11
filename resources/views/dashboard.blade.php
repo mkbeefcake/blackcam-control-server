@@ -55,33 +55,6 @@
                 updateSelectedCamera(JSON.parse(msg));
         })
 
-        $('#btnRecord').click(function() {
-            debugger;
-            var command = {
-                type : 'record'
-            };
-
-            if (selectedCameraId == "")
-                socket.emit('admin', null, JSON.stringify(command));
-            else
-                socket.emit('admin', selectedCameraId, JSON.stringify(command));
-
-            alert('Sent Record command');
-        })
-        $('#btnStop').click(function() {
-            debugger;
-            var command = {
-                type : 'preview'
-            };
-
-            if (selectedCameraId == "")
-                socket.emit('admin', null, JSON.stringify(command));
-            else
-                socket.emit('admin', selectedCameraId, JSON.stringify(command));
-
-            alert('Sent Stop command');
-        })
-
     })
 
     function updateSelectedCamera(statusObject) {

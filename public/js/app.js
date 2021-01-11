@@ -2278,20 +2278,30 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     console.log('RecordVideo-Component mounted.');
+  },
+  methods: {
+    sendTransportModeCommand: function sendTransportModeCommand(command) {
+      if (selectedCameraId == "") socket.emit('admin', null, JSON.stringify(command));else socket.emit('admin', selectedCameraId, JSON.stringify(command));
+    },
+    setRecord: function setRecord(event) {
+      debugger;
+      var command = {
+        type: 'record'
+      };
+      this.sendTransportModeCommand(command);
+      alert('Sent Record command');
+    },
+    setStop: function setStop(event) {
+      debugger;
+      var command = {
+        type: 'preview'
+      };
+      this.sendTransportModeCommand(command);
+      alert('Sent Stop command');
+    }
   }
 });
 
@@ -2531,7 +2541,20 @@ __webpack_require__.r(__webpack_exports__);
       showWhiteBalance: false,
       showRangeMode: false,
       showShapenLevel: false,
-      showRecordFormat: false
+      showRecordFormat: false,
+      frameRate: "",
+      mRate: "",
+      dimensions: "",
+      interlaced: "",
+      colorTemperature: "",
+      tint: "",
+      rangeMode: "",
+      sharpenLevel: "",
+      recordFrameRate: "",
+      recordSensorFrameRate: "",
+      recordFrameWidth: "",
+      recordFrameHeight: "",
+      recordFlags: ""
     };
   },
   mounted: function mounted() {
@@ -2563,6 +2586,62 @@ __webpack_require__.r(__webpack_exports__);
       this.title = "Set Record Format";
       this.showRecordFormat = true;
       this.showVideoMode = this.showWhiteBalance = this.showRangeMode = this.showShapenLevel = false;
+    },
+    sendVideoCommand: function sendVideoCommand(command) {
+      if (selectedCameraId == "") socket.emit('admin', null, JSON.stringify(command));else socket.emit('admin', selectedCameraId, JSON.stringify(command));
+    },
+    setVideoMode: function setVideoMode(event) {
+      debugger;
+      var command = {
+        type: 'video-mode',
+        frameRate: this.frameRate,
+        mRate: this.mRate,
+        dimensions: this.dimensions,
+        interlaced: this.interlaced
+      };
+      this.sendVideoCommand(command);
+      alert('Sent Video Mode is called');
+    },
+    setWhiteBalance: function setWhiteBalance(event) {
+      debugger;
+      var command = {
+        type: 'white-balance',
+        colorTemperature: this.colorTemperature,
+        tint: this.tint
+      };
+      this.sendVideoCommand(command);
+      alert('Sent White Balance is called');
+    },
+    setRangeMode: function setRangeMode(event) {
+      debugger;
+      var command = {
+        type: 'range-mode',
+        rangeMode: this.rangeMode
+      };
+      this.sendVideoCommand(command);
+      alert('Sent Range Mode is called');
+    },
+    setSharpenLevel: function setSharpenLevel(event) {
+      debugger;
+      var command = {
+        type: 'sharpen-level',
+        sharpenLevel: this.sharpenLevel
+      };
+      this.sendVideoCommand(command);
+      alert('Sent Sharpen Level is called');
+    },
+    setRecordFormat: function setRecordFormat(event) {
+      debugger;
+      var command = {
+        type: 'record-format',
+        recordFrameRate: this.recordFrameRate,
+        recordSensorFrameRate: this.recordSensorFrameRate,
+        recordFrameWidth: this.recordFrameWidth,
+        recordFrameHeight: this.recordFrameHeight,
+        recordFlags: this.recordFlags
+      };
+      this.sendVideoCommand(command);
+      alert('Sent Record Format is called');
     }
   }
 });
@@ -38799,43 +38878,57 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "card" }, [
+    _vm._m(0),
+    _vm._v(" "),
+    _c("div", { staticClass: "card-body" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-primary",
+          attrs: { id: "btnRecord" },
+          on: { click: _vm.setRecord }
+        },
+        [_vm._v("Record")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-primary",
+          attrs: { id: "btnStop" },
+          on: { click: _vm.setStop }
+        },
+        [_vm._v("Stop")]
+      ),
+      _vm._v(" "),
+      _vm._m(1)
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card" }, [
-      _c("div", { staticClass: "card-header" }, [
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-sm-6 text-left" }, [
-            _c("h5", { staticClass: "card-category" }, [_vm._v("Media")]),
-            _vm._v(" "),
-            _c("h3", { staticClass: "card-title" }, [_vm._v("Recording....")])
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "card-body" }, [
-        _c(
-          "button",
-          { staticClass: "btn btn-primary", attrs: { id: "btnRecord" } },
-          [_vm._v("Record")]
-        ),
-        _vm._v(" "),
-        _c(
-          "button",
-          { staticClass: "btn btn-primary", attrs: { id: "btnStop" } },
-          [_vm._v("Stop")]
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "form-group" }, [
-          _c("label", { attrs: { id: "transportmode" } }),
+    return _c("div", { staticClass: "card-header" }, [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-sm-6 text-left" }, [
+          _c("h5", { staticClass: "card-category" }, [_vm._v("Media")]),
           _vm._v(" "),
-          _c("label", { attrs: { id: "remainingTime" } })
+          _c("h3", { staticClass: "card-title" }, [_vm._v("Recording....")])
         ])
       ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("label", { attrs: { id: "transportmode" } }),
+      _vm._v(" "),
+      _c("label", { attrs: { id: "remainingTime" } })
     ])
   }
 ]
@@ -39058,13 +39151,220 @@ var render = function() {
             "div",
             { staticClass: "form-group", attrs: { id: "video-mode-body" } },
             [
-              _vm._m(5),
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col-sm-3" }, [
+                  _c("label", [_vm._v("Frame rate")]),
+                  _vm._v(" "),
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.frameRate,
+                          expression: "frameRate"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { id: "frameRate" },
+                      on: {
+                        change: function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.frameRate = $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        }
+                      }
+                    },
+                    [
+                      _c("option", { attrs: { value: "24" } }, [_vm._v("24")]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "25" } }, [_vm._v("25")]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "30" } }, [_vm._v("30")]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "50" } }, [_vm._v("50")]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "60" } }, [_vm._v("60")])
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-sm-3" }, [
+                  _c("label", [_vm._v("M rate")]),
+                  _vm._v(" "),
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.mRate,
+                          expression: "mRate"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { id: "mRate" },
+                      on: {
+                        change: function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.mRate = $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        }
+                      }
+                    },
+                    [
+                      _c("option", { attrs: { value: "0" } }, [
+                        _vm._v("Regular")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "1" } }, [
+                        _vm._v("M-rate")
+                      ])
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-sm-3" }, [
+                  _c("label", [_vm._v("Dimensions")]),
+                  _vm._v(" "),
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.dimensions,
+                          expression: "dimensions"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { id: "dimensions" },
+                      on: {
+                        change: function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.dimensions = $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        }
+                      }
+                    },
+                    [
+                      _c("option", { attrs: { value: "0" } }, [_vm._v("NTSC")]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "1" } }, [_vm._v("PAL")]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "2" } }, [_vm._v("720")]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "3" } }, [_vm._v("1080")]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "4" } }, [
+                        _vm._v("2k DCI")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "5" } }, [
+                        _vm._v("2k16:9")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "6" } }, [_vm._v("UHD")]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "7" } }, [
+                        _vm._v("3k Anamorphic")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "8" } }, [
+                        _vm._v("4k DCI")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "9" } }, [
+                        _vm._v("4k 16:9")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "10" } }, [
+                        _vm._v("4.6k 2.4:1")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "11" } }, [_vm._v("4.6k")])
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-sm-3" }, [
+                  _c("label", [_vm._v("Interlaced")]),
+                  _vm._v(" "),
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.interlaced,
+                          expression: "interlaced"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { id: "interlaced" },
+                      on: {
+                        change: function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.interlaced = $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        }
+                      }
+                    },
+                    [
+                      _c("option", { attrs: { value: "0" } }, [
+                        _vm._v("Progressive")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "1" } }, [
+                        _vm._v("Interlaced")
+                      ])
+                    ]
+                  )
+                ])
+              ]),
               _vm._v(" "),
               _c(
                 "button",
                 {
                   staticClass: "btn btn-primary",
-                  attrs: { id: "btnManualFocus" }
+                  attrs: { id: "btnManualFocus" },
+                  on: { click: _vm.setVideoMode }
                 },
                 [_vm._v("Video Mode")]
               )
@@ -39077,13 +39377,66 @@ var render = function() {
             "div",
             { staticClass: "form-group", attrs: { id: "white-balance-body" } },
             [
-              _vm._m(6),
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col-sm-3" }, [
+                  _c("label", [_vm._v("Color Temperature")]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.colorTemperature,
+                        expression: "colorTemperature"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "text", placeholder: "Range: 2500 ~ 10000" },
+                    domProps: { value: _vm.colorTemperature },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.colorTemperature = $event.target.value
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-sm-3" }, [
+                  _c("label", [_vm._v("Tint")]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.tint,
+                        expression: "tint"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "text", placeholder: "Range: -50 ~ 50" },
+                    domProps: { value: _vm.tint },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.tint = $event.target.value
+                      }
+                    }
+                  })
+                ])
+              ]),
               _vm._v(" "),
               _c(
                 "button",
                 {
                   staticClass: "btn btn-primary",
-                  attrs: { id: "btnWhiteBalance" }
+                  attrs: { id: "btnWhiteBalance" },
+                  on: { click: _vm.setWhiteBalance }
                 },
                 [_vm._v("White Balance")]
               )
@@ -39096,13 +39449,60 @@ var render = function() {
             "div",
             { staticClass: "form-group", attrs: { id: "range-mode-body" } },
             [
-              _vm._m(7),
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col-sm-3" }, [
+                  _c("label", [_vm._v("Range Mode")]),
+                  _vm._v(" "),
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.rangeMode,
+                          expression: "rangeMode"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { id: "rangeMode" },
+                      on: {
+                        change: function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.rangeMode = $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        }
+                      }
+                    },
+                    [
+                      _c("option", { attrs: { value: "0" } }, [_vm._v("Film")]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "1" } }, [
+                        _vm._v("Video")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "2" } }, [
+                        _vm._v("Extended Video")
+                      ])
+                    ]
+                  )
+                ])
+              ]),
               _vm._v(" "),
               _c(
                 "button",
                 {
                   staticClass: "btn btn-primary",
-                  attrs: { id: "btnRangeMode" }
+                  attrs: { id: "btnRangeMode" },
+                  on: { click: _vm.setRangeMode }
                 },
                 [_vm._v("Range Mode")]
               )
@@ -39115,13 +39515,60 @@ var render = function() {
             "div",
             { staticClass: "form-group", attrs: { id: "sharpen-level-body" } },
             [
-              _vm._m(8),
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col-sm-3" }, [
+                  _c("label", [_vm._v("Sharpen Level")]),
+                  _vm._v(" "),
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.sharpenLevel,
+                          expression: "sharpenLevel"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { id: "sharpenLevel" },
+                      on: {
+                        change: function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.sharpenLevel = $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        }
+                      }
+                    },
+                    [
+                      _c("option", { attrs: { value: "0" } }, [_vm._v("Off")]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "1" } }, [_vm._v("Low")]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "2" } }, [
+                        _vm._v("Medium")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "3" } }, [_vm._v("High")])
+                    ]
+                  )
+                ])
+              ]),
               _vm._v(" "),
               _c(
                 "button",
                 {
                   staticClass: "btn btn-primary",
-                  attrs: { id: "btnSharpenLevel" }
+                  attrs: { id: "btnSharpenLevel" },
+                  on: { click: _vm.setSharpenLevel }
                 },
                 [_vm._v("Sharpen Level")]
               )
@@ -39134,13 +39581,220 @@ var render = function() {
             "div",
             { staticClass: "form-group", attrs: { id: "record-format-body" } },
             [
-              _vm._m(9),
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col-sm-3" }, [
+                  _c("label", [_vm._v("Frame rate")]),
+                  _vm._v(" "),
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.recordFrameRate,
+                          expression: "recordFrameRate"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { id: "recordFrameRate" },
+                      on: {
+                        change: function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.recordFrameRate = $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        }
+                      }
+                    },
+                    [
+                      _c("option", { attrs: { value: "24" } }, [_vm._v("24")]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "25" } }, [_vm._v("25")]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "30" } }, [_vm._v("30")]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "50" } }, [_vm._v("50")]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "60" } }, [_vm._v("60")]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "120" } }, [_vm._v("120")])
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-sm-3" }, [
+                  _c("label", [_vm._v("Sensor Frame rate")]),
+                  _vm._v(" "),
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.recordSensorFrameRate,
+                          expression: "recordSensorFrameRate"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { id: "recordSensorFrameRate" },
+                      on: {
+                        change: function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.recordSensorFrameRate = $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        }
+                      }
+                    },
+                    [
+                      _c("option", { attrs: { value: "0" } }, [_vm._v("0")]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "24" } }, [_vm._v("24")]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "25" } }, [_vm._v("25")]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "30" } }, [_vm._v("30")]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "50" } }, [_vm._v("50")]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "60" } }, [_vm._v("60")]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "120" } }, [_vm._v("120")])
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-sm-3" }, [
+                  _c("label", [_vm._v("Frame Width")]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.recordFrameWidth,
+                        expression: "recordFrameWidth"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "text", placeholder: "in Pixels" },
+                    domProps: { value: _vm.recordFrameWidth },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.recordFrameWidth = $event.target.value
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-sm-3" }, [
+                  _c("label", [_vm._v("Frame Height")]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.recordFrameHeight,
+                        expression: "recordFrameHeight"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "text", placeholder: "in Pixels" },
+                    domProps: { value: _vm.recordFrameHeight },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.recordFrameHeight = $event.target.value
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-sm-3" }, [
+                  _c("label", [_vm._v("Flags")]),
+                  _vm._v(" "),
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.recordFlags,
+                          expression: "recordFlags"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { id: "flags" },
+                      on: {
+                        change: function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.recordFlags = $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        }
+                      }
+                    },
+                    [
+                      _c("option", { attrs: { value: "0" } }, [
+                        _vm._v("file-M-rate")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "1" } }, [
+                        _vm._v("sensor-M-rate")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "2" } }, [
+                        _vm._v("sensor-off-speed")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "3" } }, [
+                        _vm._v("interlaced")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "4" } }, [
+                        _vm._v("windowed mode")
+                      ])
+                    ]
+                  )
+                ])
+              ]),
               _vm._v(" "),
               _c(
                 "button",
                 {
                   staticClass: "btn btn-primary",
-                  attrs: { id: "btnRecordFormat" }
+                  attrs: { id: "btnRecordFormat" },
+                  on: { click: _vm.setRecordFormat }
                 },
                 [_vm._v("Record Format")]
               )
@@ -39189,230 +39843,6 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("span", { staticClass: "d-block d-sm-none" }, [
       _c("i", { staticClass: "tim-icons icon-tap-02" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-sm-3" }, [
-        _c("label", [_vm._v("Frame rate")]),
-        _vm._v(" "),
-        _c("select", { staticClass: "form-control", attrs: { id: "rate" } }, [
-          _c("option", { attrs: { value: "24" } }, [_vm._v("24")]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "25" } }, [_vm._v("25")]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "30" } }, [_vm._v("30")]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "50" } }, [_vm._v("50")]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "60" } }, [_vm._v("60")])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-sm-3" }, [
-        _c("label", [_vm._v("M rate")]),
-        _vm._v(" "),
-        _c("select", { staticClass: "form-control", attrs: { id: "rate" } }, [
-          _c("option", { attrs: { value: "0" } }, [_vm._v("Regular")]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "1" } }, [_vm._v("M-rate")])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-sm-3" }, [
-        _c("label", [_vm._v("Dimensions")]),
-        _vm._v(" "),
-        _c("select", { staticClass: "form-control", attrs: { id: "rate" } }, [
-          _c("option", { attrs: { value: "0" } }, [_vm._v("NTSC")]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "1" } }, [_vm._v("PAL")]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "2" } }, [_vm._v("720")]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "3" } }, [_vm._v("1080")]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "4" } }, [_vm._v("2k DCI")]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "5" } }, [_vm._v("2k16:9")]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "6" } }, [_vm._v("UHD")]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "7" } }, [_vm._v("3k Anamorphic")]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "8" } }, [_vm._v("4k DCI")]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "9" } }, [_vm._v("4k 16:9")]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "10" } }, [_vm._v("4.6k 2.4:1")]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "11" } }, [_vm._v("4.6k")])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-sm-3" }, [
-        _c("label", [_vm._v("Interlaced")]),
-        _vm._v(" "),
-        _c("select", { staticClass: "form-control", attrs: { id: "rate" } }, [
-          _c("option", { attrs: { value: "0" } }, [_vm._v("Progressive")]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "1" } }, [_vm._v("Interlaced")])
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-sm-3" }, [
-        _c("label", [_vm._v("Color Temperature")]),
-        _vm._v(" "),
-        _c("input", {
-          staticClass: "form-control",
-          attrs: {
-            type: "text",
-            name: "name",
-            placeholder: "Range: 2500 ~ 10000"
-          }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-sm-3" }, [
-        _c("label", [_vm._v("Tint")]),
-        _vm._v(" "),
-        _c("input", {
-          staticClass: "form-control",
-          attrs: { type: "text", name: "name", placeholder: "Range: -50 ~ 50" }
-        })
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-sm-3" }, [
-        _c("label", [_vm._v("Range Mode")]),
-        _vm._v(" "),
-        _c(
-          "select",
-          { staticClass: "form-control", attrs: { id: "rangeMode" } },
-          [
-            _c("option", { attrs: { value: "0" } }, [_vm._v("Film")]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "1" } }, [_vm._v("Video")]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "2" } }, [_vm._v("Extended Video")])
-          ]
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-sm-3" }, [
-        _c("label", [_vm._v("Sharpen Level")]),
-        _vm._v(" "),
-        _c(
-          "select",
-          { staticClass: "form-control", attrs: { id: "sharpenLevel" } },
-          [
-            _c("option", { attrs: { value: "0" } }, [_vm._v("Off")]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "1" } }, [_vm._v("Low")]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "2" } }, [_vm._v("Medium")]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "3" } }, [_vm._v("High")])
-          ]
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-sm-3" }, [
-        _c("label", [_vm._v("Frame rate")]),
-        _vm._v(" "),
-        _c("select", { staticClass: "form-control", attrs: { id: "rate" } }, [
-          _c("option", { attrs: { value: "24" } }, [_vm._v("24")]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "25" } }, [_vm._v("25")]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "30" } }, [_vm._v("30")]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "50" } }, [_vm._v("50")]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "60" } }, [_vm._v("60")]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "120" } }, [_vm._v("120")])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-sm-3" }, [
-        _c("label", [_vm._v("Sensor Frame rate")]),
-        _vm._v(" "),
-        _c("select", { staticClass: "form-control", attrs: { id: "rate" } }, [
-          _c("option", { attrs: { value: "0" } }, [_vm._v("0")]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "24" } }, [_vm._v("24")]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "25" } }, [_vm._v("25")]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "30" } }, [_vm._v("30")]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "50" } }, [_vm._v("50")]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "60" } }, [_vm._v("60")]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "120" } }, [_vm._v("120")])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-sm-3" }, [
-        _c("label", [_vm._v("Frame Width")]),
-        _vm._v(" "),
-        _c("input", {
-          staticClass: "form-control",
-          attrs: { type: "text", name: "name", placeholder: "in Pixels" }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-sm-3" }, [
-        _c("label", [_vm._v("Frame Height")]),
-        _vm._v(" "),
-        _c("input", {
-          staticClass: "form-control",
-          attrs: { type: "text", name: "name", placeholder: "in Pixels" }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-sm-3" }, [
-        _c("label", [_vm._v("Flags")]),
-        _vm._v(" "),
-        _c("select", { staticClass: "form-control", attrs: { id: "flags" } }, [
-          _c("option", { attrs: { value: "0" } }, [_vm._v("file-M-rate")]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "1" } }, [_vm._v("sensor-M-rate")]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "2" } }, [_vm._v("sensor-off-speed")]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "3" } }, [_vm._v("interlaced")]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "4" } }, [_vm._v("windowed mode")])
-        ])
-      ])
     ])
   }
 ]

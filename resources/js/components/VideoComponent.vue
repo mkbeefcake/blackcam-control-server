@@ -52,7 +52,7 @@
                 <div class="row">
                     <div class="col-sm-3">
                         <label>Frame rate</label>
-                        <select class="form-control" id="rate">
+                        <select class="form-control" id="frameRate" v-model="frameRate">
                             <option value="24">24</option>
                             <option value="25">25</option>
                             <option value="30">30</option>
@@ -62,14 +62,14 @@
                     </div>
                     <div class="col-sm-3">
                         <label>M rate</label>
-                        <select class="form-control" id="rate">
+                        <select class="form-control" id="mRate" v-model="mRate">
                             <option value="0">Regular</option>
                             <option value="1">M-rate</option>
                         </select>
                     </div>
                     <div class="col-sm-3">                    
                         <label>Dimensions</label>
-                        <select class="form-control" id="rate">
+                        <select class="form-control" id="dimensions" v-model="dimensions">
                             <option value="0">NTSC</option>
                             <option value="1">PAL</option>
                             <option value="2">720</option>
@@ -86,45 +86,45 @@
                     </div>
                     <div class="col-sm-3">
                         <label>Interlaced</label>
-                        <select class="form-control" id="rate">
+                        <select class="form-control" id="interlaced" v-model="interlaced">
                             <option value="0">Progressive</option>
                             <option value="1">Interlaced</option>
                         </select>
                     </div>
                 </div>
-                <button class="btn btn-primary" id="btnManualFocus">Video Mode</button>
+                <button class="btn btn-primary" id="btnManualFocus" v-on:click="setVideoMode">Video Mode</button>
             </div>
             <div class="form-group" id="white-balance-body" v-if="this.showWhiteBalance">
                 <div class="row">
                     <div class="col-sm-3">
                         <label>Color Temperature</label>
-                        <input type="text" name="name" class="form-control" placeholder="Range: 2500 ~ 10000">
+                        <input type="text" class="form-control" v-model="colorTemperature" placeholder="Range: 2500 ~ 10000">
                     </div>
                     <div class="col-sm-3">
                         <label>Tint</label>
-                        <input type="text" name="name" class="form-control" placeholder="Range: -50 ~ 50">
+                        <input type="text" class="form-control" v-model="tint" placeholder="Range: -50 ~ 50">
                     </div>
                 </div>
-                <button class="btn btn-primary" id="btnWhiteBalance">White Balance</button>
+                <button class="btn btn-primary" id="btnWhiteBalance" v-on:click="setWhiteBalance">White Balance</button>
             </div>
             <div class="form-group" id="range-mode-body" v-if="this.showRangeMode">
                 <div class="row">
                     <div class="col-sm-3">
                         <label>Range Mode</label>
-                        <select class="form-control" id="rangeMode">
+                        <select class="form-control" id="rangeMode" v-model="rangeMode">
                             <option value="0">Film</option>
                             <option value="1">Video</option>
                             <option value="2">Extended Video</option>
                         </select>
                     </div>
                 </div>
-                <button class="btn btn-primary" id="btnRangeMode">Range Mode</button>
+                <button class="btn btn-primary" id="btnRangeMode" v-on:click="setRangeMode">Range Mode</button>
             </div>
             <div class="form-group" id="sharpen-level-body" v-if="this.showShapenLevel">
                 <div class="row">
                     <div class="col-sm-3">
                         <label>Sharpen Level</label>
-                        <select class="form-control" id="sharpenLevel">
+                        <select class="form-control" id="sharpenLevel" v-model="sharpenLevel">
                             <option value="0">Off</option>
                             <option value="1">Low</option>
                             <option value="2">Medium</option>
@@ -132,13 +132,13 @@
                         </select>
                     </div>
                 </div>
-                <button class="btn btn-primary" id="btnSharpenLevel">Sharpen Level</button>
+                <button class="btn btn-primary" id="btnSharpenLevel" v-on:click="setSharpenLevel">Sharpen Level</button>
             </div>
             <div class="form-group" id="record-format-body" v-if="this.showRecordFormat">
                 <div class="row">
                     <div class="col-sm-3">
                         <label>Frame rate</label>
-                        <select class="form-control" id="rate">
+                        <select class="form-control" id="recordFrameRate" v-model="recordFrameRate">
                             <option value="24">24</option>
                             <option value="25">25</option>
                             <option value="30">30</option>
@@ -149,7 +149,7 @@
                     </div>
                     <div class="col-sm-3">
                         <label>Sensor Frame rate</label>
-                        <select class="form-control" id="rate">
+                        <select class="form-control" id="recordSensorFrameRate" v-model="recordSensorFrameRate">
                             <option value="0">0</option>
                             <option value="24">24</option>
                             <option value="25">25</option>
@@ -161,15 +161,15 @@
                     </div>
                     <div class="col-sm-3">
                         <label>Frame Width</label>
-                        <input type="text" name="name" class="form-control" placeholder="in Pixels">
+                        <input type="text" class="form-control" placeholder="in Pixels" v-model="recordFrameWidth">
                     </div>
                     <div class="col-sm-3">
                         <label>Frame Height</label>
-                        <input type="text" name="name" class="form-control" placeholder="in Pixels">
+                        <input type="text" class="form-control" placeholder="in Pixels" v-model="recordFrameHeight">
                     </div>
                     <div class="col-sm-3">
                         <label>Flags</label>
-                        <select class="form-control" id="flags">
+                        <select class="form-control" id="flags" v-model="recordFlags">
                             <option value="0">file-M-rate</option>
                             <option value="1">sensor-M-rate</option>
                             <option value="2">sensor-off-speed</option>
@@ -178,7 +178,7 @@
                         </select>
                     </div>
                 </div>
-                <button class="btn btn-primary" id="btnRecordFormat">Record Format</button>
+                <button class="btn btn-primary" id="btnRecordFormat" v-on:click="setRecordFormat">Record Format</button>
             </div>
 
         </div>
@@ -186,7 +186,6 @@
 </template>
 
 <script>
-
 export default {
     data() {
         return {
@@ -196,6 +195,19 @@ export default {
             showRangeMode: false,
             showShapenLevel: false,
             showRecordFormat: false,
+            frameRate: "",
+            mRate: "",
+            dimensions: "",
+            interlaced: "",
+            colorTemperature: "",
+            tint: "",
+            rangeMode: "",
+            sharpenLevel: "",
+            recordFrameRate: "",
+            recordSensorFrameRate: "",
+            recordFrameWidth: "",
+            recordFrameHeight: "",
+            recordFlags: "",            
         }
     },
     mounted() {
@@ -227,6 +239,70 @@ export default {
             this.showRecordFormat = true;
             this.showVideoMode = this.showWhiteBalance = this.showRangeMode = this.showShapenLevel = false;
         },
+        sendVideoCommand: function(command) {
+            if (selectedCameraId == "")
+                socket.emit('admin', null, JSON.stringify(command));
+            else
+                socket.emit('admin', selectedCameraId, JSON.stringify(command));
+        },
+        setVideoMode: function(event) {
+            debugger;
+            var command = {
+                type : 'video-mode',
+                frameRate : this.frameRate,
+                mRate : this.mRate,
+                dimensions : this.dimensions,
+                interlaced : this.interlaced
+            };
+            
+            this.sendVideoCommand(command);
+            alert('Sent Video Mode is called');
+        },
+        setWhiteBalance: function(event) {
+            debugger;
+            var command = {
+                type : 'white-balance',
+                colorTemperature : this.colorTemperature,
+                tint : this.tint
+            };
+            
+            this.sendVideoCommand(command);
+            alert('Sent White Balance is called');
+        },
+        setRangeMode: function(event) {
+            debugger;
+            var command = {
+                type : 'range-mode',
+                rangeMode: this.rangeMode
+            };
+            
+            this.sendVideoCommand(command);
+            alert('Sent Range Mode is called');
+        },
+        setSharpenLevel: function(event) {
+            debugger;
+            var command = {
+                type : 'sharpen-level',
+                sharpenLevel: this.sharpenLevel
+            };
+            
+            this.sendVideoCommand(command);
+            alert('Sent Sharpen Level is called');
+        },
+        setRecordFormat: function(event) {
+            debugger;
+            var command = {
+                type : 'record-format',
+                recordFrameRate: this.recordFrameRate,
+                recordSensorFrameRate: this.recordSensorFrameRate,
+                recordFrameWidth: this.recordFrameWidth,
+                recordFrameHeight: this.recordFrameHeight,
+                recordFlags: this.recordFlags
+            };
+            
+            this.sendVideoCommand(command);
+            alert('Sent Record Format is called');
+        }
     }
 }
 </script>
