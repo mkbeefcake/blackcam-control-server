@@ -31,7 +31,6 @@
         {{-- <script src="{{ asset('black') }}/js/plugins/chartjs.min.js"></script> --}}
         <!--  Notifications Plugin    -->
         <script src="{{ asset('black') }}/js/plugins/bootstrap-notify.js"></script>
-
         <script src="{{ asset('black') }}/js/black-dashboard.min.js?v=1.0.0"></script>
         <script src="{{ asset('black') }}/js/theme.js"></script>
     </head>
@@ -165,5 +164,6 @@
             });
         </script>
         @stack('js')
+        <script src="{{ mix('js/app.js') }}"></script>
     </body>
 </html>
