@@ -102,18 +102,20 @@
                 <button class="btn btn-primary" id="btnManualFocus" v-on:click="setVideoMode">Video Mode</button>
             </div>
             <div class="form-group" id="white-balance-body" v-if="this.showWhiteBalance">
-                <table class="table">
-                    <tbody>
-                        <tr>
-                            <td width="40%">Color Temperature</td>
-                            <td width="60%"><custom-slider raising min="2500" max="10000" step="100" v-model="colorTemperature"/></td>
-                        </tr>
-                        <tr>
-                            <td>Tint</td>
-                            <td><custom-slider raising min="-50" max="50" step="1" v-model="tint"/></td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="col-sm-6">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <td width="40%">Color Temperature</td>
+                                <td width="60%"><custom-slider raising min="2500" max="10000" step="100" v-model="colorTemperature"/></td>
+                            </tr>
+                            <tr>
+                                <td>Tint</td>
+                                <td><custom-slider raising min="-50" max="50" step="1" v-model="tint"/></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
                 <button class="btn btn-primary" id="btnWhiteBalance" v-on:click="setWhiteBalance">White Balance</button>
             </div>
             <div class="form-group" id="range-mode-body" v-if="this.showRangeMode">

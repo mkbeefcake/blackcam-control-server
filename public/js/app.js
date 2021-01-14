@@ -2571,6 +2571,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -41599,61 +41601,63 @@ var render = function() {
             "div",
             { staticClass: "form-group", attrs: { id: "white-balance-body" } },
             [
-              _c("table", { staticClass: "table" }, [
-                _c("tbody", [
-                  _c("tr", [
-                    _c("td", { attrs: { width: "40%" } }, [
-                      _vm._v("Color Temperature")
+              _c("div", { staticClass: "col-sm-6" }, [
+                _c("table", { staticClass: "table" }, [
+                  _c("tbody", [
+                    _c("tr", [
+                      _c("td", { attrs: { width: "40%" } }, [
+                        _vm._v("Color Temperature")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "td",
+                        { attrs: { width: "60%" } },
+                        [
+                          _c("custom-slider", {
+                            attrs: {
+                              raising: "",
+                              min: "2500",
+                              max: "10000",
+                              step: "100"
+                            },
+                            model: {
+                              value: _vm.colorTemperature,
+                              callback: function($$v) {
+                                _vm.colorTemperature = $$v
+                              },
+                              expression: "colorTemperature"
+                            }
+                          })
+                        ],
+                        1
+                      )
                     ]),
                     _vm._v(" "),
-                    _c(
-                      "td",
-                      { attrs: { width: "60%" } },
-                      [
-                        _c("custom-slider", {
-                          attrs: {
-                            raising: "",
-                            min: "2500",
-                            max: "10000",
-                            step: "100"
-                          },
-                          model: {
-                            value: _vm.colorTemperature,
-                            callback: function($$v) {
-                              _vm.colorTemperature = $$v
+                    _c("tr", [
+                      _c("td", [_vm._v("Tint")]),
+                      _vm._v(" "),
+                      _c(
+                        "td",
+                        [
+                          _c("custom-slider", {
+                            attrs: {
+                              raising: "",
+                              min: "-50",
+                              max: "50",
+                              step: "1"
                             },
-                            expression: "colorTemperature"
-                          }
-                        })
-                      ],
-                      1
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("tr", [
-                    _c("td", [_vm._v("Tint")]),
-                    _vm._v(" "),
-                    _c(
-                      "td",
-                      [
-                        _c("custom-slider", {
-                          attrs: {
-                            raising: "",
-                            min: "-50",
-                            max: "50",
-                            step: "1"
-                          },
-                          model: {
-                            value: _vm.tint,
-                            callback: function($$v) {
-                              _vm.tint = $$v
-                            },
-                            expression: "tint"
-                          }
-                        })
-                      ],
-                      1
-                    )
+                            model: {
+                              value: _vm.tint,
+                              callback: function($$v) {
+                                _vm.tint = $$v
+                              },
+                              expression: "tint"
+                            }
+                          })
+                        ],
+                        1
+                      )
+                    ])
                   ])
                 ])
               ]),
