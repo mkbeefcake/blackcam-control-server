@@ -54,8 +54,8 @@
         <div class="form-group" id="manual-focus-body" v-if="this.showManual">
             <div class="row">
                 <div class="col-sm-3">
-                    <label>Manual Focus </label>
-                    <input type="text" v-model="manualFocusValue" class="form-control" placeholder="Range: 0.0 ~ 1.0">
+                    <label>Manual Focus</label>
+                    <custom-slider raising min="0.0" max="1.0" step="0.01" v-model="manualFocusValue"/>
                 </div>
             </div>
             <button class="btn btn-primary" id="btnManualFocus" v-on:click="setManualFocus">Manual Focus</button>
@@ -64,18 +64,18 @@
             <table class="table">
                 <tbody>
                     <tr>
-                        <td>Aperture (f-stop)</td>
-                        <td><input type="text" class="form-control" v-model="apertureFStop" placeholder="Range: -1.0 ~ 16.0"></td>
-                        <td><button class="btn btn-primary" id="btnSetFStop" v-on:click="setApertureFStop">Set</button></td>
+                        <td width="30%">Aperture (f-stop)</td>
+                        <td width="40%"><custom-slider raising min="-1.0" max="16.0" step="0.02" v-model="apertureFStop"/></td>
+                        <td width="30%"><button class="btn btn-primary" id="btnSetFStop" v-on:click="setApertureFStop">Set</button></td>
                     </tr>
                     <tr>
                         <td>Aperture (normalised)</td>
-                        <td><input type="text" class="form-control" v-model="apertureNormalised" placeholder="Range: 0.0 ~ 1.0"></td>
+                        <td><custom-slider raising min="0.0" max="1.0" step="0.01" v-model="apertureNormalised"/></td>
                         <td><button class="btn btn-primary" id="btnSetNormalised" v-on:click="setApertureNormalised">Set</button></td>
                     </tr>
                     <tr>
                         <td>Aperture (ordinal)</td>
-                        <td><input type="text" class="form-control" v-model="apertureOrdinal" placeholder="Range: 0.0 ~ n"></td>
+                        <td><custom-slider raising min="0.0" max="100" step="1" v-model="apertureOrdinal"/></td>
                         <td><button class="btn btn-primary" id="btnSetOrdinal" v-on:click="setApertureOrdinal">Set</button></td>
                     </tr>
                     <tr>
@@ -90,18 +90,18 @@
             <table class="table">
                 <tbody>
                     <tr>
-                        <td>Set absolute zoom (mm)</td>
-                        <td><input type="text" class="form-control" v-model="absoluteZoomMM" placeholder="Range: 0 ~ max"></td>
-                        <td><button class="btn btn-primary" id="btnSetZoomMM" v-on:click="setAbsoluteZoomMM" >Set</button></td>
+                        <td width="30%">Set absolute zoom (mm)</td>
+                        <td width="40%"><custom-slider raising min="0" max="2000" step="20" v-model="absoluteZoomMM"/></td>
+                        <td width="30%"><button class="btn btn-primary" id="btnSetZoomMM" v-on:click="setAbsoluteZoomMM" >Set</button></td>
                     </tr>
                     <tr>
                         <td>Set absolute zoom (normalised)</td>
-                        <td><input type="text" class="form-control" v-model="absoluteZoomNormalised" placeholder="Range: 0.0 ~ 1.0"></td>
+                        <td><custom-slider raising min="0.0" max="1.0" step="0.01" v-model="absoluteZoomNormalised"/></td>
                         <td><button class="btn btn-primary" id="btnZoomNormalised" v-on:click="setAbsoluteZoomNormalised">Set</button></td>
                     </tr>
                     <tr>
                         <td>Set continuous zoom (speed)</td>
-                        <td><input type="text" class="form-control" v-model="continuousZoomSpeed" placeholder="Range: -0.0 ~ 1.0"></td>
+                        <td><custom-slider raising min="0.0" max="1.0" step="0.01" v-model="continuousZoomSpeed"/></td>
                         <td><button class="btn btn-primary" id="btnZoomSpeed" v-on:click="setContinuousZoomSpeed">Set</button></td>
                     </tr>
                 </tbody>
@@ -116,7 +116,13 @@
 </template>
 
 <script>
+import CustomSlider from "vue-custom-range-slider";
+import "vue-custom-range-slider/dist/vue-custom-range-slider.css";
+
 export default {
+    components: {
+        CustomSlider
+    },
     data() {
         return {
             title: 'Set Auto Focus',
@@ -125,6 +131,13 @@ export default {
             showAperture: false,
             showZoom: false,
             showStabilisation: false,
+            manualFocusValue: "0",
+            apertureFStop: "0",
+            apertureNormalised: "0",
+            apertureOrdinal: "0",
+            absoluteZoomMM: "0",
+            absoluteZoomNormalised: "0",
+            continuousZoomSpeed: "0"
         }
     },
     mounted() {
@@ -271,3 +284,9 @@ export default {
     }
 }
 </script>
+<style scoped>
+.slider {
+    margin-top: 10px !important;
+    margin-bottom: 0px !important;
+}
+</style>
