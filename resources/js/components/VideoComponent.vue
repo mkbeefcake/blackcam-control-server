@@ -8,37 +8,44 @@
                 </div>
                 <div class="col-sm-6">
                     <div class="btn-group btn-group-toggle float-right" data-toggle="buttons">
-                    <label class="btn btn-sm btn-primary btn-simple active" id="0" v-on:click="videoMode">
+                    <label class="btn btn-sm btn-primary btn-simple active" id="0" v-on:click="onVideoMode">
                         <input type="radio" name="options" checked>
                         <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Video Mode</span>
                         <span class="d-block d-sm-none">
                             <i class="tim-icons icon-single-02"></i>
                         </span>
                     </label>
-                    <label class="btn btn-sm btn-primary btn-simple active" id="1" v-on:click="whiteBalance">
+                    <label class="btn btn-sm btn-primary btn-simple active" id="1" v-on:click="onWhiteBalance">
                         <input type="radio" name="options">
                         <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">White Balance</span>
                         <span class="d-block d-sm-none">
                             <i class="tim-icons icon-single-02"></i>
                         </span>
                     </label>
-                    <label class="btn btn-sm btn-primary btn-simple" id="2" v-on:click="rangeMode">
+                    <label class="btn btn-sm btn-primary btn-simple" id="2" v-on:click="onRangeMode">
                         <input type="radio" class="d-none d-sm-none" name="options">
                         <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Range Mode</span>
                         <span class="d-block d-sm-none">
                             <i class="tim-icons icon-gift-2"></i>
                         </span>
                     </label>
-                    <label class="btn btn-sm btn-primary btn-simple" id="3" v-on:click="shapenLevel">
+                    <label class="btn btn-sm btn-primary btn-simple" id="3" v-on:click="onShapenLevel">
                         <input type="radio" class="d-none" name="options">
                         <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Shapen Level</span>
                         <span class="d-block d-sm-none">
                             <i class="tim-icons icon-tap-02"></i>
                         </span>
                     </label>
-                    <label class="btn btn-sm btn-primary btn-simple" id="4" v-on:click="recordFormat">
+                    <label class="btn btn-sm btn-primary btn-simple" id="4" v-on:click="onRecordFormat">
                         <input type="radio" class="d-none" name="options">
                         <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Record Format</span>
+                        <span class="d-block d-sm-none">
+                            <i class="tim-icons icon-tap-02"></i>
+                        </span>
+                    </label>
+                    <label class="btn btn-sm btn-primary btn-simple" id="5" v-on:click="onISO">
+                        <input type="radio" class="d-none" name="options">
+                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">ISO</span>
                         <span class="d-block d-sm-none">
                             <i class="tim-icons icon-tap-02"></i>
                         </span>
@@ -95,16 +102,18 @@
                 <button class="btn btn-primary" id="btnManualFocus" v-on:click="setVideoMode">Video Mode</button>
             </div>
             <div class="form-group" id="white-balance-body" v-if="this.showWhiteBalance">
-                <div class="row">
-                    <div class="col-sm-3">
-                        <label>Color Temperature</label>
-                        <input type="text" class="form-control" v-model="colorTemperature" placeholder="Range: 2500 ~ 10000">
-                    </div>
-                    <div class="col-sm-3">
-                        <label>Tint</label>
-                        <input type="text" class="form-control" v-model="tint" placeholder="Range: -50 ~ 50">
-                    </div>
-                </div>
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <td width="40%">Color Temperature</td>
+                            <td width="60%"><custom-slider raising min="2500" max="10000" step="100" v-model="colorTemperature"/></td>
+                        </tr>
+                        <tr>
+                            <td>Tint</td>
+                            <td><custom-slider raising min="-50" max="50" step="1" v-model="tint"/></td>
+                        </tr>
+                    </tbody>
+                </table>
                 <button class="btn btn-primary" id="btnWhiteBalance" v-on:click="setWhiteBalance">White Balance</button>
             </div>
             <div class="form-group" id="range-mode-body" v-if="this.showRangeMode">
@@ -180,13 +189,28 @@
                 </div>
                 <button class="btn btn-primary" id="btnRecordFormat" v-on:click="setRecordFormat">Record Format</button>
             </div>
+            <div class="form-group" id="iso-body" v-if="this.showISO">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <label>ISO value</label>
+                        <custom-slider raising min="0" max="2048" step="1" v-model="isoValue"/>
+                    </div>
+                </div>
+                <button class="btn btn-primary" id="btnISO" v-on:click="setISOValue">Set ISO</button>
+            </div>
 
         </div>
     </div>
 </template>
 
 <script>
+import CustomSlider from "vue-custom-range-slider";
+import "vue-custom-range-slider/dist/vue-custom-range-slider.css";
+
 export default {
+    components: {
+        CustomSlider
+    },
     data() {
         return {
             title: 'Set Video Mode',
@@ -195,36 +219,56 @@ export default {
             showRangeMode: false,
             showShapenLevel: false,
             showRecordFormat: false,
+            showISO : false,
+            colorTemperature: "2500",
+            tint: "0",
+            dimensions: 0,
+            frameRate:24, 
+            mRate:0,
+            interlaced:0,
+            sharpenLevel: 0,
+            recordFrameRate: 24,
+            recordSensorFrameRate: 0,
+            recordFrameWidth: 352,
+            recordFrameHeight: 288,
+            recordFlags: 0,
+            isoValue: "0",
+            rangeMode:0,
         }
     },
     mounted() {
         console.log('RecordVideo-Component mounted.')
     },
     methods: {
-        videoMode: function(event) {
+        onVideoMode: function(event) {
             this.title = "Set Video Mode";
             this.showVideoMode = true;
-            this.showWhiteBalance = this.showRangeMode = this.showShapenLevel = this.showRecordFormat = false;
+            this.showWhiteBalance = this.showRangeMode = this.showShapenLevel = this.showRecordFormat = this.showISO = false;
         },
-        whiteBalance: function(event) {
+        onWhiteBalance: function(event) {
             this.title = "Set White Balance";1
             this.showWhiteBalance = true;
-            this.showVideoMode = this.showRangeMode = this.showShapenLevel = this.showRecordFormat = false;
+            this.showVideoMode = this.showRangeMode = this.showShapenLevel = this.showRecordFormat = this.showISO = false;
         },
-        rangeMode: function(event) {
+        onRangeMode: function(event) {
             this.title = "Set Range Mode";
             this.showRangeMode = true;
-            this.showVideoMode = this.showWhiteBalance = this.showShapenLevel = this.showRecordFormat = false;
+            this.showVideoMode = this.showWhiteBalance = this.showShapenLevel = this.showRecordFormat = this.showISO = false;
         },
-        shapenLevel: function(event) {
+        onShapenLevel: function(event) {
             this.title = "Set Sharpen Level";
             this.showShapenLevel = true;
-            this.showVideoMode = this.showWhiteBalance = this.showRangeMode = this.showRecordFormat = false;
+            this.showVideoMode = this.showWhiteBalance = this.showRangeMode = this.showRecordFormat = this.showISO = false;
         },
-        recordFormat: function(event) {
+        onRecordFormat: function(event) {
             this.title = "Set Record Format";
             this.showRecordFormat = true;
-            this.showVideoMode = this.showWhiteBalance = this.showRangeMode = this.showShapenLevel = false;
+            this.showVideoMode = this.showWhiteBalance = this.showRangeMode = this.showShapenLevel = this.showISO = false;
+        },
+        onISO: function(event) {
+            this.title = "Set ISO";
+            this.showISO = true;
+            this.showVideoMode = this.showWhiteBalance = this.showRangeMode = this.showShapenLevel = this.showRecordFormat = false;
         },
         sendVideoCommand: function(command) {
             if (selectedCameraId == "")
@@ -289,7 +333,24 @@ export default {
             
             this.sendVideoCommand(command);
             alert('Sent Record Format is called');
+        },
+        setISOValue: function(event) {
+            debugger;
+            var command = {
+                type : 'set-iso',
+                isoValue: parseInt(this.isoValue) * 1048576,
+            };
+
+            this.sendVideoCommand(command);
+            alert('Sent ISO is called');
         }
+
     }
 }
 </script>
+<style scoped>
+.slider {
+    margin-top: 10px !important;
+    margin-bottom: 0px !important;
+}
+</style>
