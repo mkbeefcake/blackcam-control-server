@@ -2129,7 +2129,104 @@ __webpack_require__.r(__webpack_exports__);
       apertureOrdinal: "0",
       absoluteZoomMM: "0",
       absoluteZoomNormalised: "0",
-      continuousZoomSpeed: "0"
+      continuousZoomSpeed: "0",
+      fstopSliderValues: [{
+        label: "1.2",
+        value: "1077"
+      }, {
+        label: "1.4",
+        value: "1988"
+      }, {
+        label: "1.8",
+        value: "3473"
+      }, {
+        label: "2.0",
+        value: "4096"
+      }, {
+        label: "2.2",
+        value: "4659"
+      }, {
+        label: "2.4",
+        value: "5173"
+      }, {
+        label: "2.6",
+        value: "5646"
+      }, {
+        label: "2.8",
+        value: "6084"
+      }, {
+        label: "3.2",
+        value: "6873"
+      }, {
+        label: "3.5",
+        value: "7402"
+      }, {
+        label: "3.7",
+        value: "7731"
+      }, {
+        label: "4.0",
+        value: "8192"
+      }, {
+        label: "4.5",
+        value: "8888"
+      }, {
+        label: "4.8",
+        value: "9269"
+      }, {
+        label: "5.2",
+        value: "9742"
+      }, {
+        label: "5.6",
+        value: "10180"
+      }, {
+        label: "6.2",
+        value: "10781"
+      }, {
+        label: "6.7",
+        value: "11240"
+      }, {
+        label: "7.3",
+        value: "11746"
+      }, {
+        label: "8.0",
+        value: "12288"
+      }, {
+        label: "8.7",
+        value: "12783"
+      }, {
+        label: "9.5",
+        value: "13303"
+      }, {
+        label: "10.0",
+        value: "13606"
+      }, {
+        label: "11.0",
+        value: "14169"
+      }, {
+        label: "12.0",
+        value: "14684"
+      }, {
+        label: "14.0",
+        value: "15594"
+      }, {
+        label: "15.0",
+        value: "16002"
+      }, {
+        label: "16.0",
+        value: "16384"
+      }, {
+        label: "17.0",
+        value: "16742"
+      }, {
+        label: "19.0",
+        value: "17399"
+      }, {
+        label: "21.0",
+        value: "17990"
+      }, {
+        label: "22.0",
+        value: "18265"
+      }]
     };
   },
   mounted: function mounted() {
@@ -40728,12 +40825,7 @@ var render = function() {
                       { attrs: { width: "40%" } },
                       [
                         _c("custom-slider", {
-                          attrs: {
-                            raising: "",
-                            min: "-1.0",
-                            max: "16.0",
-                            step: "0.02"
-                          },
+                          attrs: { raising: "", values: _vm.fstopSliderValues },
                           model: {
                             value: _vm.apertureFStop,
                             callback: function($$v) {
