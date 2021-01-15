@@ -2698,7 +2698,29 @@ __webpack_require__.r(__webpack_exports__);
       recordFrameHeight: 288,
       recordFlags: 0,
       isoValue: "0",
-      rangeMode: 0
+      rangeMode: 0,
+      isoSliderValues: [{
+        label: "1",
+        value: "1"
+      }, {
+        label: "2",
+        value: "2"
+      }, {
+        label: "4",
+        value: "4"
+      }, {
+        label: "8",
+        value: "8"
+      }, {
+        label: "16",
+        value: "16"
+      }, {
+        label: "32",
+        value: "64"
+      }, {
+        label: "128",
+        value: "128"
+      }]
     };
   },
   mounted: function mounted() {
@@ -2712,7 +2734,6 @@ __webpack_require__.r(__webpack_exports__);
     },
     onWhiteBalance: function onWhiteBalance(event) {
       this.title = "Set White Balance";
-      1;
       this.showWhiteBalance = true;
       this.showVideoMode = this.showRangeMode = this.showShapenLevel = this.showRecordFormat = this.showISO = false;
     },
@@ -2796,7 +2817,7 @@ __webpack_require__.r(__webpack_exports__);
       debugger;
       var command = {
         type: 'set-iso',
-        isoValue: parseInt(this.isoValue) * 1048576
+        isoValue: parseInt(this.isoValue)
       };
       this.sendVideoCommand(command);
       alert('Sent ISO is called');
@@ -42135,7 +42156,7 @@ var render = function() {
                   _c("label", [_vm._v("ISO value")]),
                   _vm._v(" "),
                   _c("custom-slider", {
-                    attrs: { raising: "", min: "0", max: "2048", step: "1" },
+                    attrs: { raising: "", values: _vm.isoSliderValues },
                     model: {
                       value: _vm.isoValue,
                       callback: function($$v) {

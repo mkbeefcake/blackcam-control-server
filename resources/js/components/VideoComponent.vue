@@ -195,7 +195,7 @@
                 <div class="row">
                     <div class="col-sm-3">
                         <label>ISO value</label>
-                        <custom-slider raising min="0" max="2048" step="1" v-model="isoValue"/>
+                        <custom-slider raising :values="isoSliderValues" v-model="isoValue"/>
                     </div>
                 </div>
                 <button class="btn btn-primary" id="btnISO" v-on:click="setISOValue">Set ISO</button>
@@ -236,6 +236,36 @@ export default {
             recordFlags: 0,
             isoValue: "0",
             rangeMode:0,
+            isoSliderValues: [
+                {
+                    label: "1",
+                    value: "1"
+                },
+                {
+                    label: "2",
+                    value: "2"
+                },
+                {
+                    label: "4",
+                    value: "4"
+                },
+                {
+                    label: "8",
+                    value: "8"
+                },
+                {
+                    label: "16",
+                    value: "16"
+                },
+                {
+                    label: "32",
+                    value: "64"
+                },
+                {
+                    label: "128",
+                    value: "128"
+                },
+            ]
         }
     },
     mounted() {
@@ -248,7 +278,7 @@ export default {
             this.showWhiteBalance = this.showRangeMode = this.showShapenLevel = this.showRecordFormat = this.showISO = false;
         },
         onWhiteBalance: function(event) {
-            this.title = "Set White Balance";1
+            this.title = "Set White Balance";
             this.showWhiteBalance = true;
             this.showVideoMode = this.showRangeMode = this.showShapenLevel = this.showRecordFormat = this.showISO = false;
         },
@@ -340,7 +370,7 @@ export default {
             debugger;
             var command = {
                 type : 'set-iso',
-                isoValue: parseInt(this.isoValue) * 1048576,
+                isoValue: parseInt(this.isoValue),
             };
 
             this.sendVideoCommand(command);
