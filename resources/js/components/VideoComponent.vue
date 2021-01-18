@@ -257,35 +257,35 @@ export default {
             isoSliderValues: [
                 {
                     label: "1",
-                    value: "1"
+                    value: "0"
                 },
                 {
                     label: "2",
-                    value: "2"
+                    value: "1"
                 },
                 {
                     label: "4",
-                    value: "4"
+                    value: "2"
                 },
                 {
                     label: "8",
-                    value: "8"
+                    value: "3"
                 },
                 {
                     label: "16",
-                    value: "16"
+                    value: "4"
                 },
                 {
                     label: "32",
-                    value: "32"
+                    value: "5"
                 },
                 {
                     label: "64",
-                    value: "64"
+                    value: "6"
                 },
                 {
                     label: "128",
-                    value: "128"
+                    value: "7"
                 },
             ],
             shutterSpeedSliderValues: [
