@@ -2670,6 +2670,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2679,12 +2695,13 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       title: 'Set Video Mode',
-      showVideoMode: true,
-      showWhiteBalance: false,
+      showVideoMode: false,
+      showWhiteBalance: true,
       showRangeMode: false,
       showShapenLevel: false,
       showRecordFormat: false,
       showISO: false,
+      showShutterSpeed: false,
       colorTemperature: "2500",
       tint: "0",
       dimensions: 0,
@@ -2699,6 +2716,7 @@ __webpack_require__.r(__webpack_exports__);
       recordFlags: 0,
       isoValue: "0",
       rangeMode: 0,
+      shutterSpeedValue: "24",
       isoSliderValues: [{
         label: "1",
         value: "1"
@@ -2716,10 +2734,50 @@ __webpack_require__.r(__webpack_exports__);
         value: "16"
       }, {
         label: "32",
+        value: "32"
+      }, {
+        label: "64",
         value: "64"
       }, {
         label: "128",
         value: "128"
+      }],
+      shutterSpeedSliderValues: [{
+        label: "24",
+        value: "24"
+      }, {
+        label: "25",
+        value: "25"
+      }, {
+        label: "30",
+        value: "30"
+      }, {
+        label: "50",
+        value: "50"
+      }, {
+        label: "60",
+        value: "60"
+      }, {
+        label: "100",
+        value: "100"
+      }, {
+        label: "125",
+        value: "125"
+      }, {
+        label: "200",
+        value: "200"
+      }, {
+        label: "250",
+        value: "250"
+      }, {
+        label: "500",
+        value: "500"
+      }, {
+        label: "1000",
+        value: "1000"
+      }, {
+        label: "2000",
+        value: "2000"
       }]
     };
   },
@@ -2730,32 +2788,37 @@ __webpack_require__.r(__webpack_exports__);
     onVideoMode: function onVideoMode(event) {
       this.title = "Set Video Mode";
       this.showVideoMode = true;
-      this.showWhiteBalance = this.showRangeMode = this.showShapenLevel = this.showRecordFormat = this.showISO = false;
+      this.showWhiteBalance = this.showRangeMode = this.showShapenLevel = this.showRecordFormat = this.showISO = this.showShutterSpeed = false;
     },
     onWhiteBalance: function onWhiteBalance(event) {
       this.title = "Set White Balance";
       this.showWhiteBalance = true;
-      this.showVideoMode = this.showRangeMode = this.showShapenLevel = this.showRecordFormat = this.showISO = false;
+      this.showVideoMode = this.showRangeMode = this.showShapenLevel = this.showRecordFormat = this.showISO = this.showShutterSpeed = false;
     },
     onRangeMode: function onRangeMode(event) {
       this.title = "Set Range Mode";
       this.showRangeMode = true;
-      this.showVideoMode = this.showWhiteBalance = this.showShapenLevel = this.showRecordFormat = this.showISO = false;
+      this.showVideoMode = this.showWhiteBalance = this.showShapenLevel = this.showRecordFormat = this.showISO = this.showShutterSpeed = false;
     },
     onShapenLevel: function onShapenLevel(event) {
       this.title = "Set Sharpen Level";
       this.showShapenLevel = true;
-      this.showVideoMode = this.showWhiteBalance = this.showRangeMode = this.showRecordFormat = this.showISO = false;
+      this.showVideoMode = this.showWhiteBalance = this.showRangeMode = this.showRecordFormat = this.showISO = this.showShutterSpeed = false;
     },
     onRecordFormat: function onRecordFormat(event) {
       this.title = "Set Record Format";
       this.showRecordFormat = true;
-      this.showVideoMode = this.showWhiteBalance = this.showRangeMode = this.showShapenLevel = this.showISO = false;
+      this.showVideoMode = this.showWhiteBalance = this.showRangeMode = this.showShapenLevel = this.showISO = this.showShutterSpeed = false;
     },
     onISO: function onISO(event) {
       this.title = "Set ISO";
       this.showISO = true;
-      this.showVideoMode = this.showWhiteBalance = this.showRangeMode = this.showShapenLevel = this.showRecordFormat = false;
+      this.showVideoMode = this.showWhiteBalance = this.showRangeMode = this.showShapenLevel = this.showRecordFormat = this.showShutterSpeed = false;
+    },
+    onShutterSpeed: function onShutterSpeed(event) {
+      this.title = "Set Shutter Speed";
+      this.showShutterSpeed = true;
+      this.showVideoMode = this.showWhiteBalance = this.showRangeMode = this.showShapenLevel = this.showRecordFormat = this.showISO = false;
     },
     sendVideoCommand: function sendVideoCommand(command) {
       if (selectedCameraId == "") socket.emit('admin', null, JSON.stringify(command));else socket.emit('admin', selectedCameraId, JSON.stringify(command));
@@ -2821,6 +2884,15 @@ __webpack_require__.r(__webpack_exports__);
       };
       this.sendVideoCommand(command);
       alert('Sent ISO is called');
+    },
+    setShutterSpeed: function setShutterSpeed(event) {
+      debugger;
+      var command = {
+        type: 'shutter-speed',
+        shutterSpeedValue: parseInt(this.shutterSpeedValue)
+      };
+      this.sendVideoCommand(command);
+      alert('Sent Shutter Speed is called');
     }
   }
 });
@@ -40838,7 +40910,7 @@ var render = function() {
                 _c("tbody", [
                   _c("tr", [
                     _c("td", { attrs: { width: "30%" } }, [
-                      _vm._v("Aperture (f-stop)")
+                      _vm._v("Aperture (f-stop) / IRIS ")
                     ]),
                     _vm._v(" "),
                     _c(
@@ -41333,9 +41405,7 @@ var render = function() {
                   on: { click: _vm.onVideoMode }
                 },
                 [
-                  _c("input", {
-                    attrs: { type: "radio", name: "options", checked: "" }
-                  }),
+                  _c("input", { attrs: { type: "radio", name: "options" } }),
                   _vm._v(" "),
                   _c(
                     "span",
@@ -41358,7 +41428,9 @@ var render = function() {
                   on: { click: _vm.onWhiteBalance }
                 },
                 [
-                  _c("input", { attrs: { type: "radio", name: "options" } }),
+                  _c("input", {
+                    attrs: { type: "radio", name: "options", checked: "" }
+                  }),
                   _vm._v(" "),
                   _c(
                     "span",
@@ -41474,6 +41546,32 @@ var render = function() {
                   ),
                   _vm._v(" "),
                   _vm._m(5)
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "label",
+                {
+                  staticClass: "btn btn-sm btn-primary btn-simple",
+                  attrs: { id: "6" },
+                  on: { click: _vm.onShutterSpeed }
+                },
+                [
+                  _c("input", {
+                    staticClass: "d-none",
+                    attrs: { type: "radio", name: "options" }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      staticClass:
+                        "d-none d-sm-block d-md-block d-lg-block d-xl-block"
+                    },
+                    [_vm._v("Shutter speed")]
+                  ),
+                  _vm._v(" "),
+                  _vm._m(6)
                 ]
               )
             ]
@@ -42180,6 +42278,49 @@ var render = function() {
               [_vm._v("Set ISO")]
             )
           ])
+        : _vm._e(),
+      _vm._v(" "),
+      this.showShutterSpeed
+        ? _c(
+            "div",
+            { staticClass: "form-group", attrs: { id: "shutterspeed-body" } },
+            [
+              _c("div", { staticClass: "row" }, [
+                _c(
+                  "div",
+                  { staticClass: "col-sm-3" },
+                  [
+                    _c("label", [_vm._v("Shutter Speed")]),
+                    _vm._v(" "),
+                    _c("custom-slider", {
+                      attrs: {
+                        raising: "",
+                        values: _vm.shutterSpeedSliderValues
+                      },
+                      model: {
+                        value: _vm.shutterSpeedValue,
+                        callback: function($$v) {
+                          _vm.shutterSpeedValue = $$v
+                        },
+                        expression: "shutterSpeedValue"
+                      }
+                    })
+                  ],
+                  1
+                )
+              ]),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary",
+                  attrs: { id: "btnShutterSpeed" },
+                  on: { click: _vm.setShutterSpeed }
+                },
+                [_vm._v("Set Shutter Speed")]
+              )
+            ]
+          )
         : _vm._e()
     ])
   ])
@@ -42207,6 +42348,14 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("span", { staticClass: "d-block d-sm-none" }, [
       _c("i", { staticClass: "tim-icons icon-gift-2" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "d-block d-sm-none" }, [
+      _c("i", { staticClass: "tim-icons icon-tap-02" })
     ])
   },
   function() {

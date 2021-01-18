@@ -64,7 +64,7 @@
             <table class="table">
                 <tbody>
                     <tr>
-                        <td width="30%">Aperture (f-stop)</td>
+                        <td width="30%">Aperture (f-stop) / IRIS </td>
                         <td width="40%"><custom-slider raising :values="fstopSliderValues" v-model="apertureFStop"/></td>
                         <td width="30%"><button class="btn btn-primary" id="btnSetFStop" v-on:click="setApertureFStop">Set</button></td>
                     </tr>

@@ -9,14 +9,14 @@
                 <div class="col-sm-6">
                     <div class="btn-group btn-group-toggle float-right" data-toggle="buttons">
                     <label class="btn btn-sm btn-primary btn-simple active" id="0" v-on:click="onVideoMode">
-                        <input type="radio" name="options" checked>
+                        <input type="radio" name="options">
                         <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Video Mode</span>
                         <span class="d-block d-sm-none">
                             <i class="tim-icons icon-single-02"></i>
                         </span>
                     </label>
                     <label class="btn btn-sm btn-primary btn-simple active" id="1" v-on:click="onWhiteBalance">
-                        <input type="radio" name="options">
+                        <input type="radio" name="options" checked>
                         <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">White Balance</span>
                         <span class="d-block d-sm-none">
                             <i class="tim-icons icon-single-02"></i>
@@ -46,6 +46,13 @@
                     <label class="btn btn-sm btn-primary btn-simple" id="5" v-on:click="onISO">
                         <input type="radio" class="d-none" name="options">
                         <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">ISO</span>
+                        <span class="d-block d-sm-none">
+                            <i class="tim-icons icon-tap-02"></i>
+                        </span>
+                    </label>
+                    <label class="btn btn-sm btn-primary btn-simple" id="6" v-on:click="onShutterSpeed">
+                        <input type="radio" class="d-none" name="options">
+                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Shutter speed</span>
                         <span class="d-block d-sm-none">
                             <i class="tim-icons icon-tap-02"></i>
                         </span>
@@ -200,6 +207,15 @@
                 </div>
                 <button class="btn btn-primary" id="btnISO" v-on:click="setISOValue">Set ISO</button>
             </div>
+            <div class="form-group" id="shutterspeed-body" v-if="this.showShutterSpeed">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <label>Shutter Speed</label>
+                        <custom-slider raising :values="shutterSpeedSliderValues" v-model="shutterSpeedValue"/>
+                    </div>
+                </div>
+                <button class="btn btn-primary" id="btnShutterSpeed" v-on:click="setShutterSpeed">Set Shutter Speed</button>
+            </div>
 
         </div>
     </div>
@@ -216,12 +232,13 @@ export default {
     data() {
         return {
             title: 'Set Video Mode',
-            showVideoMode: true,
-            showWhiteBalance: false,
+            showVideoMode: false,
+            showWhiteBalance: true,
             showRangeMode: false,
             showShapenLevel: false,
             showRecordFormat: false,
             showISO : false,
+            showShutterSpeed: false,
             colorTemperature: "2500",
             tint: "0",
             dimensions: 0,
@@ -236,6 +253,7 @@ export default {
             recordFlags: 0,
             isoValue: "0",
             rangeMode:0,
+            shutterSpeedValue : "24",
             isoSliderValues: [
                 {
                     label: "1",
@@ -259,11 +277,65 @@ export default {
                 },
                 {
                     label: "32",
+                    value: "32"
+                },
+                {
+                    label: "64",
                     value: "64"
                 },
                 {
                     label: "128",
                     value: "128"
+                },
+            ],
+            shutterSpeedSliderValues: [
+                {
+                    label: "24",
+                    value: "24"
+                },
+                {
+                    label: "25",
+                    value: "25"
+                },
+                {
+                    label: "30",
+                    value: "30"
+                },
+                {
+                    label: "50",
+                    value: "50"
+                },
+                {
+                    label: "60",
+                    value: "60"
+                },
+                {
+                    label: "100",
+                    value: "100"
+                },
+                {
+                    label: "125",
+                    value: "125"
+                },
+                {
+                    label: "200",
+                    value: "200"
+                },
+                {
+                    label: "250",
+                    value: "250"
+                },
+                {
+                    label: "500",
+                    value: "500"
+                },
+                {
+                    label: "1000",
+                    value: "1000"
+                },
+                {
+                    label: "2000",
+                    value: "2000"
                 },
             ]
         }
@@ -275,32 +347,37 @@ export default {
         onVideoMode: function(event) {
             this.title = "Set Video Mode";
             this.showVideoMode = true;
-            this.showWhiteBalance = this.showRangeMode = this.showShapenLevel = this.showRecordFormat = this.showISO = false;
+            this.showWhiteBalance = this.showRangeMode = this.showShapenLevel = this.showRecordFormat = this.showISO = this.showShutterSpeed = false;
         },
         onWhiteBalance: function(event) {
             this.title = "Set White Balance";
             this.showWhiteBalance = true;
-            this.showVideoMode = this.showRangeMode = this.showShapenLevel = this.showRecordFormat = this.showISO = false;
+            this.showVideoMode = this.showRangeMode = this.showShapenLevel = this.showRecordFormat = this.showISO = this.showShutterSpeed = false;
         },
         onRangeMode: function(event) {
             this.title = "Set Range Mode";
             this.showRangeMode = true;
-            this.showVideoMode = this.showWhiteBalance = this.showShapenLevel = this.showRecordFormat = this.showISO = false;
+            this.showVideoMode = this.showWhiteBalance = this.showShapenLevel = this.showRecordFormat = this.showISO = this.showShutterSpeed = false;
         },
         onShapenLevel: function(event) {
             this.title = "Set Sharpen Level";
             this.showShapenLevel = true;
-            this.showVideoMode = this.showWhiteBalance = this.showRangeMode = this.showRecordFormat = this.showISO = false;
+            this.showVideoMode = this.showWhiteBalance = this.showRangeMode = this.showRecordFormat = this.showISO = this.showShutterSpeed = false;
         },
         onRecordFormat: function(event) {
             this.title = "Set Record Format";
             this.showRecordFormat = true;
-            this.showVideoMode = this.showWhiteBalance = this.showRangeMode = this.showShapenLevel = this.showISO = false;
+            this.showVideoMode = this.showWhiteBalance = this.showRangeMode = this.showShapenLevel = this.showISO = this.showShutterSpeed = false;
         },
         onISO: function(event) {
             this.title = "Set ISO";
             this.showISO = true;
-            this.showVideoMode = this.showWhiteBalance = this.showRangeMode = this.showShapenLevel = this.showRecordFormat = false;
+            this.showVideoMode = this.showWhiteBalance = this.showRangeMode = this.showShapenLevel = this.showRecordFormat = this.showShutterSpeed = false;
+        },
+        onShutterSpeed: function(event) {
+            this.title = "Set Shutter Speed";
+            this.showShutterSpeed = true;
+            this.showVideoMode = this.showWhiteBalance = this.showRangeMode = this.showShapenLevel = this.showRecordFormat = this.showISO = false;
         },
         sendVideoCommand: function(command) {
             if (selectedCameraId == "")
@@ -375,8 +452,17 @@ export default {
 
             this.sendVideoCommand(command);
             alert('Sent ISO is called');
-        }
+        },
+        setShutterSpeed: function(event) {
+            debugger;
+            var command = {
+                type : 'shutter-speed',
+                shutterSpeedValue: parseInt(this.shutterSpeedValue),
+            };
 
+            this.sendVideoCommand(command);
+            alert('Sent Shutter Speed is called');
+        },
     }
 }
 </script>
