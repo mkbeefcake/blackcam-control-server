@@ -55,7 +55,7 @@
             <div class="row">
                 <div class="col-sm-3">
                     <label>Manual Focus</label>
-                    <custom-slider raising min="0.0" max="1.0" step="0.01" v-model="manualFocusValue"/>
+                    <custom-slider raising min="0.0" max="1.0" step="0.05" v-model="manualFocusValue"/>
                 </div>
             </div>
             <button class="btn btn-primary" id="btnManualFocus" v-on:click="setManualFocus">Manual Focus</button>
