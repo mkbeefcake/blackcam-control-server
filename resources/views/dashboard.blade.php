@@ -64,6 +64,10 @@
             $('#ipAddress').text('IP Address : ' + statusObject.deviceInfo.ipAddress);
             $('#osType').text('Operating System: ' + statusObject.deviceInfo.osName);
         }
+        else if (statusObject.type == "camera-status") {
+            $('#cameraStatus').append(statusObject.cameraStatusMessage + "<br>");
+
+        }
         else if (statusObject.type == "transport-mode") {
             console.log("transport-mode is called");
 

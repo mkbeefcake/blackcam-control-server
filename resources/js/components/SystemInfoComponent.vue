@@ -7,6 +7,7 @@
         <div class="card-body">
             <label id="ipAddress">IP Address : </label><br/>
             <label id="osType" >Operating System: </label>
+            <label id="cameraStatus"></label>
         </div>
     </div>
 </template>
