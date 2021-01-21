@@ -91,7 +91,7 @@
                 <tbody>
                     <tr>
                         <td width="30%">Set absolute zoom (mm)</td>
-                        <td width="40%"><custom-slider raising min="0" max="2000" step="20" v-model="absoluteZoomMM"/></td>
+                        <td width="40%"><custom-slider raising min="0" max="100" step="10" v-model="absoluteZoomMM"/></td>
                         <td width="30%"><button class="btn btn-primary" id="btnSetZoomMM" v-on:click="setAbsoluteZoomMM" >Set</button></td>
                     </tr>
                     <tr>
