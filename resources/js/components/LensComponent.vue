@@ -61,21 +61,21 @@
             <button class="btn btn-primary" id="btnManualFocus" v-on:click="setManualFocus">Manual Focus</button>
         </div>
         <div class="table-responsive ps" id="aperture-body" v-if="this.showAperture">
-            <table class="table">
+            <table class="table col-sm-8">
                 <tbody>
                     <tr>
                         <td width="30%">Aperture (f-stop) / IRIS </td>
-                        <td width="40%"><custom-slider raising :values="fstopSliderValues" v-model="apertureFStop"/></td>
+                        <td width="40%"><custom-slider raising :values="fstopSliderValues" v-model="apertureFStop" key="sliderApertureFStop"/></td>
                         <td width="30%"><button class="btn btn-primary" id="btnSetFStop" v-on:click="setApertureFStop">Set</button></td>
                     </tr>
                     <tr>
                         <td>Aperture (normalised)</td>
-                        <td><custom-slider raising min="0.0" max="1.0" step="0.01" v-model="apertureNormalised"/></td>
+                        <td><custom-slider raising min="0.0" max="1.0" step="0.01" v-model="apertureNormalised" key="sliderApertureNormalised"/></td>
                         <td><button class="btn btn-primary" id="btnSetNormalised" v-on:click="setApertureNormalised">Set</button></td>
                     </tr>
                     <tr>
                         <td>Aperture (ordinal)</td>
-                        <td><custom-slider raising min="0.0" max="100" step="1" v-model="apertureOrdinal"/></td>
+                        <td><custom-slider raising min="0.0" max="100" step="1" v-model="apertureOrdinal" key="sliderApertureOrdinal"/></td>
                         <td><button class="btn btn-primary" id="btnSetOrdinal" v-on:click="setApertureOrdinal">Set</button></td>
                     </tr>
                     <tr>
@@ -87,7 +87,7 @@
             </table>
         </div>
         <div class="form-group" id="zoom-body" v-if="this.showZoom">
-            <table class="table">
+            <table class="table col-sm-8">
                 <tbody>
                     <tr>
                         <td width="30%">Set absolute zoom (mm)</td>

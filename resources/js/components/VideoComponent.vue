@@ -29,72 +29,23 @@
                             <i class="tim-icons icon-single-02"></i>
                         </span>
                     </label>
-                    <label class="btn btn-sm btn-primary btn-simple" id="7" v-on:click="onSetAutoWB">
-                        <input type="radio" class="d-none" name="options">
-                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Set auto WB</span>
-                        <span class="d-block d-sm-none">
-                            <i class="tim-icons icon-tap-02"></i>
-                        </span>
-                    </label>
-                    <label class="btn btn-sm btn-primary btn-simple" id="8" v-on:click="onRestoreAutoWB">
-                        <input type="radio" class="d-none" name="options">
-                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Restore auto WB</span>
-                        <span class="d-block d-sm-none">
-                            <i class="tim-icons icon-tap-02"></i>
-                        </span>
-                    </label>
-                    <label class="btn btn-sm btn-primary btn-simple" id="2" v-on:click="onRangeMode">
+                    <label class="btn btn-sm btn-primary btn-simple" id="2" v-on:click="onRangeShapenISO">
                         <input type="radio" class="d-none d-sm-none" name="options">
-                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Range Mode</span>
+                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Range / Sharpen / ISO</span>
                         <span class="d-block d-sm-none">
                             <i class="tim-icons icon-gift-2"></i>
                         </span>
                     </label>
-                    <label class="btn btn-sm btn-primary btn-simple" id="3" v-on:click="onShapenLevel">
+                    <label class="btn btn-sm btn-primary btn-simple" id="8" v-on:click="onShutter">
                         <input type="radio" class="d-none" name="options">
-                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Shapen Level</span>
+                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Shutter</span>
                         <span class="d-block d-sm-none">
                             <i class="tim-icons icon-tap-02"></i>
                         </span>
                     </label>
-                    <label class="btn btn-sm btn-primary btn-simple" id="5" v-on:click="onISO">
+                    <label class="btn btn-sm btn-primary btn-simple" id="8" v-on:click="onExposureForVideo">
                         <input type="radio" class="d-none" name="options">
-                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">ISO</span>
-                        <span class="d-block d-sm-none">
-                            <i class="tim-icons icon-tap-02"></i>
-                        </span>
-                    </label>
-                    <label class="btn btn-sm btn-primary btn-simple" id="8" v-on:click="onShutterAngle">
-                        <input type="radio" class="d-none" name="options">
-                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Shutter Angle</span>
-                        <span class="d-block d-sm-none">
-                            <i class="tim-icons icon-tap-02"></i>
-                        </span>
-                    </label>
-                    <label class="btn btn-sm btn-primary btn-simple" id="6" v-on:click="onShutterSpeed">
-                        <input type="radio" class="d-none" name="options">
-                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Shutter speed</span>
-                        <span class="d-block d-sm-none">
-                            <i class="tim-icons icon-tap-02"></i>
-                        </span>
-                    </label>
-                    <label class="btn btn-sm btn-primary btn-simple" id="8" v-on:click="onExposureUS">
-                        <input type="radio" class="d-none" name="options">
-                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Exposure (us)</span>
-                        <span class="d-block d-sm-none">
-                            <i class="tim-icons icon-tap-02"></i>
-                        </span>
-                    </label>
-                    <label class="btn btn-sm btn-primary btn-simple" id="8" v-on:click="onExposureOrdinal">
-                        <input type="radio" class="d-none" name="options">
-                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Exposure (ordinal)</span>
-                        <span class="d-block d-sm-none">
-                            <i class="tim-icons icon-tap-02"></i>
-                        </span>
-                    </label>
-                    <label class="btn btn-sm btn-primary btn-simple" id="8" v-on:click="onSetAutoExposureMode">
-                        <input type="radio" class="d-none" name="options">
-                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Set Auto Exposure Mode</span>
+                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Exposure</span>
                         <span class="d-block d-sm-none">
                             <i class="tim-icons icon-tap-02"></i>
                         </span>
@@ -166,33 +117,42 @@
                     </table>
                 </div>
                 <button class="btn btn-primary" id="btnWhiteBalance" v-on:click="setWhiteBalance">White Balance</button>
+                <button class="btn btn-primary" id="btnSetAutoWB" v-on:click="setAutoWB">Set Auto WB</button>
+                <button class="btn btn-primary" id="btnRestoreAutoWB" v-on:click="restoreAutoWB">Restore Auto WB</button>
             </div>
-            <div class="form-group" id="range-mode-body" v-if="this.showRangeMode">
-                <div class="row">
-                    <div class="col-sm-3">
-                        <label>Range Mode</label>
-                        <select class="form-control" id="rangeMode" v-model="rangeMode">
-                            <option value="0">Film</option>
-                            <option value="1">Video</option>
-                            <option value="2">Extended Video</option>
-                        </select>
-                    </div>
-                </div>
-                <button class="btn btn-primary" id="btnRangeMode" v-on:click="setRangeMode">Range Mode</button>
-            </div>
-            <div class="form-group" id="sharpen-level-body" v-if="this.showShapenLevel">
-                <div class="row">
-                    <div class="col-sm-3">
-                        <label>Sharpen Level</label>
-                        <select class="form-control" id="sharpenLevel" v-model="sharpenLevel">
-                            <option value="0">Off</option>
-                            <option value="1">Low</option>
-                            <option value="2">Medium</option>
-                            <option value="3">High</option>
-                        </select>
-                    </div>
-                </div>
-                <button class="btn btn-primary" id="btnSharpenLevel" v-on:click="setSharpenLevel">Sharpen Level</button>
+            <div class="form-group" id="range-mode-body" v-if="this.showRangeShapenISO">                
+                <table class="table col-sm-8">
+                    <tbody>
+                        <tr>
+                            <td width="30%">Range Mode</td>
+                            <td width="40%">
+                                <select class="form-control" id="rangeMode" v-model="rangeMode">
+                                    <option value="0">Film</option>
+                                    <option value="1">Video</option>
+                                    <option value="2">Extended Video</option>
+                                </select>
+                            </td>
+                            <td width="30%"><button class="btn btn-primary" id="btnRangeMode" v-on:click="setRangeMode">Set</button></td>
+                        </tr>
+                        <tr>
+                            <td>Sharpen Level</td>
+                            <td>
+                                <select class="form-control" id="sharpenLevel" v-model="sharpenLevel">
+                                    <option value="0">Off</option>
+                                    <option value="1">Low</option>
+                                    <option value="2">Medium</option>
+                                    <option value="3">High</option>
+                                </select>
+                            </td>
+                            <td><button class="btn btn-primary" id="btnSharpenLevel" v-on:click="setSharpenLevel">Set</button></td>
+                        </tr>
+                        <tr>
+                            <td>ISO value</td>
+                            <td><custom-slider raising :values="isoSliderValues" v-model="isoValue" key="sliderISO"/></td>
+                            <td><button class="btn btn-primary" id="btnISO" v-on:click="setISOValue">Set</button></td>
+                        </tr>
+                    </tbody>
+                </table>                
             </div>
             <div class="form-group" id="record-format-body" v-if="this.showRecordFormat">
                 <div class="row">
@@ -240,65 +200,42 @@
                 </div>
                 <button class="btn btn-primary" id="btnRecordFormat" v-on:click="setRecordFormat">Record Format</button>
             </div>
-            <div class="form-group" id="iso-body" v-if="this.showISO">
-                <div class="row">
-                    <div class="col-sm-4">
-                        <label>ISO value</label>
-                        <custom-slider raising :values="isoSliderValues" v-model="isoValue" key="sliderISO"/>
-                    </div>
-                </div>
-                <button class="btn btn-primary" id="btnISO" v-on:click="setISOValue">Set ISO</button>
+            <div class="form-group" id="shutter-angle-body" v-if="this.showShutter">
+                <table class="table col-sm-8">
+                    <tbody>
+                        <tr>
+                            <td width="30%">Shutter Angle</td>
+                            <td width="40%"><custom-slider raising min="100" max="36000" step="100" v-model="shutterAngleValue" key="sliderShutterAngle"/></td>
+                            <td width="30%"><button class="btn btn-primary" id="btnShutterAngle" v-on:click="setShutterAngle">Set</button></td>
+                        </tr>
+                        <tr>
+                            <td>Shutter Speed</td>
+                            <td><custom-slider raising :values="shutterSpeedSliderValues" v-model="shutterSpeedValue" key="sliderShutterSpeed"/></td>
+                            <td><button class="btn btn-primary" id="btnShutterSpeed" v-on:click="setShutterSpeed">Set</button></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-            <div class="form-group" id="shutterspeed-body" v-if="this.showShutterSpeed">
-                <div class="row">
-                    <div class="col-sm-4">
-                        <label>Shutter Speed</label>
-                        <custom-slider raising :values="shutterSpeedSliderValues" v-model="shutterSpeedValue" key="sliderShutterSpeed"/>
-                    </div>
-                </div>
-                <button class="btn btn-primary" id="btnShutterSpeed" v-on:click="setShutterSpeed">Set Shutter Speed</button>
-            </div>
-            <div class="form-group" id="set-autowb-body" v-if="this.showSetAutoWB">
-                <button class="btn btn-primary" id="btnSetAutoWB" v-on:click="setAutoWB">Set Auto WB</button>
-            </div>
-            <div class="form-group" id="restore-autowb-body" v-if="this.showRestoreAutoWB">
-                <button class="btn btn-primary" id="btnRestoreAutoWB" v-on:click="restoreAutoWB">Restore Auto WB</button>
-            </div>
-            <div class="form-group" id="shutter-angle-body" v-if="this.showShutterAngle">
-                <div class="row">
-                    <div class="col-sm-4">
-                        <label>Shutter Angle</label>
-                        <custom-slider raising min="100" max="36000" step="100" v-model="shutterAngleValue" key="sliderShutterAngle"/>
-                    </div>
-                </div>
-                <button class="btn btn-primary" id="btnShutterAngle" v-on:click="setShutterAngle">Set Shutter Angle</button>
-            </div>
-            <div class="form-group" id="exposure-us-body" v-if="this.showExposureUS">
-                <div class="row">
-                    <div class="col-sm-4">
-                        <label>Exposure (us)</label>
-                        <custom-slider raising min="0" max="42000" step="1000" v-model="exposureUSValue" key="sliderExposureUS"/>
-                    </div>
-                </div>
-                <button class="btn btn-primary" id="btnExposureUS" v-on:click="setExposureUS">Set Exposure (us)</button>
-            </div>
-            <div class="form-group" id="exposure-ordinal-body" v-if="this.showExposureOrdinal">
-                <div class="row">
-                    <div class="col-sm-4">
-                        <label>Exposure (ordinal)</label>
-                        <custom-slider raising min="0" max="20" step="1" v-model="exposureOrdinalValue" key="sliderExposureOrdinal"/>
-                    </div>
-                </div>
-                <button class="btn btn-primary" id="btnExposureOrdinal" v-on:click="setExposureOrdinal">Set Exposure (ordinal)</button>
-            </div>
-            <div class="form-group" id="set-autoexposure-body" v-if="this.showSetAutoExposure">
-                <div class="row">
-                    <div class="col-sm-4">
-                        <label>Auto Exposure Mode</label>
-                        <custom-slider raising :values="autoExposureSliderValues" v-model="autoExposureValue" key="sliderAutoExposure"/>
-                    </div>
-                </div>
-                <button class="btn btn-primary" id="btnAutoExposure" v-on:click="setAutoExposure">Set auto Exposure Mode</button>
+            <div class="form-group" id="exposure-us-body" v-if="this.showExposureForVideo">
+                <table class="table col-sm-8">
+                    <tbody>
+                        <tr>
+                            <td width="30%">Exposure (us)</td>
+                            <td width="40%"><custom-slider raising min="0" max="42000" step="1000" v-model="exposureUSValue" key="sliderExposureUS"/></td>
+                            <td width="30%"><button class="btn btn-primary" id="btnExposureUS" v-on:click="setExposureUS">Set</button></td>
+                        </tr>
+                        <tr>
+                            <td>Exposure (ordinal)</td>
+                            <td><custom-slider raising min="0" max="20" step="1" v-model="exposureOrdinalValue" key="sliderExposureOrdinal"/></td>
+                            <td><button class="btn btn-primary" id="btnExposureOrdinal" v-on:click="setExposureOrdinal">Set</button></td>
+                        </tr>
+                        <tr>
+                            <td>Auto Exposure Mode</td>
+                            <td><custom-slider raising :values="autoExposureSliderValues" v-model="autoExposureValue" key="sliderAutoExposure"/></td>
+                            <td><button class="btn btn-primary" id="btnAutoExposure" v-on:click="setAutoExposure">Set</button></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
@@ -318,16 +255,11 @@ export default {
             showVideoMode: false,
             showRecordFormat: false,
             showWhiteBalance: true,
-            showSetAutoWB: false,
-            showRestoreAutoWB : false,
-            showRangeMode: false,
+            showRangeShapenISO: false,
             showShapenLevel: false,
             showISO : false,
-            showShutterAngle: false,
-            showShutterSpeed: false,
-            showExposureUS: false,
-            showExposureOrdinal: false,
-            showSetAutoExposure: false,
+            showShutter: false,
+            showExposureForVideo: false,
             colorTemperature: "2500",
             tint: "0",
             dimensions: 0,
@@ -462,95 +394,32 @@ export default {
         onVideoMode: function(event) {
             this.title = "Set Video Mode";
             this.showVideoMode = true;
-            this.showRecordFormat = this.showWhiteBalance = this.showSetAutoWB = this.showRestoreAutoWB = this.showRangeMode = 
-            this.showShapenLevel = this.showISO = this.showShutterAngle = this.showShutterSpeed = this.showExposureUS =
-            this.showExposureOrdinal = this.showSetAutoExposure = false;
+            this.showRecordFormat = this.showWhiteBalance = this.showRangeShapenISO = this.showShutter = this.showExposureForVideo = false;
         },
         onWhiteBalance: function(event) {
             this.title = "Set White Balance";
             this.showWhiteBalance = true;
-            this.showVideoMode = this.showRecordFormat = this.showSetAutoWB = this.showRestoreAutoWB = this.showRangeMode = 
-            this.showShapenLevel = this.showISO = this.showShutterAngle = this.showShutterSpeed = this.showExposureUS =
-            this.showExposureOrdinal = this.showSetAutoExposure = false;
-
-
+            this.showVideoMode = this.showRecordFormat = this.showRangeShapenISO = this.showShutter = this.showExposureForVideo = false;
         },
-        onRangeMode: function(event) {
+        onRangeShapenISO: function(event) {
             this.title = "Set Range Mode";
-            this.showRangeMode = true;
-            this.showRecordFormat = this.showWhiteBalance = this.showSetAutoWB = this.showRestoreAutoWB = this.showVideoMode = 
-            this.showShapenLevel = this.showISO = this.showShutterAngle = this.showShutterSpeed = this.showExposureUS =
-            this.showExposureOrdinal = this.showSetAutoExposure = false;
-        },
-        onShapenLevel: function(event) {
-            this.title = "Set Sharpen Level";
-            this.showShapenLevel = true;
-            this.showRecordFormat = this.showWhiteBalance = this.showSetAutoWB = this.showRestoreAutoWB = this.showRangeMode = 
-            this.showVideoMode = this.showISO = this.showShutterAngle = this.showShutterSpeed = this.showExposureUS =
-            this.showExposureOrdinal = this.showSetAutoExposure = false;
+            this.showRangeShapenISO = true;
+            this.showRecordFormat = this.showWhiteBalance = this.showVideoMode = this.showShutter = this.showExposureForVideo = false;
         },
         onRecordFormat: function(event) {
             this.title = "Set Record Format";
             this.showRecordFormat = true;
-            this.showVideoMode = this.showWhiteBalance = this.showSetAutoWB = this.showRestoreAutoWB = this.showRangeMode = 
-            this.showShapenLevel = this.showISO = this.showShutterAngle = this.showShutterSpeed = this.showExposureUS =
-            this.showExposureOrdinal = this.showSetAutoExposure = false;
+            this.showVideoMode = this.showWhiteBalance = this.showRangeShapenISO = this.showShutter = this.showExposureForVideo = false;
         },
-        onISO: function(event) {
-            this.title = "Set ISO";
-            this.showISO = true;
-            this.showRecordFormat = this.showWhiteBalance = this.showSetAutoWB = this.showRestoreAutoWB = this.showRangeMode = 
-            this.showShapenLevel = this.showVideoMode = this.showShutterAngle = this.showShutterSpeed = this.showExposureUS =
-            this.showExposureOrdinal = this.showSetAutoExposure = false;
-        },
-        onShutterSpeed: function(event) {
-            this.title = "Set Shutter Speed";
-            this.showShutterSpeed = true;
-            this.showRecordFormat = this.showWhiteBalance = this.showSetAutoWB = this.showRestoreAutoWB = this.showRangeMode = 
-            this.showShapenLevel = this.showISO = this.showShutterAngle = this.showVideoMode = this.showExposureUS =
-            this.showExposureOrdinal = this.showSetAutoExposure = false;
-        },
-        onSetAutoWB: function(event) {
-            this.title = "Set Auto White Balance";
-            this.showSetAutoWB = true;
-            this.showRecordFormat = this.showWhiteBalance = this.showVideoMode = this.showRestoreAutoWB = this.showRangeMode = 
-            this.showShapenLevel = this.showISO = this.showShutterAngle = this.showShutterSpeed = this.showExposureUS =
-            this.showExposureOrdinal = this.showSetAutoExposure = false;
-        },
-        onRestoreAutoWB: function(event) {
-            this.title = "Restore last White Balance";
-            this.showRestoreAutoWB = true;
-            this.showRecordFormat = this.showWhiteBalance = this.showSetAutoWB = this.showVideoMode = this.showRangeMode = 
-            this.showShapenLevel = this.showISO = this.showShutterAngle = this.showShutterSpeed = this.showExposureUS =
-            this.showExposureOrdinal = this.showSetAutoExposure = false;
-        },
-        onExposureUS: function(event) {
+        onExposureForVideo: function(event) {
             this.title = "Set Exposure (us)";
-            this.showExposureUS = true;
-            this.showRecordFormat = this.showWhiteBalance = this.showSetAutoWB = this.showRestoreAutoWB = this.showRangeMode = 
-            this.showShapenLevel = this.showISO = this.showShutterAngle = this.showShutterSpeed = this.showVideoMode =
-            this.showExposureOrdinal = this.showSetAutoExposure = false;
+            this.showExposureForVideo = true;
+            this.showRecordFormat = this.showWhiteBalance = this.showRangeShapenISO = this.showShutter = this.showVideoMode = false;
         },
-        onExposureOrdinal: function(event) {
-            this.title = "Set Exposure (ordinal)";
-            this.showExposureOrdinal = true;
-            this.showRecordFormat = this.showWhiteBalance = this.showSetAutoWB = this.showRestoreAutoWB = this.showRangeMode = 
-            this.showShapenLevel = this.showISO = this.showShutterAngle = this.showShutterSpeed = this.showExposureUS =
-            this.showVideoMode = this.showSetAutoExposure = false;
-        },
-        onSetAutoExposureMode: function(event) {
-            this.title = "Set Auto Exposure mode";
-            this.showSetAutoExposure = true;
-            this.showRecordFormat = this.showWhiteBalance = this.showSetAutoWB = this.showRestoreAutoWB = this.showRangeMode = 
-            this.showShapenLevel = this.showISO = this.showShutterAngle = this.showShutterSpeed = this.showExposureUS =
-            this.showExposureOrdinal = this.showVideoMode = false;
-        },
-        onShutterAngle: function(event) {
+        onShutter: function(event) {
             this.title = "Set Shutter Angle";
-            this.showShutterAngle = true;
-            this.showRecordFormat = this.showWhiteBalance = this.showSetAutoWB = this.showRestoreAutoWB = this.showRangeMode = 
-            this.showShapenLevel = this.showISO = this.showVideoMode = this.showShutterSpeed = this.showExposureUS =
-            this.showExposureOrdinal = this.showSetAutoExposure = false;
+            this.showShutter = true;
+            this.showRecordFormat = this.showWhiteBalance = this.showRangeShapenISO = this.showVideoMode = this.showExposureForVideo = false;
         },
         sendVideoCommand: function(command) {
             if (selectedCameraId == "")

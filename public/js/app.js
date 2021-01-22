@@ -3035,69 +3035,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -3110,16 +3047,11 @@ __webpack_require__.r(__webpack_exports__);
       showVideoMode: false,
       showRecordFormat: false,
       showWhiteBalance: true,
-      showSetAutoWB: false,
-      showRestoreAutoWB: false,
-      showRangeMode: false,
+      showRangeShapenISO: false,
       showShapenLevel: false,
       showISO: false,
-      showShutterAngle: false,
-      showShutterSpeed: false,
-      showExposureUS: false,
-      showExposureOrdinal: false,
-      showSetAutoExposure: false,
+      showShutter: false,
+      showExposureForVideo: false,
       colorTemperature: "2500",
       tint: "0",
       dimensions: 0,
@@ -3226,67 +3158,32 @@ __webpack_require__.r(__webpack_exports__);
     onVideoMode: function onVideoMode(event) {
       this.title = "Set Video Mode";
       this.showVideoMode = true;
-      this.showRecordFormat = this.showWhiteBalance = this.showSetAutoWB = this.showRestoreAutoWB = this.showRangeMode = this.showShapenLevel = this.showISO = this.showShutterAngle = this.showShutterSpeed = this.showExposureUS = this.showExposureOrdinal = this.showSetAutoExposure = false;
+      this.showRecordFormat = this.showWhiteBalance = this.showRangeShapenISO = this.showShutter = this.showExposureForVideo = false;
     },
     onWhiteBalance: function onWhiteBalance(event) {
       this.title = "Set White Balance";
       this.showWhiteBalance = true;
-      this.showVideoMode = this.showRecordFormat = this.showSetAutoWB = this.showRestoreAutoWB = this.showRangeMode = this.showShapenLevel = this.showISO = this.showShutterAngle = this.showShutterSpeed = this.showExposureUS = this.showExposureOrdinal = this.showSetAutoExposure = false;
+      this.showVideoMode = this.showRecordFormat = this.showRangeShapenISO = this.showShutter = this.showExposureForVideo = false;
     },
-    onRangeMode: function onRangeMode(event) {
+    onRangeShapenISO: function onRangeShapenISO(event) {
       this.title = "Set Range Mode";
-      this.showRangeMode = true;
-      this.showRecordFormat = this.showWhiteBalance = this.showSetAutoWB = this.showRestoreAutoWB = this.showVideoMode = this.showShapenLevel = this.showISO = this.showShutterAngle = this.showShutterSpeed = this.showExposureUS = this.showExposureOrdinal = this.showSetAutoExposure = false;
-    },
-    onShapenLevel: function onShapenLevel(event) {
-      this.title = "Set Sharpen Level";
-      this.showShapenLevel = true;
-      this.showRecordFormat = this.showWhiteBalance = this.showSetAutoWB = this.showRestoreAutoWB = this.showRangeMode = this.showVideoMode = this.showISO = this.showShutterAngle = this.showShutterSpeed = this.showExposureUS = this.showExposureOrdinal = this.showSetAutoExposure = false;
+      this.showRangeShapenISO = true;
+      this.showRecordFormat = this.showWhiteBalance = this.showVideoMode = this.showShutter = this.showExposureForVideo = false;
     },
     onRecordFormat: function onRecordFormat(event) {
       this.title = "Set Record Format";
       this.showRecordFormat = true;
-      this.showVideoMode = this.showWhiteBalance = this.showSetAutoWB = this.showRestoreAutoWB = this.showRangeMode = this.showShapenLevel = this.showISO = this.showShutterAngle = this.showShutterSpeed = this.showExposureUS = this.showExposureOrdinal = this.showSetAutoExposure = false;
+      this.showVideoMode = this.showWhiteBalance = this.showRangeShapenISO = this.showShutter = this.showExposureForVideo = false;
     },
-    onISO: function onISO(event) {
-      this.title = "Set ISO";
-      this.showISO = true;
-      this.showRecordFormat = this.showWhiteBalance = this.showSetAutoWB = this.showRestoreAutoWB = this.showRangeMode = this.showShapenLevel = this.showVideoMode = this.showShutterAngle = this.showShutterSpeed = this.showExposureUS = this.showExposureOrdinal = this.showSetAutoExposure = false;
-    },
-    onShutterSpeed: function onShutterSpeed(event) {
-      this.title = "Set Shutter Speed";
-      this.showShutterSpeed = true;
-      this.showRecordFormat = this.showWhiteBalance = this.showSetAutoWB = this.showRestoreAutoWB = this.showRangeMode = this.showShapenLevel = this.showISO = this.showShutterAngle = this.showVideoMode = this.showExposureUS = this.showExposureOrdinal = this.showSetAutoExposure = false;
-    },
-    onSetAutoWB: function onSetAutoWB(event) {
-      this.title = "Set Auto White Balance";
-      this.showSetAutoWB = true;
-      this.showRecordFormat = this.showWhiteBalance = this.showVideoMode = this.showRestoreAutoWB = this.showRangeMode = this.showShapenLevel = this.showISO = this.showShutterAngle = this.showShutterSpeed = this.showExposureUS = this.showExposureOrdinal = this.showSetAutoExposure = false;
-    },
-    onRestoreAutoWB: function onRestoreAutoWB(event) {
-      this.title = "Restore last White Balance";
-      this.showRestoreAutoWB = true;
-      this.showRecordFormat = this.showWhiteBalance = this.showSetAutoWB = this.showVideoMode = this.showRangeMode = this.showShapenLevel = this.showISO = this.showShutterAngle = this.showShutterSpeed = this.showExposureUS = this.showExposureOrdinal = this.showSetAutoExposure = false;
-    },
-    onExposureUS: function onExposureUS(event) {
+    onExposureForVideo: function onExposureForVideo(event) {
       this.title = "Set Exposure (us)";
-      this.showExposureUS = true;
-      this.showRecordFormat = this.showWhiteBalance = this.showSetAutoWB = this.showRestoreAutoWB = this.showRangeMode = this.showShapenLevel = this.showISO = this.showShutterAngle = this.showShutterSpeed = this.showVideoMode = this.showExposureOrdinal = this.showSetAutoExposure = false;
+      this.showExposureForVideo = true;
+      this.showRecordFormat = this.showWhiteBalance = this.showRangeShapenISO = this.showShutter = this.showVideoMode = false;
     },
-    onExposureOrdinal: function onExposureOrdinal(event) {
-      this.title = "Set Exposure (ordinal)";
-      this.showExposureOrdinal = true;
-      this.showRecordFormat = this.showWhiteBalance = this.showSetAutoWB = this.showRestoreAutoWB = this.showRangeMode = this.showShapenLevel = this.showISO = this.showShutterAngle = this.showShutterSpeed = this.showExposureUS = this.showVideoMode = this.showSetAutoExposure = false;
-    },
-    onSetAutoExposureMode: function onSetAutoExposureMode(event) {
-      this.title = "Set Auto Exposure mode";
-      this.showSetAutoExposure = true;
-      this.showRecordFormat = this.showWhiteBalance = this.showSetAutoWB = this.showRestoreAutoWB = this.showRangeMode = this.showShapenLevel = this.showISO = this.showShutterAngle = this.showShutterSpeed = this.showExposureUS = this.showExposureOrdinal = this.showVideoMode = false;
-    },
-    onShutterAngle: function onShutterAngle(event) {
+    onShutter: function onShutter(event) {
       this.title = "Set Shutter Angle";
-      this.showShutterAngle = true;
-      this.showRecordFormat = this.showWhiteBalance = this.showSetAutoWB = this.showRestoreAutoWB = this.showRangeMode = this.showShapenLevel = this.showISO = this.showVideoMode = this.showShutterSpeed = this.showExposureUS = this.showExposureOrdinal = this.showSetAutoExposure = false;
+      this.showShutter = true;
+      this.showRecordFormat = this.showWhiteBalance = this.showRangeShapenISO = this.showVideoMode = this.showExposureForVideo = false;
     },
     sendVideoCommand: function sendVideoCommand(command) {
       if (selectedCameraId == "") socket.emit('admin', null, JSON.stringify(command));else socket.emit('admin', selectedCameraId, JSON.stringify(command));
@@ -42142,7 +42039,7 @@ var render = function() {
               attrs: { id: "aperture-body" }
             },
             [
-              _c("table", { staticClass: "table" }, [
+              _c("table", { staticClass: "table col-sm-8" }, [
                 _c("tbody", [
                   _c("tr", [
                     _c("td", { attrs: { width: "30%" } }, [
@@ -42154,6 +42051,7 @@ var render = function() {
                       { attrs: { width: "40%" } },
                       [
                         _c("custom-slider", {
+                          key: "sliderApertureFStop",
                           attrs: { raising: "", values: _vm.fstopSliderValues },
                           model: {
                             value: _vm.apertureFStop,
@@ -42187,6 +42085,7 @@ var render = function() {
                       "td",
                       [
                         _c("custom-slider", {
+                          key: "sliderApertureNormalised",
                           attrs: {
                             raising: "",
                             min: "0.0",
@@ -42225,6 +42124,7 @@ var render = function() {
                       "td",
                       [
                         _c("custom-slider", {
+                          key: "sliderApertureOrdinal",
                           attrs: {
                             raising: "",
                             min: "0.0",
@@ -42281,7 +42181,7 @@ var render = function() {
       _vm._v(" "),
       this.showZoom
         ? _c("div", { staticClass: "form-group", attrs: { id: "zoom-body" } }, [
-            _c("table", { staticClass: "table" }, [
+            _c("table", { staticClass: "table col-sm-8" }, [
               _c("tbody", [
                 _c("tr", [
                   _c("td", { attrs: { width: "30%" } }, [
@@ -42715,60 +42615,8 @@ var render = function() {
                 "label",
                 {
                   staticClass: "btn btn-sm btn-primary btn-simple",
-                  attrs: { id: "7" },
-                  on: { click: _vm.onSetAutoWB }
-                },
-                [
-                  _c("input", {
-                    staticClass: "d-none",
-                    attrs: { type: "radio", name: "options" }
-                  }),
-                  _vm._v(" "),
-                  _c(
-                    "span",
-                    {
-                      staticClass:
-                        "d-none d-sm-block d-md-block d-lg-block d-xl-block"
-                    },
-                    [_vm._v("Set auto WB")]
-                  ),
-                  _vm._v(" "),
-                  _vm._m(3)
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "label",
-                {
-                  staticClass: "btn btn-sm btn-primary btn-simple",
-                  attrs: { id: "8" },
-                  on: { click: _vm.onRestoreAutoWB }
-                },
-                [
-                  _c("input", {
-                    staticClass: "d-none",
-                    attrs: { type: "radio", name: "options" }
-                  }),
-                  _vm._v(" "),
-                  _c(
-                    "span",
-                    {
-                      staticClass:
-                        "d-none d-sm-block d-md-block d-lg-block d-xl-block"
-                    },
-                    [_vm._v("Restore auto WB")]
-                  ),
-                  _vm._v(" "),
-                  _vm._m(4)
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "label",
-                {
-                  staticClass: "btn btn-sm btn-primary btn-simple",
                   attrs: { id: "2" },
-                  on: { click: _vm.onRangeMode }
+                  on: { click: _vm.onRangeShapenISO }
                 },
                 [
                   _c("input", {
@@ -42782,192 +42630,62 @@ var render = function() {
                       staticClass:
                         "d-none d-sm-block d-md-block d-lg-block d-xl-block"
                     },
-                    [_vm._v("Range Mode")]
+                    [_vm._v("Range / Sharpen / ISO")]
+                  ),
+                  _vm._v(" "),
+                  _vm._m(3)
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "label",
+                {
+                  staticClass: "btn btn-sm btn-primary btn-simple",
+                  attrs: { id: "8" },
+                  on: { click: _vm.onShutter }
+                },
+                [
+                  _c("input", {
+                    staticClass: "d-none",
+                    attrs: { type: "radio", name: "options" }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      staticClass:
+                        "d-none d-sm-block d-md-block d-lg-block d-xl-block"
+                    },
+                    [_vm._v("Shutter")]
+                  ),
+                  _vm._v(" "),
+                  _vm._m(4)
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "label",
+                {
+                  staticClass: "btn btn-sm btn-primary btn-simple",
+                  attrs: { id: "8" },
+                  on: { click: _vm.onExposureForVideo }
+                },
+                [
+                  _c("input", {
+                    staticClass: "d-none",
+                    attrs: { type: "radio", name: "options" }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      staticClass:
+                        "d-none d-sm-block d-md-block d-lg-block d-xl-block"
+                    },
+                    [_vm._v("Exposure")]
                   ),
                   _vm._v(" "),
                   _vm._m(5)
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "label",
-                {
-                  staticClass: "btn btn-sm btn-primary btn-simple",
-                  attrs: { id: "3" },
-                  on: { click: _vm.onShapenLevel }
-                },
-                [
-                  _c("input", {
-                    staticClass: "d-none",
-                    attrs: { type: "radio", name: "options" }
-                  }),
-                  _vm._v(" "),
-                  _c(
-                    "span",
-                    {
-                      staticClass:
-                        "d-none d-sm-block d-md-block d-lg-block d-xl-block"
-                    },
-                    [_vm._v("Shapen Level")]
-                  ),
-                  _vm._v(" "),
-                  _vm._m(6)
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "label",
-                {
-                  staticClass: "btn btn-sm btn-primary btn-simple",
-                  attrs: { id: "5" },
-                  on: { click: _vm.onISO }
-                },
-                [
-                  _c("input", {
-                    staticClass: "d-none",
-                    attrs: { type: "radio", name: "options" }
-                  }),
-                  _vm._v(" "),
-                  _c(
-                    "span",
-                    {
-                      staticClass:
-                        "d-none d-sm-block d-md-block d-lg-block d-xl-block"
-                    },
-                    [_vm._v("ISO")]
-                  ),
-                  _vm._v(" "),
-                  _vm._m(7)
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "label",
-                {
-                  staticClass: "btn btn-sm btn-primary btn-simple",
-                  attrs: { id: "8" },
-                  on: { click: _vm.onShutterAngle }
-                },
-                [
-                  _c("input", {
-                    staticClass: "d-none",
-                    attrs: { type: "radio", name: "options" }
-                  }),
-                  _vm._v(" "),
-                  _c(
-                    "span",
-                    {
-                      staticClass:
-                        "d-none d-sm-block d-md-block d-lg-block d-xl-block"
-                    },
-                    [_vm._v("Shutter Angle")]
-                  ),
-                  _vm._v(" "),
-                  _vm._m(8)
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "label",
-                {
-                  staticClass: "btn btn-sm btn-primary btn-simple",
-                  attrs: { id: "6" },
-                  on: { click: _vm.onShutterSpeed }
-                },
-                [
-                  _c("input", {
-                    staticClass: "d-none",
-                    attrs: { type: "radio", name: "options" }
-                  }),
-                  _vm._v(" "),
-                  _c(
-                    "span",
-                    {
-                      staticClass:
-                        "d-none d-sm-block d-md-block d-lg-block d-xl-block"
-                    },
-                    [_vm._v("Shutter speed")]
-                  ),
-                  _vm._v(" "),
-                  _vm._m(9)
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "label",
-                {
-                  staticClass: "btn btn-sm btn-primary btn-simple",
-                  attrs: { id: "8" },
-                  on: { click: _vm.onExposureUS }
-                },
-                [
-                  _c("input", {
-                    staticClass: "d-none",
-                    attrs: { type: "radio", name: "options" }
-                  }),
-                  _vm._v(" "),
-                  _c(
-                    "span",
-                    {
-                      staticClass:
-                        "d-none d-sm-block d-md-block d-lg-block d-xl-block"
-                    },
-                    [_vm._v("Exposure (us)")]
-                  ),
-                  _vm._v(" "),
-                  _vm._m(10)
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "label",
-                {
-                  staticClass: "btn btn-sm btn-primary btn-simple",
-                  attrs: { id: "8" },
-                  on: { click: _vm.onExposureOrdinal }
-                },
-                [
-                  _c("input", {
-                    staticClass: "d-none",
-                    attrs: { type: "radio", name: "options" }
-                  }),
-                  _vm._v(" "),
-                  _c(
-                    "span",
-                    {
-                      staticClass:
-                        "d-none d-sm-block d-md-block d-lg-block d-xl-block"
-                    },
-                    [_vm._v("Exposure (ordinal)")]
-                  ),
-                  _vm._v(" "),
-                  _vm._m(11)
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "label",
-                {
-                  staticClass: "btn btn-sm btn-primary btn-simple",
-                  attrs: { id: "8" },
-                  on: { click: _vm.onSetAutoExposureMode }
-                },
-                [
-                  _c("input", {
-                    staticClass: "d-none",
-                    attrs: { type: "radio", name: "options" }
-                  }),
-                  _vm._v(" "),
-                  _c(
-                    "span",
-                    {
-                      staticClass:
-                        "d-none d-sm-block d-md-block d-lg-block d-xl-block"
-                    },
-                    [_vm._v("Set Auto Exposure Mode")]
-                  ),
-                  _vm._v(" "),
-                  _vm._m(12)
                 ]
               )
             ]
@@ -43279,139 +42997,203 @@ var render = function() {
                   on: { click: _vm.setWhiteBalance }
                 },
                 [_vm._v("White Balance")]
+              ),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary",
+                  attrs: { id: "btnSetAutoWB" },
+                  on: { click: _vm.setAutoWB }
+                },
+                [_vm._v("Set Auto WB")]
+              ),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary",
+                  attrs: { id: "btnRestoreAutoWB" },
+                  on: { click: _vm.restoreAutoWB }
+                },
+                [_vm._v("Restore Auto WB")]
               )
             ]
           )
         : _vm._e(),
       _vm._v(" "),
-      this.showRangeMode
+      this.showRangeShapenISO
         ? _c(
             "div",
             { staticClass: "form-group", attrs: { id: "range-mode-body" } },
             [
-              _c("div", { staticClass: "row" }, [
-                _c("div", { staticClass: "col-sm-3" }, [
-                  _c("label", [_vm._v("Range Mode")]),
-                  _vm._v(" "),
-                  _c(
-                    "select",
-                    {
-                      directives: [
+              _c("table", { staticClass: "table col-sm-8" }, [
+                _c("tbody", [
+                  _c("tr", [
+                    _c("td", { attrs: { width: "30%" } }, [
+                      _vm._v("Range Mode")
+                    ]),
+                    _vm._v(" "),
+                    _c("td", { attrs: { width: "40%" } }, [
+                      _c(
+                        "select",
                         {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.rangeMode,
-                          expression: "rangeMode"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: { id: "rangeMode" },
-                      on: {
-                        change: function($event) {
-                          var $$selectedVal = Array.prototype.filter
-                            .call($event.target.options, function(o) {
-                              return o.selected
-                            })
-                            .map(function(o) {
-                              var val = "_value" in o ? o._value : o.value
-                              return val
-                            })
-                          _vm.rangeMode = $event.target.multiple
-                            ? $$selectedVal
-                            : $$selectedVal[0]
-                        }
-                      }
-                    },
-                    [
-                      _c("option", { attrs: { value: "0" } }, [_vm._v("Film")]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "1" } }, [
-                        _vm._v("Video")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "2" } }, [
-                        _vm._v("Extended Video")
-                      ])
-                    ]
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-primary",
-                  attrs: { id: "btnRangeMode" },
-                  on: { click: _vm.setRangeMode }
-                },
-                [_vm._v("Range Mode")]
-              )
-            ]
-          )
-        : _vm._e(),
-      _vm._v(" "),
-      this.showShapenLevel
-        ? _c(
-            "div",
-            { staticClass: "form-group", attrs: { id: "sharpen-level-body" } },
-            [
-              _c("div", { staticClass: "row" }, [
-                _c("div", { staticClass: "col-sm-3" }, [
-                  _c("label", [_vm._v("Sharpen Level")]),
-                  _vm._v(" "),
-                  _c(
-                    "select",
-                    {
-                      directives: [
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.rangeMode,
+                              expression: "rangeMode"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: { id: "rangeMode" },
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.rangeMode = $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { value: "0" } }, [
+                            _vm._v("Film")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "1" } }, [
+                            _vm._v("Video")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "2" } }, [
+                            _vm._v("Extended Video")
+                          ])
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", { attrs: { width: "30%" } }, [
+                      _c(
+                        "button",
                         {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.sharpenLevel,
-                          expression: "sharpenLevel"
-                        }
+                          staticClass: "btn btn-primary",
+                          attrs: { id: "btnRangeMode" },
+                          on: { click: _vm.setRangeMode }
+                        },
+                        [_vm._v("Set")]
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("td", [_vm._v("Sharpen Level")]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.sharpenLevel,
+                              expression: "sharpenLevel"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: { id: "sharpenLevel" },
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.sharpenLevel = $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { value: "0" } }, [
+                            _vm._v("Off")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "1" } }, [
+                            _vm._v("Low")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "2" } }, [
+                            _vm._v("Medium")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "3" } }, [
+                            _vm._v("High")
+                          ])
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-primary",
+                          attrs: { id: "btnSharpenLevel" },
+                          on: { click: _vm.setSharpenLevel }
+                        },
+                        [_vm._v("Set")]
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("td", [_vm._v("ISO value")]),
+                    _vm._v(" "),
+                    _c(
+                      "td",
+                      [
+                        _c("custom-slider", {
+                          key: "sliderISO",
+                          attrs: { raising: "", values: _vm.isoSliderValues },
+                          model: {
+                            value: _vm.isoValue,
+                            callback: function($$v) {
+                              _vm.isoValue = $$v
+                            },
+                            expression: "isoValue"
+                          }
+                        })
                       ],
-                      staticClass: "form-control",
-                      attrs: { id: "sharpenLevel" },
-                      on: {
-                        change: function($event) {
-                          var $$selectedVal = Array.prototype.filter
-                            .call($event.target.options, function(o) {
-                              return o.selected
-                            })
-                            .map(function(o) {
-                              var val = "_value" in o ? o._value : o.value
-                              return val
-                            })
-                          _vm.sharpenLevel = $event.target.multiple
-                            ? $$selectedVal
-                            : $$selectedVal[0]
-                        }
-                      }
-                    },
-                    [
-                      _c("option", { attrs: { value: "0" } }, [_vm._v("Off")]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "1" } }, [_vm._v("Low")]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "2" } }, [
-                        _vm._v("Medium")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "3" } }, [_vm._v("High")])
-                    ]
-                  )
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-primary",
+                          attrs: { id: "btnISO" },
+                          on: { click: _vm.setISOValue }
+                        },
+                        [_vm._v("Set")]
+                      )
+                    ])
+                  ])
                 ])
-              ]),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-primary",
-                  attrs: { id: "btnSharpenLevel" },
-                  on: { click: _vm.setSharpenLevel }
-                },
-                [_vm._v("Sharpen Level")]
-              )
+              ])
             ]
           )
         : _vm._e(),
@@ -43642,302 +43424,223 @@ var render = function() {
           )
         : _vm._e(),
       _vm._v(" "),
-      this.showISO
-        ? _c("div", { staticClass: "form-group", attrs: { id: "iso-body" } }, [
-            _c("div", { staticClass: "row" }, [
-              _c(
-                "div",
-                { staticClass: "col-sm-4" },
-                [
-                  _c("label", [_vm._v("ISO value")]),
-                  _vm._v(" "),
-                  _c("custom-slider", {
-                    key: "sliderISO",
-                    attrs: { raising: "", values: _vm.isoSliderValues },
-                    model: {
-                      value: _vm.isoValue,
-                      callback: function($$v) {
-                        _vm.isoValue = $$v
-                      },
-                      expression: "isoValue"
-                    }
-                  })
-                ],
-                1
-              )
-            ]),
-            _vm._v(" "),
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-primary",
-                attrs: { id: "btnISO" },
-                on: { click: _vm.setISOValue }
-              },
-              [_vm._v("Set ISO")]
-            )
-          ])
-        : _vm._e(),
-      _vm._v(" "),
-      this.showShutterSpeed
-        ? _c(
-            "div",
-            { staticClass: "form-group", attrs: { id: "shutterspeed-body" } },
-            [
-              _c("div", { staticClass: "row" }, [
-                _c(
-                  "div",
-                  { staticClass: "col-sm-4" },
-                  [
-                    _c("label", [_vm._v("Shutter Speed")]),
-                    _vm._v(" "),
-                    _c("custom-slider", {
-                      key: "sliderShutterSpeed",
-                      attrs: {
-                        raising: "",
-                        values: _vm.shutterSpeedSliderValues
-                      },
-                      model: {
-                        value: _vm.shutterSpeedValue,
-                        callback: function($$v) {
-                          _vm.shutterSpeedValue = $$v
-                        },
-                        expression: "shutterSpeedValue"
-                      }
-                    })
-                  ],
-                  1
-                )
-              ]),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-primary",
-                  attrs: { id: "btnShutterSpeed" },
-                  on: { click: _vm.setShutterSpeed }
-                },
-                [_vm._v("Set Shutter Speed")]
-              )
-            ]
-          )
-        : _vm._e(),
-      _vm._v(" "),
-      this.showSetAutoWB
-        ? _c(
-            "div",
-            { staticClass: "form-group", attrs: { id: "set-autowb-body" } },
-            [
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-primary",
-                  attrs: { id: "btnSetAutoWB" },
-                  on: { click: _vm.setAutoWB }
-                },
-                [_vm._v("Set Auto WB")]
-              )
-            ]
-          )
-        : _vm._e(),
-      _vm._v(" "),
-      this.showRestoreAutoWB
-        ? _c(
-            "div",
-            { staticClass: "form-group", attrs: { id: "restore-autowb-body" } },
-            [
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-primary",
-                  attrs: { id: "btnRestoreAutoWB" },
-                  on: { click: _vm.restoreAutoWB }
-                },
-                [_vm._v("Restore Auto WB")]
-              )
-            ]
-          )
-        : _vm._e(),
-      _vm._v(" "),
-      this.showShutterAngle
+      this.showShutter
         ? _c(
             "div",
             { staticClass: "form-group", attrs: { id: "shutter-angle-body" } },
             [
-              _c("div", { staticClass: "row" }, [
-                _c(
-                  "div",
-                  { staticClass: "col-sm-4" },
-                  [
-                    _c("label", [_vm._v("Shutter Angle")]),
+              _c("table", { staticClass: "table col-sm-8" }, [
+                _c("tbody", [
+                  _c("tr", [
+                    _c("td", { attrs: { width: "30%" } }, [
+                      _vm._v("Shutter Angle")
+                    ]),
                     _vm._v(" "),
-                    _c("custom-slider", {
-                      key: "sliderShutterAngle",
-                      attrs: {
-                        raising: "",
-                        min: "100",
-                        max: "36000",
-                        step: "100"
-                      },
-                      model: {
-                        value: _vm.shutterAngleValue,
-                        callback: function($$v) {
-                          _vm.shutterAngleValue = $$v
+                    _c(
+                      "td",
+                      { attrs: { width: "40%" } },
+                      [
+                        _c("custom-slider", {
+                          key: "sliderShutterAngle",
+                          attrs: {
+                            raising: "",
+                            min: "100",
+                            max: "36000",
+                            step: "100"
+                          },
+                          model: {
+                            value: _vm.shutterAngleValue,
+                            callback: function($$v) {
+                              _vm.shutterAngleValue = $$v
+                            },
+                            expression: "shutterAngleValue"
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c("td", { attrs: { width: "30%" } }, [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-primary",
+                          attrs: { id: "btnShutterAngle" },
+                          on: { click: _vm.setShutterAngle }
                         },
-                        expression: "shutterAngleValue"
-                      }
-                    })
-                  ],
-                  1
-                )
-              ]),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-primary",
-                  attrs: { id: "btnShutterAngle" },
-                  on: { click: _vm.setShutterAngle }
-                },
-                [_vm._v("Set Shutter Angle")]
-              )
+                        [_vm._v("Set")]
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("td", [_vm._v("Shutter Speed")]),
+                    _vm._v(" "),
+                    _c(
+                      "td",
+                      [
+                        _c("custom-slider", {
+                          key: "sliderShutterSpeed",
+                          attrs: {
+                            raising: "",
+                            values: _vm.shutterSpeedSliderValues
+                          },
+                          model: {
+                            value: _vm.shutterSpeedValue,
+                            callback: function($$v) {
+                              _vm.shutterSpeedValue = $$v
+                            },
+                            expression: "shutterSpeedValue"
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-primary",
+                          attrs: { id: "btnShutterSpeed" },
+                          on: { click: _vm.setShutterSpeed }
+                        },
+                        [_vm._v("Set")]
+                      )
+                    ])
+                  ])
+                ])
+              ])
             ]
           )
         : _vm._e(),
       _vm._v(" "),
-      this.showExposureUS
+      this.showExposureForVideo
         ? _c(
             "div",
             { staticClass: "form-group", attrs: { id: "exposure-us-body" } },
             [
-              _c("div", { staticClass: "row" }, [
-                _c(
-                  "div",
-                  { staticClass: "col-sm-4" },
-                  [
-                    _c("label", [_vm._v("Exposure (us)")]),
+              _c("table", { staticClass: "table col-sm-8" }, [
+                _c("tbody", [
+                  _c("tr", [
+                    _c("td", { attrs: { width: "30%" } }, [
+                      _vm._v("Exposure (us)")
+                    ]),
                     _vm._v(" "),
-                    _c("custom-slider", {
-                      key: "sliderExposureUS",
-                      attrs: {
-                        raising: "",
-                        min: "0",
-                        max: "42000",
-                        step: "1000"
-                      },
-                      model: {
-                        value: _vm.exposureUSValue,
-                        callback: function($$v) {
-                          _vm.exposureUSValue = $$v
-                        },
-                        expression: "exposureUSValue"
-                      }
-                    })
-                  ],
-                  1
-                )
-              ]),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-primary",
-                  attrs: { id: "btnExposureUS" },
-                  on: { click: _vm.setExposureUS }
-                },
-                [_vm._v("Set Exposure (us)")]
-              )
-            ]
-          )
-        : _vm._e(),
-      _vm._v(" "),
-      this.showExposureOrdinal
-        ? _c(
-            "div",
-            {
-              staticClass: "form-group",
-              attrs: { id: "exposure-ordinal-body" }
-            },
-            [
-              _c("div", { staticClass: "row" }, [
-                _c(
-                  "div",
-                  { staticClass: "col-sm-4" },
-                  [
-                    _c("label", [_vm._v("Exposure (ordinal)")]),
+                    _c(
+                      "td",
+                      { attrs: { width: "40%" } },
+                      [
+                        _c("custom-slider", {
+                          key: "sliderExposureUS",
+                          attrs: {
+                            raising: "",
+                            min: "0",
+                            max: "42000",
+                            step: "1000"
+                          },
+                          model: {
+                            value: _vm.exposureUSValue,
+                            callback: function($$v) {
+                              _vm.exposureUSValue = $$v
+                            },
+                            expression: "exposureUSValue"
+                          }
+                        })
+                      ],
+                      1
+                    ),
                     _vm._v(" "),
-                    _c("custom-slider", {
-                      key: "sliderExposureOrdinal",
-                      attrs: { raising: "", min: "0", max: "20", step: "1" },
-                      model: {
-                        value: _vm.exposureOrdinalValue,
-                        callback: function($$v) {
-                          _vm.exposureOrdinalValue = $$v
+                    _c("td", { attrs: { width: "30%" } }, [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-primary",
+                          attrs: { id: "btnExposureUS" },
+                          on: { click: _vm.setExposureUS }
                         },
-                        expression: "exposureOrdinalValue"
-                      }
-                    })
-                  ],
-                  1
-                )
-              ]),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-primary",
-                  attrs: { id: "btnExposureOrdinal" },
-                  on: { click: _vm.setExposureOrdinal }
-                },
-                [_vm._v("Set Exposure (ordinal)")]
-              )
-            ]
-          )
-        : _vm._e(),
-      _vm._v(" "),
-      this.showSetAutoExposure
-        ? _c(
-            "div",
-            {
-              staticClass: "form-group",
-              attrs: { id: "set-autoexposure-body" }
-            },
-            [
-              _c("div", { staticClass: "row" }, [
-                _c(
-                  "div",
-                  { staticClass: "col-sm-4" },
-                  [
-                    _c("label", [_vm._v("Auto Exposure Mode")]),
+                        [_vm._v("Set")]
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("td", [_vm._v("Exposure (ordinal)")]),
                     _vm._v(" "),
-                    _c("custom-slider", {
-                      key: "sliderAutoExposure",
-                      attrs: {
-                        raising: "",
-                        values: _vm.autoExposureSliderValues
-                      },
-                      model: {
-                        value: _vm.autoExposureValue,
-                        callback: function($$v) {
-                          _vm.autoExposureValue = $$v
+                    _c(
+                      "td",
+                      [
+                        _c("custom-slider", {
+                          key: "sliderExposureOrdinal",
+                          attrs: {
+                            raising: "",
+                            min: "0",
+                            max: "20",
+                            step: "1"
+                          },
+                          model: {
+                            value: _vm.exposureOrdinalValue,
+                            callback: function($$v) {
+                              _vm.exposureOrdinalValue = $$v
+                            },
+                            expression: "exposureOrdinalValue"
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-primary",
+                          attrs: { id: "btnExposureOrdinal" },
+                          on: { click: _vm.setExposureOrdinal }
                         },
-                        expression: "autoExposureValue"
-                      }
-                    })
-                  ],
-                  1
-                )
-              ]),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-primary",
-                  attrs: { id: "btnAutoExposure" },
-                  on: { click: _vm.setAutoExposure }
-                },
-                [_vm._v("Set auto Exposure Mode")]
-              )
+                        [_vm._v("Set")]
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("td", [_vm._v("Auto Exposure Mode")]),
+                    _vm._v(" "),
+                    _c(
+                      "td",
+                      [
+                        _c("custom-slider", {
+                          key: "sliderAutoExposure",
+                          attrs: {
+                            raising: "",
+                            values: _vm.autoExposureSliderValues
+                          },
+                          model: {
+                            value: _vm.autoExposureValue,
+                            callback: function($$v) {
+                              _vm.autoExposureValue = $$v
+                            },
+                            expression: "autoExposureValue"
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-primary",
+                          attrs: { id: "btnAutoExposure" },
+                          on: { click: _vm.setAutoExposure }
+                        },
+                        [_vm._v("Set")]
+                      )
+                    ])
+                  ])
+                ])
+              ])
             ]
           )
         : _vm._e()
@@ -43974,63 +43677,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("span", { staticClass: "d-block d-sm-none" }, [
-      _c("i", { staticClass: "tim-icons icon-tap-02" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("span", { staticClass: "d-block d-sm-none" }, [
-      _c("i", { staticClass: "tim-icons icon-tap-02" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("span", { staticClass: "d-block d-sm-none" }, [
       _c("i", { staticClass: "tim-icons icon-gift-2" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("span", { staticClass: "d-block d-sm-none" }, [
-      _c("i", { staticClass: "tim-icons icon-tap-02" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("span", { staticClass: "d-block d-sm-none" }, [
-      _c("i", { staticClass: "tim-icons icon-tap-02" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("span", { staticClass: "d-block d-sm-none" }, [
-      _c("i", { staticClass: "tim-icons icon-tap-02" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("span", { staticClass: "d-block d-sm-none" }, [
-      _c("i", { staticClass: "tim-icons icon-tap-02" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("span", { staticClass: "d-block d-sm-none" }, [
-      _c("i", { staticClass: "tim-icons icon-tap-02" })
     ])
   },
   function() {
