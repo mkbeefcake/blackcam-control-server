@@ -2810,22 +2810,22 @@ __webpack_require__.r(__webpack_exports__);
       shutterAngleValue: "18000",
       exposureUSValue: "1000",
       exposureOrdinalValue: "1",
-      autoExposureValue: "1",
+      autoExposureValue: "0",
       autoExposureSliderValues: [{
         label: "Manual Trigger",
-        value: 0
+        value: "0"
       }, {
         label: "Iris",
-        value: 1
+        value: "1"
       }, {
         label: "Shutter",
-        value: 2
+        value: "2"
       }, {
         label: "Iris + Shutter",
-        value: 3
+        value: "3"
       }, {
         label: "Shutter + Iris",
-        value: 4
+        value: "4"
       }],
       isoSliderValues: [{
         label: "1",
@@ -42177,6 +42177,7 @@ var render = function() {
                         { attrs: { width: "60%" } },
                         [
                           _c("custom-slider", {
+                            key: "sliderColorTemperature",
                             attrs: {
                               raising: "",
                               min: "2500",
@@ -42203,6 +42204,7 @@ var render = function() {
                         "td",
                         [
                           _c("custom-slider", {
+                            key: "sliderTint",
                             attrs: {
                               raising: "",
                               min: "-50",
@@ -42601,11 +42603,12 @@ var render = function() {
             _c("div", { staticClass: "row" }, [
               _c(
                 "div",
-                { staticClass: "col-sm-3" },
+                { staticClass: "col-sm-4" },
                 [
                   _c("label", [_vm._v("ISO value")]),
                   _vm._v(" "),
                   _c("custom-slider", {
+                    key: "sliderISO",
                     attrs: { raising: "", values: _vm.isoSliderValues },
                     model: {
                       value: _vm.isoValue,
@@ -42640,11 +42643,12 @@ var render = function() {
               _c("div", { staticClass: "row" }, [
                 _c(
                   "div",
-                  { staticClass: "col-sm-3" },
+                  { staticClass: "col-sm-4" },
                   [
                     _c("label", [_vm._v("Shutter Speed")]),
                     _vm._v(" "),
                     _c("custom-slider", {
+                      key: "sliderShutterSpeed",
                       attrs: {
                         raising: "",
                         values: _vm.shutterSpeedSliderValues
@@ -42719,11 +42723,12 @@ var render = function() {
               _c("div", { staticClass: "row" }, [
                 _c(
                   "div",
-                  { staticClass: "col-sm-3" },
+                  { staticClass: "col-sm-4" },
                   [
                     _c("label", [_vm._v("Shutter Angle")]),
                     _vm._v(" "),
                     _c("custom-slider", {
+                      key: "sliderShutterAngle",
                       attrs: {
                         raising: "",
                         min: "100",
@@ -42764,11 +42769,12 @@ var render = function() {
               _c("div", { staticClass: "row" }, [
                 _c(
                   "div",
-                  { staticClass: "col-sm-3" },
+                  { staticClass: "col-sm-4" },
                   [
                     _c("label", [_vm._v("Exposure (us)")]),
                     _vm._v(" "),
                     _c("custom-slider", {
+                      key: "sliderExposureUS",
                       attrs: {
                         raising: "",
                         min: "0",
@@ -42812,11 +42818,12 @@ var render = function() {
               _c("div", { staticClass: "row" }, [
                 _c(
                   "div",
-                  { staticClass: "col-sm-3" },
+                  { staticClass: "col-sm-4" },
                   [
                     _c("label", [_vm._v("Exposure (ordinal)")]),
                     _vm._v(" "),
                     _c("custom-slider", {
+                      key: "sliderExposureOrdinal",
                       attrs: { raising: "", min: "0", max: "20", step: "1" },
                       model: {
                         value: _vm.exposureOrdinalValue,
@@ -42855,11 +42862,12 @@ var render = function() {
               _c("div", { staticClass: "row" }, [
                 _c(
                   "div",
-                  { staticClass: "col-sm-3" },
+                  { staticClass: "col-sm-4" },
                   [
                     _c("label", [_vm._v("Auto Exposure Mode")]),
                     _vm._v(" "),
                     _c("custom-slider", {
+                      key: "sliderAutoExposure",
                       attrs: {
                         raising: "",
                         values: _vm.autoExposureSliderValues

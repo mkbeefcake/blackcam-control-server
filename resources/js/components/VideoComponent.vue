@@ -156,11 +156,11 @@
                         <tbody>
                             <tr>
                                 <td width="40%">Color Temperature</td>
-                                <td width="60%"><custom-slider raising min="2500" max="10000" step="100" v-model="colorTemperature"/></td>
+                                <td width="60%"><custom-slider raising min="2500" max="10000" step="100" v-model="colorTemperature" key="sliderColorTemperature" /></td>
                             </tr>
                             <tr>
                                 <td>Tint</td>
-                                <td><custom-slider raising min="-50" max="50" step="1" v-model="tint"/></td>
+                                <td><custom-slider raising min="-50" max="50" step="1" v-model="tint" key="sliderTint"/></td>
                             </tr>
                         </tbody>
                     </table>
@@ -242,18 +242,18 @@
             </div>
             <div class="form-group" id="iso-body" v-if="this.showISO">
                 <div class="row">
-                    <div class="col-sm-3">
+                    <div class="col-sm-4">
                         <label>ISO value</label>
-                        <custom-slider raising :values="isoSliderValues" v-model="isoValue"/>
+                        <custom-slider raising :values="isoSliderValues" v-model="isoValue" key="sliderISO"/>
                     </div>
                 </div>
                 <button class="btn btn-primary" id="btnISO" v-on:click="setISOValue">Set ISO</button>
             </div>
             <div class="form-group" id="shutterspeed-body" v-if="this.showShutterSpeed">
                 <div class="row">
-                    <div class="col-sm-3">
+                    <div class="col-sm-4">
                         <label>Shutter Speed</label>
-                        <custom-slider raising :values="shutterSpeedSliderValues" v-model="shutterSpeedValue"/>
+                        <custom-slider raising :values="shutterSpeedSliderValues" v-model="shutterSpeedValue" key="sliderShutterSpeed"/>
                     </div>
                 </div>
                 <button class="btn btn-primary" id="btnShutterSpeed" v-on:click="setShutterSpeed">Set Shutter Speed</button>
@@ -266,36 +266,36 @@
             </div>
             <div class="form-group" id="shutter-angle-body" v-if="this.showShutterAngle">
                 <div class="row">
-                    <div class="col-sm-3">
+                    <div class="col-sm-4">
                         <label>Shutter Angle</label>
-                        <custom-slider raising min="100" max="36000" step="100" v-model="shutterAngleValue"/>
+                        <custom-slider raising min="100" max="36000" step="100" v-model="shutterAngleValue" key="sliderShutterAngle"/>
                     </div>
                 </div>
                 <button class="btn btn-primary" id="btnShutterAngle" v-on:click="setShutterAngle">Set Shutter Angle</button>
             </div>
             <div class="form-group" id="exposure-us-body" v-if="this.showExposureUS">
                 <div class="row">
-                    <div class="col-sm-3">
+                    <div class="col-sm-4">
                         <label>Exposure (us)</label>
-                        <custom-slider raising min="0" max="42000" step="1000" v-model="exposureUSValue"/>
+                        <custom-slider raising min="0" max="42000" step="1000" v-model="exposureUSValue" key="sliderExposureUS"/>
                     </div>
                 </div>
                 <button class="btn btn-primary" id="btnExposureUS" v-on:click="setExposureUS">Set Exposure (us)</button>
             </div>
             <div class="form-group" id="exposure-ordinal-body" v-if="this.showExposureOrdinal">
                 <div class="row">
-                    <div class="col-sm-3">
+                    <div class="col-sm-4">
                         <label>Exposure (ordinal)</label>
-                        <custom-slider raising min="0" max="20" step="1" v-model="exposureOrdinalValue"/>
+                        <custom-slider raising min="0" max="20" step="1" v-model="exposureOrdinalValue" key="sliderExposureOrdinal"/>
                     </div>
                 </div>
                 <button class="btn btn-primary" id="btnExposureOrdinal" v-on:click="setExposureOrdinal">Set Exposure (ordinal)</button>
             </div>
             <div class="form-group" id="set-autoexposure-body" v-if="this.showSetAutoExposure">
                 <div class="row">
-                    <div class="col-sm-3">
+                    <div class="col-sm-4">
                         <label>Auto Exposure Mode</label>
-                        <custom-slider raising :values="autoExposureSliderValues"  v-model="autoExposureValue"/>
+                        <custom-slider raising :values="autoExposureSliderValues" v-model="autoExposureValue" key="sliderAutoExposure"/>
                     </div>
                 </div>
                 <button class="btn btn-primary" id="btnAutoExposure" v-on:click="setAutoExposure">Set auto Exposure Mode</button>
@@ -346,27 +346,27 @@ export default {
             shutterAngleValue : "18000",
             exposureUSValue: "1000",
             exposureOrdinalValue: "1",
-            autoExposureValue: "1",
+            autoExposureValue: "0",
             autoExposureSliderValues: [
                 {
                     label: "Manual Trigger",
-                    value: 0,
+                    value: "0",
                 },
                 {
                     label: "Iris",
-                    value: 1,                    
+                    value: "1",                    
                 },
                 {
                     label: "Shutter",
-                    value: 2,
+                    value: "2",
                 },
                 {
                     label: "Iris + Shutter",
-                    value: 3,
+                    value: "3",
                 },
                 {
                     label: "Shutter + Iris",
-                    value: 4,
+                    value: "4",
                 },
             ],
             isoSliderValues: [
@@ -472,6 +472,8 @@ export default {
             this.showVideoMode = this.showRecordFormat = this.showSetAutoWB = this.showRestoreAutoWB = this.showRangeMode = 
             this.showShapenLevel = this.showISO = this.showShutterAngle = this.showShutterSpeed = this.showExposureUS =
             this.showExposureOrdinal = this.showSetAutoExposure = false;
+
+
         },
         onRangeMode: function(event) {
             this.title = "Set Range Mode";
