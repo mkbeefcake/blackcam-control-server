@@ -1946,6 +1946,334 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/DisplayComponent.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/DisplayComponent.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vue_custom_range_slider__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-custom-range-slider */ "./node_modules/vue-custom-range-slider/dist/vue-custom-range-slider.common.js");
+/* harmony import */ var vue_custom_range_slider__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue_custom_range_slider__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vue_custom_range_slider_dist_vue_custom_range_slider_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-custom-range-slider/dist/vue-custom-range-slider.css */ "./node_modules/vue-custom-range-slider/dist/vue-custom-range-slider.css");
+/* harmony import */ var vue_custom_range_slider_dist_vue_custom_range_slider_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue_custom_range_slider_dist_vue_custom_range_slider_css__WEBPACK_IMPORTED_MODULE_1__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    CustomSlider: vue_custom_range_slider__WEBPACK_IMPORTED_MODULE_0___default.a
+  },
+  data: function data() {
+    return {
+      title: 'Set Brightness',
+      showBrightness: true,
+      showExposureAndFocus: false,
+      showZebraLevel: false,
+      showPeakingLevel: false,
+      showColorbarEnable: false,
+      showFocusAssist: false,
+      showReturnFeedEnable: false,
+      brightnessValue: "0",
+      exposureFocusValue: "0",
+      zebraLevelValue: "0",
+      peakingLevelValue: "0",
+      colorbarEnableValue: "0",
+      focusAssistMethod: 0,
+      focusLineColor: 0,
+      returnFeedEnableValue: 0,
+      exposureFocusSliderValues: [{
+        label: "Disabled",
+        value: "0"
+      }, {
+        label: "Zebra",
+        value: "1"
+      }, {
+        label: "Focus assist",
+        value: "2"
+      }, {
+        label: "Zebra, Focus assist",
+        value: "3"
+      }, {
+        label: "False color",
+        value: "4"
+      }, {
+        label: "Zebra, False color",
+        value: "5"
+      }, {
+        label: "Focus assist, False color",
+        value: "6"
+      }, {
+        label: "Zebra, Focus assist, False color",
+        value: "7"
+      }]
+    };
+  },
+  mounted: function mounted() {
+    console.log('RecordDisplay-Component mounted.');
+  },
+  methods: {
+    onBrightness: function onBrightness(event) {
+      this.title = "Set Brightness";
+      this.showBrightness = true;
+      this.showExposureAndFocus = this.showZebraLevel = this.showPeakingLevel = this.showColorbarEnable = this.showFocusAssist = this.showReturnFeedEnable = false;
+    },
+    onExposureAndFocus: function onExposureAndFocus(event) {
+      this.title = "Set Exposure and Focus tools";
+      this.showExposureAndFocus = true;
+      this.showBrightness = this.showZebraLevel = this.showPeakingLevel = this.showColorbarEnable = this.showFocusAssist = this.showReturnFeedEnable = false;
+    },
+    onZebraLevel: function onZebraLevel(event) {
+      this.title = "Set Zebra Level";
+      this.showZebraLevel = true;
+      this.showExposureAndFocus = this.showBrightness = this.showPeakingLevel = this.showColorbarEnable = this.showFocusAssist = this.showReturnFeedEnable = false;
+    },
+    onPeakingLevel: function onPeakingLevel(event) {
+      this.title = "Set Peaking Level";
+      this.showPeakingLevel = true;
+      this.showExposureAndFocus = this.showZebraLevel = this.showBrightness = this.showColorbarEnable = this.showFocusAssist = this.showReturnFeedEnable = false;
+    },
+    onColorbarEnable: function onColorbarEnable(event) {
+      this.title = "Set Color bar enable";
+      this.showColorbarEnable = true;
+      this.showExposureAndFocus = this.showZebraLevel = this.showPeakingLevel = this.showBrightness = this.showFocusAssist = this.showReturnFeedEnable = false;
+    },
+    onFocusAssist: function onFocusAssist(event) {
+      this.title = "Set Focus Assist";
+      this.showFocusAssist = true;
+      this.showExposureAndFocus = this.showZebraLevel = this.showPeakingLevel = this.showColorbarEnable = this.showBrightness = this.showReturnFeedEnable = false;
+    },
+    onReturnFeedEnable: function onReturnFeedEnable(event) {
+      this.title = "Set Program return feed enable";
+      this.showReturnFeedEnable = true;
+      this.showExposureAndFocus = this.showZebraLevel = this.showPeakingLevel = this.showColorbarEnable = this.showFocusAssist = this.showBrightness = false;
+    },
+    sendDisplayCommand: function sendDisplayCommand(command) {
+      if (selectedCameraId == "") socket.emit('admin', null, JSON.stringify(command));else socket.emit('admin', selectedCameraId, JSON.stringify(command));
+    },
+    setBrightness: function setBrightness(event) {
+      debugger;
+      var command = {
+        type: 'brightness',
+        brightnessValue: this.brightnessValue
+      };
+      this.sendDisplayCommand(command);
+      alert('Sent Brightness is called');
+    },
+    setExposureAndFocus: function setExposureAndFocus(event) {
+      debugger;
+      var command = {
+        type: 'exposure-focus',
+        exposureFocusValue: this.exposureFocusValue
+      };
+      this.sendDisplayCommand(command);
+      alert('Sent Exposure & Focus tools is called');
+    },
+    setZebraLevel: function setZebraLevel(event) {
+      debugger;
+      var command = {
+        type: 'zebra-level',
+        zebraLevelValue: this.zebraLevelValue
+      };
+      this.sendDisplayCommand(command);
+      alert('Sent Zebra level is called');
+    },
+    setPeakingLevel: function setPeakingLevel(event) {
+      debugger;
+      var command = {
+        type: 'peaking-level',
+        peakingLevelValue: this.peakingLevelValue
+      };
+      this.sendDisplayCommand(command);
+      alert('Sent Peaking level is called');
+    },
+    setColorbarEnable: function setColorbarEnable(event) {
+      debugger;
+      var command = {
+        type: 'colorbar-enable',
+        colorbarEnableValue: this.colorbarEnableValue
+      };
+      this.sendDisplayCommand(command);
+      alert('Sent Colorbar Enable is called');
+    },
+    setFocusAssist: function setFocusAssist(event) {
+      debugger;
+      var command = {
+        type: 'focus-assist',
+        focusAssistMethod: this.focusAssistMethod,
+        focusLineColor: this.focusLineColor
+      };
+      this.sendDisplayCommand(command);
+      alert('Sent Focus assist is called');
+    },
+    setReturnFeedEnable: function setReturnFeedEnable(event) {
+      debugger;
+      var command = {
+        type: 'return-feedenable',
+        returnFeedEnableValue: this.returnFeedEnableValue
+      };
+      this.sendDisplayCommand(command);
+      alert('Sent Program return feed enable is called');
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ExampleComponent.vue?vue&type=script&lang=js&":
 /*!***************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ExampleComponent.vue?vue&type=script&lang=js& ***!
@@ -2801,8 +3129,8 @@ __webpack_require__.r(__webpack_exports__);
       sharpenLevel: 0,
       recordFrameRate: 24,
       recordSensorFrameRate: 0,
-      recordFrameWidth: 352,
-      recordFrameHeight: 288,
+      recordFrameWidth: 1920,
+      recordFrameHeight: 1080,
       recordFlags: 0,
       isoValue: "0",
       rangeMode: 0,
@@ -7532,6 +7860,25 @@ exports = module.exports = __webpack_require__(/*! ../../css-loader/lib/css-base
 
 // module
 exports.push([module.i, ".slider{position:relative;margin-top:50px;margin-bottom:30px;width:100%;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column}.slider__label{position:absolute;top:-17px;background:#fff;color:#333;font-weight:700;padding:2px 5px;font-size:12px;text-align:center;-webkit-transform:translateX(-50%);transform:translateX(-50%);margin-left:1em;-webkit-box-shadow:0 10px 20px -5px rgba(45,45,45,.25);box-shadow:0 10px 20px -5px rgba(45,45,45,.25);min-width:30px;white-space:nowrap}.slider__label:after{content:\"\";position:absolute;bottom:-10px;height:0;width:0;left:0;right:0;margin:auto;border:5px solid transparent;border-top-color:#fff}.slider__wrapper{position:relative;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center}.slider__track{width:100%;position:absolute;z-index:0;height:3px;background:#999}.slider__track--rectangular{height:3px}.slider__track-bottom,.slider__track-top{content:\"\";width:100%;position:absolute;width:0;height:0;border-style:solid}.slider__track-top{top:-6px;border-width:0 0 6px 500px;border-color:transparent transparent #999 transparent}.slider__track-bottom{top:3px;border-width:0 500px 6px 0;border-color:transparent #999 transparent transparent}.slider__input{-webkit-appearance:none;margin:10px 0;width:100%;background:none;padding:0;z-index:1;position:relative}.slider__input:focus{outline:none}.slider__input::-webkit-slider-runnable-track{width:100%;height:10px;cursor:pointer;animate:.2s;background:transparent;border-radius:0;border:none}.slider__input::-webkit-slider-thumb{height:20px;width:20px;border-radius:50%;cursor:pointer;-webkit-appearance:none;margin-top:-5px;background:#eee}.slider__input::-moz-range-thumb{height:20px;width:20px;border-radius:50%;background:#eee;cursor:pointer;border:none}.slider__input::-ms-thumb{height:20px;width:20px;border-radius:50%;background:#eee;cursor:pointer}.slider__input:focus::-webkit-slider-runnable-track{background:transparent}.slider__input::-moz-range-track{width:100%;height:10px;cursor:pointer;animate:.2s;background:transparent;border-radius:0}.slider__input::-ms-track{width:100%;height:10px;cursor:pointer;animate:.2s;background:transparent;border-color:transparent;border-width:10px 0;border-radius:0;color:transparent}.slider__input::-ms-fill-lower,.slider__input::-ms-fill-upper{background:transparent;border:none;border-radius:0}", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/DisplayComponent.vue?vue&type=style&index=0&id=3bdecb46&scoped=true&lang=css&":
+/*!**********************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/DisplayComponent.vue?vue&type=style&index=0&id=3bdecb46&scoped=true&lang=css& ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.slider[data-v-3bdecb46] {\r\n    margin-top: 10px !important;\r\n    margin-bottom: 0px !important;\n}\r\n", ""]);
 
 // exports
 
@@ -38735,6 +39082,36 @@ process.umask = function() { return 0; };
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/DisplayComponent.vue?vue&type=style&index=0&id=3bdecb46&scoped=true&lang=css&":
+/*!**************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/DisplayComponent.vue?vue&type=style&index=0&id=3bdecb46&scoped=true&lang=css& ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./DisplayComponent.vue?vue&type=style&index=0&id=3bdecb46&scoped=true&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/DisplayComponent.vue?vue&type=style&index=0&id=3bdecb46&scoped=true&lang=css&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/LensComponent.vue?vue&type=style&index=0&id=c1c1e478&scoped=true&lang=css&":
 /*!***********************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/LensComponent.vue?vue&type=style&index=0&id=c1c1e478&scoped=true&lang=css& ***!
@@ -40813,6 +41190,673 @@ var update = __webpack_require__(/*! ../../style-loader/lib/addStyles.js */ "./n
 if(content.locals) module.exports = content.locals;
 
 if(false) {}
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/DisplayComponent.vue?vue&type=template&id=3bdecb46&scoped=true&":
+/*!*******************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/DisplayComponent.vue?vue&type=template&id=3bdecb46&scoped=true& ***!
+  \*******************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "card" }, [
+    _c("div", { staticClass: "card-header" }, [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-sm-6 text-left" }, [
+          _c("h5", { staticClass: "card-category" }, [_vm._v("Display")]),
+          _vm._v(" "),
+          _c("h3", { staticClass: "card-title" }, [_vm._v(_vm._s(this.title))])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-sm-6" }, [
+          _c(
+            "div",
+            {
+              staticClass: "btn-group btn-group-toggle float-right",
+              attrs: { "data-toggle": "buttons" }
+            },
+            [
+              _c(
+                "label",
+                {
+                  staticClass: "btn btn-sm btn-primary btn-simple active",
+                  attrs: { id: "0" },
+                  on: { click: _vm.onBrightness }
+                },
+                [
+                  _c("input", {
+                    attrs: { type: "radio", name: "options", checked: "" }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      staticClass:
+                        "d-none d-sm-block d-md-block d-lg-block d-xl-block"
+                    },
+                    [_vm._v("Brightness")]
+                  ),
+                  _vm._v(" "),
+                  _vm._m(0)
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "label",
+                {
+                  staticClass: "btn btn-sm btn-primary btn-simple",
+                  attrs: { id: "1" },
+                  on: { click: _vm.onExposureAndFocus }
+                },
+                [
+                  _c("input", {
+                    staticClass: "d-none",
+                    attrs: { type: "radio", name: "options" }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      staticClass:
+                        "d-none d-sm-block d-md-block d-lg-block d-xl-block"
+                    },
+                    [_vm._v("Exposure and Focus")]
+                  ),
+                  _vm._v(" "),
+                  _vm._m(1)
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "label",
+                {
+                  staticClass: "btn btn-sm btn-primary btn-simple active",
+                  attrs: { id: "2" },
+                  on: { click: _vm.onZebraLevel }
+                },
+                [
+                  _c("input", { attrs: { type: "radio", name: "options" } }),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      staticClass:
+                        "d-none d-sm-block d-md-block d-lg-block d-xl-block"
+                    },
+                    [_vm._v("Zebra Level")]
+                  ),
+                  _vm._v(" "),
+                  _vm._m(2)
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "label",
+                {
+                  staticClass: "btn btn-sm btn-primary btn-simple",
+                  attrs: { id: "3" },
+                  on: { click: _vm.onPeakingLevel }
+                },
+                [
+                  _c("input", {
+                    staticClass: "d-none",
+                    attrs: { type: "radio", name: "options" }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      staticClass:
+                        "d-none d-sm-block d-md-block d-lg-block d-xl-block"
+                    },
+                    [_vm._v("Peaking Level")]
+                  ),
+                  _vm._v(" "),
+                  _vm._m(3)
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "label",
+                {
+                  staticClass: "btn btn-sm btn-primary btn-simple",
+                  attrs: { id: "4" },
+                  on: { click: _vm.onColorbarEnable }
+                },
+                [
+                  _c("input", {
+                    staticClass: "d-none",
+                    attrs: { type: "radio", name: "options" }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      staticClass:
+                        "d-none d-sm-block d-md-block d-lg-block d-xl-block"
+                    },
+                    [_vm._v("Color bar enable")]
+                  ),
+                  _vm._v(" "),
+                  _vm._m(4)
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "label",
+                {
+                  staticClass: "btn btn-sm btn-primary btn-simple",
+                  attrs: { id: "5" },
+                  on: { click: _vm.onFocusAssist }
+                },
+                [
+                  _c("input", {
+                    staticClass: "d-none d-sm-none",
+                    attrs: { type: "radio", name: "options" }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      staticClass:
+                        "d-none d-sm-block d-md-block d-lg-block d-xl-block"
+                    },
+                    [_vm._v("Focus Assist")]
+                  ),
+                  _vm._v(" "),
+                  _vm._m(5)
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "label",
+                {
+                  staticClass: "btn btn-sm btn-primary btn-simple",
+                  attrs: { id: "6" },
+                  on: { click: _vm.onReturnFeedEnable }
+                },
+                [
+                  _c("input", {
+                    staticClass: "d-none",
+                    attrs: { type: "radio", name: "options" }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      staticClass:
+                        "d-none d-sm-block d-md-block d-lg-block d-xl-block"
+                    },
+                    [_vm._v("Feed Enable")]
+                  ),
+                  _vm._v(" "),
+                  _vm._m(6)
+                ]
+              )
+            ]
+          )
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "card-body" }, [
+      this.showBrightness
+        ? _c(
+            "div",
+            { staticClass: "form-group", attrs: { id: "brightness-body" } },
+            [
+              _c("div", { staticClass: "row" }, [
+                _c(
+                  "div",
+                  { staticClass: "col-sm-4" },
+                  [
+                    _c("label", [_vm._v("Brightness")]),
+                    _vm._v(" "),
+                    _c("custom-slider", {
+                      key: "sliderBrightness",
+                      attrs: { raising: "", min: "0", max: "1", step: "0.05" },
+                      model: {
+                        value: _vm.brightnessValue,
+                        callback: function($$v) {
+                          _vm.brightnessValue = $$v
+                        },
+                        expression: "brightnessValue"
+                      }
+                    })
+                  ],
+                  1
+                )
+              ]),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary",
+                  attrs: { id: "btnBrightness" },
+                  on: { click: _vm.setBrightness }
+                },
+                [_vm._v("Set Brightness")]
+              )
+            ]
+          )
+        : _vm._e(),
+      _vm._v(" "),
+      this.showExposureAndFocus
+        ? _c(
+            "div",
+            { staticClass: "form-group", attrs: { id: "exposure-focus-body" } },
+            [
+              _c("div", { staticClass: "row" }, [
+                _c(
+                  "div",
+                  { staticClass: "col-sm-4" },
+                  [
+                    _c("label", [_vm._v("Exposure and focus tools")]),
+                    _vm._v(" "),
+                    _c("custom-slider", {
+                      key: "sliderExposureFocus",
+                      attrs: {
+                        raising: "",
+                        values: _vm.exposureFocusSliderValues
+                      },
+                      model: {
+                        value: _vm.exposureFocusValue,
+                        callback: function($$v) {
+                          _vm.exposureFocusValue = $$v
+                        },
+                        expression: "exposureFocusValue"
+                      }
+                    })
+                  ],
+                  1
+                )
+              ]),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary",
+                  attrs: { id: "btnExposureFocus" },
+                  on: { click: _vm.setExposureAndFocus }
+                },
+                [_vm._v("Set Exposure and focus tools")]
+              )
+            ]
+          )
+        : _vm._e(),
+      _vm._v(" "),
+      this.showZebraLevel
+        ? _c(
+            "div",
+            { staticClass: "form-group", attrs: { id: "zebra-level-body" } },
+            [
+              _c("div", { staticClass: "row" }, [
+                _c(
+                  "div",
+                  { staticClass: "col-sm-4" },
+                  [
+                    _c("label", [_vm._v("Zebra Level")]),
+                    _vm._v(" "),
+                    _c("custom-slider", {
+                      key: "sliderZebraLevel",
+                      attrs: { raising: "", min: "0", max: "1", step: "0.05" },
+                      model: {
+                        value: _vm.zebraLevelValue,
+                        callback: function($$v) {
+                          _vm.zebraLevelValue = $$v
+                        },
+                        expression: "zebraLevelValue"
+                      }
+                    })
+                  ],
+                  1
+                )
+              ]),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary",
+                  attrs: { id: "btnZebraLevel" },
+                  on: { click: _vm.setZebraLevel }
+                },
+                [_vm._v("Set Zebra Level")]
+              )
+            ]
+          )
+        : _vm._e(),
+      _vm._v(" "),
+      this.showPeakingLevel
+        ? _c(
+            "div",
+            { staticClass: "form-group", attrs: { id: "peaking-level-body" } },
+            [
+              _c("div", { staticClass: "row" }, [
+                _c(
+                  "div",
+                  { staticClass: "col-sm-4" },
+                  [
+                    _c("label", [_vm._v("Peaking Level")]),
+                    _vm._v(" "),
+                    _c("custom-slider", {
+                      key: "sliderPeakingLevel",
+                      attrs: { raising: "", min: "0", max: "1", step: "0.05" },
+                      model: {
+                        value: _vm.peakingLevelValue,
+                        callback: function($$v) {
+                          _vm.peakingLevelValue = $$v
+                        },
+                        expression: "peakingLevelValue"
+                      }
+                    })
+                  ],
+                  1
+                )
+              ]),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary",
+                  attrs: { id: "btnPeakingLevel" },
+                  on: { click: _vm.setPeakingLevel }
+                },
+                [_vm._v("Set Peaking Level")]
+              )
+            ]
+          )
+        : _vm._e(),
+      _vm._v(" "),
+      this.showColorbarEnable
+        ? _c(
+            "div",
+            {
+              staticClass: "form-group",
+              attrs: { id: "colorbar-enable-body" }
+            },
+            [
+              _c("div", { staticClass: "row" }, [
+                _c(
+                  "div",
+                  { staticClass: "col-sm-4" },
+                  [
+                    _c("label", [_vm._v("Color bar enable")]),
+                    _vm._v(" "),
+                    _c("custom-slider", {
+                      key: "sliderColorbarEnable",
+                      attrs: { raising: "", min: "0", max: "30", step: "1" },
+                      model: {
+                        value: _vm.colorbarEnableValue,
+                        callback: function($$v) {
+                          _vm.colorbarEnableValue = $$v
+                        },
+                        expression: "colorbarEnableValue"
+                      }
+                    })
+                  ],
+                  1
+                )
+              ]),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary",
+                  attrs: { id: "btnColorbarEnable" },
+                  on: { click: _vm.setColorbarEnable }
+                },
+                [_vm._v("Set Colorbar Enable")]
+              )
+            ]
+          )
+        : _vm._e(),
+      _vm._v(" "),
+      this.showFocusAssist
+        ? _c(
+            "div",
+            { staticClass: "form-group", attrs: { id: "focus-assist-body" } },
+            [
+              _c("div", { staticClass: "col-sm-6" }, [
+                _c("table", { staticClass: "table" }, [
+                  _c("tbody", [
+                    _c("tr", [
+                      _c("td", { attrs: { width: "40%" } }, [
+                        _vm._v("Focus assist method")
+                      ]),
+                      _vm._v(" "),
+                      _c("td", { attrs: { width: "60%" } }, [
+                        _c(
+                          "select",
+                          {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.focusAssistMethod,
+                                expression: "focusAssistMethod"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: { id: "focusAssist" },
+                            on: {
+                              change: function($event) {
+                                var $$selectedVal = Array.prototype.filter
+                                  .call($event.target.options, function(o) {
+                                    return o.selected
+                                  })
+                                  .map(function(o) {
+                                    var val = "_value" in o ? o._value : o.value
+                                    return val
+                                  })
+                                _vm.focusAssistMethod = $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              }
+                            }
+                          },
+                          [
+                            _c("option", { attrs: { value: "0" } }, [
+                              _vm._v("Peak")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "1" } }, [
+                              _vm._v("Colored lines")
+                            ])
+                          ]
+                        )
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("tr", [
+                      _c("td", [_vm._v("Focus line color")]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _c(
+                          "select",
+                          {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.focusLineColor,
+                                expression: "focusLineColor"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: { id: "focusLineColor" },
+                            on: {
+                              change: function($event) {
+                                var $$selectedVal = Array.prototype.filter
+                                  .call($event.target.options, function(o) {
+                                    return o.selected
+                                  })
+                                  .map(function(o) {
+                                    var val = "_value" in o ? o._value : o.value
+                                    return val
+                                  })
+                                _vm.focusLineColor = $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              }
+                            }
+                          },
+                          [
+                            _c("option", { attrs: { value: "0" } }, [
+                              _vm._v("Red")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "1" } }, [
+                              _vm._v("Green")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "2" } }, [
+                              _vm._v("Blue")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "3" } }, [
+                              _vm._v("White")
+                            ]),
+                            _vm._v(" "),
+                            _c("option", { attrs: { value: "4" } }, [
+                              _vm._v("Black")
+                            ])
+                          ]
+                        )
+                      ])
+                    ])
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary",
+                  attrs: { id: "btnFocusAssist" },
+                  on: { click: _vm.setFocusAssist }
+                },
+                [_vm._v("Focus Assist")]
+              )
+            ]
+          )
+        : _vm._e(),
+      _vm._v(" "),
+      this.showReturnFeedEnable
+        ? _c(
+            "div",
+            {
+              staticClass: "form-group",
+              attrs: { id: "return-feedenable-body" }
+            },
+            [
+              _c("div", { staticClass: "row" }, [
+                _c(
+                  "div",
+                  { staticClass: "col-sm-4" },
+                  [
+                    _c("label", [_vm._v("Program return feed enable")]),
+                    _vm._v(" "),
+                    _c("custom-slider", {
+                      key: "sliderFeedEnable",
+                      attrs: { raising: "", min: "0", max: "30", step: "1" },
+                      model: {
+                        value: _vm.returnFeedEnableValue,
+                        callback: function($$v) {
+                          _vm.returnFeedEnableValue = $$v
+                        },
+                        expression: "returnFeedEnableValue"
+                      }
+                    })
+                  ],
+                  1
+                )
+              ]),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary",
+                  attrs: { id: "btnFeedEnable" },
+                  on: { click: _vm.setReturnFeedEnable }
+                },
+                [_vm._v("Set Program return feed enable")]
+              )
+            ]
+          )
+        : _vm._e()
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "d-block d-sm-none" }, [
+      _c("i", { staticClass: "tim-icons icon-single-02" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "d-block d-sm-none" }, [
+      _c("i", { staticClass: "tim-icons icon-tap-02" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "d-block d-sm-none" }, [
+      _c("i", { staticClass: "tim-icons icon-single-02" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "d-block d-sm-none" }, [
+      _c("i", { staticClass: "tim-icons icon-tap-02" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "d-block d-sm-none" }, [
+      _c("i", { staticClass: "tim-icons icon-tap-02" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "d-block d-sm-none" }, [
+      _c("i", { staticClass: "tim-icons icon-gift-2" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "d-block d-sm-none" }, [
+      _c("i", { staticClass: "tim-icons icon-tap-02" })
+    ])
+  }
+]
+render._withStripped = true
+
+
 
 /***/ }),
 
@@ -55203,6 +56247,7 @@ Vue.component('example-component', __webpack_require__(/*! ./components/ExampleC
 Vue.component('lens-component', __webpack_require__(/*! ./components/LensComponent.vue */ "./resources/js/components/LensComponent.vue")["default"]);
 Vue.component('recordvideo-component', __webpack_require__(/*! ./components/RecordVideoComponent.vue */ "./resources/js/components/RecordVideoComponent.vue")["default"]);
 Vue.component('video-component', __webpack_require__(/*! ./components/VideoComponent.vue */ "./resources/js/components/VideoComponent.vue")["default"]);
+Vue.component('display-component', __webpack_require__(/*! ./components/DisplayComponent.vue */ "./resources/js/components/DisplayComponent.vue")["default"]);
 Vue.component('systeminfo-component', __webpack_require__(/*! ./components/SystemInfoComponent.vue */ "./resources/js/components/SystemInfoComponent.vue")["default"]);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -55258,6 +56303,93 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/components/DisplayComponent.vue":
+/*!******************************************************!*\
+  !*** ./resources/js/components/DisplayComponent.vue ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _DisplayComponent_vue_vue_type_template_id_3bdecb46_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./DisplayComponent.vue?vue&type=template&id=3bdecb46&scoped=true& */ "./resources/js/components/DisplayComponent.vue?vue&type=template&id=3bdecb46&scoped=true&");
+/* harmony import */ var _DisplayComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DisplayComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/DisplayComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _DisplayComponent_vue_vue_type_style_index_0_id_3bdecb46_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./DisplayComponent.vue?vue&type=style&index=0&id=3bdecb46&scoped=true&lang=css& */ "./resources/js/components/DisplayComponent.vue?vue&type=style&index=0&id=3bdecb46&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _DisplayComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _DisplayComponent_vue_vue_type_template_id_3bdecb46_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _DisplayComponent_vue_vue_type_template_id_3bdecb46_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "3bdecb46",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/DisplayComponent.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/DisplayComponent.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************!*\
+  !*** ./resources/js/components/DisplayComponent.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_DisplayComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./DisplayComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/DisplayComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_DisplayComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/DisplayComponent.vue?vue&type=style&index=0&id=3bdecb46&scoped=true&lang=css&":
+/*!***************************************************************************************************************!*\
+  !*** ./resources/js/components/DisplayComponent.vue?vue&type=style&index=0&id=3bdecb46&scoped=true&lang=css& ***!
+  \***************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_DisplayComponent_vue_vue_type_style_index_0_id_3bdecb46_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader!../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./DisplayComponent.vue?vue&type=style&index=0&id=3bdecb46&scoped=true&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/DisplayComponent.vue?vue&type=style&index=0&id=3bdecb46&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_DisplayComponent_vue_vue_type_style_index_0_id_3bdecb46_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_DisplayComponent_vue_vue_type_style_index_0_id_3bdecb46_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_DisplayComponent_vue_vue_type_style_index_0_id_3bdecb46_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_DisplayComponent_vue_vue_type_style_index_0_id_3bdecb46_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+
+
+/***/ }),
+
+/***/ "./resources/js/components/DisplayComponent.vue?vue&type=template&id=3bdecb46&scoped=true&":
+/*!*************************************************************************************************!*\
+  !*** ./resources/js/components/DisplayComponent.vue?vue&type=template&id=3bdecb46&scoped=true& ***!
+  \*************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DisplayComponent_vue_vue_type_template_id_3bdecb46_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./DisplayComponent.vue?vue&type=template&id=3bdecb46&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/DisplayComponent.vue?vue&type=template&id=3bdecb46&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DisplayComponent_vue_vue_type_template_id_3bdecb46_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DisplayComponent_vue_vue_type_template_id_3bdecb46_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
 
 /***/ }),
 

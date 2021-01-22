@@ -23,6 +23,7 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 Vue.component('lens-component', require('./components/LensComponent.vue').default);
 Vue.component('recordvideo-component', require('./components/RecordVideoComponent.vue').default);
 Vue.component('video-component', require('./components/VideoComponent.vue').default);
+Vue.component('display-component', require('./components/DisplayComponent.vue').default);
 Vue.component('systeminfo-component', require('./components/SystemInfoComponent.vue').default);
 
 /**
