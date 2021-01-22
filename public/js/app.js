@@ -2442,6 +2442,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     console.log('SystemInfo-Component mounted.');
@@ -40870,7 +40871,7 @@ var render = function() {
                         raising: "",
                         min: "0.0",
                         max: "1.0",
-                        step: "0.01"
+                        step: "0.05"
                       },
                       model: {
                         value: _vm.manualFocusValue,
@@ -41060,8 +41061,8 @@ var render = function() {
                         attrs: {
                           raising: "",
                           min: "0",
-                          max: "2000",
-                          step: "20"
+                          max: "100",
+                          step: "10"
                         },
                         model: {
                           value: _vm.absoluteZoomMM,
@@ -41354,7 +41355,11 @@ var staticRenderFns = [
         _c("label", { attrs: { id: "ipAddress" } }, [_vm._v("IP Address : ")]),
         _c("br"),
         _vm._v(" "),
-        _c("label", { attrs: { id: "osType" } }, [_vm._v("Operating System: ")])
+        _c("label", { attrs: { id: "osType" } }, [
+          _vm._v("Operating System: ")
+        ]),
+        _vm._v(" "),
+        _c("label", { attrs: { id: "cameraStatus" } })
       ])
     ])
   }
