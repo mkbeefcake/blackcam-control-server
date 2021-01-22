@@ -251,7 +251,7 @@ export default {
     },
     data() {
         return {
-            title: 'Set Video Mode',
+            title: 'Set White Balance',
             showVideoMode: false,
             showRecordFormat: false,
             showWhiteBalance: true,
@@ -402,7 +402,7 @@ export default {
             this.showVideoMode = this.showRecordFormat = this.showRangeShapenISO = this.showShutter = this.showExposureForVideo = false;
         },
         onRangeShapenISO: function(event) {
-            this.title = "Set Range Mode";
+            this.title = "Set Range Mode / Sharpen Level / ISO";
             this.showRangeShapenISO = true;
             this.showRecordFormat = this.showWhiteBalance = this.showVideoMode = this.showShutter = this.showExposureForVideo = false;
         },
@@ -412,12 +412,12 @@ export default {
             this.showVideoMode = this.showWhiteBalance = this.showRangeShapenISO = this.showShutter = this.showExposureForVideo = false;
         },
         onExposureForVideo: function(event) {
-            this.title = "Set Exposure (us)";
+            this.title = "Set Exposure";
             this.showExposureForVideo = true;
             this.showRecordFormat = this.showWhiteBalance = this.showRangeShapenISO = this.showShutter = this.showVideoMode = false;
         },
         onShutter: function(event) {
-            this.title = "Set Shutter Angle";
+            this.title = "Set Shutter Angle & Speed";
             this.showShutter = true;
             this.showRecordFormat = this.showWhiteBalance = this.showRangeShapenISO = this.showVideoMode = this.showExposureForVideo = false;
         },

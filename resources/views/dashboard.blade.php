@@ -15,6 +15,9 @@
         <div class="col-12">
             <display-component></display-component>
         </div>
+        <div class="col-12">
+            <audio-component></audio-component>
+        </div>
         <div class="col-4">
             <systeminfo-component></systeminfo-component>
         </div>

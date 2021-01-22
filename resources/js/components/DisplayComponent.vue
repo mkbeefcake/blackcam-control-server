@@ -15,32 +15,11 @@
                             <i class="tim-icons icon-single-02"></i>
                         </span>
                     </label>
-                    <label class="btn btn-sm btn-primary btn-simple" id="1" v-on:click="onExposureAndFocus">
-                        <input type="radio" class="d-none" name="options">
-                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Exposure and Focus</span>
-                        <span class="d-block d-sm-none">
-                            <i class="tim-icons icon-tap-02"></i>
-                        </span>
-                    </label>
-                    <label class="btn btn-sm btn-primary btn-simple active" id="2" v-on:click="onZebraLevel">
+                    <label class="btn btn-sm btn-primary btn-simple active" id="2" v-on:click="onZebraPeakingLevel">
                         <input type="radio" name="options">
-                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Zebra Level</span>
+                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Levels</span>
                         <span class="d-block d-sm-none">
                             <i class="tim-icons icon-single-02"></i>
-                        </span>
-                    </label>
-                    <label class="btn btn-sm btn-primary btn-simple" id="3" v-on:click="onPeakingLevel">
-                        <input type="radio" class="d-none" name="options">
-                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Peaking Level</span>
-                        <span class="d-block d-sm-none">
-                            <i class="tim-icons icon-tap-02"></i>
-                        </span>
-                    </label>
-                    <label class="btn btn-sm btn-primary btn-simple" id="4" v-on:click="onColorbarEnable">
-                        <input type="radio" class="d-none" name="options">
-                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Color bar enable</span>
-                        <span class="d-block d-sm-none">
-                            <i class="tim-icons icon-tap-02"></i>
                         </span>
                     </label>
                     <label class="btn btn-sm btn-primary btn-simple" id="5" v-on:click="onFocusAssist">
@@ -63,49 +42,41 @@
         </div>
         <div class="card-body">
             <div class="form-group" id="brightness-body" v-if="this.showBrightness">
-                <div class="row">
-                    <div class="col-sm-4">
-                        <label>Brightness</label>
-                        <custom-slider raising min="0" max="1" step="0.05" v-model="brightnessValue" key="sliderBrightness"/>
-                    </div>
-                </div>
-                <button class="btn btn-primary" id="btnBrightness" v-on:click="setBrightness">Set Brightness</button>
+                <table class="table col-sm-8">
+                    <tbody>
+                        <tr>
+                            <td width="30%">Brightness</td>
+                            <td width="40%"><custom-slider raising min="0" max="1" step="0.05" v-model="brightnessValue" key="sliderBrightness"/></td>
+                            <td width="30%"><button class="btn btn-primary" id="btnBrightness" v-on:click="setBrightness">Set</button></td>
+                        </tr>
+                        <tr>
+                            <td>Exposure and focus tools</td>
+                            <td><custom-slider raising :values="exposureFocusSliderValues" v-model="exposureFocusValue" key="sliderExposureFocus"/></td>
+                            <td><button class="btn btn-primary" id="btnExposureFocus" v-on:click="setExposureAndFocus">Set</button></td>
+                        </tr>
+                        <tr>
+                            <td>Color bar enable</td>
+                            <td><custom-slider raising min="0" max="30" step="1" v-model="colorbarEnableValue" key="sliderColorbarEnable"/></td>
+                            <td><button class="btn btn-primary" id="btnColorbarEnable" v-on:click="setColorbarEnable">Set</button></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-            <div class="form-group" id="exposure-focus-body" v-if="this.showExposureAndFocus">
-                <div class="row">
-                    <div class="col-sm-4">
-                        <label>Exposure and focus tools</label>
-                        <custom-slider raising :values="exposureFocusSliderValues" v-model="exposureFocusValue" key="sliderExposureFocus"/>
-                    </div>
-                </div>
-                <button class="btn btn-primary" id="btnExposureFocus" v-on:click="setExposureAndFocus">Set Exposure and focus tools</button>
-            </div>
-            <div class="form-group" id="zebra-level-body" v-if="this.showZebraLevel">
-                <div class="row">
-                    <div class="col-sm-4">
-                        <label>Zebra Level</label>
-                        <custom-slider raising min="0" max="1" step="0.05" v-model="zebraLevelValue" key="sliderZebraLevel"/>
-                    </div>
-                </div>
-                <button class="btn btn-primary" id="btnZebraLevel" v-on:click="setZebraLevel">Set Zebra Level</button>
-            </div>
-            <div class="form-group" id="peaking-level-body" v-if="this.showPeakingLevel">
-                <div class="row">
-                    <div class="col-sm-4">
-                        <label>Peaking Level</label>
-                        <custom-slider raising min="0" max="1" step="0.05" v-model="peakingLevelValue" key="sliderPeakingLevel"/>
-                    </div>
-                </div>
-                <button class="btn btn-primary" id="btnPeakingLevel" v-on:click="setPeakingLevel">Set Peaking Level</button>
-            </div>
-            <div class="form-group" id="colorbar-enable-body" v-if="this.showColorbarEnable">
-                <div class="row">
-                    <div class="col-sm-4">
-                        <label>Color bar enable</label>
-                        <custom-slider raising min="0" max="30" step="1" v-model="colorbarEnableValue" key="sliderColorbarEnable"/>
-                    </div>
-                </div>
-                <button class="btn btn-primary" id="btnColorbarEnable" v-on:click="setColorbarEnable">Set Colorbar Enable</button>
+            <div class="form-group" id="zebra-level-body" v-if="this.showZebraPeakingLevel">
+                <table class="table col-sm-8">
+                    <tbody>
+                        <tr>
+                            <td width="30%">Zebra Level</td>
+                            <td width="40%"><custom-slider raising min="0" max="1" step="0.05" v-model="zebraLevelValue" key="sliderZebraLevel"/></td>
+                            <td width="30%"><button class="btn btn-primary" id="btnZebraLevel" v-on:click="setZebraLevel">Set</button></td>
+                        </tr>
+                        <tr>
+                            <td>Peaking Level</td>
+                            <td><custom-slider raising min="0" max="1" step="0.05" v-model="peakingLevelValue" key="sliderPeakingLevel"/></td>
+                            <td><button class="btn btn-primary" id="btnPeakingLevel" v-on:click="setPeakingLevel">Set</button></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
             <div class="form-group" id="focus-assist-body" v-if="this.showFocusAssist">
                 <div class="col-sm-6">
@@ -163,10 +134,7 @@ export default {
         return {
             title: 'Set Brightness',
             showBrightness: true,
-            showExposureAndFocus: false,
-            showZebraLevel: false,
-            showPeakingLevel: false, 
-            showColorbarEnable: false,
+            showZebraPeakingLevel: false,
             showFocusAssist: false,
             showReturnFeedEnable: false,
             brightnessValue: "0",
@@ -220,44 +188,22 @@ export default {
         onBrightness: function(event) {
             this.title = "Set Brightness";
             this.showBrightness = true;
-            this.showExposureAndFocus = this.showZebraLevel = this.showPeakingLevel = 
-            this.showColorbarEnable = this.showFocusAssist = this.showReturnFeedEnable = false;
+            this.showZebraPeakingLevel = this.showFocusAssist = this.showReturnFeedEnable = false;
         },
-        onExposureAndFocus: function(event) {
-            this.title = "Set Exposure and Focus tools";
-            this.showExposureAndFocus = true;
-            this.showBrightness = this.showZebraLevel = this.showPeakingLevel = 
-            this.showColorbarEnable = this.showFocusAssist = this.showReturnFeedEnable = false;
-        },
-        onZebraLevel: function(event) {
-            this.title = "Set Zebra Level";
-            this.showZebraLevel = true;
-            this.showExposureAndFocus = this.showBrightness = this.showPeakingLevel = 
-            this.showColorbarEnable = this.showFocusAssist = this.showReturnFeedEnable = false;
-        },
-        onPeakingLevel: function(event) {
-            this.title = "Set Peaking Level";
-            this.showPeakingLevel = true;
-            this.showExposureAndFocus = this.showZebraLevel = this.showBrightness = 
-            this.showColorbarEnable = this.showFocusAssist = this.showReturnFeedEnable = false;
-        },
-        onColorbarEnable: function(event) {
-            this.title = "Set Color bar enable";
-            this.showColorbarEnable = true;
-            this.showExposureAndFocus = this.showZebraLevel = this.showPeakingLevel = 
+        onZebraPeakingLevel: function(event) {
+            this.title = "Set Levels";
+            this.showZebraPeakingLevel = true;
             this.showBrightness = this.showFocusAssist = this.showReturnFeedEnable = false;
         },
         onFocusAssist: function(event) {
             this.title = "Set Focus Assist";
             this.showFocusAssist = true;
-            this.showExposureAndFocus = this.showZebraLevel = this.showPeakingLevel = 
-            this.showColorbarEnable = this.showBrightness = this.showReturnFeedEnable = false;
+            this.showZebraPeakingLevel = this.showBrightness = this.showReturnFeedEnable = false;
         },
         onReturnFeedEnable: function(event) {
             this.title = "Set Program return feed enable";
             this.showReturnFeedEnable = true;
-            this.showExposureAndFocus = this.showZebraLevel = this.showPeakingLevel = 
-            this.showColorbarEnable = this.showFocusAssist = this.showBrightness = false;
+            this.showZebraPeakingLevel = this.showFocusAssist = this.showBrightness = false;
         },
         sendDisplayCommand: function(command) {
             if (selectedCameraId == "")

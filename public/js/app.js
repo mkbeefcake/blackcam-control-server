@@ -1946,6 +1946,250 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/AudioComponent.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/AudioComponent.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vue_custom_range_slider__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-custom-range-slider */ "./node_modules/vue-custom-range-slider/dist/vue-custom-range-slider.common.js");
+/* harmony import */ var vue_custom_range_slider__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue_custom_range_slider__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vue_custom_range_slider_dist_vue_custom_range_slider_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-custom-range-slider/dist/vue-custom-range-slider.css */ "./node_modules/vue-custom-range-slider/dist/vue-custom-range-slider.css");
+/* harmony import */ var vue_custom_range_slider_dist_vue_custom_range_slider_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue_custom_range_slider_dist_vue_custom_range_slider_css__WEBPACK_IMPORTED_MODULE_1__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    CustomSlider: vue_custom_range_slider__WEBPACK_IMPORTED_MODULE_0___default.a
+  },
+  data: function data() {
+    return {
+      title: 'Set Mic Level',
+      showMicLevel: true,
+      showHeadphoneSpeaker: false,
+      showInput: false,
+      showPhantomPower: false,
+      micLevelValue: "0",
+      headphoneLevelValue: "0",
+      headphoneMixValue: "0",
+      speakerLevelValue: "0",
+      inputTypeValue: "0",
+      inputLevelCh0Value: "0",
+      inputLevelCh1Value: "0",
+      phantomPowerValue: "true"
+    };
+  },
+  mounted: function mounted() {
+    console.log('RecordDisplay-Component mounted.');
+  },
+  methods: {
+    onMicLevel: function onMicLevel(event) {
+      this.title = "Set Mic Level";
+      this.showMicLevel = true;
+      this.showHeadphoneSpeaker = this.showInput = this.showPhantomPower = false;
+    },
+    onHeadphoneSpeaker: function onHeadphoneSpeaker(event) {
+      this.title = "Set Levels";
+      this.showHeadphoneSpeaker = true;
+      this.showMicLevel = this.showInput = this.showPhantomPower = false;
+    },
+    onInput: function onInput(event) {
+      this.title = "Set Focus Assist";
+      this.showInput = true;
+      this.showHeadphoneSpeaker = this.showMicLevel = this.showPhantomPower = false;
+    },
+    onPhantomPower: function onPhantomPower(event) {
+      this.title = "Set Program return feed enable";
+      this.showPhantomPower = true;
+      this.showHeadphoneSpeaker = this.showInput = this.showMicLevel = false;
+    },
+    sendAudioCommand: function sendAudioCommand(command) {
+      if (selectedCameraId == "") socket.emit('admin', null, JSON.stringify(command));else socket.emit('admin', selectedCameraId, JSON.stringify(command));
+    },
+    setMicLevel: function setMicLevel(event) {
+      debugger;
+      var command = {
+        type: 'mic-level',
+        micLevelValue: this.micLevelValue
+      };
+      this.sendAudioCommand(command);
+      alert('Sent Mic Level is called');
+    },
+    setHeadphoneLevel: function setHeadphoneLevel(event) {
+      debugger;
+      var command = {
+        type: 'headphone-level',
+        headphoneLevelValue: this.headphoneLevelValue
+      };
+      this.sendAudioCommand(command);
+      alert('Sent Headphone Level is called');
+    },
+    setHeadphoneMix: function setHeadphoneMix(event) {
+      debugger;
+      var command = {
+        type: 'headphone-mix',
+        headphoneMixValue: this.headphoneMixValue
+      };
+      this.sendAudioCommand(command);
+      alert('Sent Headphone Program Mix is called');
+    },
+    setSpeakerLevel: function setSpeakerLevel(event) {
+      debugger;
+      var command = {
+        type: 'speaking-level',
+        speakerLevelValue: this.speakerLevelValue
+      };
+      this.sendAudioCommand(command);
+      alert('Sent Speaker Level is called');
+    },
+    setInputType: function setInputType(event) {
+      debugger;
+      var command = {
+        type: 'input-type',
+        inputTypeValue: this.inputTypeValue
+      };
+      this.sendAudioCommand(command);
+      alert('Sent Input Type is called');
+    },
+    setInputLevel: function setInputLevel(event) {
+      debugger;
+      var command = {
+        type: 'input-level',
+        inputLevelCh0Value: this.inputLevelCh0Value,
+        inputLevelCh1Value: this.inputLevelCh1Value
+      };
+      this.sendAudioCommand(command);
+      alert('Sent Input Level is called');
+    },
+    setPhantomPower: function setPhantomPower(event) {
+      debugger;
+      var command = {
+        type: 'phantom-power',
+        phantomPowerValue: this.phantomPowerValue
+      };
+      this.sendAudioCommand(command);
+      alert('Sent Phantom Power is called');
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/DisplayComponent.vue?vue&type=script&lang=js&":
 /*!***************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/DisplayComponent.vue?vue&type=script&lang=js& ***!
@@ -2083,35 +2327,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2122,10 +2337,7 @@ __webpack_require__.r(__webpack_exports__);
     return {
       title: 'Set Brightness',
       showBrightness: true,
-      showExposureAndFocus: false,
-      showZebraLevel: false,
-      showPeakingLevel: false,
-      showColorbarEnable: false,
+      showZebraPeakingLevel: false,
       showFocusAssist: false,
       showReturnFeedEnable: false,
       brightnessValue: "0",
@@ -2170,37 +2382,22 @@ __webpack_require__.r(__webpack_exports__);
     onBrightness: function onBrightness(event) {
       this.title = "Set Brightness";
       this.showBrightness = true;
-      this.showExposureAndFocus = this.showZebraLevel = this.showPeakingLevel = this.showColorbarEnable = this.showFocusAssist = this.showReturnFeedEnable = false;
+      this.showZebraPeakingLevel = this.showFocusAssist = this.showReturnFeedEnable = false;
     },
-    onExposureAndFocus: function onExposureAndFocus(event) {
-      this.title = "Set Exposure and Focus tools";
-      this.showExposureAndFocus = true;
-      this.showBrightness = this.showZebraLevel = this.showPeakingLevel = this.showColorbarEnable = this.showFocusAssist = this.showReturnFeedEnable = false;
-    },
-    onZebraLevel: function onZebraLevel(event) {
-      this.title = "Set Zebra Level";
-      this.showZebraLevel = true;
-      this.showExposureAndFocus = this.showBrightness = this.showPeakingLevel = this.showColorbarEnable = this.showFocusAssist = this.showReturnFeedEnable = false;
-    },
-    onPeakingLevel: function onPeakingLevel(event) {
-      this.title = "Set Peaking Level";
-      this.showPeakingLevel = true;
-      this.showExposureAndFocus = this.showZebraLevel = this.showBrightness = this.showColorbarEnable = this.showFocusAssist = this.showReturnFeedEnable = false;
-    },
-    onColorbarEnable: function onColorbarEnable(event) {
-      this.title = "Set Color bar enable";
-      this.showColorbarEnable = true;
-      this.showExposureAndFocus = this.showZebraLevel = this.showPeakingLevel = this.showBrightness = this.showFocusAssist = this.showReturnFeedEnable = false;
+    onZebraPeakingLevel: function onZebraPeakingLevel(event) {
+      this.title = "Set Levels";
+      this.showZebraPeakingLevel = true;
+      this.showBrightness = this.showFocusAssist = this.showReturnFeedEnable = false;
     },
     onFocusAssist: function onFocusAssist(event) {
       this.title = "Set Focus Assist";
       this.showFocusAssist = true;
-      this.showExposureAndFocus = this.showZebraLevel = this.showPeakingLevel = this.showColorbarEnable = this.showBrightness = this.showReturnFeedEnable = false;
+      this.showZebraPeakingLevel = this.showBrightness = this.showReturnFeedEnable = false;
     },
     onReturnFeedEnable: function onReturnFeedEnable(event) {
       this.title = "Set Program return feed enable";
       this.showReturnFeedEnable = true;
-      this.showExposureAndFocus = this.showZebraLevel = this.showPeakingLevel = this.showColorbarEnable = this.showFocusAssist = this.showBrightness = false;
+      this.showZebraPeakingLevel = this.showFocusAssist = this.showBrightness = false;
     },
     sendDisplayCommand: function sendDisplayCommand(command) {
       if (selectedCameraId == "") socket.emit('admin', null, JSON.stringify(command));else socket.emit('admin', selectedCameraId, JSON.stringify(command));
@@ -3043,7 +3240,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      title: 'Set Video Mode',
+      title: 'Set White Balance',
       showVideoMode: false,
       showRecordFormat: false,
       showWhiteBalance: true,
@@ -3166,7 +3363,7 @@ __webpack_require__.r(__webpack_exports__);
       this.showVideoMode = this.showRecordFormat = this.showRangeShapenISO = this.showShutter = this.showExposureForVideo = false;
     },
     onRangeShapenISO: function onRangeShapenISO(event) {
-      this.title = "Set Range Mode";
+      this.title = "Set Range Mode / Sharpen Level / ISO";
       this.showRangeShapenISO = true;
       this.showRecordFormat = this.showWhiteBalance = this.showVideoMode = this.showShutter = this.showExposureForVideo = false;
     },
@@ -3176,12 +3373,12 @@ __webpack_require__.r(__webpack_exports__);
       this.showVideoMode = this.showWhiteBalance = this.showRangeShapenISO = this.showShutter = this.showExposureForVideo = false;
     },
     onExposureForVideo: function onExposureForVideo(event) {
-      this.title = "Set Exposure (us)";
+      this.title = "Set Exposure";
       this.showExposureForVideo = true;
       this.showRecordFormat = this.showWhiteBalance = this.showRangeShapenISO = this.showShutter = this.showVideoMode = false;
     },
     onShutter: function onShutter(event) {
-      this.title = "Set Shutter Angle";
+      this.title = "Set Shutter Angle & Speed";
       this.showShutter = true;
       this.showRecordFormat = this.showWhiteBalance = this.showRangeShapenISO = this.showVideoMode = this.showExposureForVideo = false;
     },
@@ -7757,6 +7954,25 @@ exports = module.exports = __webpack_require__(/*! ../../css-loader/lib/css-base
 
 // module
 exports.push([module.i, ".slider{position:relative;margin-top:50px;margin-bottom:30px;width:100%;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column}.slider__label{position:absolute;top:-17px;background:#fff;color:#333;font-weight:700;padding:2px 5px;font-size:12px;text-align:center;-webkit-transform:translateX(-50%);transform:translateX(-50%);margin-left:1em;-webkit-box-shadow:0 10px 20px -5px rgba(45,45,45,.25);box-shadow:0 10px 20px -5px rgba(45,45,45,.25);min-width:30px;white-space:nowrap}.slider__label:after{content:\"\";position:absolute;bottom:-10px;height:0;width:0;left:0;right:0;margin:auto;border:5px solid transparent;border-top-color:#fff}.slider__wrapper{position:relative;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center}.slider__track{width:100%;position:absolute;z-index:0;height:3px;background:#999}.slider__track--rectangular{height:3px}.slider__track-bottom,.slider__track-top{content:\"\";width:100%;position:absolute;width:0;height:0;border-style:solid}.slider__track-top{top:-6px;border-width:0 0 6px 500px;border-color:transparent transparent #999 transparent}.slider__track-bottom{top:3px;border-width:0 500px 6px 0;border-color:transparent #999 transparent transparent}.slider__input{-webkit-appearance:none;margin:10px 0;width:100%;background:none;padding:0;z-index:1;position:relative}.slider__input:focus{outline:none}.slider__input::-webkit-slider-runnable-track{width:100%;height:10px;cursor:pointer;animate:.2s;background:transparent;border-radius:0;border:none}.slider__input::-webkit-slider-thumb{height:20px;width:20px;border-radius:50%;cursor:pointer;-webkit-appearance:none;margin-top:-5px;background:#eee}.slider__input::-moz-range-thumb{height:20px;width:20px;border-radius:50%;background:#eee;cursor:pointer;border:none}.slider__input::-ms-thumb{height:20px;width:20px;border-radius:50%;background:#eee;cursor:pointer}.slider__input:focus::-webkit-slider-runnable-track{background:transparent}.slider__input::-moz-range-track{width:100%;height:10px;cursor:pointer;animate:.2s;background:transparent;border-radius:0}.slider__input::-ms-track{width:100%;height:10px;cursor:pointer;animate:.2s;background:transparent;border-color:transparent;border-width:10px 0;border-radius:0;color:transparent}.slider__input::-ms-fill-lower,.slider__input::-ms-fill-upper{background:transparent;border:none;border-radius:0}", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/AudioComponent.vue?vue&type=style&index=0&id=07fa7d1c&scoped=true&lang=css&":
+/*!********************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/AudioComponent.vue?vue&type=style&index=0&id=07fa7d1c&scoped=true&lang=css& ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.slider[data-v-07fa7d1c] {\r\n    margin-top: 10px !important;\r\n    margin-bottom: 0px !important;\n}\r\n", ""]);
 
 // exports
 
@@ -38979,6 +39195,36 @@ process.umask = function() { return 0; };
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/AudioComponent.vue?vue&type=style&index=0&id=07fa7d1c&scoped=true&lang=css&":
+/*!************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/AudioComponent.vue?vue&type=style&index=0&id=07fa7d1c&scoped=true&lang=css& ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./AudioComponent.vue?vue&type=style&index=0&id=07fa7d1c&scoped=true&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/AudioComponent.vue?vue&type=style&index=0&id=07fa7d1c&scoped=true&lang=css&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/DisplayComponent.vue?vue&type=style&index=0&id=3bdecb46&scoped=true&lang=css&":
 /*!**************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/DisplayComponent.vue?vue&type=style&index=0&id=3bdecb46&scoped=true&lang=css& ***!
@@ -41090,6 +41336,540 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/AudioComponent.vue?vue&type=template&id=07fa7d1c&scoped=true&":
+/*!*****************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/AudioComponent.vue?vue&type=template&id=07fa7d1c&scoped=true& ***!
+  \*****************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "card" }, [
+    _c("div", { staticClass: "card-header" }, [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-sm-6 text-left" }, [
+          _c("h5", { staticClass: "card-category" }, [_vm._v("Audio")]),
+          _vm._v(" "),
+          _c("h3", { staticClass: "card-title" }, [_vm._v(_vm._s(this.title))])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-sm-6" }, [
+          _c(
+            "div",
+            {
+              staticClass: "btn-group btn-group-toggle float-right",
+              attrs: { "data-toggle": "buttons" }
+            },
+            [
+              _c(
+                "label",
+                {
+                  staticClass: "btn btn-sm btn-primary btn-simple active",
+                  attrs: { id: "0" },
+                  on: { click: _vm.onMicLevel }
+                },
+                [
+                  _c("input", {
+                    attrs: { type: "radio", name: "options", checked: "" }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      staticClass:
+                        "d-none d-sm-block d-md-block d-lg-block d-xl-block"
+                    },
+                    [_vm._v("Mic")]
+                  ),
+                  _vm._v(" "),
+                  _vm._m(0)
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "label",
+                {
+                  staticClass: "btn btn-sm btn-primary btn-simple active",
+                  attrs: { id: "2" },
+                  on: { click: _vm.onHeadphoneSpeaker }
+                },
+                [
+                  _c("input", { attrs: { type: "radio", name: "options" } }),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      staticClass:
+                        "d-none d-sm-block d-md-block d-lg-block d-xl-block"
+                    },
+                    [_vm._v("Headphone / Speaker")]
+                  ),
+                  _vm._v(" "),
+                  _vm._m(1)
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "label",
+                {
+                  staticClass: "btn btn-sm btn-primary btn-simple",
+                  attrs: { id: "5" },
+                  on: { click: _vm.onInput }
+                },
+                [
+                  _c("input", {
+                    staticClass: "d-none d-sm-none",
+                    attrs: { type: "radio", name: "options" }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      staticClass:
+                        "d-none d-sm-block d-md-block d-lg-block d-xl-block"
+                    },
+                    [_vm._v("Input")]
+                  ),
+                  _vm._v(" "),
+                  _vm._m(2)
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "label",
+                {
+                  staticClass: "btn btn-sm btn-primary btn-simple",
+                  attrs: { id: "6" },
+                  on: { click: _vm.onPhantomPower }
+                },
+                [
+                  _c("input", {
+                    staticClass: "d-none",
+                    attrs: { type: "radio", name: "options" }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      staticClass:
+                        "d-none d-sm-block d-md-block d-lg-block d-xl-block"
+                    },
+                    [_vm._v("Phantom Power")]
+                  ),
+                  _vm._v(" "),
+                  _vm._m(3)
+                ]
+              )
+            ]
+          )
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "card-body" }, [
+      this.showMicLevel
+        ? _c(
+            "div",
+            { staticClass: "form-group", attrs: { id: "mic-level-body" } },
+            [
+              _c("div", { staticClass: "row" }, [
+                _c(
+                  "div",
+                  { staticClass: "col-sm-4" },
+                  [
+                    _c("label", [_vm._v("Mic Level")]),
+                    _vm._v(" "),
+                    _c("custom-slider", {
+                      key: "sliderMicLevel",
+                      attrs: { raising: "", min: "0", max: "1", step: "0.05" },
+                      model: {
+                        value: _vm.micLevelValue,
+                        callback: function($$v) {
+                          _vm.micLevelValue = $$v
+                        },
+                        expression: "micLevelValue"
+                      }
+                    })
+                  ],
+                  1
+                )
+              ]),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary",
+                  attrs: { id: "btnMicLevel" },
+                  on: { click: _vm.setMicLevel }
+                },
+                [_vm._v("Set Mic Level")]
+              )
+            ]
+          )
+        : _vm._e(),
+      _vm._v(" "),
+      this.showHeadphoneSpeaker
+        ? _c(
+            "div",
+            { staticClass: "form-group", attrs: { id: "headphone-body" } },
+            [
+              _c("table", { staticClass: "table col-sm-8" }, [
+                _c("tbody", [
+                  _c("tr", [
+                    _c("td", { attrs: { width: "30%" } }, [
+                      _vm._v("Headphone Level")
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "td",
+                      { attrs: { width: "40%" } },
+                      [
+                        _c("custom-slider", {
+                          key: "sliderHeadphoneLevel",
+                          attrs: {
+                            raising: "",
+                            min: "0",
+                            max: "1",
+                            step: "0.05"
+                          },
+                          model: {
+                            value: _vm.headphoneLevelValue,
+                            callback: function($$v) {
+                              _vm.headphoneLevelValue = $$v
+                            },
+                            expression: "headphoneLevelValue"
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c("td", { attrs: { width: "30%" } }, [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-primary",
+                          attrs: { id: "btnHeadphoneLevel" },
+                          on: { click: _vm.setHeadphoneLevel }
+                        },
+                        [_vm._v("Set")]
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("td", [_vm._v("Headphone program mix")]),
+                    _vm._v(" "),
+                    _c(
+                      "td",
+                      [
+                        _c("custom-slider", {
+                          key: "sliderHeadphoneMix",
+                          attrs: {
+                            raising: "",
+                            min: "0",
+                            max: "1",
+                            step: "0.05"
+                          },
+                          model: {
+                            value: _vm.headphoneMixValue,
+                            callback: function($$v) {
+                              _vm.headphoneMixValue = $$v
+                            },
+                            expression: "headphoneMixValue"
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-primary",
+                          attrs: { id: "btnHeadphoneMix" },
+                          on: { click: _vm.setHeadphoneMix }
+                        },
+                        [_vm._v("Set")]
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("td", [_vm._v("Speaker Level")]),
+                    _vm._v(" "),
+                    _c(
+                      "td",
+                      [
+                        _c("custom-slider", {
+                          key: "sliderSpeakerLevel",
+                          attrs: {
+                            raising: "",
+                            min: "0",
+                            max: "1",
+                            step: "0.05"
+                          },
+                          model: {
+                            value: _vm.speakerLevelValue,
+                            callback: function($$v) {
+                              _vm.speakerLevelValue = $$v
+                            },
+                            expression: "speakerLevelValue"
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-primary",
+                          attrs: { id: "btnSpeakerLevel" },
+                          on: { click: _vm.setSpeakerLevel }
+                        },
+                        [_vm._v("Set")]
+                      )
+                    ])
+                  ])
+                ])
+              ])
+            ]
+          )
+        : _vm._e(),
+      _vm._v(" "),
+      this.showInput
+        ? _c(
+            "div",
+            { staticClass: "form-group", attrs: { id: "input-body" } },
+            [
+              _c("table", { staticClass: "table col-sm-8" }, [
+                _c("tbody", [
+                  _c("tr", [
+                    _c("td", { attrs: { width: "30%" } }, [
+                      _vm._v("Input Type")
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "td",
+                      { attrs: { width: "40%" } },
+                      [
+                        _c("custom-slider", {
+                          key: "sliderInputType",
+                          attrs: { raising: "", min: "0", max: "3", step: "1" },
+                          model: {
+                            value: _vm.inputTypeValue,
+                            callback: function($$v) {
+                              _vm.inputTypeValue = $$v
+                            },
+                            expression: "inputTypeValue"
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c("td", { attrs: { width: "30%" } }, [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-primary",
+                          attrs: { id: "btnInputType" },
+                          on: { click: _vm.setInputType }
+                        },
+                        [_vm._v("Set")]
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("td", [_vm._v("Input Levels : (ch0)")]),
+                    _vm._v(" "),
+                    _c(
+                      "td",
+                      [
+                        _c("custom-slider", {
+                          key: "sliderLevelCh0",
+                          attrs: {
+                            raising: "",
+                            min: "0",
+                            max: "1",
+                            step: "0.05"
+                          },
+                          model: {
+                            value: _vm.inputLevelCh0Value,
+                            callback: function($$v) {
+                              _vm.inputLevelCh0Value = $$v
+                            },
+                            expression: "inputLevelCh0Value"
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c("td")
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("td", [_vm._v("Input Levels : (ch1)")]),
+                    _vm._v(" "),
+                    _c(
+                      "td",
+                      [
+                        _c("custom-slider", {
+                          key: "sliderLevelCh1",
+                          attrs: {
+                            raising: "",
+                            min: "0",
+                            max: "1",
+                            step: "0.05"
+                          },
+                          model: {
+                            value: _vm.inputLevelCh1Value,
+                            callback: function($$v) {
+                              _vm.inputLevelCh1Value = $$v
+                            },
+                            expression: "inputLevelCh1Value"
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-primary",
+                          attrs: { id: "btnInputLevel" },
+                          on: { click: _vm.setInputLevel }
+                        },
+                        [_vm._v("Set")]
+                      )
+                    ])
+                  ])
+                ])
+              ])
+            ]
+          )
+        : _vm._e(),
+      _vm._v(" "),
+      this.showPhantomPower
+        ? _c(
+            "div",
+            { staticClass: "form-group", attrs: { id: "phantom-power-body" } },
+            [
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col-sm-4" }, [
+                  _c("label", [_vm._v("Phantom Power")]),
+                  _vm._v(" "),
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.phantomPowerValue,
+                          expression: "phantomPowerValue"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { id: "phantomPower" },
+                      on: {
+                        change: function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.phantomPowerValue = $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        }
+                      }
+                    },
+                    [
+                      _c("option", { attrs: { value: "true" } }, [
+                        _vm._v("True")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "false" } }, [
+                        _vm._v("False")
+                      ])
+                    ]
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary",
+                  attrs: { id: "btnPhantomPower" },
+                  on: { click: _vm.setPhantomPower }
+                },
+                [_vm._v("Set")]
+              )
+            ]
+          )
+        : _vm._e()
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "d-block d-sm-none" }, [
+      _c("i", { staticClass: "tim-icons icon-single-02" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "d-block d-sm-none" }, [
+      _c("i", { staticClass: "tim-icons icon-single-02" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "d-block d-sm-none" }, [
+      _c("i", { staticClass: "tim-icons icon-gift-2" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "d-block d-sm-none" }, [
+      _c("i", { staticClass: "tim-icons icon-tap-02" })
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/DisplayComponent.vue?vue&type=template&id=3bdecb46&scoped=true&":
 /*!*******************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/DisplayComponent.vue?vue&type=template&id=3bdecb46&scoped=true& ***!
@@ -41150,35 +41930,9 @@ var render = function() {
               _c(
                 "label",
                 {
-                  staticClass: "btn btn-sm btn-primary btn-simple",
-                  attrs: { id: "1" },
-                  on: { click: _vm.onExposureAndFocus }
-                },
-                [
-                  _c("input", {
-                    staticClass: "d-none",
-                    attrs: { type: "radio", name: "options" }
-                  }),
-                  _vm._v(" "),
-                  _c(
-                    "span",
-                    {
-                      staticClass:
-                        "d-none d-sm-block d-md-block d-lg-block d-xl-block"
-                    },
-                    [_vm._v("Exposure and Focus")]
-                  ),
-                  _vm._v(" "),
-                  _vm._m(1)
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "label",
-                {
                   staticClass: "btn btn-sm btn-primary btn-simple active",
                   attrs: { id: "2" },
-                  on: { click: _vm.onZebraLevel }
+                  on: { click: _vm.onZebraPeakingLevel }
                 },
                 [
                   _c("input", { attrs: { type: "radio", name: "options" } }),
@@ -41189,62 +41943,10 @@ var render = function() {
                       staticClass:
                         "d-none d-sm-block d-md-block d-lg-block d-xl-block"
                     },
-                    [_vm._v("Zebra Level")]
+                    [_vm._v("Levels")]
                   ),
                   _vm._v(" "),
-                  _vm._m(2)
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "label",
-                {
-                  staticClass: "btn btn-sm btn-primary btn-simple",
-                  attrs: { id: "3" },
-                  on: { click: _vm.onPeakingLevel }
-                },
-                [
-                  _c("input", {
-                    staticClass: "d-none",
-                    attrs: { type: "radio", name: "options" }
-                  }),
-                  _vm._v(" "),
-                  _c(
-                    "span",
-                    {
-                      staticClass:
-                        "d-none d-sm-block d-md-block d-lg-block d-xl-block"
-                    },
-                    [_vm._v("Peaking Level")]
-                  ),
-                  _vm._v(" "),
-                  _vm._m(3)
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "label",
-                {
-                  staticClass: "btn btn-sm btn-primary btn-simple",
-                  attrs: { id: "4" },
-                  on: { click: _vm.onColorbarEnable }
-                },
-                [
-                  _c("input", {
-                    staticClass: "d-none",
-                    attrs: { type: "radio", name: "options" }
-                  }),
-                  _vm._v(" "),
-                  _c(
-                    "span",
-                    {
-                      staticClass:
-                        "d-none d-sm-block d-md-block d-lg-block d-xl-block"
-                    },
-                    [_vm._v("Color bar enable")]
-                  ),
-                  _vm._v(" "),
-                  _vm._m(4)
+                  _vm._m(1)
                 ]
               ),
               _vm._v(" "),
@@ -41270,7 +41972,7 @@ var render = function() {
                     [_vm._v("Focus Assist")]
                   ),
                   _vm._v(" "),
-                  _vm._m(5)
+                  _vm._m(2)
                 ]
               ),
               _vm._v(" "),
@@ -41296,7 +41998,7 @@ var render = function() {
                     [_vm._v("Feed Enable")]
                   ),
                   _vm._v(" "),
-                  _vm._m(6)
+                  _vm._m(3)
                 ]
               )
             ]
@@ -41311,208 +42013,220 @@ var render = function() {
             "div",
             { staticClass: "form-group", attrs: { id: "brightness-body" } },
             [
-              _c("div", { staticClass: "row" }, [
-                _c(
-                  "div",
-                  { staticClass: "col-sm-4" },
-                  [
-                    _c("label", [_vm._v("Brightness")]),
+              _c("table", { staticClass: "table col-sm-8" }, [
+                _c("tbody", [
+                  _c("tr", [
+                    _c("td", { attrs: { width: "30%" } }, [
+                      _vm._v("Brightness")
+                    ]),
                     _vm._v(" "),
-                    _c("custom-slider", {
-                      key: "sliderBrightness",
-                      attrs: { raising: "", min: "0", max: "1", step: "0.05" },
-                      model: {
-                        value: _vm.brightnessValue,
-                        callback: function($$v) {
-                          _vm.brightnessValue = $$v
+                    _c(
+                      "td",
+                      { attrs: { width: "40%" } },
+                      [
+                        _c("custom-slider", {
+                          key: "sliderBrightness",
+                          attrs: {
+                            raising: "",
+                            min: "0",
+                            max: "1",
+                            step: "0.05"
+                          },
+                          model: {
+                            value: _vm.brightnessValue,
+                            callback: function($$v) {
+                              _vm.brightnessValue = $$v
+                            },
+                            expression: "brightnessValue"
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c("td", { attrs: { width: "30%" } }, [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-primary",
+                          attrs: { id: "btnBrightness" },
+                          on: { click: _vm.setBrightness }
                         },
-                        expression: "brightnessValue"
-                      }
-                    })
-                  ],
-                  1
-                )
-              ]),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-primary",
-                  attrs: { id: "btnBrightness" },
-                  on: { click: _vm.setBrightness }
-                },
-                [_vm._v("Set Brightness")]
-              )
+                        [_vm._v("Set")]
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("td", [_vm._v("Exposure and focus tools")]),
+                    _vm._v(" "),
+                    _c(
+                      "td",
+                      [
+                        _c("custom-slider", {
+                          key: "sliderExposureFocus",
+                          attrs: {
+                            raising: "",
+                            values: _vm.exposureFocusSliderValues
+                          },
+                          model: {
+                            value: _vm.exposureFocusValue,
+                            callback: function($$v) {
+                              _vm.exposureFocusValue = $$v
+                            },
+                            expression: "exposureFocusValue"
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-primary",
+                          attrs: { id: "btnExposureFocus" },
+                          on: { click: _vm.setExposureAndFocus }
+                        },
+                        [_vm._v("Set")]
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("td", [_vm._v("Color bar enable")]),
+                    _vm._v(" "),
+                    _c(
+                      "td",
+                      [
+                        _c("custom-slider", {
+                          key: "sliderColorbarEnable",
+                          attrs: {
+                            raising: "",
+                            min: "0",
+                            max: "30",
+                            step: "1"
+                          },
+                          model: {
+                            value: _vm.colorbarEnableValue,
+                            callback: function($$v) {
+                              _vm.colorbarEnableValue = $$v
+                            },
+                            expression: "colorbarEnableValue"
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-primary",
+                          attrs: { id: "btnColorbarEnable" },
+                          on: { click: _vm.setColorbarEnable }
+                        },
+                        [_vm._v("Set")]
+                      )
+                    ])
+                  ])
+                ])
+              ])
             ]
           )
         : _vm._e(),
       _vm._v(" "),
-      this.showExposureAndFocus
-        ? _c(
-            "div",
-            { staticClass: "form-group", attrs: { id: "exposure-focus-body" } },
-            [
-              _c("div", { staticClass: "row" }, [
-                _c(
-                  "div",
-                  { staticClass: "col-sm-4" },
-                  [
-                    _c("label", [_vm._v("Exposure and focus tools")]),
-                    _vm._v(" "),
-                    _c("custom-slider", {
-                      key: "sliderExposureFocus",
-                      attrs: {
-                        raising: "",
-                        values: _vm.exposureFocusSliderValues
-                      },
-                      model: {
-                        value: _vm.exposureFocusValue,
-                        callback: function($$v) {
-                          _vm.exposureFocusValue = $$v
-                        },
-                        expression: "exposureFocusValue"
-                      }
-                    })
-                  ],
-                  1
-                )
-              ]),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-primary",
-                  attrs: { id: "btnExposureFocus" },
-                  on: { click: _vm.setExposureAndFocus }
-                },
-                [_vm._v("Set Exposure and focus tools")]
-              )
-            ]
-          )
-        : _vm._e(),
-      _vm._v(" "),
-      this.showZebraLevel
+      this.showZebraPeakingLevel
         ? _c(
             "div",
             { staticClass: "form-group", attrs: { id: "zebra-level-body" } },
             [
-              _c("div", { staticClass: "row" }, [
-                _c(
-                  "div",
-                  { staticClass: "col-sm-4" },
-                  [
-                    _c("label", [_vm._v("Zebra Level")]),
+              _c("table", { staticClass: "table col-sm-8" }, [
+                _c("tbody", [
+                  _c("tr", [
+                    _c("td", { attrs: { width: "30%" } }, [
+                      _vm._v("Zebra Level")
+                    ]),
                     _vm._v(" "),
-                    _c("custom-slider", {
-                      key: "sliderZebraLevel",
-                      attrs: { raising: "", min: "0", max: "1", step: "0.05" },
-                      model: {
-                        value: _vm.zebraLevelValue,
-                        callback: function($$v) {
-                          _vm.zebraLevelValue = $$v
-                        },
-                        expression: "zebraLevelValue"
-                      }
-                    })
-                  ],
-                  1
-                )
-              ]),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-primary",
-                  attrs: { id: "btnZebraLevel" },
-                  on: { click: _vm.setZebraLevel }
-                },
-                [_vm._v("Set Zebra Level")]
-              )
-            ]
-          )
-        : _vm._e(),
-      _vm._v(" "),
-      this.showPeakingLevel
-        ? _c(
-            "div",
-            { staticClass: "form-group", attrs: { id: "peaking-level-body" } },
-            [
-              _c("div", { staticClass: "row" }, [
-                _c(
-                  "div",
-                  { staticClass: "col-sm-4" },
-                  [
-                    _c("label", [_vm._v("Peaking Level")]),
+                    _c(
+                      "td",
+                      { attrs: { width: "40%" } },
+                      [
+                        _c("custom-slider", {
+                          key: "sliderZebraLevel",
+                          attrs: {
+                            raising: "",
+                            min: "0",
+                            max: "1",
+                            step: "0.05"
+                          },
+                          model: {
+                            value: _vm.zebraLevelValue,
+                            callback: function($$v) {
+                              _vm.zebraLevelValue = $$v
+                            },
+                            expression: "zebraLevelValue"
+                          }
+                        })
+                      ],
+                      1
+                    ),
                     _vm._v(" "),
-                    _c("custom-slider", {
-                      key: "sliderPeakingLevel",
-                      attrs: { raising: "", min: "0", max: "1", step: "0.05" },
-                      model: {
-                        value: _vm.peakingLevelValue,
-                        callback: function($$v) {
-                          _vm.peakingLevelValue = $$v
+                    _c("td", { attrs: { width: "30%" } }, [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-primary",
+                          attrs: { id: "btnZebraLevel" },
+                          on: { click: _vm.setZebraLevel }
                         },
-                        expression: "peakingLevelValue"
-                      }
-                    })
-                  ],
-                  1
-                )
-              ]),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-primary",
-                  attrs: { id: "btnPeakingLevel" },
-                  on: { click: _vm.setPeakingLevel }
-                },
-                [_vm._v("Set Peaking Level")]
-              )
-            ]
-          )
-        : _vm._e(),
-      _vm._v(" "),
-      this.showColorbarEnable
-        ? _c(
-            "div",
-            {
-              staticClass: "form-group",
-              attrs: { id: "colorbar-enable-body" }
-            },
-            [
-              _c("div", { staticClass: "row" }, [
-                _c(
-                  "div",
-                  { staticClass: "col-sm-4" },
-                  [
-                    _c("label", [_vm._v("Color bar enable")]),
+                        [_vm._v("Set")]
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("td", [_vm._v("Peaking Level")]),
                     _vm._v(" "),
-                    _c("custom-slider", {
-                      key: "sliderColorbarEnable",
-                      attrs: { raising: "", min: "0", max: "30", step: "1" },
-                      model: {
-                        value: _vm.colorbarEnableValue,
-                        callback: function($$v) {
-                          _vm.colorbarEnableValue = $$v
+                    _c(
+                      "td",
+                      [
+                        _c("custom-slider", {
+                          key: "sliderPeakingLevel",
+                          attrs: {
+                            raising: "",
+                            min: "0",
+                            max: "1",
+                            step: "0.05"
+                          },
+                          model: {
+                            value: _vm.peakingLevelValue,
+                            callback: function($$v) {
+                              _vm.peakingLevelValue = $$v
+                            },
+                            expression: "peakingLevelValue"
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-primary",
+                          attrs: { id: "btnPeakingLevel" },
+                          on: { click: _vm.setPeakingLevel }
                         },
-                        expression: "colorbarEnableValue"
-                      }
-                    })
-                  ],
-                  1
-                )
-              ]),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-primary",
-                  attrs: { id: "btnColorbarEnable" },
-                  on: { click: _vm.setColorbarEnable }
-                },
-                [_vm._v("Set Colorbar Enable")]
-              )
+                        [_vm._v("Set")]
+                      )
+                    ])
+                  ])
+                ])
+              ])
             ]
           )
         : _vm._e(),
@@ -41707,31 +42421,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("span", { staticClass: "d-block d-sm-none" }, [
-      _c("i", { staticClass: "tim-icons icon-tap-02" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("span", { staticClass: "d-block d-sm-none" }, [
       _c("i", { staticClass: "tim-icons icon-single-02" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("span", { staticClass: "d-block d-sm-none" }, [
-      _c("i", { staticClass: "tim-icons icon-tap-02" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("span", { staticClass: "d-block d-sm-none" }, [
-      _c("i", { staticClass: "tim-icons icon-tap-02" })
     ])
   },
   function() {
@@ -55895,6 +56585,7 @@ Vue.component('lens-component', __webpack_require__(/*! ./components/LensCompone
 Vue.component('recordvideo-component', __webpack_require__(/*! ./components/RecordVideoComponent.vue */ "./resources/js/components/RecordVideoComponent.vue")["default"]);
 Vue.component('video-component', __webpack_require__(/*! ./components/VideoComponent.vue */ "./resources/js/components/VideoComponent.vue")["default"]);
 Vue.component('display-component', __webpack_require__(/*! ./components/DisplayComponent.vue */ "./resources/js/components/DisplayComponent.vue")["default"]);
+Vue.component('audio-component', __webpack_require__(/*! ./components/AudioComponent.vue */ "./resources/js/components/AudioComponent.vue")["default"]);
 Vue.component('systeminfo-component', __webpack_require__(/*! ./components/SystemInfoComponent.vue */ "./resources/js/components/SystemInfoComponent.vue")["default"]);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -55950,6 +56641,93 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/components/AudioComponent.vue":
+/*!****************************************************!*\
+  !*** ./resources/js/components/AudioComponent.vue ***!
+  \****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _AudioComponent_vue_vue_type_template_id_07fa7d1c_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AudioComponent.vue?vue&type=template&id=07fa7d1c&scoped=true& */ "./resources/js/components/AudioComponent.vue?vue&type=template&id=07fa7d1c&scoped=true&");
+/* harmony import */ var _AudioComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AudioComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/AudioComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _AudioComponent_vue_vue_type_style_index_0_id_07fa7d1c_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./AudioComponent.vue?vue&type=style&index=0&id=07fa7d1c&scoped=true&lang=css& */ "./resources/js/components/AudioComponent.vue?vue&type=style&index=0&id=07fa7d1c&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _AudioComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _AudioComponent_vue_vue_type_template_id_07fa7d1c_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _AudioComponent_vue_vue_type_template_id_07fa7d1c_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "07fa7d1c",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/AudioComponent.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/AudioComponent.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************!*\
+  !*** ./resources/js/components/AudioComponent.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AudioComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./AudioComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/AudioComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AudioComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/AudioComponent.vue?vue&type=style&index=0&id=07fa7d1c&scoped=true&lang=css&":
+/*!*************************************************************************************************************!*\
+  !*** ./resources/js/components/AudioComponent.vue?vue&type=style&index=0&id=07fa7d1c&scoped=true&lang=css& ***!
+  \*************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_AudioComponent_vue_vue_type_style_index_0_id_07fa7d1c_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader!../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./AudioComponent.vue?vue&type=style&index=0&id=07fa7d1c&scoped=true&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/AudioComponent.vue?vue&type=style&index=0&id=07fa7d1c&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_AudioComponent_vue_vue_type_style_index_0_id_07fa7d1c_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_AudioComponent_vue_vue_type_style_index_0_id_07fa7d1c_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_AudioComponent_vue_vue_type_style_index_0_id_07fa7d1c_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_AudioComponent_vue_vue_type_style_index_0_id_07fa7d1c_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+
+
+/***/ }),
+
+/***/ "./resources/js/components/AudioComponent.vue?vue&type=template&id=07fa7d1c&scoped=true&":
+/*!***********************************************************************************************!*\
+  !*** ./resources/js/components/AudioComponent.vue?vue&type=template&id=07fa7d1c&scoped=true& ***!
+  \***********************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AudioComponent_vue_vue_type_template_id_07fa7d1c_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./AudioComponent.vue?vue&type=template&id=07fa7d1c&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/AudioComponent.vue?vue&type=template&id=07fa7d1c&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AudioComponent_vue_vue_type_template_id_07fa7d1c_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AudioComponent_vue_vue_type_template_id_07fa7d1c_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
 
 /***/ }),
 
