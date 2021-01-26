@@ -3011,6 +3011,29 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -3019,17 +3042,17 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      title: 'Set Mic Level',
-      showOverlayEnables: true,
-      showFrameGuidesStyle: false,
+      title: 'Frame guides Style',
+      showOverlayEnables: false,
+      showFrameGuidesStyle: true,
       showFrameGuidesOpacity: false,
       showOverlays: false,
-      micLevelValue: "0",
-      headphoneLevelValue: "0",
-      headphoneMixValue: "0",
-      speakerLevelValue: "0",
-      inputTypeValue: "0",
-      inputLevelCh0Value: "0",
+      frameGuidesStyle3xValue: "0",
+      frameGuidesOpacity3xValue: "0",
+      frameGuidesStyle4xValue: "0",
+      frameGuideOpacity4xValue: "0",
+      safeAreaPercentageValue: "0",
+      gridStyleValue: "0",
       inputLevelCh1Value: "0",
       phantomPowerValue: "true"
     };
@@ -3058,72 +3081,38 @@ __webpack_require__.r(__webpack_exports__);
       this.showOverlays = true;
       this.showOverlayEnables = this.showFrameGuidesStyle = this.showFrameGuidesOpacity = false;
     },
-    sendAudioCommand: function sendAudioCommand(command) {
+    sendOutputCommand: function sendOutputCommand(command) {
       if (selectedCameraId == "") socket.emit('admin', null, JSON.stringify(command));else socket.emit('admin', selectedCameraId, JSON.stringify(command));
     },
-    setMicLevel: function setMicLevel(event) {
+    setFrameGuideStyle3x: function setFrameGuideStyle3x(event) {
       debugger;
       var command = {
-        type: 'mic-level',
-        micLevelValue: this.micLevelValue
+        type: 'frame-guide-style-3x',
+        frameGuidesStyle3xValue: this.frameGuidesStyle3xValue
       };
-      this.sendAudioCommand(command);
-      alert('Sent Mic Level is called');
+      this.sendOutputCommand(command);
+      alert('Sent Frame Guide style (3.x) is called');
     },
-    setHeadphoneLevel: function setHeadphoneLevel(event) {
+    setFrameOpacityStyle3x: function setFrameOpacityStyle3x(event) {
       debugger;
       var command = {
-        type: 'headphone-level',
-        headphoneLevelValue: this.headphoneLevelValue
+        type: 'frame-opacity-style-3x',
+        frameGuidesOpacity3xValue: this.frameGuidesOpacity3xValue
       };
-      this.sendAudioCommand(command);
-      alert('Sent Headphone Level is called');
+      this.sendOutputCommand(command);
+      alert('Sent Frame Guide Opacity (3.x) is called');
     },
-    setHeadphoneMix: function setHeadphoneMix(event) {
+    setOverlays: function setOverlays(event) {
       debugger;
       var command = {
-        type: 'headphone-mix',
-        headphoneMixValue: this.headphoneMixValue
+        type: 'frame-overlays',
+        frameGuidesStyle4xValue: this.frameGuidesStyle4xValue,
+        frameGuideOpacity4xValue: this.frameGuideOpacity4xValue,
+        safeAreaPercentageValue: this.safeAreaPercentageValue,
+        gridStyleValue: this.gridStyleValue
       };
-      this.sendAudioCommand(command);
-      alert('Sent Headphone Program Mix is called');
-    },
-    setSpeakerLevel: function setSpeakerLevel(event) {
-      debugger;
-      var command = {
-        type: 'speaking-level',
-        speakerLevelValue: this.speakerLevelValue
-      };
-      this.sendAudioCommand(command);
-      alert('Sent Speaker Level is called');
-    },
-    setInputType: function setInputType(event) {
-      debugger;
-      var command = {
-        type: 'input-type',
-        inputTypeValue: this.inputTypeValue
-      };
-      this.sendAudioCommand(command);
-      alert('Sent Input Type is called');
-    },
-    setInputLevel: function setInputLevel(event) {
-      debugger;
-      var command = {
-        type: 'input-level',
-        inputLevelCh0Value: this.inputLevelCh0Value,
-        inputLevelCh1Value: this.inputLevelCh1Value
-      };
-      this.sendAudioCommand(command);
-      alert('Sent Input Level is called');
-    },
-    setPhantomPower: function setPhantomPower(event) {
-      debugger;
-      var command = {
-        type: 'phantom-power',
-        phantomPowerValue: this.phantomPowerValue
-      };
-      this.sendAudioCommand(command);
-      alert('Sent Phantom Power is called');
+      this.sendOutputCommand(command);
+      alert('Sent Overlays is called');
     }
   }
 });
@@ -43383,13 +43372,13 @@ var render = function() {
   return _c("div", { staticClass: "card" }, [
     _c("div", { staticClass: "card-header" }, [
       _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-sm-4 text-left" }, [
+        _c("div", { staticClass: "col-sm-6 text-left" }, [
           _c("h5", { staticClass: "card-category" }, [_vm._v("Output")]),
           _vm._v(" "),
           _c("h3", { staticClass: "card-title" }, [_vm._v(_vm._s(this.title))])
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "col-sm-8" }, [
+        _c("div", { staticClass: "col-sm-6" }, [
           _c(
             "div",
             {
@@ -43401,8 +43390,8 @@ var render = function() {
                 "label",
                 {
                   staticClass: "btn btn-sm btn-primary btn-simple active",
-                  attrs: { id: "0" },
-                  on: { click: _vm.onOverlayEnables }
+                  attrs: { id: "2" },
+                  on: { click: _vm.onFrameGuidesStyle }
                 },
                 [
                   _c("input", {
@@ -43415,33 +43404,10 @@ var render = function() {
                       staticClass:
                         "d-none d-sm-block d-md-block d-lg-block d-xl-block"
                     },
-                    [_vm._v("Overlay enables")]
-                  ),
-                  _vm._v(" "),
-                  _vm._m(0)
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "label",
-                {
-                  staticClass: "btn btn-sm btn-primary btn-simple active",
-                  attrs: { id: "2" },
-                  on: { click: _vm.onFrameGuidesStyle }
-                },
-                [
-                  _c("input", { attrs: { type: "radio", name: "options" } }),
-                  _vm._v(" "),
-                  _c(
-                    "span",
-                    {
-                      staticClass:
-                        "d-none d-sm-block d-md-block d-lg-block d-xl-block"
-                    },
                     [_vm._v("Frame guides style")]
                   ),
                   _vm._v(" "),
-                  _vm._m(1)
+                  _vm._m(0)
                 ]
               ),
               _vm._v(" "),
@@ -43467,7 +43433,7 @@ var render = function() {
                     [_vm._v("Frame guides opacity")]
                   ),
                   _vm._v(" "),
-                  _vm._m(2)
+                  _vm._m(1)
                 ]
               ),
               _vm._v(" "),
@@ -43490,10 +43456,10 @@ var render = function() {
                       staticClass:
                         "d-none d-sm-block d-md-block d-lg-block d-xl-block"
                     },
-                    [_vm._v("onOverlays")]
+                    [_vm._v("Overlays")]
                   ),
                   _vm._v(" "),
-                  _vm._m(3)
+                  _vm._m(2)
                 ]
               )
             ]
@@ -43503,27 +43469,30 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "card-body" }, [
-      this.showOverlayEnables
+      this.showFrameGuidesStyle
         ? _c(
             "div",
-            { staticClass: "form-group", attrs: { id: "mic-level-body" } },
+            {
+              staticClass: "form-group",
+              attrs: { id: "frame-guides-style-body" }
+            },
             [
               _c("div", { staticClass: "row" }, [
                 _c(
                   "div",
-                  { staticClass: "col-sm-4" },
+                  { staticClass: "col-sm-6" },
                   [
-                    _c("label", [_vm._v("Mic Level")]),
+                    _c("label", [_vm._v("Frame guides style (Camera 3.x)")]),
                     _vm._v(" "),
                     _c("custom-slider", {
-                      key: "sliderMicLevel",
-                      attrs: { raising: "", min: "0", max: "1", step: "0.05" },
+                      key: "sliderFrameGuideStyle3x",
+                      attrs: { raising: "", min: "0", max: "8", step: "1" },
                       model: {
-                        value: _vm.micLevelValue,
+                        value: _vm.frameGuidesStyle3xValue,
                         callback: function($$v) {
-                          _vm.micLevelValue = $$v
+                          _vm.frameGuidesStyle3xValue = $$v
                         },
-                        expression: "micLevelValue"
+                        expression: "frameGuidesStyle3xValue"
                       }
                     })
                   ],
@@ -43535,143 +43504,11 @@ var render = function() {
                 "button",
                 {
                   staticClass: "btn btn-primary",
-                  attrs: { id: "btnMicLevel" },
-                  on: { click: _vm.setMicLevel }
+                  attrs: { id: "btnFrameGuideStyle3x" },
+                  on: { click: _vm.setFrameGuideStyle3x }
                 },
-                [_vm._v("Set Mic Level")]
+                [_vm._v("Set Frame Guides Style")]
               )
-            ]
-          )
-        : _vm._e(),
-      _vm._v(" "),
-      this.showFrameGuidesStyle
-        ? _c(
-            "div",
-            { staticClass: "form-group", attrs: { id: "headphone-body" } },
-            [
-              _c("table", { staticClass: "table col-sm-8" }, [
-                _c("tbody", [
-                  _c("tr", [
-                    _c("td", { attrs: { width: "30%" } }, [
-                      _vm._v("Headphone Level")
-                    ]),
-                    _vm._v(" "),
-                    _c(
-                      "td",
-                      { attrs: { width: "40%" } },
-                      [
-                        _c("custom-slider", {
-                          key: "sliderHeadphoneLevel",
-                          attrs: {
-                            raising: "",
-                            min: "0",
-                            max: "1",
-                            step: "0.05"
-                          },
-                          model: {
-                            value: _vm.headphoneLevelValue,
-                            callback: function($$v) {
-                              _vm.headphoneLevelValue = $$v
-                            },
-                            expression: "headphoneLevelValue"
-                          }
-                        })
-                      ],
-                      1
-                    ),
-                    _vm._v(" "),
-                    _c("td", { attrs: { width: "30%" } }, [
-                      _c(
-                        "button",
-                        {
-                          staticClass: "btn btn-primary",
-                          attrs: { id: "btnHeadphoneLevel" },
-                          on: { click: _vm.setHeadphoneLevel }
-                        },
-                        [_vm._v("Set")]
-                      )
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("tr", [
-                    _c("td", [_vm._v("Headphone program mix")]),
-                    _vm._v(" "),
-                    _c(
-                      "td",
-                      [
-                        _c("custom-slider", {
-                          key: "sliderHeadphoneMix",
-                          attrs: {
-                            raising: "",
-                            min: "0",
-                            max: "1",
-                            step: "0.05"
-                          },
-                          model: {
-                            value: _vm.headphoneMixValue,
-                            callback: function($$v) {
-                              _vm.headphoneMixValue = $$v
-                            },
-                            expression: "headphoneMixValue"
-                          }
-                        })
-                      ],
-                      1
-                    ),
-                    _vm._v(" "),
-                    _c("td", [
-                      _c(
-                        "button",
-                        {
-                          staticClass: "btn btn-primary",
-                          attrs: { id: "btnHeadphoneMix" },
-                          on: { click: _vm.setHeadphoneMix }
-                        },
-                        [_vm._v("Set")]
-                      )
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("tr", [
-                    _c("td", [_vm._v("Speaker Level")]),
-                    _vm._v(" "),
-                    _c(
-                      "td",
-                      [
-                        _c("custom-slider", {
-                          key: "sliderSpeakerLevel",
-                          attrs: {
-                            raising: "",
-                            min: "0",
-                            max: "1",
-                            step: "0.05"
-                          },
-                          model: {
-                            value: _vm.speakerLevelValue,
-                            callback: function($$v) {
-                              _vm.speakerLevelValue = $$v
-                            },
-                            expression: "speakerLevelValue"
-                          }
-                        })
-                      ],
-                      1
-                    ),
-                    _vm._v(" "),
-                    _c("td", [
-                      _c(
-                        "button",
-                        {
-                          staticClass: "btn btn-primary",
-                          attrs: { id: "btnSpeakerLevel" },
-                          on: { click: _vm.setSpeakerLevel }
-                        },
-                        [_vm._v("Set")]
-                      )
-                    ])
-                  ])
-                ])
-              ])
             ]
           )
         : _vm._e(),
@@ -43679,67 +43516,161 @@ var render = function() {
       this.showFrameGuidesOpacity
         ? _c(
             "div",
-            { staticClass: "form-group", attrs: { id: "input-body" } },
+            {
+              staticClass: "form-group",
+              attrs: { id: "frame-guides-opacity-body" }
+            },
             [
-              _c("table", { staticClass: "table col-sm-8" }, [
+              _c("div", { staticClass: "row" }, [
+                _c(
+                  "div",
+                  { staticClass: "col-sm-6" },
+                  [
+                    _c("label", [_vm._v("Frame guides opacity (Camera 3.x)")]),
+                    _vm._v(" "),
+                    _c("custom-slider", {
+                      key: "sliderFrameOpacityStyle3x",
+                      attrs: { raising: "", min: "0", max: "1", step: "0.05" },
+                      model: {
+                        value: _vm.frameGuidesOpacity3xValue,
+                        callback: function($$v) {
+                          _vm.frameGuidesOpacity3xValue = $$v
+                        },
+                        expression: "frameGuidesOpacity3xValue"
+                      }
+                    })
+                  ],
+                  1
+                )
+              ]),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary",
+                  attrs: { id: "btnFrameOpacityStyle3x" },
+                  on: { click: _vm.setFrameOpacityStyle3x }
+                },
+                [_vm._v("Set Frame Opacity Style")]
+              )
+            ]
+          )
+        : _vm._e(),
+      _vm._v(" "),
+      this.showOverlays
+        ? _c(
+            "div",
+            { staticClass: "form-group", attrs: { id: "overlays-body" } },
+            [
+              _c("table", { staticClass: "table" }, [
                 _c("tbody", [
                   _c("tr", [
                     _c("td", { attrs: { width: "30%" } }, [
-                      _vm._v("Input Type")
+                      _vm._v("Frame guides Style")
                     ]),
                     _vm._v(" "),
-                    _c(
-                      "td",
-                      { attrs: { width: "40%" } },
-                      [
-                        _c("custom-slider", {
-                          key: "sliderInputType",
-                          attrs: { raising: "", min: "0", max: "3", step: "1" },
-                          model: {
-                            value: _vm.inputTypeValue,
-                            callback: function($$v) {
-                              _vm.inputTypeValue = $$v
-                            },
-                            expression: "inputTypeValue"
-                          }
-                        })
-                      ],
-                      1
-                    ),
-                    _vm._v(" "),
-                    _c("td", { attrs: { width: "30%" } }, [
+                    _c("td", { attrs: { width: "40%" } }, [
                       _c(
-                        "button",
+                        "select",
                         {
-                          staticClass: "btn btn-primary",
-                          attrs: { id: "btnInputType" },
-                          on: { click: _vm.setInputType }
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.frameGuidesStyle4xValue,
+                              expression: "frameGuidesStyle4xValue"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: { id: "frameGuideStyle4x" },
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.frameGuidesStyle4xValue = $event.target
+                                .multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            }
+                          }
                         },
-                        [_vm._v("Set")]
+                        [
+                          _c("option", { attrs: { value: "0" } }, [
+                            _vm._v("off")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "1" } }, [
+                            _vm._v("2.4:1")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "2" } }, [
+                            _vm._v("2.39:1")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "3" } }, [
+                            _vm._v("2.35:1")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "4" } }, [
+                            _vm._v("1.85:1")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "5" } }, [
+                            _vm._v("16:9")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "6" } }, [
+                            _vm._v("14:9")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "7" } }, [
+                            _vm._v("4:3")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "8" } }, [
+                            _vm._v("2:1")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "9" } }, [
+                            _vm._v("4:5")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "10" } }, [
+                            _vm._v("1:1")
+                          ])
+                        ]
                       )
-                    ])
+                    ]),
+                    _vm._v(" "),
+                    _c("td", { attrs: { width: "30%" } })
                   ]),
                   _vm._v(" "),
                   _c("tr", [
-                    _c("td", [_vm._v("Input Levels : (ch0)")]),
+                    _c("td", [_vm._v("Frame guide opacity")]),
                     _vm._v(" "),
                     _c(
                       "td",
                       [
                         _c("custom-slider", {
-                          key: "sliderLevelCh0",
+                          key: "sliderFrameGuideOpacity4x",
                           attrs: {
                             raising: "",
                             min: "0",
-                            max: "1",
-                            step: "0.05"
+                            max: "100",
+                            step: "5"
                           },
                           model: {
-                            value: _vm.inputLevelCh0Value,
+                            value: _vm.frameGuideOpacity4xValue,
                             callback: function($$v) {
-                              _vm.inputLevelCh0Value = $$v
+                              _vm.frameGuideOpacity4xValue = $$v
                             },
-                            expression: "inputLevelCh0Value"
+                            expression: "frameGuideOpacity4xValue"
                           }
                         })
                       ],
@@ -43750,30 +43681,136 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("tr", [
-                    _c("td", [_vm._v("Input Levels : (ch1)")]),
+                    _c("td", [_vm._v("Safe area percentage")]),
                     _vm._v(" "),
                     _c(
                       "td",
                       [
                         _c("custom-slider", {
-                          key: "sliderLevelCh1",
+                          key: "sliderSafeAreaPercentage",
                           attrs: {
                             raising: "",
                             min: "0",
-                            max: "1",
-                            step: "0.05"
+                            max: "100",
+                            step: "5"
                           },
                           model: {
-                            value: _vm.inputLevelCh1Value,
+                            value: _vm.safeAreaPercentageValue,
                             callback: function($$v) {
-                              _vm.inputLevelCh1Value = $$v
+                              _vm.safeAreaPercentageValue = $$v
                             },
-                            expression: "inputLevelCh1Value"
+                            expression: "safeAreaPercentageValue"
                           }
                         })
                       ],
                       1
                     ),
+                    _vm._v(" "),
+                    _c("td")
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("td", [_vm._v("Grid Style")]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.gridStyleValue,
+                              expression: "gridStyleValue"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: { id: "gridStyle" },
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.gridStyleValue = $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { value: "0" } }, [
+                            _vm._v("Off")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "1" } }, [
+                            _vm._v("display thirds")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "2" } }, [
+                            _vm._v("display cross hairs")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "3" } }, [
+                            _vm._v("cross hairs + thirds")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "4" } }, [
+                            _vm._v("center dot")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "5" } }, [
+                            _vm._v("center dot + thirds")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "6" } }, [
+                            _vm._v("center dot + cross hairs")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "7" } }, [
+                            _vm._v("center dot + cross hairs + thirds")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "8" } }, [
+                            _vm._v("display horizon")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "9" } }, [
+                            _vm._v("horizon + thirds")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "10" } }, [
+                            _vm._v("horizon + cross hairs")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "11" } }, [
+                            _vm._v("horizon + cross hairs + thirds")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "12" } }, [
+                            _vm._v("horizon + center dot")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "13" } }, [
+                            _vm._v("horizon + center dot + thirds")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "14" } }, [
+                            _vm._v("horizon + center dot + cross hairs")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "15" } }, [
+                            _vm._v(
+                              "horizon + center dot + cross hairs + thirds"
+                            )
+                          ])
+                        ]
+                      )
+                    ]),
                     _vm._v(" "),
                     _c("td", [
                       _c(
@@ -43781,7 +43818,7 @@ var render = function() {
                         {
                           staticClass: "btn btn-primary",
                           attrs: { id: "btnInputLevel" },
-                          on: { click: _vm.setInputLevel }
+                          on: { click: _vm.setOverlays }
                         },
                         [_vm._v("Set")]
                       )
@@ -43791,83 +43828,11 @@ var render = function() {
               ])
             ]
           )
-        : _vm._e(),
-      _vm._v(" "),
-      this.showOverlays
-        ? _c(
-            "div",
-            { staticClass: "form-group", attrs: { id: "phantom-power-body" } },
-            [
-              _c("div", { staticClass: "row" }, [
-                _c("div", { staticClass: "col-sm-4" }, [
-                  _c("label", [_vm._v("Phantom Power")]),
-                  _vm._v(" "),
-                  _c(
-                    "select",
-                    {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.phantomPowerValue,
-                          expression: "phantomPowerValue"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: { id: "phantomPower" },
-                      on: {
-                        change: function($event) {
-                          var $$selectedVal = Array.prototype.filter
-                            .call($event.target.options, function(o) {
-                              return o.selected
-                            })
-                            .map(function(o) {
-                              var val = "_value" in o ? o._value : o.value
-                              return val
-                            })
-                          _vm.phantomPowerValue = $event.target.multiple
-                            ? $$selectedVal
-                            : $$selectedVal[0]
-                        }
-                      }
-                    },
-                    [
-                      _c("option", { attrs: { value: "true" } }, [
-                        _vm._v("True")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "false" } }, [
-                        _vm._v("False")
-                      ])
-                    ]
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-primary",
-                  attrs: { id: "btnPhantomPower" },
-                  on: { click: _vm.setPhantomPower }
-                },
-                [_vm._v("Set")]
-              )
-            ]
-          )
         : _vm._e()
     ])
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("span", { staticClass: "d-block d-sm-none" }, [
-      _c("i", { staticClass: "tim-icons icon-single-02" })
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement

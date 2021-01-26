@@ -2,21 +2,21 @@
     <div class="card">
         <div class="card-header">
             <div class="row">
-                <div class="col-sm-4 text-left">
+                <div class="col-sm-6 text-left">
                     <h5 class="card-category">Output</h5>
                     <h3 class="card-title">{{this.title}}</h3>
                 </div>
-                <div class="col-sm-8">
+                <div class="col-sm-6">
                     <div class="btn-group btn-group-toggle float-right" data-toggle="buttons">
-                    <label class="btn btn-sm btn-primary btn-simple active" id="0" v-on:click="onOverlayEnables">
+                    <!-- <label class="btn btn-sm btn-primary btn-simple active" id="0" v-on:click="onOverlayEnables">
                         <input type="radio" name="options" checked>
                         <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Overlay enables</span>
                         <span class="d-block d-sm-none">
                             <i class="tim-icons icon-single-02"></i>
                         </span>
-                    </label>
+                    </label> -->
                     <label class="btn btn-sm btn-primary btn-simple active" id="2" v-on:click="onFrameGuidesStyle">
-                        <input type="radio" name="options">
+                        <input type="radio" name="options" checked>
                         <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Frame guides style</span>
                         <span class="d-block d-sm-none">
                             <i class="tim-icons icon-single-02"></i>
@@ -31,7 +31,7 @@
                     </label>
                     <label class="btn btn-sm btn-primary btn-simple" id="6" v-on:click="onOverlays">
                         <input type="radio" class="d-none" name="options">
-                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">onOverlays</span>
+                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Overlays</span>
                         <span class="d-block d-sm-none">
                             <i class="tim-icons icon-tap-02"></i>
                         </span>
@@ -42,68 +42,91 @@
         </div>
         <div class="card-body">
 
-            <div class="form-group" id="mic-level-body" v-if="this.showOverlayEnables">
+            <!-- <div class="form-group" id="mic-level-body" v-if="this.showOverlayEnables">
                 <div class="row">
                     <div class="col-sm-4">
-                        <label>Mic Level</label>
+                        <label>Overlay enables</label>
                         <custom-slider raising min="0" max="1" step="0.05" v-model="micLevelValue" key="sliderMicLevel"/>
                     </div>
                 </div>
                 <button class="btn btn-primary" id="btnMicLevel" v-on:click="setMicLevel">Set Mic Level</button>
+            </div> -->
+            <div class="form-group" id="frame-guides-style-body" v-if="this.showFrameGuidesStyle">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <label>Frame guides style (Camera 3.x)</label>
+                        <custom-slider raising min="0" max="8" step="1" v-model="frameGuidesStyle3xValue" key="sliderFrameGuideStyle3x"/>
+                    </div>
+                </div>
+                <button class="btn btn-primary" id="btnFrameGuideStyle3x" v-on:click="setFrameGuideStyle3x">Set Frame Guides Style</button>
             </div>
-            <div class="form-group" id="headphone-body" v-if="this.showFrameGuidesStyle">
-                <table class="table col-sm-8">
+            <div class="form-group" id="frame-guides-opacity-body" v-if="this.showFrameGuidesOpacity">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <label>Frame guides opacity (Camera 3.x)</label>
+                        <custom-slider raising min="0" max="1" step="0.05" v-model="frameGuidesOpacity3xValue" key="sliderFrameOpacityStyle3x"/>
+                    </div>
+                </div>
+                <button class="btn btn-primary" id="btnFrameOpacityStyle3x" v-on:click="setFrameOpacityStyle3x">Set Frame Opacity Style</button>
+            </div>
+            <div class="form-group" id="overlays-body" v-if="this.showOverlays">
+                <table class="table">
                     <tbody>
                         <tr>
-                            <td width="30%">Headphone Level</td>
-                            <td width="40%"><custom-slider raising min="0" max="1" step="0.05" v-model="headphoneLevelValue" key="sliderHeadphoneLevel"/></td>
-                            <td width="30%"><button class="btn btn-primary" id="btnHeadphoneLevel" v-on:click="setHeadphoneLevel">Set</button></td>
+                            <td width="30%">Frame guides Style</td>
+                            <td width="40%">
+                                <select class="form-control" id="frameGuideStyle4x" v-model="frameGuidesStyle4xValue">
+                                    <option value="0">off</option>
+                                    <option value="1">2.4:1</option>
+                                    <option value="2">2.39:1</option>
+                                    <option value="3">2.35:1</option>
+                                    <option value="4">1.85:1</option>
+                                    <option value="5">16:9</option>
+                                    <option value="6">14:9</option>
+                                    <option value="7">4:3</option>
+                                    <option value="8">2:1</option>
+                                    <option value="9">4:5</option>
+                                    <option value="10">1:1</option>
+                                </select>
+                            </td>
+                            <td width="30%"></td>
                         </tr>
                         <tr>
-                            <td>Headphone program mix</td>
-                            <td><custom-slider raising min="0" max="1" step="0.05" v-model="headphoneMixValue" key="sliderHeadphoneMix"/></td>
-                            <td><button class="btn btn-primary" id="btnHeadphoneMix" v-on:click="setHeadphoneMix">Set</button></td>
-                        </tr>
-                        <tr>
-                            <td>Speaker Level</td>
-                            <td><custom-slider raising min="0" max="1" step="0.05" v-model="speakerLevelValue" key="sliderSpeakerLevel"/></td>
-                            <td><button class="btn btn-primary" id="btnSpeakerLevel" v-on:click="setSpeakerLevel">Set</button></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="form-group" id="input-body" v-if="this.showFrameGuidesOpacity">
-                <table class="table col-sm-8">
-                    <tbody>
-                        <tr>
-                            <td width="30%">Input Type</td>
-                            <td width="40%"><custom-slider raising min="0" max="3" step="1" v-model="inputTypeValue" key="sliderInputType"/></td>
-                            <td width="30%"><button class="btn btn-primary" id="btnInputType" v-on:click="setInputType">Set</button></td>
-                        </tr>
-                        <tr>
-                            <td>Input Levels : (ch0)</td>
-                            <td><custom-slider raising min="0" max="1" step="0.05" v-model="inputLevelCh0Value" key="sliderLevelCh0"/></td>
+                            <td>Frame guide opacity</td>
+                            <td><custom-slider raising min="0" max="100" step="5" v-model="frameGuideOpacity4xValue" key="sliderFrameGuideOpacity4x"/></td>
                             <td></td>
                         </tr>
                         <tr>
-                            <td>Input Levels : (ch1)</td>
-                            <td><custom-slider raising min="0" max="1" step="0.05" v-model="inputLevelCh1Value" key="sliderLevelCh1"/></td>
-                            <td><button class="btn btn-primary" id="btnInputLevel" v-on:click="setInputLevel">Set</button></td>
+                            <td>Safe area percentage</td>
+                            <td><custom-slider raising min="0" max="100" step="5" v-model="safeAreaPercentageValue" key="sliderSafeAreaPercentage"/></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Grid Style</td>
+                            <td>
+                                <select class="form-control" id="gridStyle" v-model="gridStyleValue">
+                                    <option value="0">Off</option>
+                                    <option value="1">display thirds</option>
+                                    <option value="2">display cross hairs</option>
+                                    <option value="3">cross hairs + thirds</option>
+                                    <option value="4">center dot</option>
+                                    <option value="5">center dot + thirds</option>
+                                    <option value="6">center dot + cross hairs</option>
+                                    <option value="7">center dot + cross hairs + thirds</option>
+                                    <option value="8">display horizon</option>
+                                    <option value="9">horizon + thirds</option>
+                                    <option value="10">horizon + cross hairs</option>
+                                    <option value="11">horizon + cross hairs + thirds</option>
+                                    <option value="12">horizon + center dot</option>
+                                    <option value="13">horizon + center dot + thirds</option>
+                                    <option value="14">horizon + center dot + cross hairs</option>
+                                    <option value="15">horizon + center dot + cross hairs + thirds</option>
+                                </select>
+                            </td>
+                            <td><button class="btn btn-primary" id="btnInputLevel" v-on:click="setOverlays">Set</button></td>
                         </tr>
                     </tbody>
                 </table>
-            </div>
-            <div class="form-group" id="phantom-power-body" v-if="this.showOverlays">
-                <div class="row">
-                    <div class="col-sm-4">
-                        <label>Phantom Power</label>
-                        <select class="form-control" id="phantomPower" v-model="phantomPowerValue">
-                            <option value="true">True</option>
-                            <option value="false">False</option>
-                        </select>
-                    </div>
-                </div>
-                <button class="btn btn-primary" id="btnPhantomPower" v-on:click="setPhantomPower">Set</button>
             </div>
             
         </div>
@@ -120,17 +143,17 @@ export default {
     },
     data() {
         return {
-            title: 'Set Mic Level',
-            showOverlayEnables: true,
-            showFrameGuidesStyle: false,
+            title: 'Frame guides Style',
+            showOverlayEnables: false,
+            showFrameGuidesStyle: true,
             showFrameGuidesOpacity: false,
             showOverlays: false,
-            micLevelValue: "0",
-            headphoneLevelValue: "0",
-            headphoneMixValue: "0",
-            speakerLevelValue: "0",
-            inputTypeValue: "0",
-            inputLevelCh0Value: "0",
+            frameGuidesStyle3xValue: "0",
+            frameGuidesOpacity3xValue: "0",
+            frameGuidesStyle4xValue: "0",
+            frameGuideOpacity4xValue: "0",
+            safeAreaPercentageValue: "0",
+            gridStyleValue: "0",
             inputLevelCh1Value: "0",
             phantomPowerValue: "true"
         }
@@ -159,82 +182,44 @@ export default {
             this.showOverlays = true;
             this.showOverlayEnables = this.showFrameGuidesStyle = this.showFrameGuidesOpacity = false;
         },
-        sendAudioCommand: function(command) {
+        sendOutputCommand: function(command) {
             if (selectedCameraId == "")
                 socket.emit('admin', null, JSON.stringify(command));
             else
                 socket.emit('admin', selectedCameraId, JSON.stringify(command));
         },
-        setMicLevel: function(event) {
+        setFrameGuideStyle3x: function(event) {
             debugger;
             var command = {
-                type : 'mic-level',
-                micLevelValue : this.micLevelValue,
+                type : 'frame-guide-style-3x',
+                frameGuidesStyle3xValue : this.frameGuidesStyle3xValue,
             };
             
-            this.sendAudioCommand(command);
-            alert('Sent Mic Level is called');
+            this.sendOutputCommand(command);
+            alert('Sent Frame Guide style (3.x) is called');
         },
-        setHeadphoneLevel: function(event) {
+        setFrameOpacityStyle3x: function(event) {
             debugger;
             var command = {
-                type : 'headphone-level',
-                headphoneLevelValue : this.headphoneLevelValue,
+                type : 'frame-opacity-style-3x',
+                frameGuidesOpacity3xValue : this.frameGuidesOpacity3xValue,
             };
             
-            this.sendAudioCommand(command);
-            alert('Sent Headphone Level is called');
+            this.sendOutputCommand(command);
+            alert('Sent Frame Guide Opacity (3.x) is called');
         },
-        setHeadphoneMix: function(event) {
+        setOverlays: function(event) {
             debugger;
             var command = {
-                type : 'headphone-mix',
-                headphoneMixValue: this.headphoneMixValue,
+                type : 'frame-overlays',
+                frameGuidesStyle4xValue: this.frameGuidesStyle4xValue,
+                frameGuideOpacity4xValue: this.frameGuideOpacity4xValue,
+                safeAreaPercentageValue: this.safeAreaPercentageValue,
+                gridStyleValue: this.gridStyleValue,
             };
             
-            this.sendAudioCommand(command);
-            alert('Sent Headphone Program Mix is called');
-        },
-        setSpeakerLevel: function(event) {
-            debugger;
-            var command = {
-                type : 'speaking-level',
-                speakerLevelValue : this.speakerLevelValue,
-            };
-            
-            this.sendAudioCommand(command);
-            alert('Sent Speaker Level is called');
-        },
-        setInputType: function(event) {
-            debugger;
-            var command = {
-                type : 'input-type',
-                inputTypeValue : this.inputTypeValue,
-            };
-            
-            this.sendAudioCommand(command);
-            alert('Sent Input Type is called');
-        },
-        setInputLevel: function(event) {
-            debugger;
-            var command = {
-                type : 'input-level',
-                inputLevelCh0Value: this.inputLevelCh0Value,
-                inputLevelCh1Value: this.inputLevelCh1Value,
-            };
-            
-            this.sendAudioCommand(command);
-            alert('Sent Input Level is called');
-        },
-        setPhantomPower: function(event) {
-            debugger;
-            var command = {
-                type : 'phantom-power',
-                phantomPowerValue: this.phantomPowerValue,
-            };
-            
-            this.sendAudioCommand(command);
-            alert('Sent Phantom Power is called');
+            this.sendOutputCommand(command);
+            alert('Sent Overlays is called');
         },
     }
 }

@@ -20,6 +20,9 @@
                 <div class="col-12">
                     <audio-component></audio-component>
                 </div>
+                <div class="col-12">
+                    <output-component></output-component>
+                </div>
                 <!-- <div class="col-4">
                     <systeminfo-component></systeminfo-component>
                 </div> -->
