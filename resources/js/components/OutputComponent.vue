@@ -76,7 +76,7 @@
                             <td width="30%">Frame guides Style</td>
                             <td width="40%">
                                 <select class="form-control" id="frameGuideStyle4x" v-model="frameGuidesStyle4xValue">
-                                    <option value="0">off</option>
+                                    <option value="0">Off</option>
                                     <option value="1">2.4:1</option>
                                     <option value="2">2.39:1</option>
                                     <option value="3">2.35:1</option>

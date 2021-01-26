@@ -43602,7 +43602,7 @@ var render = function() {
                         },
                         [
                           _c("option", { attrs: { value: "0" } }, [
-                            _vm._v("off")
+                            _vm._v("Off")
                           ]),
                           _vm._v(" "),
                           _c("option", { attrs: { value: "1" } }, [
