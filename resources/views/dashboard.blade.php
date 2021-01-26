@@ -26,6 +26,9 @@
                 <div class="col-12">
                     <tally-component></tally-component>
                 </div>
+                <div class="col-12">
+                    <configuration-component></configuration-component>
+                </div>
                 <!-- <div class="col-4">
                     <systeminfo-component></systeminfo-component>
                 </div> -->

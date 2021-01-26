@@ -27,6 +27,7 @@ Vue.component('display-component', require('./components/DisplayComponent.vue').
 Vue.component('audio-component', require('./components/AudioComponent.vue').default);
 Vue.component('output-component', require('./components/OutputComponent.vue').default);
 Vue.component('tally-component', require('./components/TallyComponent.vue').default);
+Vue.component('configuration-component', require('./components/ConfigurationComponent.vue').default);
 
 Vue.component('systeminfo-component', require('./components/SystemInfoComponent.vue').default);
 

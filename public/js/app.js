@@ -2190,6 +2190,429 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ConfigurationComponent.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ConfigurationComponent.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vue_custom_range_slider__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-custom-range-slider */ "./node_modules/vue-custom-range-slider/dist/vue-custom-range-slider.common.js");
+/* harmony import */ var vue_custom_range_slider__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue_custom_range_slider__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vue_custom_range_slider_dist_vue_custom_range_slider_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-custom-range-slider/dist/vue-custom-range-slider.css */ "./node_modules/vue-custom-range-slider/dist/vue-custom-range-slider.css");
+/* harmony import */ var vue_custom_range_slider_dist_vue_custom_range_slider_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue_custom_range_slider_dist_vue_custom_range_slider_css__WEBPACK_IMPORTED_MODULE_1__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    CustomSlider: vue_custom_range_slider__WEBPACK_IMPORTED_MODULE_0___default.a
+  },
+  data: function data() {
+    return {
+      title: 'Set Real Time clock',
+      showRealTimeClock: true,
+      showSystemLanguage: false,
+      showTimezone: false,
+      showLocation: false,
+      rtcDateValue: this.getToday(),
+      rtcTimeValue: this.getTime()
+    };
+  },
+  mounted: function mounted() {
+    console.log('OutputParameter-Component mounted.');
+  },
+  methods: {
+    onRealTimeClock: function onRealTimeClock(event) {
+      this.title = "Set Real Time Clock";
+      this.showRealTimeClock = true;
+      this.showSystemLanguage = this.showTimezone = this.showLocation = false;
+    },
+    onSystemLanguage: function onSystemLanguage(event) {
+      this.title = "Set System Language";
+      this.showSystemLanguage = true;
+      this.showRealTimeClock = this.showTimezone = this.showLocation = false;
+    },
+    onTimezone: function onTimezone(event) {
+      this.title = "Set Timezone";
+      this.showTimezone = true;
+      this.showRealTimeClock = this.showSystemLanguage = this.showLocation = false;
+    },
+    onLocation: function onLocation(event) {
+      this.title = "Set Location";
+      this.showLocation = true;
+      this.showRealTimeClock = this.showSystemLanguage = this.showTimezone = false;
+    },
+    sendConfigurationCommand: function sendConfigurationCommand(command) {
+      if (selectedCameraId == "") socket.emit('admin', null, JSON.stringify(command));else socket.emit('admin', selectedCameraId, JSON.stringify(command));
+    },
+    setRealTimeClock: function setRealTimeClock(event) {
+      debugger;
+      var command = {
+        type: 'real-time-clock'
+      };
+      this.sendConfigurationCommand(command);
+      alert('Sent Real Time Clock is called');
+    },
+    setSystemLanguage: function setSystemLanguage(event) {
+      debugger;
+      var command = {
+        type: 'system-language'
+      };
+      this.sendConfigurationCommand(command);
+      alert('Sent System Language is called');
+    },
+    setTimezone: function setTimezone(event) {
+      debugger;
+      var command = {
+        type: 'set-timezone'
+      };
+      this.sendConfigurationCommand(command);
+      alert('Sent TimeZone is called');
+    },
+    setLocation: function setLocation(event) {
+      debugger;
+      var command = {
+        type: 'set-location'
+      };
+      this.sendConfigurationCommand(command);
+      alert('Sent Location is called');
+    },
+    getToday: function getToday() {
+      debugger;
+      var today = new Date();
+      var dd = String(today.getDate()).padStart(2, '0');
+      var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+
+      var yyyy = today.getFullYear();
+      var dateString = "" + dd + '/' + mm + '/' + yyyy + "";
+      return dateString;
+    },
+    getTime: function getTime() {
+      debugger;
+      var today = new Date();
+      var timeString = "" + today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds() + "";
+      return timeString;
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/DisplayComponent.vue?vue&type=script&lang=js&":
 /*!***************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/DisplayComponent.vue?vue&type=script&lang=js& ***!
@@ -8309,6 +8732,25 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 // module
 exports.push([module.i, "\n.slider[data-v-07fa7d1c] {\r\n    margin-top: 10px !important;\r\n    margin-bottom: 0px !important;\n}\r\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ConfigurationComponent.vue?vue&type=style&index=0&id=1f9b0d5c&scoped=true&lang=css&":
+/*!****************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ConfigurationComponent.vue?vue&type=style&index=0&id=1f9b0d5c&scoped=true&lang=css& ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.slider[data-v-1f9b0d5c] {\r\n    margin-top: 10px !important;\r\n    margin-bottom: 0px !important;\n}\r\n", ""]);
 
 // exports
 
@@ -39599,6 +40041,36 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ConfigurationComponent.vue?vue&type=style&index=0&id=1f9b0d5c&scoped=true&lang=css&":
+/*!********************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ConfigurationComponent.vue?vue&type=style&index=0&id=1f9b0d5c&scoped=true&lang=css& ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./ConfigurationComponent.vue?vue&type=style&index=0&id=1f9b0d5c&scoped=true&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ConfigurationComponent.vue?vue&type=style&index=0&id=1f9b0d5c&scoped=true&lang=css&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/DisplayComponent.vue?vue&type=style&index=0&id=3bdecb46&scoped=true&lang=css&":
 /*!**************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/DisplayComponent.vue?vue&type=style&index=0&id=3bdecb46&scoped=true&lang=css& ***!
@@ -42295,6 +42767,1313 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("span", { staticClass: "d-block d-sm-none" }, [
       _c("i", { staticClass: "tim-icons icon-tap-02" })
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ConfigurationComponent.vue?vue&type=template&id=1f9b0d5c&scoped=true&":
+/*!*************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ConfigurationComponent.vue?vue&type=template&id=1f9b0d5c&scoped=true& ***!
+  \*************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "card" }, [
+    _c("div", { staticClass: "card-header" }, [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-sm-4 text-left" }, [
+          _c("h5", { staticClass: "card-category" }, [_vm._v("Configuration")]),
+          _vm._v(" "),
+          _c("h3", { staticClass: "card-title" }, [_vm._v(_vm._s(this.title))])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-sm-8" }, [
+          _c(
+            "div",
+            {
+              staticClass: "btn-group btn-group-toggle float-right",
+              attrs: { "data-toggle": "buttons" }
+            },
+            [
+              _c(
+                "label",
+                {
+                  staticClass: "btn btn-sm btn-primary btn-simple active",
+                  attrs: { id: "0" },
+                  on: { click: _vm.onRealTimeClock }
+                },
+                [
+                  _c("input", {
+                    attrs: { type: "radio", name: "options", checked: "" }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      staticClass:
+                        "d-none d-sm-block d-md-block d-lg-block d-xl-block"
+                    },
+                    [_vm._v("Real Time Clock")]
+                  ),
+                  _vm._v(" "),
+                  _vm._m(0)
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "label",
+                {
+                  staticClass: "btn btn-sm btn-primary btn-simple active",
+                  attrs: { id: "2" },
+                  on: { click: _vm.onSystemLanguage }
+                },
+                [
+                  _c("input", { attrs: { type: "radio", name: "options" } }),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      staticClass:
+                        "d-none d-sm-block d-md-block d-lg-block d-xl-block"
+                    },
+                    [_vm._v("System Language")]
+                  ),
+                  _vm._v(" "),
+                  _vm._m(1)
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "label",
+                {
+                  staticClass: "btn btn-sm btn-primary btn-simple",
+                  attrs: { id: "5" },
+                  on: { click: _vm.onTimezone }
+                },
+                [
+                  _c("input", {
+                    staticClass: "d-none d-sm-none",
+                    attrs: { type: "radio", name: "options" }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      staticClass:
+                        "d-none d-sm-block d-md-block d-lg-block d-xl-block"
+                    },
+                    [_vm._v("Timezone")]
+                  ),
+                  _vm._v(" "),
+                  _vm._m(2)
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "label",
+                {
+                  staticClass: "btn btn-sm btn-primary btn-simple",
+                  attrs: { id: "6" },
+                  on: { click: _vm.onLocation }
+                },
+                [
+                  _c("input", {
+                    staticClass: "d-none",
+                    attrs: { type: "radio", name: "options" }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      staticClass:
+                        "d-none d-sm-block d-md-block d-lg-block d-xl-block"
+                    },
+                    [_vm._v("Location")]
+                  ),
+                  _vm._v(" "),
+                  _vm._m(3)
+                ]
+              )
+            ]
+          )
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "card-body" }, [
+      this.showRealTimeClock
+        ? _c(
+            "div",
+            { staticClass: "form-group", attrs: { id: "realtime-clock-body" } },
+            [
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col-sm-4" }, [
+                  _c("label", [_vm._v(" Date : ")]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.rtcDateValue,
+                        expression: "rtcDateValue"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      type: "date",
+                      id: "rtcDate",
+                      name: "rtcDate",
+                      min: "0000-00-00",
+                      max: "2099-12-31",
+                      required: ""
+                    },
+                    domProps: { value: _vm.rtcDateValue },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.rtcDateValue = $event.target.value
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-sm-4" }, [
+                  _c("label", [_vm._v(" Time : ")]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.rtcTimeValue,
+                        expression: "rtcTimeValue"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      type: "time",
+                      id: "rtcTime",
+                      name: "rtcTime",
+                      min: "00:00:00",
+                      max: "23:59:59",
+                      required: ""
+                    },
+                    domProps: { value: _vm.rtcTimeValue },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.rtcTimeValue = $event.target.value
+                      }
+                    }
+                  })
+                ])
+              ]),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary",
+                  attrs: { id: "btnRealTimeClock" },
+                  on: { click: _vm.setRealTimeClock }
+                },
+                [_vm._v("Set Real Time Clock")]
+              )
+            ]
+          )
+        : _vm._e(),
+      _vm._v(" "),
+      this.showSystemLanguage
+        ? _c(
+            "div",
+            {
+              staticClass: "form-group",
+              attrs: { id: "system-language-body" }
+            },
+            [
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col-sm-6" }, [
+                  _c("label", [_vm._v("System Language")]),
+                  _vm._v(" "),
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.systemLanguageValue,
+                          expression: "systemLanguageValue"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { id: "systemLanguage" },
+                      on: {
+                        change: function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.systemLanguageValue = $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        }
+                      }
+                    },
+                    [
+                      _c("option", { attrs: { value: "aa" } }, [
+                        _vm._v("aa (Afar)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "ab" } }, [
+                        _vm._v("ab (Abkhazian)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "af" } }, [
+                        _vm._v("af (Afrikaans)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "ak" } }, [
+                        _vm._v("ak (Akan)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "sq" } }, [
+                        _vm._v("sq (Albanian)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "am" } }, [
+                        _vm._v("am (Amharic)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "ar" } }, [
+                        _vm._v("ar (Arabic)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "an" } }, [
+                        _vm._v("an (Aragonese)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "hy" } }, [
+                        _vm._v("hy (Armenian)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "as" } }, [
+                        _vm._v("as (Assamese)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "av" } }, [
+                        _vm._v("av (Avaric)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "ae" } }, [
+                        _vm._v("ae (Avestan)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "ay" } }, [
+                        _vm._v("ay (Aymara)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "az" } }, [
+                        _vm._v("az (Azerbaijani)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "ba" } }, [
+                        _vm._v("ba (Bashkir)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "bm" } }, [
+                        _vm._v("bm (Bambara)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "eu" } }, [
+                        _vm._v("eu (Basque)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "be" } }, [
+                        _vm._v("be (Belarusian)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "bn" } }, [
+                        _vm._v("bn (Bengali)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "bh" } }, [
+                        _vm._v("bh (Bihari languages)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "bi" } }, [
+                        _vm._v("bi (Bislama)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "bo" } }, [
+                        _vm._v("bo (Tibetan)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "bs" } }, [
+                        _vm._v("bs (Bosnian)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "br" } }, [
+                        _vm._v("br (Breton)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "bg" } }, [
+                        _vm._v("bg (Bulgarian)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "my" } }, [
+                        _vm._v("my (Burmese)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "ca" } }, [
+                        _vm._v("ca (Catalan)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "cs" } }, [
+                        _vm._v("cs (Czech)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "ch" } }, [
+                        _vm._v("ch (Chamorro)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "ce" } }, [
+                        _vm._v("ce (Chechen)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "zh" } }, [
+                        _vm._v("zh (Chinese)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "cu" } }, [
+                        _vm._v("cu (Church Slavic)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "cv" } }, [
+                        _vm._v("cv (Chuvash)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "kw" } }, [
+                        _vm._v("kw (Cornish)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "co" } }, [
+                        _vm._v("co (Corsican)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "cr" } }, [
+                        _vm._v("cr (Cree)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "cy" } }, [
+                        _vm._v("cy (Welsh)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "cs" } }, [
+                        _vm._v("cs (Czesh)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "da" } }, [
+                        _vm._v("da (Danish)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "de" } }, [
+                        _vm._v("de (German)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "dv" } }, [
+                        _vm._v("dv (Divehi)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "nl" } }, [
+                        _vm._v("nl (Dutch)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "dz" } }, [
+                        _vm._v("dz (Dzongkha)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "el" } }, [
+                        _vm._v("el (Greek)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "en" } }, [
+                        _vm._v("en (English)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "eo" } }, [
+                        _vm._v("eo (Esperanto)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "et" } }, [
+                        _vm._v("et (Estonian)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "eu" } }, [
+                        _vm._v("eu (Basque)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "ee" } }, [
+                        _vm._v("ee (Ewe)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "f0" } }, [
+                        _vm._v("fo (Faroese)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "fa" } }, [
+                        _vm._v("fa (Persian)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "fj" } }, [
+                        _vm._v("fj (Fijian)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "fi" } }, [
+                        _vm._v("fi (Finnish)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "fr" } }, [
+                        _vm._v("fr (French)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "fy" } }, [
+                        _vm._v("fy (Western Frisian)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "ff" } }, [
+                        _vm._v("ff (Fulah)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "ka" } }, [
+                        _vm._v("ka (Georgian)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "de" } }, [
+                        _vm._v("de (German)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "gd" } }, [
+                        _vm._v("gd (Gaelic)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "ga" } }, [
+                        _vm._v("ga (Irish)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "gl" } }, [
+                        _vm._v("gl (Galician)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "gv" } }, [
+                        _vm._v("gv (Manx)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "el" } }, [
+                        _vm._v("el (Greek)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "gn" } }, [
+                        _vm._v("gn (Guarani)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "gu" } }, [
+                        _vm._v("gu (Gujarati)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "ht" } }, [
+                        _vm._v("ht (Haitian)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "ha" } }, [
+                        _vm._v("ha (Hausa)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "he" } }, [
+                        _vm._v("he (Hebrew)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "hz" } }, [
+                        _vm._v("hz (Herero)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "hi" } }, [
+                        _vm._v("hi (Hindi)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "ho" } }, [
+                        _vm._v("ho (Hiri Motu)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "hr" } }, [
+                        _vm._v("hr (Croatian)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "hu" } }, [
+                        _vm._v("hu (Hungarian)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "hy" } }, [
+                        _vm._v("hy (Armenian)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "ig" } }, [
+                        _vm._v("ig (Lgbo)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "is" } }, [
+                        _vm._v("is (Icelandic)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "io" } }, [
+                        _vm._v("io (Ido)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "ii" } }, [
+                        _vm._v("ii (Sichuan Yi)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "iu" } }, [
+                        _vm._v("iu (Inuktitut)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "ie" } }, [
+                        _vm._v("ie (Interlingue)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "ia" } }, [
+                        _vm._v("ia (Interlingua)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "id" } }, [
+                        _vm._v("id (Indonesian)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "ik" } }, [
+                        _vm._v("ik (Inupiaq)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "is" } }, [
+                        _vm._v("is (Icelandic)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "it" } }, [
+                        _vm._v("it (Italian)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "jv" } }, [
+                        _vm._v("jv (Javanese)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "ja" } }, [
+                        _vm._v("ja (Japanese)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "kl" } }, [
+                        _vm._v("kl (Kalaallisut)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "kn" } }, [
+                        _vm._v("kn (Kannada)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "ks" } }, [
+                        _vm._v("ks (Kashmiri)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "ka" } }, [
+                        _vm._v("ka (Georgian)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "kr" } }, [
+                        _vm._v("kr (Kanuri)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "kk" } }, [
+                        _vm._v("kk (Kazakh)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "km" } }, [
+                        _vm._v("km (Central Khmer)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "ki" } }, [
+                        _vm._v("ki (Kikuyu)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "rw" } }, [
+                        _vm._v("rw (Kinyarwanda)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "ky" } }, [
+                        _vm._v("ky (Kirghiz)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "kv" } }, [
+                        _vm._v("kv (Komi)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "kg" } }, [
+                        _vm._v("kg (Kongo)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "ko" } }, [
+                        _vm._v("ko (Korean)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "kj" } }, [
+                        _vm._v("kj (Kuanyama)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "ku" } }, [
+                        _vm._v("ku (Kurdish)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "lo" } }, [
+                        _vm._v("lo (Lao)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "la" } }, [
+                        _vm._v("la (Latin)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "lv" } }, [
+                        _vm._v("lv (Latvian)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "li" } }, [
+                        _vm._v("li (Limburgan)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "ln" } }, [
+                        _vm._v("ln (Lingala)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "lt" } }, [
+                        _vm._v("lt (Lithuanian)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "lb" } }, [
+                        _vm._v("lb (Luxembourgish)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "lu" } }, [
+                        _vm._v("lu (Luba-Katanga)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "lg" } }, [
+                        _vm._v("lg (Ganda)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "mk" } }, [
+                        _vm._v("mk (Macedonian)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "mh" } }, [
+                        _vm._v("mh (Marshallese)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "ml" } }, [
+                        _vm._v("ml (Malayalam)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "mi" } }, [
+                        _vm._v("mi (Maori)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "mr" } }, [
+                        _vm._v("mr (Marathi)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "ms" } }, [
+                        _vm._v("ms (Malay)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "mk" } }, [
+                        _vm._v("mk (Macedonian)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "mg" } }, [
+                        _vm._v("mg (Malagasy)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "mt" } }, [
+                        _vm._v("mt (Maltese)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "mn" } }, [
+                        _vm._v("mn (Mongolian)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "mi" } }, [
+                        _vm._v("mi (Maori)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "ms" } }, [
+                        _vm._v("ms (Malay)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "my" } }, [
+                        _vm._v("my (Burmese)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "na" } }, [
+                        _vm._v("na (Nauru)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "nv" } }, [
+                        _vm._v("nv (Navajo)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "nr" } }, [
+                        _vm._v("nr (Ndebele)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "nd" } }, [
+                        _vm._v("nd (Ndebele)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "ng" } }, [
+                        _vm._v("ng (Ndonga)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "ne" } }, [
+                        _vm._v("ne (Nepali)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "nl" } }, [
+                        _vm._v("nl (Dutch)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "nn" } }, [
+                        _vm._v("nn (Norwegian Nynorsk)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "nb" } }, [
+                        _vm._v("nb (Bokmal)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "no" } }, [
+                        _vm._v("no (Norwegian)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "ny" } }, [
+                        _vm._v("ny (Chichewa)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "oc" } }, [
+                        _vm._v("oc (Occitan)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "oj" } }, [
+                        _vm._v("oj (Ojibwa)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "or" } }, [
+                        _vm._v("or (Oriya)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "om" } }, [
+                        _vm._v("om (Oromo)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "os" } }, [
+                        _vm._v("os (Ossetian)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "pa" } }, [
+                        _vm._v("pa (Panjabi)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "fa" } }, [
+                        _vm._v("fa (Persian)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "pi" } }, [
+                        _vm._v("pi (Pali)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "pl" } }, [
+                        _vm._v("pl (Polish)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "pt" } }, [
+                        _vm._v("pt (Portuguese)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "ps" } }, [
+                        _vm._v("ps (Pushto)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "qu" } }, [
+                        _vm._v("qu (Quechua)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "rm" } }, [
+                        _vm._v("rm (Romansh)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "ro" } }, [
+                        _vm._v("ro (Romanian)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "rn" } }, [
+                        _vm._v("rn (Rundi)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "ru" } }, [
+                        _vm._v("ru (Russian)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "sg" } }, [
+                        _vm._v("sg (Sango)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "sa" } }, [
+                        _vm._v("sa (Sanskrit)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "si" } }, [
+                        _vm._v("si (Sinhala)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "sk" } }, [
+                        _vm._v("sk (Slovak)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "sl" } }, [
+                        _vm._v("sl (Slovenian)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "se" } }, [
+                        _vm._v("se (Northern Sami)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "sm" } }, [
+                        _vm._v("sm (Samoan)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "sn" } }, [
+                        _vm._v("sn (Shona)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "sd" } }, [
+                        _vm._v("sd (Sindhi)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "so" } }, [
+                        _vm._v("so (Somali)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "st" } }, [
+                        _vm._v("st (Sotho)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "es" } }, [
+                        _vm._v("es (Spanish)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "sq" } }, [
+                        _vm._v("sq (Albanian)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "sc" } }, [
+                        _vm._v("sc (Sardinian)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "sr" } }, [
+                        _vm._v("sr (Serbian)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "ss" } }, [
+                        _vm._v("ss (Swati)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "su" } }, [
+                        _vm._v("su (Sundanese)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "sw" } }, [
+                        _vm._v("sw (Swahili)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "sv" } }, [
+                        _vm._v("sv (Swedish)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "ty" } }, [
+                        _vm._v("ty (Tahitian)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "ta" } }, [
+                        _vm._v("ta (Tamil)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "tt" } }, [
+                        _vm._v("tt (Tatar)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "te" } }, [
+                        _vm._v("te (Telugu)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "tg" } }, [
+                        _vm._v("tg (Tajik)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "tl" } }, [
+                        _vm._v("tl (Tagalog)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "th" } }, [
+                        _vm._v("th (Thai)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "bo" } }, [
+                        _vm._v("bo (Tibetan)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "ti" } }, [
+                        _vm._v("ti (Tigrinya)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "to" } }, [
+                        _vm._v("to (Tonga)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "tn" } }, [
+                        _vm._v("tn (Tswana)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "ts" } }, [
+                        _vm._v("ts (Tsonga)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "tk" } }, [
+                        _vm._v("tk (Turkmen)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "tr" } }, [
+                        _vm._v("tr (Turkish)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "tw" } }, [
+                        _vm._v("tw (Twi)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "ug" } }, [
+                        _vm._v("ug (Uighur)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "uk" } }, [
+                        _vm._v("uk (Ukrainian)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "ur" } }, [
+                        _vm._v("ur (Urdu)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "uz" } }, [
+                        _vm._v("uz (Uzbek)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "ve" } }, [
+                        _vm._v("ve (Venda)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "vi" } }, [
+                        _vm._v("vi (Vietnamese)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "vo" } }, [
+                        _vm._v("vo (Volapuk)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "cy" } }, [
+                        _vm._v("cy (Welsh)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "wa" } }, [
+                        _vm._v("wa (Walloon)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "wo" } }, [
+                        _vm._v("wo (Wolof)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "xh" } }, [
+                        _vm._v("xh (Xhosa)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "yi" } }, [
+                        _vm._v("yi (Yiddish)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "yo" } }, [
+                        _vm._v("yo (Yoruba)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "za" } }, [
+                        _vm._v("za (Zhuang)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "zh" } }, [
+                        _vm._v("zh (Chinese)")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "zu" } }, [
+                        _vm._v("zu (Zulu)")
+                      ])
+                    ]
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary",
+                  attrs: { id: "btnSystemLanguage" },
+                  on: { click: _vm.setSystemLanguage }
+                },
+                [_vm._v("Set System Language")]
+              )
+            ]
+          )
+        : _vm._e(),
+      _vm._v(" "),
+      this.showTimezone
+        ? _c(
+            "div",
+            { staticClass: "form-group", attrs: { id: "timezone-body" } },
+            [
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col-sm-6" }, [
+                  _c("label", [_vm._v("Timezone")]),
+                  _vm._v(" "),
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.systemLanguageValue,
+                          expression: "systemLanguageValue"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { id: "systemLanguage" },
+                      on: {
+                        change: function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.systemLanguageValue = $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        }
+                      }
+                    },
+                    [
+                      _c("option", { attrs: { value: "-660" } }, [
+                        _vm._v("UTC - 11:00")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "-600" } }, [
+                        _vm._v("UTC - 10:00")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "-540" } }, [
+                        _vm._v("UTC - 09:00")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "-480" } }, [
+                        _vm._v("UTC - 08:00")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "-420" } }, [
+                        _vm._v("UTC - 07:00")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "-360" } }, [
+                        _vm._v("UTC - 06:00")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "-300" } }, [
+                        _vm._v("UTC - 05:00")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "-240" } }, [
+                        _vm._v("UTC - 04:00")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "-180" } }, [
+                        _vm._v("UTC - 03:00")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "-120" } }, [
+                        _vm._v("UTC - 02:00")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "-60" } }, [
+                        _vm._v("UTC - 01:00")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "0", selected: "" } }, [
+                        _vm._v("UTC")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "60" } }, [
+                        _vm._v("UTC + 01:00")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "120" } }, [
+                        _vm._v("UTC + 02:00")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "180" } }, [
+                        _vm._v("UTC + 03:00")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "240" } }, [
+                        _vm._v("UTC + 04:00")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "300" } }, [
+                        _vm._v("UTC + 05:00")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "360" } }, [
+                        _vm._v("UTC + 06:00")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "420" } }, [
+                        _vm._v("UTC + 07:00")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "480" } }, [
+                        _vm._v("UTC + 08:00")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "540" } }, [
+                        _vm._v("UTC + 09:00")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "600" } }, [
+                        _vm._v("UTC + 10:00")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "660" } }, [
+                        _vm._v("UTC + 11:00")
+                      ])
+                    ]
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary",
+                  attrs: { id: "btnTimezone" },
+                  on: { click: _vm.setTimezone }
+                },
+                [_vm._v("Set Timezone")]
+              )
+            ]
+          )
+        : _vm._e(),
+      _vm._v(" "),
+      this.showLocation
+        ? _c(
+            "div",
+            { staticClass: "form-group", attrs: { id: "overlays-body" } },
+            [
+              _vm._m(4),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary",
+                  attrs: { id: "btnLocation" },
+                  on: { click: _vm.setLocation }
+                },
+                [_vm._v("Set Location")]
+              )
+            ]
+          )
+        : _vm._e()
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "d-block d-sm-none" }, [
+      _c("i", { staticClass: "tim-icons icon-single-02" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "d-block d-sm-none" }, [
+      _c("i", { staticClass: "tim-icons icon-single-02" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "d-block d-sm-none" }, [
+      _c("i", { staticClass: "tim-icons icon-gift-2" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "d-block d-sm-none" }, [
+      _c("i", { staticClass: "tim-icons icon-tap-02" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-sm-6" }, [
+        _c("label", [_vm._v("Location")])
+      ])
     ])
   }
 ]
@@ -57696,6 +59475,7 @@ Vue.component('display-component', __webpack_require__(/*! ./components/DisplayC
 Vue.component('audio-component', __webpack_require__(/*! ./components/AudioComponent.vue */ "./resources/js/components/AudioComponent.vue")["default"]);
 Vue.component('output-component', __webpack_require__(/*! ./components/OutputComponent.vue */ "./resources/js/components/OutputComponent.vue")["default"]);
 Vue.component('tally-component', __webpack_require__(/*! ./components/TallyComponent.vue */ "./resources/js/components/TallyComponent.vue")["default"]);
+Vue.component('configuration-component', __webpack_require__(/*! ./components/ConfigurationComponent.vue */ "./resources/js/components/ConfigurationComponent.vue")["default"]);
 Vue.component('systeminfo-component', __webpack_require__(/*! ./components/SystemInfoComponent.vue */ "./resources/js/components/SystemInfoComponent.vue")["default"]);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -57836,6 +59616,93 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AudioComponent_vue_vue_type_template_id_07fa7d1c_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AudioComponent_vue_vue_type_template_id_07fa7d1c_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/ConfigurationComponent.vue":
+/*!************************************************************!*\
+  !*** ./resources/js/components/ConfigurationComponent.vue ***!
+  \************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ConfigurationComponent_vue_vue_type_template_id_1f9b0d5c_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ConfigurationComponent.vue?vue&type=template&id=1f9b0d5c&scoped=true& */ "./resources/js/components/ConfigurationComponent.vue?vue&type=template&id=1f9b0d5c&scoped=true&");
+/* harmony import */ var _ConfigurationComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ConfigurationComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/ConfigurationComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _ConfigurationComponent_vue_vue_type_style_index_0_id_1f9b0d5c_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ConfigurationComponent.vue?vue&type=style&index=0&id=1f9b0d5c&scoped=true&lang=css& */ "./resources/js/components/ConfigurationComponent.vue?vue&type=style&index=0&id=1f9b0d5c&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _ConfigurationComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ConfigurationComponent_vue_vue_type_template_id_1f9b0d5c_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ConfigurationComponent_vue_vue_type_template_id_1f9b0d5c_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "1f9b0d5c",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/ConfigurationComponent.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/ConfigurationComponent.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************!*\
+  !*** ./resources/js/components/ConfigurationComponent.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ConfigurationComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./ConfigurationComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ConfigurationComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ConfigurationComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/ConfigurationComponent.vue?vue&type=style&index=0&id=1f9b0d5c&scoped=true&lang=css&":
+/*!*********************************************************************************************************************!*\
+  !*** ./resources/js/components/ConfigurationComponent.vue?vue&type=style&index=0&id=1f9b0d5c&scoped=true&lang=css& ***!
+  \*********************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_ConfigurationComponent_vue_vue_type_style_index_0_id_1f9b0d5c_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader!../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./ConfigurationComponent.vue?vue&type=style&index=0&id=1f9b0d5c&scoped=true&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ConfigurationComponent.vue?vue&type=style&index=0&id=1f9b0d5c&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_ConfigurationComponent_vue_vue_type_style_index_0_id_1f9b0d5c_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_ConfigurationComponent_vue_vue_type_style_index_0_id_1f9b0d5c_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_ConfigurationComponent_vue_vue_type_style_index_0_id_1f9b0d5c_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_ConfigurationComponent_vue_vue_type_style_index_0_id_1f9b0d5c_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+
+
+/***/ }),
+
+/***/ "./resources/js/components/ConfigurationComponent.vue?vue&type=template&id=1f9b0d5c&scoped=true&":
+/*!*******************************************************************************************************!*\
+  !*** ./resources/js/components/ConfigurationComponent.vue?vue&type=template&id=1f9b0d5c&scoped=true& ***!
+  \*******************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ConfigurationComponent_vue_vue_type_template_id_1f9b0d5c_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./ConfigurationComponent.vue?vue&type=template&id=1f9b0d5c&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ConfigurationComponent.vue?vue&type=template&id=1f9b0d5c&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ConfigurationComponent_vue_vue_type_template_id_1f9b0d5c_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ConfigurationComponent_vue_vue_type_template_id_1f9b0d5c_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
