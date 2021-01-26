@@ -159,7 +159,7 @@ export default {
         }
     },
     mounted() {
-        console.log('RecordDisplay-Component mounted.')
+        console.log('OutputParameter-Component mounted.')
     },
     methods: {
         onOverlayEnables: function(event) {
