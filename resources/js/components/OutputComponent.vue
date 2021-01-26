@@ -3,35 +3,35 @@
         <div class="card-header">
             <div class="row">
                 <div class="col-sm-4 text-left">
-                    <h5 class="card-category">Audio</h5>
+                    <h5 class="card-category">Output</h5>
                     <h3 class="card-title">{{this.title}}</h3>
                 </div>
                 <div class="col-sm-8">
                     <div class="btn-group btn-group-toggle float-right" data-toggle="buttons">
-                    <label class="btn btn-sm btn-primary btn-simple active" id="0" v-on:click="onMicLevel">
+                    <label class="btn btn-sm btn-primary btn-simple active" id="0" v-on:click="onOverlayEnables">
                         <input type="radio" name="options" checked>
-                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Mic</span>
+                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Overlay enables</span>
                         <span class="d-block d-sm-none">
                             <i class="tim-icons icon-single-02"></i>
                         </span>
                     </label>
-                    <label class="btn btn-sm btn-primary btn-simple active" id="2" v-on:click="onHeadphoneSpeaker">
+                    <label class="btn btn-sm btn-primary btn-simple active" id="2" v-on:click="onFrameGuidesStyle">
                         <input type="radio" name="options">
-                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Headphone / Speaker</span>
+                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Frame guides style</span>
                         <span class="d-block d-sm-none">
                             <i class="tim-icons icon-single-02"></i>
                         </span>
                     </label>
-                    <label class="btn btn-sm btn-primary btn-simple" id="5" v-on:click="onInput">
+                    <label class="btn btn-sm btn-primary btn-simple" id="5" v-on:click="onFrameGuidesOpacity">
                         <input type="radio" class="d-none d-sm-none" name="options">
-                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Input</span>
+                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Frame guides opacity</span>
                         <span class="d-block d-sm-none">
                             <i class="tim-icons icon-gift-2"></i>
                         </span>
                     </label>
-                    <label class="btn btn-sm btn-primary btn-simple" id="6" v-on:click="onPhantomPower">
+                    <label class="btn btn-sm btn-primary btn-simple" id="6" v-on:click="onOverlays">
                         <input type="radio" class="d-none" name="options">
-                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Phantom Power</span>
+                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">onOverlays</span>
                         <span class="d-block d-sm-none">
                             <i class="tim-icons icon-tap-02"></i>
                         </span>
@@ -42,17 +42,17 @@
         </div>
         <div class="card-body">
 
-            <div class="form-group" id="mic-level-body" v-if="this.showMicLevel">
+            <div class="form-group" id="mic-level-body" v-if="this.showOverlayEnables">
                 <div class="row">
-                    <div class="col-sm-6">
+                    <div class="col-sm-4">
                         <label>Mic Level</label>
                         <custom-slider raising min="0" max="1" step="0.05" v-model="micLevelValue" key="sliderMicLevel"/>
                     </div>
                 </div>
                 <button class="btn btn-primary" id="btnMicLevel" v-on:click="setMicLevel">Set Mic Level</button>
             </div>
-            <div class="form-group" id="headphone-body" v-if="this.showHeadphoneSpeaker">
-                <table class="table">
+            <div class="form-group" id="headphone-body" v-if="this.showFrameGuidesStyle">
+                <table class="table col-sm-8">
                     <tbody>
                         <tr>
                             <td width="30%">Headphone Level</td>
@@ -72,8 +72,8 @@
                     </tbody>
                 </table>
             </div>
-            <div class="form-group" id="input-body" v-if="this.showInput">
-                <table class="table">
+            <div class="form-group" id="input-body" v-if="this.showFrameGuidesOpacity">
+                <table class="table col-sm-8">
                     <tbody>
                         <tr>
                             <td width="30%">Input Type</td>
@@ -93,7 +93,7 @@
                     </tbody>
                 </table>
             </div>
-            <div class="form-group" id="phantom-power-body" v-if="this.showPhantomPower">
+            <div class="form-group" id="phantom-power-body" v-if="this.showOverlays">
                 <div class="row">
                     <div class="col-sm-4">
                         <label>Phantom Power</label>
@@ -121,10 +121,10 @@ export default {
     data() {
         return {
             title: 'Set Mic Level',
-            showMicLevel: true,
-            showHeadphoneSpeaker: false,
-            showInput: false,
-            showPhantomPower: false,
+            showOverlayEnables: true,
+            showFrameGuidesStyle: false,
+            showFrameGuidesOpacity: false,
+            showOverlays: false,
             micLevelValue: "0",
             headphoneLevelValue: "0",
             headphoneMixValue: "0",
@@ -139,25 +139,25 @@ export default {
         console.log('RecordDisplay-Component mounted.')
     },
     methods: {
-        onMicLevel: function(event) {
-            this.title = "Set Mic Level";
-            this.showMicLevel = true;
-            this.showHeadphoneSpeaker = this.showInput = this.showPhantomPower = false;
+        onOverlayEnables: function(event) {
+            this.title = "Overlay Enables";
+            this.showOverlayEnables = true;
+            this.showFrameGuidesStyle = this.showFrameGuidesOpacity = this.showOverlays = false;
         },
-        onHeadphoneSpeaker: function(event) {
-            this.title = "Set Levels";
-            this.showHeadphoneSpeaker = true;
-            this.showMicLevel = this.showInput = this.showPhantomPower = false;
+        onFrameGuidesStyle: function(event) {
+            this.title = "Frame guides style (Camera 3.x)";
+            this.showFrameGuidesStyle = true;
+            this.showOverlayEnables = this.showFrameGuidesOpacity = this.showOverlays = false;
         },
-        onInput: function(event) {
-            this.title = "Set Focus Assist";
-            this.showInput = true;
-            this.showHeadphoneSpeaker = this.showMicLevel = this.showPhantomPower = false;
+        onFrameGuidesOpacity: function(event) {
+            this.title = "Frame guides opacity (Camera 3.x)";
+            this.showFrameGuidesOpacity = true;
+            this.showOverlayEnables = this.showFrameGuidesStyle = this.showOverlays = false;
         },
-        onPhantomPower: function(event) {
-            this.title = "Set Program return feed enable";
-            this.showPhantomPower = true;
-            this.showHeadphoneSpeaker = this.showInput = this.showMicLevel = false;
+        onOverlays: function(event) {
+            this.title = "Overlays (replaces .1 and .2 above from Cameras 4.0)";
+            this.showOverlays = true;
+            this.showOverlayEnables = this.showFrameGuidesStyle = this.showFrameGuidesOpacity = false;
         },
         sendAudioCommand: function(command) {
             if (selectedCameraId == "")

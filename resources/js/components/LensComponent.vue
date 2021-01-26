@@ -53,7 +53,7 @@
         </div>
         <div class="form-group" id="manual-focus-body" v-if="this.showManual">
             <div class="row">
-                <div class="col-sm-3">
+                <div class="col-sm-6">
                     <label>Manual Focus</label>
                     <custom-slider raising min="0.0" max="1.0" step="0.05" v-model="manualFocusValue"/>
                 </div>
@@ -61,7 +61,7 @@
             <button class="btn btn-primary" id="btnManualFocus" v-on:click="setManualFocus">Manual Focus</button>
         </div>
         <div class="table-responsive ps" id="aperture-body" v-if="this.showAperture">
-            <table class="table col-sm-8">
+            <table class="table">
                 <tbody>
                     <tr>
                         <td width="30%">Aperture (f-stop) / IRIS </td>
@@ -87,7 +87,7 @@
             </table>
         </div>
         <div class="form-group" id="zoom-body" v-if="this.showZoom">
-            <table class="table col-sm-8">
+            <table class="table">
                 <tbody>
                     <tr>
                         <td width="30%">Set absolute zoom (mm)</td>

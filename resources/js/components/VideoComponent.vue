@@ -121,7 +121,7 @@
                 <button class="btn btn-primary" id="btnRestoreAutoWB" v-on:click="restoreAutoWB">Restore Auto WB</button>
             </div>
             <div class="form-group" id="range-mode-body" v-if="this.showRangeShapenISO">                
-                <table class="table col-sm-8">
+                <table class="table">
                     <tbody>
                         <tr>
                             <td width="30%">Range Mode</td>
@@ -201,7 +201,7 @@
                 <button class="btn btn-primary" id="btnRecordFormat" v-on:click="setRecordFormat">Record Format</button>
             </div>
             <div class="form-group" id="shutter-angle-body" v-if="this.showShutter">
-                <table class="table col-sm-8">
+                <table class="table">
                     <tbody>
                         <tr>
                             <td width="30%">Shutter Angle</td>
@@ -217,7 +217,7 @@
                 </table>
             </div>
             <div class="form-group" id="exposure-us-body" v-if="this.showExposureForVideo">
-                <table class="table col-sm-8">
+                <table class="table">
                     <tbody>
                         <tr>
                             <td width="30%">Exposure (us)</td>

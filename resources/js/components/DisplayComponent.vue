@@ -42,7 +42,7 @@
         </div>
         <div class="card-body">
             <div class="form-group" id="brightness-body" v-if="this.showBrightness">
-                <table class="table col-sm-8">
+                <table class="table">
                     <tbody>
                         <tr>
                             <td width="30%">Brightness</td>
@@ -63,7 +63,7 @@
                 </table>
             </div>
             <div class="form-group" id="zebra-level-body" v-if="this.showZebraPeakingLevel">
-                <table class="table col-sm-8">
+                <table class="table">
                     <tbody>
                         <tr>
                             <td width="30%">Zebra Level</td>
@@ -79,7 +79,7 @@
                 </table>
             </div>
             <div class="form-group" id="focus-assist-body" v-if="this.showFocusAssist">
-                <div class="col-sm-6">
+                <div class="">
                     <table class="table">
                         <tbody>
                             <tr>
@@ -110,7 +110,7 @@
             </div>
             <div class="form-group" id="return-feedenable-body" v-if="this.showReturnFeedEnable">
                 <div class="row">
-                    <div class="col-sm-4">
+                    <div class="col-sm-6">
                         <label>Program return feed enable</label>
                         <custom-slider raising min="0" max="30" step="1" v-model="returnFeedEnableValue" key="sliderFeedEnable"/>
                     </div>

@@ -25,6 +25,7 @@ Vue.component('recordvideo-component', require('./components/RecordVideoComponen
 Vue.component('video-component', require('./components/VideoComponent.vue').default);
 Vue.component('display-component', require('./components/DisplayComponent.vue').default);
 Vue.component('audio-component', require('./components/AudioComponent.vue').default);
+Vue.component('output-component', require('./components/OutputComponent.vue').default);
 Vue.component('systeminfo-component', require('./components/SystemInfoComponent.vue').default);
 
 /**
