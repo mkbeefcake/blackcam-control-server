@@ -2,11 +2,11 @@
     <div class="card">
         <div class="card-header">
             <div class="row">
-                <div class="col-sm-6 text-left">
+                <div class="col-sm-4 text-left">
                     <h5 class="card-category">Display</h5>
                     <h3 class="card-title">{{this.title}}</h3>
                 </div>
-                <div class="col-sm-6">
+                <div class="col-sm-8">
                     <div class="btn-group btn-group-toggle float-right" data-toggle="buttons">
                     <label class="btn btn-sm btn-primary btn-simple active" id="0" v-on:click="onBrightness">
                         <input type="radio" name="options" checked>

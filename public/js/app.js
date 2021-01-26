@@ -41354,13 +41354,13 @@ var render = function() {
   return _c("div", { staticClass: "card" }, [
     _c("div", { staticClass: "card-header" }, [
       _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-sm-6 text-left" }, [
+        _c("div", { staticClass: "col-sm-4 text-left" }, [
           _c("h5", { staticClass: "card-category" }, [_vm._v("Audio")]),
           _vm._v(" "),
           _c("h3", { staticClass: "card-title" }, [_vm._v(_vm._s(this.title))])
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "col-sm-6" }, [
+        _c("div", { staticClass: "col-sm-8" }, [
           _c(
             "div",
             {
@@ -41888,13 +41888,13 @@ var render = function() {
   return _c("div", { staticClass: "card" }, [
     _c("div", { staticClass: "card-header" }, [
       _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-sm-6 text-left" }, [
+        _c("div", { staticClass: "col-sm-4 text-left" }, [
           _c("h5", { staticClass: "card-category" }, [_vm._v("Display")]),
           _vm._v(" "),
           _c("h3", { staticClass: "card-title" }, [_vm._v(_vm._s(this.title))])
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "col-sm-6" }, [
+        _c("div", { staticClass: "col-sm-8" }, [
           _c(
             "div",
             {
@@ -42512,13 +42512,13 @@ var render = function() {
   return _c("div", { staticClass: "card" }, [
     _c("div", { staticClass: "card-header" }, [
       _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-sm-6 text-left" }, [
+        _c("div", { staticClass: "col-sm-4 text-left" }, [
           _c("h5", { staticClass: "card-category" }, [_vm._v("Lens")]),
           _vm._v(" "),
           _c("h2", { staticClass: "card-title" }, [_vm._v(_vm._s(this.title))])
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "col-sm-6" }, [
+        _c("div", { staticClass: "col-sm-8" }, [
           _c(
             "div",
             {
@@ -43213,13 +43213,13 @@ var render = function() {
   return _c("div", { staticClass: "card" }, [
     _c("div", { staticClass: "card-header" }, [
       _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-sm-6 text-left" }, [
+        _c("div", { staticClass: "col-sm-4 text-left" }, [
           _c("h5", { staticClass: "card-category" }, [_vm._v("Video")]),
           _vm._v(" "),
           _c("h3", { staticClass: "card-title" }, [_vm._v(_vm._s(this.title))])
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "col-sm-6" }, [
+        _c("div", { staticClass: "col-sm-8" }, [
           _c(
             "div",
             {
@@ -43616,7 +43616,7 @@ var render = function() {
             "div",
             { staticClass: "form-group", attrs: { id: "white-balance-body" } },
             [
-              _c("div", { staticClass: "col-sm-6" }, [
+              _c("div", { staticClass: "col-sm-8" }, [
                 _c("table", { staticClass: "table" }, [
                   _c("tbody", [
                     _c("tr", [

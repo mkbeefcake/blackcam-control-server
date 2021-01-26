@@ -3,22 +3,29 @@
 @section('content')
 <div id="app">
     <div class="row">
-        <div class="col-12">
-            <lens-component></lens-component>
+        <div class="col-xl-8">
+            <div class="row">
+                <div class="col-12">
+                    <lens-component></lens-component>
+                </div>
+                <div class="col-12">
+                    <recordvideo-component></recordvideo-component>
+                </div>
+                <div class="col-12">
+                    <video-component></video-component>
+                </div>
+                <div class="col-12">
+                    <display-component></display-component>
+                </div>
+                <div class="col-12">
+                    <audio-component></audio-component>
+                </div>
+                <!-- <div class="col-4">
+                    <systeminfo-component></systeminfo-component>
+                </div> -->
+            </div>
         </div>
-        <div class="col-12">
-            <recordvideo-component></recordvideo-component>
-        </div>
-        <div class="col-12">
-            <video-component></video-component>
-        </div>
-        <div class="col-12">
-            <display-component></display-component>
-        </div>
-        <div class="col-12">
-            <audio-component></audio-component>
-        </div>
-        <div class="col-4">
+        <div class="col-xl-4">
             <systeminfo-component></systeminfo-component>
         </div>
     </div>
