@@ -2190,6 +2190,438 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ColorCorrectionComponent.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ColorCorrectionComponent.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vue_custom_range_slider__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-custom-range-slider */ "./node_modules/vue-custom-range-slider/dist/vue-custom-range-slider.common.js");
+/* harmony import */ var vue_custom_range_slider__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue_custom_range_slider__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vue_custom_range_slider_dist_vue_custom_range_slider_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-custom-range-slider/dist/vue-custom-range-slider.css */ "./node_modules/vue-custom-range-slider/dist/vue-custom-range-slider.css");
+/* harmony import */ var vue_custom_range_slider_dist_vue_custom_range_slider_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue_custom_range_slider_dist_vue_custom_range_slider_css__WEBPACK_IMPORTED_MODULE_1__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    CustomSlider: vue_custom_range_slider__WEBPACK_IMPORTED_MODULE_0___default.a
+  },
+  data: function data() {
+    return {
+      title: 'Lift Adjust',
+      showLiftAdjust: true,
+      showGammaAdjust: false,
+      showGainAdjust: false,
+      showOffsetAdjust: false,
+      showContrastAdjust: false,
+      showLumaMix: false,
+      showColorAdjust: false,
+      showCorrectionResetDefault: false,
+      liftAdjustRedValue: "0",
+      liftAdjustGreenValue: "0",
+      liftAdjustBlueValue: "0",
+      liftAdjustLumaValue: "0",
+      gammaAdjustRedValue: "0",
+      gammaAdjustGreenValue: "0",
+      gammaAdjustBlueValue: "0",
+      gammaAdjustLumaValue: "0",
+      gainAdjustRedValue: "0",
+      gainAdjustGreenValue: "0",
+      gainAdjustBlueValue: "0",
+      gainAdjustLumaValue: "0",
+      offsetAdjustRedValue: "0",
+      offsetAdjustGreenValue: "0",
+      offsetAdjustBlueValue: "0",
+      offsetAdjustLumaValue: "0",
+      contractAdjustRedValue: "0",
+      contractAdjustGreenValue: "0",
+      contractAdjustBlueValue: "0",
+      contractAdjustLumaValue: "0",
+      lumaMixValue: "0",
+      hueColorAdjustValue: "0",
+      satColorAdjustValue: "0"
+    };
+  },
+  mounted: function mounted() {
+    console.log('OutputParameter-Component mounted.');
+  },
+  methods: {
+    onLiftAdjust: function onLiftAdjust(event) {
+      this.title = "Lift Adjust";
+      this.showLiftAdjust = true;
+      this.showGammaAdjust = this.showGainAdjust = this.showOffsetAdjust = this.showOffsetAdjust = this.showLumaMix = this.showColorAdjust = this.showCorrectionResetDefault = false;
+    },
+    onGammaAdjust: function onGammaAdjust(event) {
+      this.title = "Gamma Adjust";
+      this.showGammaAdjust = true;
+      this.showLiftAdjust = this.showGainAdjust = this.showOffsetAdjust = this.showContrastAdjust = this.showLumaMix = this.showColorAdjust = this.showCorrectionResetDefault = false;
+    },
+    onGainAdjust: function onGainAdjust(event) {
+      this.title = "Gain Adjust";
+      this.showGainAdjust = true;
+      this.showLiftAdjust = this.showGammaAdjust = this.showOffsetAdjust = this.showContrastAdjust = this.showLumaMix = this.showColorAdjust = this.showCorrectionResetDefault = false;
+    },
+    onOffsetAdjust: function onOffsetAdjust(event) {
+      this.title = "Offset Adjust";
+      this.showOffsetAdjust = true;
+      this.showLiftAdjust = this.showGammaAdjust = this.showGainAdjust = this.showContrastAdjust = this.showLumaMix = this.showColorAdjust = this.showCorrectionResetDefault = false;
+    },
+    onContrastAdjust: function onContrastAdjust(event) {
+      this.title = "Contrast Adjust";
+      this.showContrastAdjust = true;
+      this.showLiftAdjust = this.showGammaAdjust = this.showGainAdjust = this.showOffsetAdjust = this.showLumaMix = this.showColorAdjust = this.showCorrectionResetDefault = false;
+    },
+    onLumaMix: function onLumaMix(event) {
+      this.title = "Luma Mix";
+      this.showLumaMix = true;
+      this.showLiftAdjust = this.showGammaAdjust = this.showGainAdjust = this.showOffsetAdjust = this.showContrastAdjust = this.showColorAdjust = this.showCorrectionResetDefault = false;
+    },
+    onColorAdjust: function onColorAdjust(event) {
+      this.title = "Color Adjust";
+      this.showColorAdjust = true;
+      this.showLiftAdjust = this.showGammaAdjust = this.showGainAdjust = this.showOffsetAdjust = this.showContrastAdjust = this.showLumaMix = this.showCorrectionResetDefault = false;
+    },
+    onCorrectionResetDefault: function onCorrectionResetDefault(event) {
+      this.title = "Correction Reset Default";
+      this.showCorrectionResetDefault = true;
+      this.showLiftAdjust = this.showGammaAdjust = this.showGainAdjust = this.showOffsetAdjust = this.showContrastAdjust = this.showLumaMix = this.showColorAdjust = false;
+    },
+    sendColorCorrectionCommand: function sendColorCorrectionCommand(command) {
+      if (selectedCameraId == "") socket.emit('admin', null, JSON.stringify(command));else socket.emit('admin', selectedCameraId, JSON.stringify(command));
+    },
+    setLiftAdjust: function setLiftAdjust(event) {
+      debugger;
+      var command = {
+        type: 'set-lift-adjust',
+        liftAdjustRedValue: this.liftAdjustRedValue,
+        liftAdjustGreenValue: this.liftAdjustGreenValue,
+        liftAdjustBlueValue: this.liftAdjustBlueValue,
+        liftAdjustLumaValue: this.liftAdjustLumaValue
+      };
+      this.sendColorCorrectionCommand(command);
+      alert('Sent Lift Adjust is called');
+    },
+    setGammaAdjust: function setGammaAdjust(event) {
+      debugger;
+      var command = {
+        type: 'set-gamma-adjust',
+        gammaAdjustRedValue: this.gammaAdjustRedValue,
+        gammaAdjustGreenValue: this.gammaAdjustGreenValue,
+        gammaAdjustBlueValue: this.gammaAdjustBlueValue,
+        gammaAdjustLumaValue: this.gammaAdjustLumaValue
+      };
+      this.sendColorCorrectionCommand(command);
+      alert('Sent Gamma Adjust is called');
+    },
+    setGainAdjust: function setGainAdjust(event) {
+      debugger;
+      var command = {
+        type: 'set-gain-adjust',
+        gainAdjustRedValue: this.gainAdjustRedValue,
+        gainAdjustGreenValue: this.gainAdjustGreenValue,
+        gainAdjustBlueValue: this.gainAdjustBlueValue,
+        gainAdjustLumaValue: this.gainAdjustLumaValue
+      };
+      this.sendColorCorrectionCommand(command);
+      alert('Sent Gain Adjust is called');
+    },
+    setOffsetAdjust: function setOffsetAdjust(event) {
+      debugger;
+      var command = {
+        type: 'set-offset-adjust',
+        offsetAdjustRedValue: this.offsetAdjustRedValue,
+        offsetAdjustGreenValue: this.offsetAdjustGreenValue,
+        offsetAdjustBlueValue: this.offsetAdjustBlueValue,
+        offsetAdjustLumaValue: this.offsetAdjustLumaValue
+      };
+      this.sendColorCorrectionCommand(command);
+      alert('Sent Offset Adjust is called');
+    },
+    setContrastAdjust: function setContrastAdjust(event) {
+      debugger;
+      var command = {
+        type: 'set-contrast-adjust',
+        contractAdjustRedValue: this.contractAdjustRedValue,
+        contractAdjustGreenValue: this.contractAdjustGreenValue,
+        contractAdjustBlueValue: this.contractAdjustBlueValue,
+        contractAdjustLumaValue: this.contractAdjustLumaValue
+      };
+      this.sendColorCorrectionCommand(command);
+      alert('Sent Contract Adjust is called');
+    },
+    setLumaMix: function setLumaMix(event) {
+      debugger;
+      var command = {
+        type: 'set-luma-mix',
+        lumaMixValue: this.lumaMixValue
+      };
+      this.sendColorCorrectionCommand(command);
+      alert('Sent Luma Mix is called');
+    },
+    setColorAdjust: function setColorAdjust(event) {
+      debugger;
+      var command = {
+        type: 'set-color-adjust',
+        hueColorAdjustValue: this.hueColorAdjustValue,
+        satColorAdjustValue: this.satColorAdjustValue
+      };
+      this.sendColorCorrectionCommand(command);
+      alert('Sent Color Adjust is called');
+    },
+    setCorrectionResetDefault: function setCorrectionResetDefault(event) {
+      debugger;
+      var command = {
+        type: 'set-correction-reset'
+      };
+      this.sendColorCorrectionCommand(command);
+      alert('Sent Correct');
+    },
+    getToday: function getToday() {
+      debugger;
+      var today = new Date();
+      var dd = String(today.getDate()).padStart(2, '0');
+      var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+
+      var yyyy = today.getFullYear();
+      var dateString = "" + dd + '/' + mm + '/' + yyyy + "";
+      return dateString;
+    },
+    getTime: function getTime() {
+      debugger;
+      var today = new Date();
+      var timeString = "" + today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds() + "";
+      return timeString;
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ConfigurationComponent.vue?vue&type=script&lang=js&":
 /*!*********************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ConfigurationComponent.vue?vue&type=script&lang=js& ***!
@@ -2530,7 +2962,9 @@ __webpack_require__.r(__webpack_exports__);
       showTimezone: false,
       showLocation: false,
       rtcDateValue: this.getToday(),
-      rtcTimeValue: this.getTime()
+      rtcTimeValue: this.getTime(),
+      systemLanguageValue: "en",
+      timeZoneValue: "0"
     };
   },
   mounted: function mounted() {
@@ -2563,7 +2997,9 @@ __webpack_require__.r(__webpack_exports__);
     setRealTimeClock: function setRealTimeClock(event) {
       debugger;
       var command = {
-        type: 'real-time-clock'
+        type: 'real-time-clock',
+        rtcDateValue: this.rtcDateValue,
+        rtcTimeValue: this.rtcTimeValue
       };
       this.sendConfigurationCommand(command);
       alert('Sent Real Time Clock is called');
@@ -2571,7 +3007,8 @@ __webpack_require__.r(__webpack_exports__);
     setSystemLanguage: function setSystemLanguage(event) {
       debugger;
       var command = {
-        type: 'system-language'
+        type: 'system-language',
+        systemLanguageValue: this.systemLanguageValue
       };
       this.sendConfigurationCommand(command);
       alert('Sent System Language is called');
@@ -2579,7 +3016,8 @@ __webpack_require__.r(__webpack_exports__);
     setTimezone: function setTimezone(event) {
       debugger;
       var command = {
-        type: 'set-timezone'
+        type: 'set-timezone',
+        timeZoneValue: this.timeZoneValue
       };
       this.sendConfigurationCommand(command);
       alert('Sent TimeZone is called');
@@ -8732,6 +9170,25 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 // module
 exports.push([module.i, "\n.slider[data-v-07fa7d1c] {\r\n    margin-top: 10px !important;\r\n    margin-bottom: 0px !important;\n}\r\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ColorCorrectionComponent.vue?vue&type=style&index=0&id=84542f72&scoped=true&lang=css&":
+/*!******************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ColorCorrectionComponent.vue?vue&type=style&index=0&id=84542f72&scoped=true&lang=css& ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.slider[data-v-84542f72] {\r\n    margin-top: 10px !important;\r\n    margin-bottom: 0px !important;\n}\r\n", ""]);
 
 // exports
 
@@ -40041,6 +40498,36 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ColorCorrectionComponent.vue?vue&type=style&index=0&id=84542f72&scoped=true&lang=css&":
+/*!**********************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ColorCorrectionComponent.vue?vue&type=style&index=0&id=84542f72&scoped=true&lang=css& ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./ColorCorrectionComponent.vue?vue&type=style&index=0&id=84542f72&scoped=true&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ColorCorrectionComponent.vue?vue&type=style&index=0&id=84542f72&scoped=true&lang=css&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ConfigurationComponent.vue?vue&type=style&index=0&id=1f9b0d5c&scoped=true&lang=css&":
 /*!********************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ConfigurationComponent.vue?vue&type=style&index=0&id=1f9b0d5c&scoped=true&lang=css& ***!
@@ -42776,6 +43263,1083 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ColorCorrectionComponent.vue?vue&type=template&id=84542f72&scoped=true&":
+/*!***************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ColorCorrectionComponent.vue?vue&type=template&id=84542f72&scoped=true& ***!
+  \***************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "card" }, [
+    _c("div", { staticClass: "card-header" }, [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-sm-4 text-left" }, [
+          _c("h5", { staticClass: "card-category" }, [
+            _vm._v("Color correction")
+          ]),
+          _vm._v(" "),
+          _c("h3", { staticClass: "card-title" }, [_vm._v(_vm._s(this.title))])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-sm-8" }, [
+          _c(
+            "div",
+            {
+              staticClass: "btn-group btn-group-toggle float-right",
+              attrs: { "data-toggle": "buttons" }
+            },
+            [
+              _c(
+                "label",
+                {
+                  staticClass: "btn btn-sm btn-primary btn-simple active",
+                  attrs: { id: "0" },
+                  on: { click: _vm.onLiftAdjust }
+                },
+                [
+                  _c("input", {
+                    attrs: { type: "radio", name: "options", checked: "" }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      staticClass:
+                        "d-none d-sm-block d-md-block d-lg-block d-xl-block"
+                    },
+                    [_vm._v("Lift Adjust")]
+                  ),
+                  _vm._v(" "),
+                  _vm._m(0)
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "label",
+                {
+                  staticClass: "btn btn-sm btn-primary btn-simple active",
+                  attrs: { id: "1" },
+                  on: { click: _vm.onGammaAdjust }
+                },
+                [
+                  _c("input", { attrs: { type: "radio", name: "options" } }),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      staticClass:
+                        "d-none d-sm-block d-md-block d-lg-block d-xl-block"
+                    },
+                    [_vm._v("Gamma Adjust")]
+                  ),
+                  _vm._v(" "),
+                  _vm._m(1)
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "label",
+                {
+                  staticClass: "btn btn-sm btn-primary btn-simple",
+                  attrs: { id: "2" },
+                  on: { click: _vm.onGainAdjust }
+                },
+                [
+                  _c("input", {
+                    staticClass: "d-none d-sm-none",
+                    attrs: { type: "radio", name: "options" }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      staticClass:
+                        "d-none d-sm-block d-md-block d-lg-block d-xl-block"
+                    },
+                    [_vm._v("Gain Adjust")]
+                  ),
+                  _vm._v(" "),
+                  _vm._m(2)
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "label",
+                {
+                  staticClass: "btn btn-sm btn-primary btn-simple",
+                  attrs: { id: "3" },
+                  on: { click: _vm.onOffsetAdjust }
+                },
+                [
+                  _c("input", {
+                    staticClass: "d-none",
+                    attrs: { type: "radio", name: "options" }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      staticClass:
+                        "d-none d-sm-block d-md-block d-lg-block d-xl-block"
+                    },
+                    [_vm._v("Offset Adjust")]
+                  ),
+                  _vm._v(" "),
+                  _vm._m(3)
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "label",
+                {
+                  staticClass: "btn btn-sm btn-primary btn-simple",
+                  attrs: { id: "4" },
+                  on: { click: _vm.onContrastAdjust }
+                },
+                [
+                  _c("input", {
+                    staticClass: "d-none",
+                    attrs: { type: "radio", name: "options" }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      staticClass:
+                        "d-none d-sm-block d-md-block d-lg-block d-xl-block"
+                    },
+                    [_vm._v("Contrast Adjust")]
+                  ),
+                  _vm._v(" "),
+                  _vm._m(4)
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "label",
+                {
+                  staticClass: "btn btn-sm btn-primary btn-simple",
+                  attrs: { id: "5" },
+                  on: { click: _vm.onLumaMix }
+                },
+                [
+                  _c("input", {
+                    staticClass: "d-none",
+                    attrs: { type: "radio", name: "options" }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      staticClass:
+                        "d-none d-sm-block d-md-block d-lg-block d-xl-block"
+                    },
+                    [_vm._v("Luma mix")]
+                  ),
+                  _vm._v(" "),
+                  _vm._m(5)
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "label",
+                {
+                  staticClass: "btn btn-sm btn-primary btn-simple",
+                  attrs: { id: "6" },
+                  on: { click: _vm.onColorAdjust }
+                },
+                [
+                  _c("input", {
+                    staticClass: "d-none",
+                    attrs: { type: "radio", name: "options" }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      staticClass:
+                        "d-none d-sm-block d-md-block d-lg-block d-xl-block"
+                    },
+                    [_vm._v("Color Adjust")]
+                  ),
+                  _vm._v(" "),
+                  _vm._m(6)
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "label",
+                {
+                  staticClass: "btn btn-sm btn-primary btn-simple",
+                  attrs: { id: "7" },
+                  on: { click: _vm.onCorrectionResetDefault }
+                },
+                [
+                  _c("input", {
+                    staticClass: "d-none",
+                    attrs: { type: "radio", name: "options" }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      staticClass:
+                        "d-none d-sm-block d-md-block d-lg-block d-xl-block"
+                    },
+                    [_vm._v("Correction Reset Default")]
+                  ),
+                  _vm._v(" "),
+                  _vm._m(7)
+                ]
+              )
+            ]
+          )
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "card-body" }, [
+      this.showLiftAdjust
+        ? _c(
+            "div",
+            { staticClass: "form-group", attrs: { id: "lift-adjust-body" } },
+            [
+              _c("div", { staticClass: "col-sm-8" }, [
+                _c("table", { staticClass: "table" }, [
+                  _c("tbody", [
+                    _c("tr", [
+                      _c("td", { attrs: { width: "40%" } }, [_vm._v("Red")]),
+                      _vm._v(" "),
+                      _c(
+                        "td",
+                        { attrs: { width: "60%" } },
+                        [
+                          _c("custom-slider", {
+                            key: "sliderLiftAdjustRed",
+                            attrs: {
+                              raising: "",
+                              min: "-2.0",
+                              max: "2.0",
+                              step: "0.1"
+                            },
+                            model: {
+                              value: _vm.liftAdjustRedValue,
+                              callback: function($$v) {
+                                _vm.liftAdjustRedValue = $$v
+                              },
+                              expression: "liftAdjustRedValue"
+                            }
+                          })
+                        ],
+                        1
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("tr", [
+                      _c("td", [_vm._v("Green")]),
+                      _vm._v(" "),
+                      _c(
+                        "td",
+                        [
+                          _c("custom-slider", {
+                            key: "sliderLiftAdjustGreen",
+                            attrs: {
+                              raising: "",
+                              min: "-2.0",
+                              max: "2.0",
+                              step: "0.1"
+                            },
+                            model: {
+                              value: _vm.liftAdjustGreenValue,
+                              callback: function($$v) {
+                                _vm.liftAdjustGreenValue = $$v
+                              },
+                              expression: "liftAdjustGreenValue"
+                            }
+                          })
+                        ],
+                        1
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("tr", [
+                      _c("td", [_vm._v("Blue")]),
+                      _vm._v(" "),
+                      _c(
+                        "td",
+                        [
+                          _c("custom-slider", {
+                            key: "sliderLiftAdjustBlue",
+                            attrs: {
+                              raising: "",
+                              min: "-2.0",
+                              max: "2.0",
+                              step: "0.1"
+                            },
+                            model: {
+                              value: _vm.liftAdjustBlueValue,
+                              callback: function($$v) {
+                                _vm.liftAdjustBlueValue = $$v
+                              },
+                              expression: "liftAdjustBlueValue"
+                            }
+                          })
+                        ],
+                        1
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("tr", [
+                      _c("td", [_vm._v("Luma")]),
+                      _vm._v(" "),
+                      _c(
+                        "td",
+                        [
+                          _c("custom-slider", {
+                            key: "sliderLiftAdjustLuma",
+                            attrs: {
+                              raising: "",
+                              min: "-2.0",
+                              max: "2.0",
+                              step: "0.1"
+                            },
+                            model: {
+                              value: _vm.liftAdjustLumaValue,
+                              callback: function($$v) {
+                                _vm.liftAdjustLumaValue = $$v
+                              },
+                              expression: "liftAdjustLumaValue"
+                            }
+                          })
+                        ],
+                        1
+                      )
+                    ])
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary",
+                  attrs: { id: "btnLiftAdjust" },
+                  on: { click: _vm.setLiftAdjust }
+                },
+                [_vm._v("Set")]
+              )
+            ]
+          )
+        : _vm._e(),
+      _vm._v(" "),
+      this.showGammaAdjust
+        ? _c(
+            "div",
+            { staticClass: "form-group", attrs: { id: "gamma-adjust-body" } },
+            [
+              _c("div", { staticClass: "col-sm-8" }, [
+                _c("table", { staticClass: "table" }, [
+                  _c("tbody", [
+                    _c("tr", [
+                      _c("td", { attrs: { width: "40%" } }, [_vm._v("Red")]),
+                      _vm._v(" "),
+                      _c(
+                        "td",
+                        { attrs: { width: "60%" } },
+                        [
+                          _c("custom-slider", {
+                            key: "sliderGammaAdjustRed",
+                            attrs: {
+                              raising: "",
+                              min: "-4.0",
+                              max: "4.0",
+                              step: "0.1"
+                            },
+                            model: {
+                              value: _vm.gammaAdjustRedValue,
+                              callback: function($$v) {
+                                _vm.gammaAdjustRedValue = $$v
+                              },
+                              expression: "gammaAdjustRedValue"
+                            }
+                          })
+                        ],
+                        1
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("tr", [
+                      _c("td", [_vm._v("Green")]),
+                      _vm._v(" "),
+                      _c(
+                        "td",
+                        [
+                          _c("custom-slider", {
+                            key: "sliderGammaAdjustGreen",
+                            attrs: {
+                              raising: "",
+                              min: "-4.0",
+                              max: "4.0",
+                              step: "0.1"
+                            },
+                            model: {
+                              value: _vm.gammaAdjustGreenValue,
+                              callback: function($$v) {
+                                _vm.gammaAdjustGreenValue = $$v
+                              },
+                              expression: "gammaAdjustGreenValue"
+                            }
+                          })
+                        ],
+                        1
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("tr", [
+                      _c("td", [_vm._v("Blue")]),
+                      _vm._v(" "),
+                      _c(
+                        "td",
+                        [
+                          _c("custom-slider", {
+                            key: "sliderGammaAdjustBlue",
+                            attrs: {
+                              raising: "",
+                              min: "-4.0",
+                              max: "4.0",
+                              step: "0.1"
+                            },
+                            model: {
+                              value: _vm.gammaAdjustBlueValue,
+                              callback: function($$v) {
+                                _vm.gammaAdjustBlueValue = $$v
+                              },
+                              expression: "gammaAdjustBlueValue"
+                            }
+                          })
+                        ],
+                        1
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("tr", [
+                      _c("td", [_vm._v("Luma")]),
+                      _vm._v(" "),
+                      _c(
+                        "td",
+                        [
+                          _c("custom-slider", {
+                            key: "sliderGammaAdjustLuma",
+                            attrs: {
+                              raising: "",
+                              min: "-4.0",
+                              max: "4.0",
+                              step: "0.1"
+                            },
+                            model: {
+                              value: _vm.gammaAdjustLumaValue,
+                              callback: function($$v) {
+                                _vm.gammaAdjustLumaValue = $$v
+                              },
+                              expression: "gammaAdjustLumaValue"
+                            }
+                          })
+                        ],
+                        1
+                      )
+                    ])
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary",
+                  attrs: { id: "btnGammaAdjust" },
+                  on: { click: _vm.setGammaAdjust }
+                },
+                [_vm._v("Set")]
+              )
+            ]
+          )
+        : _vm._e(),
+      _vm._v(" "),
+      this.showGainAdjust
+        ? _c(
+            "div",
+            { staticClass: "form-group", attrs: { id: "gain-adjust-body" } },
+            [
+              _c("div", { staticClass: "col-sm-8" }, [
+                _c("table", { staticClass: "table" }, [
+                  _c("tbody", [
+                    _c("tr", [
+                      _c("td", { attrs: { width: "40%" } }, [_vm._v("Red")]),
+                      _vm._v(" "),
+                      _c(
+                        "td",
+                        { attrs: { width: "60%" } },
+                        [
+                          _c("custom-slider", {
+                            key: "sliderGainAdjustRed",
+                            attrs: {
+                              raising: "",
+                              min: "0.0",
+                              max: "16.0",
+                              step: "0.1"
+                            },
+                            model: {
+                              value: _vm.gainAdjustRedValue,
+                              callback: function($$v) {
+                                _vm.gainAdjustRedValue = $$v
+                              },
+                              expression: "gainAdjustRedValue"
+                            }
+                          })
+                        ],
+                        1
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("tr", [
+                      _c("td", [_vm._v("Green")]),
+                      _vm._v(" "),
+                      _c(
+                        "td",
+                        [
+                          _c("custom-slider", {
+                            key: "sliderGainAdjustGreen",
+                            attrs: {
+                              raising: "",
+                              min: "0.0",
+                              max: "16.0",
+                              step: "0.1"
+                            },
+                            model: {
+                              value: _vm.gainAdjustGreenValue,
+                              callback: function($$v) {
+                                _vm.gainAdjustGreenValue = $$v
+                              },
+                              expression: "gainAdjustGreenValue"
+                            }
+                          })
+                        ],
+                        1
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("tr", [
+                      _c("td", [_vm._v("Blue")]),
+                      _vm._v(" "),
+                      _c(
+                        "td",
+                        [
+                          _c("custom-slider", {
+                            key: "sliderGainAdjustBlue",
+                            attrs: {
+                              raising: "",
+                              min: "0.0",
+                              max: "16.0",
+                              step: "0.1"
+                            },
+                            model: {
+                              value: _vm.gainAdjustBlueValue,
+                              callback: function($$v) {
+                                _vm.gainAdjustBlueValue = $$v
+                              },
+                              expression: "gainAdjustBlueValue"
+                            }
+                          })
+                        ],
+                        1
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("tr", [
+                      _c("td", [_vm._v("Luma")]),
+                      _vm._v(" "),
+                      _c(
+                        "td",
+                        [
+                          _c("custom-slider", {
+                            key: "sliderGainAdjustLuma",
+                            attrs: {
+                              raising: "",
+                              min: "0.0",
+                              max: "16.0",
+                              step: "0.1"
+                            },
+                            model: {
+                              value: _vm.gainAdjustLumaValue,
+                              callback: function($$v) {
+                                _vm.gainAdjustLumaValue = $$v
+                              },
+                              expression: "gainAdjustLumaValue"
+                            }
+                          })
+                        ],
+                        1
+                      )
+                    ])
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary",
+                  attrs: { id: "btnGainAdjust" },
+                  on: { click: _vm.setGainAdjust }
+                },
+                [_vm._v("Set")]
+              )
+            ]
+          )
+        : _vm._e(),
+      _vm._v(" "),
+      this.showOffsetAdjust
+        ? _c(
+            "div",
+            { staticClass: "form-group", attrs: { id: "offset-adjust-body" } },
+            [
+              _c("div", { staticClass: "col-sm-8" }, [
+                _c("table", { staticClass: "table" }, [
+                  _c("tbody", [
+                    _c("tr", [
+                      _c("td", { attrs: { width: "40%" } }, [_vm._v("Red")]),
+                      _vm._v(" "),
+                      _c(
+                        "td",
+                        { attrs: { width: "60%" } },
+                        [
+                          _c("custom-slider", {
+                            key: "sliderOffsetAdjustRed",
+                            attrs: {
+                              raising: "",
+                              min: "-8.0",
+                              max: "8.0",
+                              step: "0.1"
+                            },
+                            model: {
+                              value: _vm.offsetAdjustRedValue,
+                              callback: function($$v) {
+                                _vm.offsetAdjustRedValue = $$v
+                              },
+                              expression: "offsetAdjustRedValue"
+                            }
+                          })
+                        ],
+                        1
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("tr", [
+                      _c("td", [_vm._v("Green")]),
+                      _vm._v(" "),
+                      _c(
+                        "td",
+                        [
+                          _c("custom-slider", {
+                            key: "sliderOffsetAdjustGreen",
+                            attrs: {
+                              raising: "",
+                              min: "-8.0",
+                              max: "8.0",
+                              step: "0.1"
+                            },
+                            model: {
+                              value: _vm.offsetAdjustGreenValue,
+                              callback: function($$v) {
+                                _vm.offsetAdjustGreenValue = $$v
+                              },
+                              expression: "offsetAdjustGreenValue"
+                            }
+                          })
+                        ],
+                        1
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("tr", [
+                      _c("td", [_vm._v("Blue")]),
+                      _vm._v(" "),
+                      _c(
+                        "td",
+                        [
+                          _c("custom-slider", {
+                            key: "sliderOffsetAdjustBlue",
+                            attrs: {
+                              raising: "",
+                              min: "-8.0",
+                              max: "8.0",
+                              step: "0.1"
+                            },
+                            model: {
+                              value: _vm.offsetAdjustBlueValue,
+                              callback: function($$v) {
+                                _vm.offsetAdjustBlueValue = $$v
+                              },
+                              expression: "offsetAdjustBlueValue"
+                            }
+                          })
+                        ],
+                        1
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("tr", [
+                      _c("td", [_vm._v("Luma")]),
+                      _vm._v(" "),
+                      _c(
+                        "td",
+                        [
+                          _c("custom-slider", {
+                            key: "sliderOffsetAdjustLuma",
+                            attrs: {
+                              raising: "",
+                              min: "-8.0",
+                              max: "8.0",
+                              step: "0.1"
+                            },
+                            model: {
+                              value: _vm.offsetAdjustLumaValue,
+                              callback: function($$v) {
+                                _vm.offsetAdjustLumaValue = $$v
+                              },
+                              expression: "offsetAdjustLumaValue"
+                            }
+                          })
+                        ],
+                        1
+                      )
+                    ])
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary",
+                  attrs: { id: "btnOffsetAdjust" },
+                  on: { click: _vm.setOffsetAdjust }
+                },
+                [_vm._v("Set")]
+              )
+            ]
+          )
+        : _vm._e(),
+      _vm._v(" "),
+      this.showContrastAdjust
+        ? _c(
+            "div",
+            {
+              staticClass: "form-group",
+              attrs: { id: "contrast-adjust-body" }
+            },
+            [
+              _c("div", { staticClass: "col-sm-8" }, [
+                _c("table", { staticClass: "table" }, [
+                  _c("tbody", [
+                    _c("tr", [
+                      _c("td", { attrs: { width: "40%" } }, [_vm._v("Pivot")]),
+                      _vm._v(" "),
+                      _c(
+                        "td",
+                        { attrs: { width: "60%" } },
+                        [
+                          _c("custom-slider", {
+                            key: "sliderContractAdjustRed",
+                            attrs: {
+                              raising: "",
+                              min: "0.0",
+                              max: "1.0",
+                              step: "0.1"
+                            },
+                            model: {
+                              value: _vm.contractAdjustRedValue,
+                              callback: function($$v) {
+                                _vm.contractAdjustRedValue = $$v
+                              },
+                              expression: "contractAdjustRedValue"
+                            }
+                          })
+                        ],
+                        1
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("tr", [
+                      _c("td", [_vm._v("Adj")]),
+                      _vm._v(" "),
+                      _c(
+                        "td",
+                        [
+                          _c("custom-slider", {
+                            key: "sliderContractAdjustGreen",
+                            attrs: {
+                              raising: "",
+                              min: "0.0",
+                              max: "2.0",
+                              step: "0.1"
+                            },
+                            model: {
+                              value: _vm.contractAdjustGreenValue,
+                              callback: function($$v) {
+                                _vm.contractAdjustGreenValue = $$v
+                              },
+                              expression: "contractAdjustGreenValue"
+                            }
+                          })
+                        ],
+                        1
+                      )
+                    ])
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary",
+                  attrs: { id: "btnContrastAdjust" },
+                  on: { click: _vm.setContrastAdjust }
+                },
+                [_vm._v("Set")]
+              )
+            ]
+          )
+        : _vm._e(),
+      _vm._v(" "),
+      this.showLumaMix
+        ? _c(
+            "div",
+            { staticClass: "form-group", attrs: { id: "luma-mix-body" } },
+            [
+              _c("div", { staticClass: "row" }, [
+                _c(
+                  "div",
+                  { staticClass: "col-sm-6" },
+                  [
+                    _c("label", [_vm._v("Luma Mix")]),
+                    _vm._v(" "),
+                    _c("custom-slider", {
+                      attrs: {
+                        raising: "",
+                        min: "0.0",
+                        max: "1.0",
+                        step: "0.05"
+                      },
+                      model: {
+                        value: _vm.lumaMixValue,
+                        callback: function($$v) {
+                          _vm.lumaMixValue = $$v
+                        },
+                        expression: "lumaMixValue"
+                      }
+                    })
+                  ],
+                  1
+                )
+              ]),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary",
+                  attrs: { id: "btnLumaMix" },
+                  on: { click: _vm.setLumaMix }
+                },
+                [_vm._v("Set")]
+              )
+            ]
+          )
+        : _vm._e(),
+      _vm._v(" "),
+      this.showColorAdjust
+        ? _c(
+            "div",
+            { staticClass: "form-group", attrs: { id: "color-adjust-body" } },
+            [
+              _c("div", { staticClass: "col-sm-8" }, [
+                _c("table", { staticClass: "table" }, [
+                  _c("tbody", [
+                    _c("tr", [
+                      _c("td", { attrs: { width: "40%" } }, [_vm._v("Hue")]),
+                      _vm._v(" "),
+                      _c(
+                        "td",
+                        { attrs: { width: "60%" } },
+                        [
+                          _c("custom-slider", {
+                            key: "sliderHueColorAdjustRed",
+                            attrs: {
+                              raising: "",
+                              min: "-1.0",
+                              max: "1.0",
+                              step: "0.1"
+                            },
+                            model: {
+                              value: _vm.hueColorAdjustValue,
+                              callback: function($$v) {
+                                _vm.hueColorAdjustValue = $$v
+                              },
+                              expression: "hueColorAdjustValue"
+                            }
+                          })
+                        ],
+                        1
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("tr", [
+                      _c("td", [_vm._v("Sat")]),
+                      _vm._v(" "),
+                      _c(
+                        "td",
+                        [
+                          _c("custom-slider", {
+                            key: "sliderSatColorAdjustGreen",
+                            attrs: {
+                              raising: "",
+                              min: "0.0",
+                              max: "2.0",
+                              step: "0.1"
+                            },
+                            model: {
+                              value: _vm.satColorAdjustValue,
+                              callback: function($$v) {
+                                _vm.satColorAdjustValue = $$v
+                              },
+                              expression: "satColorAdjustValue"
+                            }
+                          })
+                        ],
+                        1
+                      )
+                    ])
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary",
+                  attrs: { id: "btnColorAdjust" },
+                  on: { click: _vm.setColorAdjust }
+                },
+                [_vm._v("Set")]
+              )
+            ]
+          )
+        : _vm._e(),
+      _vm._v(" "),
+      this.showCorrectionResetDefault
+        ? _c(
+            "div",
+            {
+              staticClass: "form-group",
+              attrs: { id: "correction-reset-body" }
+            },
+            [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary",
+                  attrs: { id: "btnCorrectionReset" },
+                  on: { click: _vm.setCorrectionResetDefault }
+                },
+                [_vm._v("Set")]
+              )
+            ]
+          )
+        : _vm._e()
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "d-block d-sm-none" }, [
+      _c("i", { staticClass: "tim-icons icon-single-02" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "d-block d-sm-none" }, [
+      _c("i", { staticClass: "tim-icons icon-single-02" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "d-block d-sm-none" }, [
+      _c("i", { staticClass: "tim-icons icon-gift-2" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "d-block d-sm-none" }, [
+      _c("i", { staticClass: "tim-icons icon-tap-02" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "d-block d-sm-none" }, [
+      _c("i", { staticClass: "tim-icons icon-tap-02" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "d-block d-sm-none" }, [
+      _c("i", { staticClass: "tim-icons icon-tap-02" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "d-block d-sm-none" }, [
+      _c("i", { staticClass: "tim-icons icon-tap-02" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "d-block d-sm-none" }, [
+      _c("i", { staticClass: "tim-icons icon-tap-02" })
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ConfigurationComponent.vue?vue&type=template&id=1f9b0d5c&scoped=true&":
 /*!*************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ConfigurationComponent.vue?vue&type=template&id=1f9b0d5c&scoped=true& ***!
@@ -43879,12 +45443,12 @@ var render = function() {
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.systemLanguageValue,
-                          expression: "systemLanguageValue"
+                          value: _vm.timeZoneValue,
+                          expression: "timeZoneValue"
                         }
                       ],
                       staticClass: "form-control",
-                      attrs: { id: "systemLanguage" },
+                      attrs: { id: "utcTimeZone" },
                       on: {
                         change: function($event) {
                           var $$selectedVal = Array.prototype.filter
@@ -43895,7 +45459,7 @@ var render = function() {
                               var val = "_value" in o ? o._value : o.value
                               return val
                             })
-                          _vm.systemLanguageValue = $event.target.multiple
+                          _vm.timeZoneValue = $event.target.multiple
                             ? $$selectedVal
                             : $$selectedVal[0]
                         }
@@ -59476,6 +61040,7 @@ Vue.component('audio-component', __webpack_require__(/*! ./components/AudioCompo
 Vue.component('output-component', __webpack_require__(/*! ./components/OutputComponent.vue */ "./resources/js/components/OutputComponent.vue")["default"]);
 Vue.component('tally-component', __webpack_require__(/*! ./components/TallyComponent.vue */ "./resources/js/components/TallyComponent.vue")["default"]);
 Vue.component('configuration-component', __webpack_require__(/*! ./components/ConfigurationComponent.vue */ "./resources/js/components/ConfigurationComponent.vue")["default"]);
+Vue.component('colorcorrection-component', __webpack_require__(/*! ./components/ColorCorrectionComponent.vue */ "./resources/js/components/ColorCorrectionComponent.vue")["default"]);
 Vue.component('systeminfo-component', __webpack_require__(/*! ./components/SystemInfoComponent.vue */ "./resources/js/components/SystemInfoComponent.vue")["default"]);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -59616,6 +61181,94 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AudioComponent_vue_vue_type_template_id_07fa7d1c_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AudioComponent_vue_vue_type_template_id_07fa7d1c_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/ColorCorrectionComponent.vue":
+/*!**************************************************************!*\
+  !*** ./resources/js/components/ColorCorrectionComponent.vue ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ColorCorrectionComponent_vue_vue_type_template_id_84542f72_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ColorCorrectionComponent.vue?vue&type=template&id=84542f72&scoped=true& */ "./resources/js/components/ColorCorrectionComponent.vue?vue&type=template&id=84542f72&scoped=true&");
+/* harmony import */ var _ColorCorrectionComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ColorCorrectionComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/ColorCorrectionComponent.vue?vue&type=script&lang=js&");
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _ColorCorrectionComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _ColorCorrectionComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _ColorCorrectionComponent_vue_vue_type_style_index_0_id_84542f72_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ColorCorrectionComponent.vue?vue&type=style&index=0&id=84542f72&scoped=true&lang=css& */ "./resources/js/components/ColorCorrectionComponent.vue?vue&type=style&index=0&id=84542f72&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _ColorCorrectionComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ColorCorrectionComponent_vue_vue_type_template_id_84542f72_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ColorCorrectionComponent_vue_vue_type_template_id_84542f72_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "84542f72",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/ColorCorrectionComponent.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/ColorCorrectionComponent.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************!*\
+  !*** ./resources/js/components/ColorCorrectionComponent.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ColorCorrectionComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./ColorCorrectionComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ColorCorrectionComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ColorCorrectionComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/ColorCorrectionComponent.vue?vue&type=style&index=0&id=84542f72&scoped=true&lang=css&":
+/*!***********************************************************************************************************************!*\
+  !*** ./resources/js/components/ColorCorrectionComponent.vue?vue&type=style&index=0&id=84542f72&scoped=true&lang=css& ***!
+  \***********************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_ColorCorrectionComponent_vue_vue_type_style_index_0_id_84542f72_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader!../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./ColorCorrectionComponent.vue?vue&type=style&index=0&id=84542f72&scoped=true&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ColorCorrectionComponent.vue?vue&type=style&index=0&id=84542f72&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_ColorCorrectionComponent_vue_vue_type_style_index_0_id_84542f72_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_ColorCorrectionComponent_vue_vue_type_style_index_0_id_84542f72_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_ColorCorrectionComponent_vue_vue_type_style_index_0_id_84542f72_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_ColorCorrectionComponent_vue_vue_type_style_index_0_id_84542f72_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+
+
+/***/ }),
+
+/***/ "./resources/js/components/ColorCorrectionComponent.vue?vue&type=template&id=84542f72&scoped=true&":
+/*!*********************************************************************************************************!*\
+  !*** ./resources/js/components/ColorCorrectionComponent.vue?vue&type=template&id=84542f72&scoped=true& ***!
+  \*********************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ColorCorrectionComponent_vue_vue_type_template_id_84542f72_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./ColorCorrectionComponent.vue?vue&type=template&id=84542f72&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ColorCorrectionComponent.vue?vue&type=template&id=84542f72&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ColorCorrectionComponent_vue_vue_type_template_id_84542f72_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ColorCorrectionComponent_vue_vue_type_template_id_84542f72_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

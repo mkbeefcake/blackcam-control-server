@@ -269,7 +269,7 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <label>Timezone</label>
-                        <select class="form-control" id="systemLanguage" v-model="systemLanguageValue">
+                        <select class="form-control" id="utcTimeZone" v-model="timeZoneValue">
                             <option value="-660">UTC - 11:00</option>
                             <option value="-600">UTC - 10:00</option>
                             <option value="-540">UTC - 09:00</option>
@@ -328,6 +328,8 @@ export default {
             showLocation: false,
             rtcDateValue: this.getToday(),
             rtcTimeValue: this.getTime(),
+            systemLanguageValue: "en",
+            timeZoneValue: "0",
         }
     },
     mounted() {
@@ -364,6 +366,8 @@ export default {
             debugger;
             var command = {
                 type : 'real-time-clock',
+                rtcDateValue: this.rtcDateValue,
+                rtcTimeValue: this.rtcTimeValue,
             };
             
             this.sendConfigurationCommand(command);
@@ -373,6 +377,7 @@ export default {
             debugger;
             var command = {
                 type : 'system-language',
+                systemLanguageValue: this.systemLanguageValue,
             };
             
             this.sendConfigurationCommand(command);
@@ -382,6 +387,7 @@ export default {
             debugger;
             var command = {
                 type : 'set-timezone',
+                timeZoneValue: this.timeZoneValue,
             };
             
             this.sendConfigurationCommand(command);

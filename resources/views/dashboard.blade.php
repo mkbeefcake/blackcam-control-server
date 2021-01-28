@@ -29,6 +29,9 @@
                 <div class="col-12">
                     <configuration-component></configuration-component>
                 </div>
+                <div class="col-12">
+                    <colorcorrection-component></colorcorrection-component>
+                </div>
                 <!-- <div class="col-4">
                     <systeminfo-component></systeminfo-component>
                 </div> -->
