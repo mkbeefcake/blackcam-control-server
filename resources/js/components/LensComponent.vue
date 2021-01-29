@@ -55,7 +55,12 @@
             <div class="row">
                 <div class="col-sm-6">
                     <label>Manual Focus</label>
-                    <custom-slider raising min="0.0" max="1.0" step="0.05" v-model="manualFocusValue"/>
+                    <select class="form-control" id="relativeFocusType" v-on:change="onChangedLensType($event)">
+                        <option value="MFT" checked>MFT Lens</option>
+                        <option value="EF">EF Lens</option>
+                    </select>
+                    <custom-slider raising min="-1.0" max="1.0" step="0.05" v-if="this.isRelativeFocus" v-model="manualRelativeFocusValue" key="sliderRelativeFocus"/>
+                    <custom-slider raising min="0.0" max="1.0" step="0.05" v-if="!this.isRelativeFocus" v-model="manualAbsoluteFocusValue" key="sliderAbsoluteFocus"/>
                 </div>
             </div>
             <button class="btn btn-primary" id="btnManualFocus" v-on:click="setManualFocus">Manual Focus</button>
@@ -131,7 +136,9 @@ export default {
             showAperture: false,
             showZoom: false,
             showStabilisation: false,
-            manualFocusValue: "0",
+            isRelativeFocus: false,
+            manualRelativeFocusValue: "0",
+            manualAbsoluteFocusValue: "0",
             apertureFStop: "0",
             apertureNormalised: "0",
             apertureOrdinal: "0",
@@ -299,6 +306,14 @@ export default {
             this.showStabilisation = true;
             this.showAuto = this.showManual = this.showAperture = this.showZoom = false;
         },
+        onChangedLensType: function(event) {
+            if (event.target.value == "MFT") {
+                this.isRelativeFocus = false;
+            }
+            else if (event.target.value == "EF") {
+                this.isRelativeFocus = true;
+            }
+        },
         sendLensCommand: function(command) {
             if (selectedCameraId == "")
                 socket.emit('admin', null, JSON.stringify(command));
@@ -318,7 +333,8 @@ export default {
             debugger;
             var command = {
                 type : 'manual-focus',
-                manualFocus: this.manualFocusValue,
+                manualFocus: this.isRelativeFocus == true ? this.manualRelativeFocusValue : this.manualAbsoluteFocusValue,
+                isRelativeFocus: this.isRelativeFocus,
             };
 
             this.sendLensCommand(command);

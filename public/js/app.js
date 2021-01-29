@@ -3495,6 +3495,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -3509,7 +3514,9 @@ __webpack_require__.r(__webpack_exports__);
       showAperture: false,
       showZoom: false,
       showStabilisation: false,
-      manualFocusValue: "0",
+      isRelativeFocus: false,
+      manualRelativeFocusValue: "0",
+      manualAbsoluteFocusValue: "0",
       apertureFStop: "0",
       apertureNormalised: "0",
       apertureOrdinal: "0",
@@ -3644,6 +3651,13 @@ __webpack_require__.r(__webpack_exports__);
       this.showStabilisation = true;
       this.showAuto = this.showManual = this.showAperture = this.showZoom = false;
     },
+    onChangedLensType: function onChangedLensType(event) {
+      if (event.target.value == "MFT") {
+        this.isRelativeFocus = false;
+      } else if (event.target.value == "EF") {
+        this.isRelativeFocus = true;
+      }
+    },
     sendLensCommand: function sendLensCommand(command) {
       if (selectedCameraId == "") socket.emit('admin', null, JSON.stringify(command));else socket.emit('admin', selectedCameraId, JSON.stringify(command));
     },
@@ -3659,7 +3673,8 @@ __webpack_require__.r(__webpack_exports__);
       debugger;
       var command = {
         type: 'manual-focus',
-        manualFocus: this.manualFocusValue
+        manualFocus: this.isRelativeFocus == true ? this.manualRelativeFocusValue : this.manualAbsoluteFocusValue,
+        isRelativeFocus: this.isRelativeFocus
       };
       this.sendLensCommand(command);
       alert('Sent Manual-Focus command');
@@ -46465,21 +46480,65 @@ var render = function() {
                   [
                     _c("label", [_vm._v("Manual Focus")]),
                     _vm._v(" "),
-                    _c("custom-slider", {
-                      attrs: {
-                        raising: "",
-                        min: "0.0",
-                        max: "1.0",
-                        step: "0.05"
+                    _c(
+                      "select",
+                      {
+                        staticClass: "form-control",
+                        attrs: { id: "relativeFocusType" },
+                        on: {
+                          change: function($event) {
+                            return _vm.onChangedLensType($event)
+                          }
+                        }
                       },
-                      model: {
-                        value: _vm.manualFocusValue,
-                        callback: function($$v) {
-                          _vm.manualFocusValue = $$v
-                        },
-                        expression: "manualFocusValue"
-                      }
-                    })
+                      [
+                        _c("option", { attrs: { value: "MFT", checked: "" } }, [
+                          _vm._v("MFT Lens")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "EF" } }, [
+                          _vm._v("EF Lens")
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    this.isRelativeFocus
+                      ? _c("custom-slider", {
+                          key: "sliderRelativeFocus",
+                          attrs: {
+                            raising: "",
+                            min: "-1.0",
+                            max: "1.0",
+                            step: "0.05"
+                          },
+                          model: {
+                            value: _vm.manualRelativeFocusValue,
+                            callback: function($$v) {
+                              _vm.manualRelativeFocusValue = $$v
+                            },
+                            expression: "manualRelativeFocusValue"
+                          }
+                        })
+                      : _vm._e(),
+                    _vm._v(" "),
+                    !this.isRelativeFocus
+                      ? _c("custom-slider", {
+                          key: "sliderAbsoluteFocus",
+                          attrs: {
+                            raising: "",
+                            min: "0.0",
+                            max: "1.0",
+                            step: "0.05"
+                          },
+                          model: {
+                            value: _vm.manualAbsoluteFocusValue,
+                            callback: function($$v) {
+                              _vm.manualAbsoluteFocusValue = $$v
+                            },
+                            expression: "manualAbsoluteFocusValue"
+                          }
+                        })
+                      : _vm._e()
                   ],
                   1
                 )
@@ -61190,15 +61249,14 @@ __webpack_require__.r(__webpack_exports__);
 /*!**************************************************************!*\
   !*** ./resources/js/components/ColorCorrectionComponent.vue ***!
   \**************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ColorCorrectionComponent_vue_vue_type_template_id_84542f72_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ColorCorrectionComponent.vue?vue&type=template&id=84542f72&scoped=true& */ "./resources/js/components/ColorCorrectionComponent.vue?vue&type=template&id=84542f72&scoped=true&");
 /* harmony import */ var _ColorCorrectionComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ColorCorrectionComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/ColorCorrectionComponent.vue?vue&type=script&lang=js&");
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _ColorCorrectionComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _ColorCorrectionComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _ColorCorrectionComponent_vue_vue_type_style_index_0_id_84542f72_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ColorCorrectionComponent.vue?vue&type=style&index=0&id=84542f72&scoped=true&lang=css& */ "./resources/js/components/ColorCorrectionComponent.vue?vue&type=style&index=0&id=84542f72&scoped=true&lang=css&");
+/* empty/unused harmony star reexport *//* harmony import */ var _ColorCorrectionComponent_vue_vue_type_style_index_0_id_84542f72_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ColorCorrectionComponent.vue?vue&type=style&index=0&id=84542f72&scoped=true&lang=css& */ "./resources/js/components/ColorCorrectionComponent.vue?vue&type=style&index=0&id=84542f72&scoped=true&lang=css&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -61230,7 +61288,7 @@ component.options.__file = "resources/js/components/ColorCorrectionComponent.vue
 /*!***************************************************************************************!*\
   !*** ./resources/js/components/ColorCorrectionComponent.vue?vue&type=script&lang=js& ***!
   \***************************************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
