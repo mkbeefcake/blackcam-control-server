@@ -4079,6 +4079,57 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -4101,7 +4152,12 @@ __webpack_require__.r(__webpack_exports__);
         "uncompressed": "0",
         "lossy 3:1": "1",
         "lossy 4:1": "2"
-      }
+      },
+      transportModeValue: "0",
+      transportSpeedValue: "0",
+      transportFlagsValue: "1",
+      slot1StorageValue: "0",
+      slot2StorageValue: "0"
     };
   },
   methods: {
@@ -47779,27 +47835,86 @@ var render = function() {
         : _vm._e(),
       _vm._v(" "),
       this.showCodec
-        ? _c("div", { staticClass: "form-group", attrs: { id: "" } }, [
-            _c("div", { staticClass: "row" }, [
-              _c("div", { staticClass: "col-sm-4" }, [
-                _c("label", [_vm._v("Basic codec")]),
-                _vm._v(" "),
-                _c(
-                  "select",
-                  {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.basicCodecValue,
-                        expression: "basicCodecValue"
+        ? _c(
+            "div",
+            { staticClass: "form-group", attrs: { id: "show-codec-body" } },
+            [
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col-sm-4" }, [
+                  _c("label", [_vm._v("Basic codec")]),
+                  _vm._v(" "),
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.basicCodecValue,
+                          expression: "basicCodecValue"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { id: "basicCodec" },
+                      on: {
+                        change: [
+                          function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.basicCodecValue = $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          },
+                          function($event) {
+                            return _vm.onChangedBasicCodec($event)
+                          }
+                        ]
                       }
-                    ],
-                    staticClass: "form-control",
-                    attrs: { id: "basicCodec" },
-                    on: {
-                      change: [
-                        function($event) {
+                    },
+                    [
+                      _c("option", { attrs: { value: "0" } }, [
+                        _vm._v("CinemaDNG")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "1" } }, [
+                        _vm._v("DNxHD")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "2" } }, [
+                        _vm._v("ProRes")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "3" } }, [
+                        _vm._v(" Blackmagic RAW")
+                      ])
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-sm-4" }, [
+                  _c("label", [_vm._v("Code Variant")]),
+                  _vm._v(" "),
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.codeVariantValue,
+                          expression: "codeVariantValue"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { id: "codeVariant" },
+                      on: {
+                        change: function($event) {
                           var $$selectedVal = Array.prototype.filter
                             .call($event.target.options, function(o) {
                               return o.selected
@@ -47808,78 +47923,313 @@ var render = function() {
                               var val = "_value" in o ? o._value : o.value
                               return val
                             })
-                          _vm.basicCodecValue = $event.target.multiple
+                          _vm.codeVariantValue = $event.target.multiple
                             ? $$selectedVal
                             : $$selectedVal[0]
-                        },
-                        function($event) {
-                          return _vm.onChangedBasicCodec($event)
                         }
-                      ]
-                    }
-                  },
-                  [
-                    _c("option", { attrs: { value: "0" } }, [
-                      _vm._v("CinemaDNG")
-                    ]),
-                    _vm._v(" "),
-                    _c("option", { attrs: { value: "1" } }, [_vm._v("DNxHD")]),
-                    _vm._v(" "),
-                    _c("option", { attrs: { value: "2" } }, [_vm._v("ProRes")]),
-                    _vm._v(" "),
-                    _c("option", { attrs: { value: "3" } }, [
-                      _vm._v(" Blackmagic RAW")
-                    ])
-                  ]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-sm-4" }, [
-                _c("label", [_vm._v("Code Variant")]),
-                _vm._v(" "),
-                _c(
-                  "select",
-                  {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.codeVariantValue,
-                        expression: "codeVariantValue"
                       }
-                    ],
-                    staticClass: "form-control",
-                    attrs: { id: "codeVariant" },
-                    on: {
-                      change: function($event) {
-                        var $$selectedVal = Array.prototype.filter
-                          .call($event.target.options, function(o) {
-                            return o.selected
-                          })
-                          .map(function(o) {
-                            var val = "_value" in o ? o._value : o.value
-                            return val
-                          })
-                        _vm.codeVariantValue = $event.target.multiple
-                          ? $$selectedVal
-                          : $$selectedVal[0]
-                      }
-                    }
-                  },
-                  _vm._l(_vm.codeVariantArray, function(item, key) {
-                    return _c("option", { domProps: { value: item } }, [
-                      _vm._v(
-                        "\n                            " +
-                          _vm._s(key) +
-                          "\n                        "
-                      )
-                    ])
-                  }),
-                  0
-                )
+                    },
+                    _vm._l(_vm.codeVariantArray, function(item, key) {
+                      return _c("option", { domProps: { value: item } }, [
+                        _vm._v(
+                          "\n                            " +
+                            _vm._s(key) +
+                            "\n                        "
+                        )
+                      ])
+                    }),
+                    0
+                  )
+                ])
               ])
-            ])
-          ])
+            ]
+          )
+        : _vm._e(),
+      _vm._v(" "),
+      this.showTransportMode
+        ? _c(
+            "div",
+            {
+              staticClass: "form-group",
+              attrs: { id: "show-transportmode-body" }
+            },
+            [
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col-sm-4" }, [
+                  _c("label", [_vm._v("Mode")]),
+                  _vm._v(" "),
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.transportModeValue,
+                          expression: "transportModeValue"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { id: "transportMode" },
+                      on: {
+                        change: function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.transportModeValue = $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        }
+                      }
+                    },
+                    [
+                      _c("option", { attrs: { value: "0" } }, [
+                        _vm._v("Preview")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "1" } }, [_vm._v("Play")]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "2" } }, [
+                        _vm._v("Record")
+                      ])
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-sm-4" }, [
+                  _c("label", [_vm._v("Speed")]),
+                  _vm._v(" "),
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.transportSpeedValue,
+                          expression: "transportSpeedValue"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { id: "transportSpeed" },
+                      on: {
+                        change: function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.transportSpeedValue = $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        }
+                      }
+                    },
+                    [
+                      _c("option", { attrs: { value: "-10" } }, [
+                        _vm._v("-10")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "-5" } }, [_vm._v("-5")]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "0", selected: "" } }, [
+                        _vm._v("0")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "5" } }, [_vm._v("5")]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "10" } }, [_vm._v("10")])
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-sm-4" }, [
+                  _c("label", [_vm._v("Flags")]),
+                  _vm._v(" "),
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.transportFlagsValue,
+                          expression: "transportFlagsValue"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { id: "transportFlags" },
+                      on: {
+                        change: function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.transportFlagsValue = $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        }
+                      }
+                    },
+                    [
+                      _c("option", { attrs: { value: "1" } }, [_vm._v("Loop")]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "2" } }, [
+                        _vm._v("Play all")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "32" } }, [
+                        _vm._v("Disk1 active")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "64" } }, [
+                        _vm._v("Disk2 active")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "128" } }, [
+                        _vm._v("Time-lapse recording")
+                      ])
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-sm-4" }, [
+                  _c("label", [_vm._v("Slot 1 storage medium")]),
+                  _vm._v(" "),
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.slot1StorageValue,
+                          expression: "slot1StorageValue"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { id: "slot1Storage" },
+                      on: {
+                        change: function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.slot1StorageValue = $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        }
+                      }
+                    },
+                    [
+                      _c("option", { attrs: { value: "0" } }, [
+                        _vm._v("CFast card")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "1" } }, [_vm._v("SD")]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "2" } }, [
+                        _vm._v("SSD Recorder")
+                      ])
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-sm-4" }, [
+                  _c("label", [_vm._v("Slot 2 storage medium")]),
+                  _vm._v(" "),
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.slot2StorageValue,
+                          expression: "slot2StorageValue"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { id: "slot2Storage" },
+                      on: {
+                        change: function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.slot2StorageValue = $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        }
+                      }
+                    },
+                    [
+                      _c("option", { attrs: { value: "0" } }, [
+                        _vm._v("CFast card")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "2" } }, [_vm._v("SD")]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "32" } }, [
+                        _vm._v("SSD Recorder")
+                      ])
+                    ]
+                  )
+                ])
+              ])
+            ]
+          )
+        : _vm._e(),
+      _vm._v(" "),
+      this.showPlaybackControl
+        ? _c(
+            "div",
+            {
+              staticClass: "form-group",
+              attrs: { id: "show-playbackcontrol-body" }
+            },
+            [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary",
+                  attrs: { id: "playbackPrevious" },
+                  on: { click: _vm.goPlaybackPrevious }
+                },
+                [_vm._v("<< Prev ")]
+              ),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary",
+                  attrs: { id: "playbackNext" },
+                  on: { click: _vm.goPlaybackNext }
+                },
+                [_vm._v("Next >>")]
+              )
+            ]
+          )
         : _vm._e()
     ])
   ])

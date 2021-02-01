@@ -49,7 +49,7 @@
                     <label id="remainingTime"></label>
                 </div>
             </div>
-            <div class="form-group" id="" v-if="this.showCodec">
+            <div class="form-group" id="show-codec-body" v-if="this.showCodec">
                 <div class="row">
                     <div class="col-sm-4">
                         <label>Basic codec</label>
@@ -70,7 +70,58 @@
                     </div>
                 </div>
             </div>
-
+            <div class="form-group" id="show-transportmode-body" v-if="this.showTransportMode">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <label>Mode</label>
+                        <select class="form-control" id="transportMode" v-model="transportModeValue">
+                            <option value="0">Preview</option>
+                            <option value="1">Play</option>
+                            <option value="2">Record</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-4">
+                        <label>Speed</label>
+                        <select class="form-control" id="transportSpeed" v-model="transportSpeedValue">
+                            <option value="-10">-10</option>
+                            <option value="-5">-5</option>
+                            <option value="0" selected>0</option>
+                            <option value="5">5</option>
+                            <option value="10">10</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-4">
+                        <label>Flags</label>
+                        <select class="form-control" id="transportFlags" v-model="transportFlagsValue">
+                            <option value="1">Loop</option>
+                            <option value="2">Play all</option>
+                            <option value="32">Disk1 active</option>
+                            <option value="64">Disk2 active</option>
+                            <option value="128">Time-lapse recording</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-4">
+                        <label>Slot 1 storage medium</label>
+                        <select class="form-control" id="slot1Storage" v-model="slot1StorageValue">
+                            <option value="0">CFast card</option>
+                            <option value="1">SD</option>
+                            <option value="2">SSD Recorder</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-4">
+                        <label>Slot 2 storage medium</label>
+                        <select class="form-control" id="slot2Storage" v-model="slot2StorageValue">
+                            <option value="0">CFast card</option>
+                            <option value="2">SD</option>
+                            <option value="32">SSD Recorder</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group" id="show-playbackcontrol-body" v-if="this.showPlaybackControl">
+                <button class="btn btn-primary" id="playbackPrevious" v-on:click="goPlaybackPrevious"><< Prev </button>
+                <button class="btn btn-primary" id="playbackNext" v-on:click="goPlaybackNext">Next >></button>
+            </div>
         </div>
     </div>
 </template>
@@ -100,6 +151,11 @@ export default {
                 "lossy 3:1" : "1",
                 "lossy 4:1" : "2",
             },
+            transportModeValue: "0",
+            transportSpeedValue: "0",
+            transportFlagsValue: "1",
+            slot1StorageValue: "0",
+            slot2StorageValue: "0",
         }
     },
     methods: {
