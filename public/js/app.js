@@ -3027,7 +3027,6 @@ __webpack_require__.r(__webpack_exports__);
       alert('Sent Location is called');
     },
     getToday: function getToday() {
-      debugger;
       var today = new Date();
       var dd = String(today.getDate()).padStart(2, '0');
       var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
@@ -3037,7 +3036,6 @@ __webpack_require__.r(__webpack_exports__);
       return dateString;
     },
     getTime: function getTime() {
-      debugger;
       var today = new Date();
       var timeString = "" + today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds() + "";
       return timeString;
@@ -4057,6 +4055,30 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -4068,18 +4090,72 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      title: "Recording....",
+      title: "Record",
       showRecord: true,
       showCodec: false,
       showTransportMode: false,
-      showPlaybackControl: false
+      showPlaybackControl: false,
+      basicCodecValue: "0",
+      codeVariantValue: "0",
+      codeVariantArray: {
+        "uncompressed": "0",
+        "lossy 3:1": "1",
+        "lossy 4:1": "2"
+      }
     };
   },
   methods: {
-    onRecord: function onRecord(event) {},
-    onCodec: function onCodec(event) {},
-    onTransportMode: function onTransportMode(event) {},
-    onPlaybackControl: function onPlaybackControl(event) {},
+    onRecord: function onRecord(event) {
+      this.title = "Record";
+      this.showRecord = true;
+      this.showCodec = this.showTransportMode = this.showPlaybackControl = false;
+    },
+    onCodec: function onCodec(event) {
+      this.title = "Codec";
+      this.showCodec = true;
+      this.showRecord = this.showTransportMode = this.showPlaybackControl = false;
+    },
+    onTransportMode: function onTransportMode(event) {
+      this.title = "Transport Mode";
+      this.showTransportMode = true;
+      this.showRecord = this.showCodec = this.showPlaybackControl = false;
+    },
+    onPlaybackControl: function onPlaybackControl(event) {
+      this.title = "Playback Control";
+      this.showPlaybackControl = true;
+      this.showRecord = this.showCodec = this.showTransportMode = false;
+    },
+    onChangedBasicCodec: function onChangedBasicCodec(event) {
+      debugger;
+
+      if (event.target.value == "0") {
+        this.codeVariantArray = {
+          "uncompressed": "0",
+          "lossy 3:1": "1",
+          "lossy 4:1": "2"
+        };
+      } else if (event.target.value == "1") {
+        this.codeVariantArray = {};
+      } else if (event.target.value == "2") {
+        this.codeVariantArray = {
+          "HQ": "0",
+          "422": "1",
+          "LT": "2",
+          "Proxy": "3",
+          "444": "4",
+          "444XQ": "5"
+        };
+      } else if (event.target.value == "3") {
+        this.codeVariantArray = {
+          "Q0": "0",
+          "Q5": "1",
+          "3:1": "2",
+          "5:1": "3",
+          "8:1": "4",
+          "12:1": "5"
+        };
+      }
+    },
     sendTransportModeCommand: function sendTransportModeCommand(command) {
       if (selectedCameraId == "") socket.emit('admin', null, JSON.stringify(command));else socket.emit('admin', selectedCameraId, JSON.stringify(command));
     },
@@ -47548,7 +47624,15 @@ var render = function() {
   return _c("div", { staticClass: "card" }, [
     _c("div", { staticClass: "card-header" }, [
       _c("div", { staticClass: "row" }, [
-        _vm._m(0),
+        _c("div", { staticClass: "col-sm-4 text-left" }, [
+          _c(
+            "a",
+            { attrs: { "data-toggle": "collapse", href: "#collapseMedia" } },
+            [_vm._v("Media")]
+          ),
+          _vm._v(" "),
+          _c("h3", { staticClass: "card-title" }, [_vm._v(_vm._s(this.title))])
+        ]),
         _vm._v(" "),
         _c("div", { staticClass: "col-sm-8" }, [
           _c(
@@ -47579,7 +47663,7 @@ var render = function() {
                     [_vm._v("Record")]
                   ),
                   _vm._v(" "),
-                  _vm._m(1)
+                  _vm._m(0)
                 ]
               ),
               _vm._v(" "),
@@ -47602,7 +47686,7 @@ var render = function() {
                     [_vm._v("Codec")]
                   ),
                   _vm._v(" "),
-                  _vm._m(2)
+                  _vm._m(1)
                 ]
               ),
               _vm._v(" "),
@@ -47628,7 +47712,7 @@ var render = function() {
                     [_vm._v("Transport mode")]
                   ),
                   _vm._v(" "),
-                  _vm._m(3)
+                  _vm._m(2)
                 ]
               ),
               _vm._v(" "),
@@ -47654,7 +47738,7 @@ var render = function() {
                     [_vm._v("Playback Control")]
                   ),
                   _vm._v(" "),
-                  _vm._m(4)
+                  _vm._m(3)
                 ]
               )
             ]
@@ -47664,45 +47748,143 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "card-body", attrs: { id: "collapseMedia" } }, [
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-primary",
-          attrs: { id: "btnRecord" },
-          on: { click: _vm.setRecord }
-        },
-        [_vm._v("Record")]
-      ),
+      this.showRecord
+        ? _c(
+            "div",
+            { staticClass: "form-group", attrs: { id: "show-record-body" } },
+            [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary",
+                  attrs: { id: "btnRecord" },
+                  on: { click: _vm.setRecord }
+                },
+                [_vm._v("Record")]
+              ),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary",
+                  attrs: { id: "btnStop" },
+                  on: { click: _vm.setStop }
+                },
+                [_vm._v("Stop")]
+              ),
+              _vm._v(" "),
+              _vm._m(4)
+            ]
+          )
+        : _vm._e(),
       _vm._v(" "),
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-primary",
-          attrs: { id: "btnStop" },
-          on: { click: _vm.setStop }
-        },
-        [_vm._v("Stop")]
-      ),
-      _vm._v(" "),
-      _vm._m(5)
+      this.showCodec
+        ? _c("div", { staticClass: "form-group", attrs: { id: "" } }, [
+            _c("div", { staticClass: "row" }, [
+              _c("div", { staticClass: "col-sm-4" }, [
+                _c("label", [_vm._v("Basic codec")]),
+                _vm._v(" "),
+                _c(
+                  "select",
+                  {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.basicCodecValue,
+                        expression: "basicCodecValue"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { id: "basicCodec" },
+                    on: {
+                      change: [
+                        function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.basicCodecValue = $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        },
+                        function($event) {
+                          return _vm.onChangedBasicCodec($event)
+                        }
+                      ]
+                    }
+                  },
+                  [
+                    _c("option", { attrs: { value: "0" } }, [
+                      _vm._v("CinemaDNG")
+                    ]),
+                    _vm._v(" "),
+                    _c("option", { attrs: { value: "1" } }, [_vm._v("DNxHD")]),
+                    _vm._v(" "),
+                    _c("option", { attrs: { value: "2" } }, [_vm._v("ProRes")]),
+                    _vm._v(" "),
+                    _c("option", { attrs: { value: "3" } }, [
+                      _vm._v(" Blackmagic RAW")
+                    ])
+                  ]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-sm-4" }, [
+                _c("label", [_vm._v("Code Variant")]),
+                _vm._v(" "),
+                _c(
+                  "select",
+                  {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.codeVariantValue,
+                        expression: "codeVariantValue"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { id: "codeVariant" },
+                    on: {
+                      change: function($event) {
+                        var $$selectedVal = Array.prototype.filter
+                          .call($event.target.options, function(o) {
+                            return o.selected
+                          })
+                          .map(function(o) {
+                            var val = "_value" in o ? o._value : o.value
+                            return val
+                          })
+                        _vm.codeVariantValue = $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
+                      }
+                    }
+                  },
+                  _vm._l(_vm.codeVariantArray, function(item, key) {
+                    return _c("option", { domProps: { value: item } }, [
+                      _vm._v(
+                        "\n                            " +
+                          _vm._s(key) +
+                          "\n                        "
+                      )
+                    ])
+                  }),
+                  0
+                )
+              ])
+            ])
+          ])
+        : _vm._e()
     ])
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-sm-4 text-left" }, [
-      _c(
-        "a",
-        { attrs: { "data-toggle": "collapse", href: "#collapseMedia" } },
-        [_vm._v("Media")]
-      ),
-      _vm._v(" "),
-      _c("h3", { staticClass: "card-title" }, [_vm._v("Recording....")])
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
