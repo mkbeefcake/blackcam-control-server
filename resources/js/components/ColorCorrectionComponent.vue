@@ -175,11 +175,11 @@
                         <tbody>
                             <tr>
                                 <td width="40%">Pivot</td>
-                                <td width="60%"><custom-slider raising min="0.0" max="1.0" step="0.1" v-model="contractAdjustRedValue" key="sliderContractAdjustRed" /></td>
+                                <td width="60%"><custom-slider raising min="0.0" max="1.0" step="0.1" v-model="contrastAdjustPivotValue" key="sliderContrastAdjustPivot" /></td>
                             </tr>
                             <tr>
                                 <td>Adj</td>
-                                <td><custom-slider raising min="0.0" max="2.0" step="0.1" v-model="contractAdjustGreenValue" key="sliderContractAdjustGreen" /></td>
+                                <td><custom-slider raising min="0.0" max="2.0" step="0.1" v-model="contrastAdjustValue" key="sliderContrastAdjust" /></td>
                             </tr>
                         </tbody>
                     </table>
@@ -255,10 +255,8 @@ export default {
             offsetAdjustGreenValue: "0",
             offsetAdjustBlueValue: "0",
             offsetAdjustLumaValue: "0",
-            contractAdjustRedValue: "0",
-            contractAdjustGreenValue: "0",
-            contractAdjustBlueValue: "0",
-            contractAdjustLumaValue: "0",
+            contrastAdjustPivotValue: "0",
+            contrastAdjustValue: "0",
             lumaMixValue: "0",
             hueColorAdjustValue: "0",
             satColorAdjustValue: "0",
@@ -378,10 +376,8 @@ export default {
             debugger;
             var command = {
                 type : 'set-contrast-adjust',
-                contractAdjustRedValue: this.contractAdjustRedValue,
-                contractAdjustGreenValue: this.contractAdjustGreenValue,
-                contractAdjustBlueValue: this.contractAdjustBlueValue,
-                contractAdjustLumaValue: this.contractAdjustLumaValue
+                contrastAdjustPivotValue: this.contrastAdjustPivotValue,
+                contrastAdjustValue: this.contrastAdjustValue,
             };
 
             this.sendColorCorrectionCommand(command);
