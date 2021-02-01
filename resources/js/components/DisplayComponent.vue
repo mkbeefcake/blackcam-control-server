@@ -3,7 +3,7 @@
         <div class="card-header">
             <div class="row">
                 <div class="col-sm-4 text-left">
-                    <h5 class="card-category">Display</h5>
+                    <a data-toggle="collapse" href="#collapseDisplay">Display</a>
                     <h3 class="card-title">{{this.title}}</h3>
                 </div>
                 <div class="col-sm-8">
@@ -40,7 +40,7 @@
                 </div>
             </div>
         </div>
-        <div class="card-body">
+        <div id="collapseDisplay" class="card-body">
             <div class="form-group" id="brightness-body" v-if="this.showBrightness">
                 <table class="table">
                     <tbody>

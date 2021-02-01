@@ -3,7 +3,7 @@
         <div class="card-header">
             <div class="row">
                 <div class="col-sm-4 text-left">
-                    <h5 class="card-category">Video</h5>
+                    <a data-toggle="collapse" href="#collapseVideo">Video</a>
                     <h3 class="card-title">{{this.title}}</h3>
                 </div>
                 <div class="col-sm-8">
@@ -54,7 +54,7 @@
                 </div>
             </div>
         </div>
-        <div class="card-body">
+        <div id="collapseVideo" class="card-body">
             <div class="form-group" id="video-mode-body" v-if="this.showVideoMode">
                 <div class="row">
                     <div class="col-sm-3">

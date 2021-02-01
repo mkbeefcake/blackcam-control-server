@@ -3,7 +3,7 @@
     <div class="card-header">
         <div class="row">
             <div class="col-sm-4 text-left">
-                <h5 class="card-category">Lens</h5>
+                <a data-toggle="collapse" href="#collapseLens">Lens</a>
                 <h2 class="card-title">{{this.title}}</h2>
             </div>
             <div class="col-sm-8">
@@ -47,7 +47,7 @@
             </div>
         </div>
     </div>
-    <div class="card-body">
+    <div id="collapseLens" class="card-body">
         <div class="form-group" id="auto-focus-body" v-if="this.showAuto">
             <button class="btn btn-primary" id="btnAutoFocus" v-on:click="setAutoFocus">Auto Focus</button>
         </div>

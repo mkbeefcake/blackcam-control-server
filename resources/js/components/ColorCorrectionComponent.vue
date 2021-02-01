@@ -3,7 +3,7 @@
         <div class="card-header">
             <div class="row">
                 <div class="col-sm-4 text-left">
-                    <h5 class="card-category">Color correction</h5>
+                    <a data-toggle="collapse" href="#collapseColorCorrection">Color correction</a>
                     <h3 class="card-title">{{this.title}}</h3>
                 </div>
                 <div class="col-sm-8">
@@ -68,7 +68,7 @@
                 </div>
             </div>
         </div>
-        <div class="card-body">
+        <div id="collapseColorCorrection" class="card-body">
             <div class="form-group" id="lift-adjust-body" v-if="this.showLiftAdjust">
                 <div class="col-sm-8">
                     <table class="table">

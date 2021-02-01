@@ -3,12 +3,12 @@
         <div class="card-header">
             <div class="row">
                 <div class="col-sm-6 text-left">
-                    <h5 class="card-category">Tally</h5>
+                    <a data-toggle="collapse" href="#collapseTally">Tally</a>
                     <h3 class="card-title">{{this.title}}</h3>
                 </div>
             </div>
         </div>
-        <div class="card-body">
+        <div id="collapseTally" class="card-body">
             <div class="form-group" id="overlays-body">
                 <table class="table">
                     <tbody>

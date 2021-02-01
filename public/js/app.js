@@ -2458,10 +2458,8 @@ __webpack_require__.r(__webpack_exports__);
       offsetAdjustGreenValue: "0",
       offsetAdjustBlueValue: "0",
       offsetAdjustLumaValue: "0",
-      contractAdjustRedValue: "0",
-      contractAdjustGreenValue: "0",
-      contractAdjustBlueValue: "0",
-      contractAdjustLumaValue: "0",
+      contrastAdjustPivotValue: "0",
+      contrastAdjustValue: "0",
       lumaMixValue: "0",
       hueColorAdjustValue: "0",
       satColorAdjustValue: "0"
@@ -2566,10 +2564,8 @@ __webpack_require__.r(__webpack_exports__);
       debugger;
       var command = {
         type: 'set-contrast-adjust',
-        contractAdjustRedValue: this.contractAdjustRedValue,
-        contractAdjustGreenValue: this.contractAdjustGreenValue,
-        contractAdjustBlueValue: this.contractAdjustBlueValue,
-        contractAdjustLumaValue: this.contractAdjustLumaValue
+        contrastAdjustPivotValue: this.contrastAdjustPivotValue,
+        contrastAdjustValue: this.contrastAdjustValue
       };
       this.sendColorCorrectionCommand(command);
       alert('Sent Contract Adjust is called');
@@ -4004,6 +4000,10 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vue_custom_range_slider__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-custom-range-slider */ "./node_modules/vue-custom-range-slider/dist/vue-custom-range-slider.common.js");
+/* harmony import */ var vue_custom_range_slider__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue_custom_range_slider__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vue_custom_range_slider_dist_vue_custom_range_slider_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-custom-range-slider/dist/vue-custom-range-slider.css */ "./node_modules/vue-custom-range-slider/dist/vue-custom-range-slider.css");
+/* harmony import */ var vue_custom_range_slider_dist_vue_custom_range_slider_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue_custom_range_slider_dist_vue_custom_range_slider_css__WEBPACK_IMPORTED_MODULE_1__);
 //
 //
 //
@@ -4025,11 +4025,61 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     console.log('RecordVideo-Component mounted.');
   },
+  components: {
+    CustomSlider: vue_custom_range_slider__WEBPACK_IMPORTED_MODULE_0___default.a
+  },
+  data: function data() {
+    return {
+      title: "Recording....",
+      showRecord: true,
+      showCodec: false,
+      showTransportMode: false,
+      showPlaybackControl: false
+    };
+  },
   methods: {
+    onRecord: function onRecord(event) {},
+    onCodec: function onCodec(event) {},
+    onTransportMode: function onTransportMode(event) {},
+    onPlaybackControl: function onPlaybackControl(event) {},
     sendTransportModeCommand: function sendTransportModeCommand(command) {
       if (selectedCameraId == "") socket.emit('admin', null, JSON.stringify(command));else socket.emit('admin', selectedCameraId, JSON.stringify(command));
     },
@@ -4733,8 +4783,8 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 /*!
-  * Bootstrap v4.5.3 (https://getbootstrap.com/)
-  * Copyright 2011-2020 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
+  * Bootstrap v4.6.0 (https://getbootstrap.com/)
+  * Copyright 2011-2021 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
 (function (global, factory) {
@@ -4789,7 +4839,7 @@ __webpack_require__.r(__webpack_exports__);
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v4.5.3): util.js
+   * Bootstrap (v4.6.0): util.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -4968,7 +5018,7 @@ __webpack_require__.r(__webpack_exports__);
    */
 
   var NAME = 'alert';
-  var VERSION = '4.5.3';
+  var VERSION = '4.6.0';
   var DATA_KEY = 'bs.alert';
   var EVENT_KEY = "." + DATA_KEY;
   var DATA_API_KEY = '.data-api';
@@ -5124,7 +5174,7 @@ __webpack_require__.r(__webpack_exports__);
    */
 
   var NAME$1 = 'button';
-  var VERSION$1 = '4.5.3';
+  var VERSION$1 = '4.6.0';
   var DATA_KEY$1 = 'bs.button';
   var EVENT_KEY$1 = "." + DATA_KEY$1;
   var DATA_API_KEY$1 = '.data-api';
@@ -5323,7 +5373,7 @@ __webpack_require__.r(__webpack_exports__);
    */
 
   var NAME$2 = 'carousel';
-  var VERSION$2 = '4.5.3';
+  var VERSION$2 = '4.6.0';
   var DATA_KEY$2 = 'bs.carousel';
   var EVENT_KEY$2 = "." + DATA_KEY$2;
   var DATA_API_KEY$2 = '.data-api';
@@ -5463,6 +5513,8 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       if (this._config.interval && !this._isPaused) {
+        this._updateInterval();
+
         this._interval = setInterval((document.visibilityState ? this.nextWhenVisible : this.next).bind(this), this._config.interval);
       }
     };
@@ -5704,6 +5756,23 @@ __webpack_require__.r(__webpack_exports__);
       }
     };
 
+    _proto._updateInterval = function _updateInterval() {
+      var element = this._activeElement || this._element.querySelector(SELECTOR_ACTIVE_ITEM);
+
+      if (!element) {
+        return;
+      }
+
+      var elementInterval = parseInt(element.getAttribute('data-interval'), 10);
+
+      if (elementInterval) {
+        this._config.defaultInterval = this._config.defaultInterval || this._config.interval;
+        this._config.interval = elementInterval;
+      } else {
+        this._config.interval = this._config.defaultInterval || this._config.interval;
+      }
+    };
+
     _proto._slide = function _slide(direction, element) {
       var _this4 = this;
 
@@ -5754,6 +5823,7 @@ __webpack_require__.r(__webpack_exports__);
 
       this._setActiveIndicatorElement(nextElement);
 
+      this._activeElement = nextElement;
       var slidEvent = $__default['default'].Event(EVENT_SLID, {
         relatedTarget: nextElement,
         direction: eventDirectionName,
@@ -5766,15 +5836,6 @@ __webpack_require__.r(__webpack_exports__);
         Util.reflow(nextElement);
         $__default['default'](activeElement).addClass(directionalClassName);
         $__default['default'](nextElement).addClass(directionalClassName);
-        var nextElementInterval = parseInt(nextElement.getAttribute('data-interval'), 10);
-
-        if (nextElementInterval) {
-          this._config.defaultInterval = this._config.defaultInterval || this._config.interval;
-          this._config.interval = nextElementInterval;
-        } else {
-          this._config.interval = this._config.defaultInterval || this._config.interval;
-        }
-
         var transitionDuration = Util.getTransitionDurationFromElement(activeElement);
         $__default['default'](activeElement).one(Util.TRANSITION_END, function () {
           $__default['default'](nextElement).removeClass(directionalClassName + " " + orderClassName).addClass(CLASS_NAME_ACTIVE$1);
@@ -5911,7 +5972,7 @@ __webpack_require__.r(__webpack_exports__);
    */
 
   var NAME$3 = 'collapse';
-  var VERSION$3 = '4.5.3';
+  var VERSION$3 = '4.6.0';
   var DATA_KEY$3 = 'bs.collapse';
   var EVENT_KEY$3 = "." + DATA_KEY$3;
   var DATA_API_KEY$3 = '.data-api';
@@ -6260,7 +6321,7 @@ __webpack_require__.r(__webpack_exports__);
    */
 
   var NAME$4 = 'dropdown';
-  var VERSION$4 = '4.5.3';
+  var VERSION$4 = '4.6.0';
   var DATA_KEY$4 = 'bs.dropdown';
   var EVENT_KEY$4 = "." + DATA_KEY$4;
   var DATA_API_KEY$4 = '.data-api';
@@ -6377,7 +6438,7 @@ __webpack_require__.r(__webpack_exports__);
 
       if (showEvent.isDefaultPrevented()) {
         return;
-      } // Disable totally Popper.js for Dropdown in Navbar
+      } // Totally disable Popper for Dropdowns in Navbar
 
 
       if (!this._inNavbar && usePopper) {
@@ -6386,7 +6447,7 @@ __webpack_require__.r(__webpack_exports__);
          * Popper - https://popper.js.org
          */
         if (typeof Popper__default['default'] === 'undefined') {
-          throw new TypeError('Bootstrap\'s dropdowns require Popper.js (https://popper.js.org/)');
+          throw new TypeError('Bootstrap\'s dropdowns require Popper (https://popper.js.org)');
         }
 
         var referenceElement = this._element;
@@ -6554,7 +6615,7 @@ __webpack_require__.r(__webpack_exports__);
             boundariesElement: this._config.boundary
           }
         }
-      }; // Disable Popper.js if we have a static display
+      }; // Disable Popper if we have a static display
 
       if (this._config.display === 'static') {
         popperConfig.modifiers.applyStyle = {
@@ -6774,7 +6835,7 @@ __webpack_require__.r(__webpack_exports__);
    */
 
   var NAME$5 = 'modal';
-  var VERSION$5 = '4.5.3';
+  var VERSION$5 = '4.6.0';
   var DATA_KEY$5 = 'bs.modal';
   var EVENT_KEY$5 = "." + DATA_KEY$5;
   var DATA_API_KEY$5 = '.data-api';
@@ -6974,38 +7035,34 @@ __webpack_require__.r(__webpack_exports__);
     _proto._triggerBackdropTransition = function _triggerBackdropTransition() {
       var _this3 = this;
 
-      if (this._config.backdrop === 'static') {
-        var hideEventPrevented = $__default['default'].Event(EVENT_HIDE_PREVENTED);
-        $__default['default'](this._element).trigger(hideEventPrevented);
+      var hideEventPrevented = $__default['default'].Event(EVENT_HIDE_PREVENTED);
+      $__default['default'](this._element).trigger(hideEventPrevented);
 
-        if (hideEventPrevented.isDefaultPrevented()) {
-          return;
-        }
+      if (hideEventPrevented.isDefaultPrevented()) {
+        return;
+      }
 
-        var isModalOverflowing = this._element.scrollHeight > document.documentElement.clientHeight;
+      var isModalOverflowing = this._element.scrollHeight > document.documentElement.clientHeight;
+
+      if (!isModalOverflowing) {
+        this._element.style.overflowY = 'hidden';
+      }
+
+      this._element.classList.add(CLASS_NAME_STATIC);
+
+      var modalTransitionDuration = Util.getTransitionDurationFromElement(this._dialog);
+      $__default['default'](this._element).off(Util.TRANSITION_END);
+      $__default['default'](this._element).one(Util.TRANSITION_END, function () {
+        _this3._element.classList.remove(CLASS_NAME_STATIC);
 
         if (!isModalOverflowing) {
-          this._element.style.overflowY = 'hidden';
+          $__default['default'](_this3._element).one(Util.TRANSITION_END, function () {
+            _this3._element.style.overflowY = '';
+          }).emulateTransitionEnd(_this3._element, modalTransitionDuration);
         }
+      }).emulateTransitionEnd(modalTransitionDuration);
 
-        this._element.classList.add(CLASS_NAME_STATIC);
-
-        var modalTransitionDuration = Util.getTransitionDurationFromElement(this._dialog);
-        $__default['default'](this._element).off(Util.TRANSITION_END);
-        $__default['default'](this._element).one(Util.TRANSITION_END, function () {
-          _this3._element.classList.remove(CLASS_NAME_STATIC);
-
-          if (!isModalOverflowing) {
-            $__default['default'](_this3._element).one(Util.TRANSITION_END, function () {
-              _this3._element.style.overflowY = '';
-            }).emulateTransitionEnd(_this3._element, modalTransitionDuration);
-          }
-        }).emulateTransitionEnd(modalTransitionDuration);
-
-        this._element.focus();
-      } else {
-        this.hide();
-      }
+      this._element.focus();
     };
 
     _proto._showElement = function _showElement(relatedTarget) {
@@ -7160,7 +7217,11 @@ __webpack_require__.r(__webpack_exports__);
             return;
           }
 
-          _this9._triggerBackdropTransition();
+          if (_this9._config.backdrop === 'static') {
+            _this9._triggerBackdropTransition();
+          } else {
+            _this9.hide();
+          }
         });
 
         if (animate) {
@@ -7384,7 +7445,7 @@ __webpack_require__.r(__webpack_exports__);
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v4.5.3): tools/sanitizer.js
+   * Bootstrap (v4.6.0): tools/sanitizer.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -7510,7 +7571,7 @@ __webpack_require__.r(__webpack_exports__);
    */
 
   var NAME$6 = 'tooltip';
-  var VERSION$6 = '4.5.3';
+  var VERSION$6 = '4.6.0';
   var DATA_KEY$6 = 'bs.tooltip';
   var EVENT_KEY$6 = "." + DATA_KEY$6;
   var JQUERY_NO_CONFLICT$6 = $__default['default'].fn[NAME$6];
@@ -7530,6 +7591,7 @@ __webpack_require__.r(__webpack_exports__);
     container: '(string|element|boolean)',
     fallbackPlacement: '(string|array)',
     boundary: '(string|element)',
+    customClass: '(string|function)',
     sanitize: 'boolean',
     sanitizeFn: '(null|function)',
     whiteList: 'object',
@@ -7555,6 +7617,7 @@ __webpack_require__.r(__webpack_exports__);
     container: false,
     fallbackPlacement: 'flip',
     boundary: 'scrollParent',
+    customClass: '',
     sanitize: true,
     sanitizeFn: null,
     whiteList: DefaultWhitelist,
@@ -7591,7 +7654,7 @@ __webpack_require__.r(__webpack_exports__);
   var Tooltip = /*#__PURE__*/function () {
     function Tooltip(element, config) {
       if (typeof Popper__default['default'] === 'undefined') {
-        throw new TypeError('Bootstrap\'s tooltips require Popper.js (https://popper.js.org/)');
+        throw new TypeError('Bootstrap\'s tooltips require Popper (https://popper.js.org)');
       } // private
 
 
@@ -7725,7 +7788,8 @@ __webpack_require__.r(__webpack_exports__);
 
         $__default['default'](this.element).trigger(this.constructor.Event.INSERTED);
         this._popper = new Popper__default['default'](this.element, tip, this._getPopperConfig(attachment));
-        $__default['default'](tip).addClass(CLASS_NAME_SHOW$4); // If this is a touch-enabled device we add extra
+        $__default['default'](tip).addClass(CLASS_NAME_SHOW$4);
+        $__default['default'](tip).addClass(this.config.customClass); // If this is a touch-enabled device we add extra
         // empty mouseover listeners to the body's immediate children;
         // only needed because of broken event delegation on iOS
         // https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html
@@ -8223,7 +8287,7 @@ __webpack_require__.r(__webpack_exports__);
    */
 
   var NAME$7 = 'popover';
-  var VERSION$7 = '4.5.3';
+  var VERSION$7 = '4.6.0';
   var DATA_KEY$7 = 'bs.popover';
   var EVENT_KEY$7 = "." + DATA_KEY$7;
   var JQUERY_NO_CONFLICT$7 = $__default['default'].fn[NAME$7];
@@ -8403,7 +8467,7 @@ __webpack_require__.r(__webpack_exports__);
    */
 
   var NAME$8 = 'scrollspy';
-  var VERSION$8 = '4.5.3';
+  var VERSION$8 = '4.6.0';
   var DATA_KEY$8 = 'bs.scrollspy';
   var EVENT_KEY$8 = "." + DATA_KEY$8;
   var DATA_API_KEY$6 = '.data-api';
@@ -8695,7 +8759,7 @@ __webpack_require__.r(__webpack_exports__);
    */
 
   var NAME$9 = 'tab';
-  var VERSION$9 = '4.5.3';
+  var VERSION$9 = '4.6.0';
   var DATA_KEY$9 = 'bs.tab';
   var EVENT_KEY$9 = "." + DATA_KEY$9;
   var DATA_API_KEY$7 = '.data-api';
@@ -8921,7 +8985,7 @@ __webpack_require__.r(__webpack_exports__);
    */
 
   var NAME$a = 'toast';
-  var VERSION$a = '4.5.3';
+  var VERSION$a = '4.6.0';
   var DATA_KEY$a = 'bs.toast';
   var EVENT_KEY$a = "." + DATA_KEY$a;
   var JQUERY_NO_CONFLICT$a = $__default['default'].fn[NAME$a];
@@ -42763,7 +42827,11 @@ var render = function() {
     _c("div", { staticClass: "card-header" }, [
       _c("div", { staticClass: "row" }, [
         _c("div", { staticClass: "col-sm-4 text-left" }, [
-          _c("h5", { staticClass: "card-category" }, [_vm._v("Audio")]),
+          _c(
+            "a",
+            { attrs: { "data-toggle": "collapse", href: "#collapseAudio" } },
+            [_vm._v("Audio")]
+          ),
           _vm._v(" "),
           _c("h3", { staticClass: "card-title" }, [_vm._v(_vm._s(this.title))])
         ]),
@@ -42881,7 +42949,7 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "card-body" }, [
+    _c("div", { staticClass: "card-body", attrs: { id: "collapseAudio" } }, [
       this.showMicLevel
         ? _c(
             "div",
@@ -43297,9 +43365,16 @@ var render = function() {
     _c("div", { staticClass: "card-header" }, [
       _c("div", { staticClass: "row" }, [
         _c("div", { staticClass: "col-sm-4 text-left" }, [
-          _c("h5", { staticClass: "card-category" }, [
-            _vm._v("Color correction")
-          ]),
+          _c(
+            "a",
+            {
+              attrs: {
+                "data-toggle": "collapse",
+                href: "#collapseColorCorrection"
+              }
+            },
+            [_vm._v("Color correction")]
+          ),
           _vm._v(" "),
           _c("h3", { staticClass: "card-title" }, [_vm._v(_vm._s(this.title))])
         ]),
@@ -43521,766 +43596,775 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "card-body" }, [
-      this.showLiftAdjust
-        ? _c(
-            "div",
-            { staticClass: "form-group", attrs: { id: "lift-adjust-body" } },
-            [
-              _c("div", { staticClass: "col-sm-8" }, [
-                _c("table", { staticClass: "table" }, [
-                  _c("tbody", [
-                    _c("tr", [
-                      _c("td", { attrs: { width: "40%" } }, [_vm._v("Red")]),
-                      _vm._v(" "),
-                      _c(
-                        "td",
-                        { attrs: { width: "60%" } },
-                        [
-                          _c("custom-slider", {
-                            key: "sliderLiftAdjustRed",
-                            attrs: {
-                              raising: "",
-                              min: "-2.0",
-                              max: "2.0",
-                              step: "0.1"
-                            },
-                            model: {
-                              value: _vm.liftAdjustRedValue,
-                              callback: function($$v) {
-                                _vm.liftAdjustRedValue = $$v
+    _c(
+      "div",
+      { staticClass: "card-body", attrs: { id: "collapseColorCorrection" } },
+      [
+        this.showLiftAdjust
+          ? _c(
+              "div",
+              { staticClass: "form-group", attrs: { id: "lift-adjust-body" } },
+              [
+                _c("div", { staticClass: "col-sm-8" }, [
+                  _c("table", { staticClass: "table" }, [
+                    _c("tbody", [
+                      _c("tr", [
+                        _c("td", { attrs: { width: "40%" } }, [_vm._v("Red")]),
+                        _vm._v(" "),
+                        _c(
+                          "td",
+                          { attrs: { width: "60%" } },
+                          [
+                            _c("custom-slider", {
+                              key: "sliderLiftAdjustRed",
+                              attrs: {
+                                raising: "",
+                                min: "-2.0",
+                                max: "2.0",
+                                step: "0.1"
                               },
-                              expression: "liftAdjustRedValue"
-                            }
-                          })
-                        ],
-                        1
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("tr", [
-                      _c("td", [_vm._v("Green")]),
+                              model: {
+                                value: _vm.liftAdjustRedValue,
+                                callback: function($$v) {
+                                  _vm.liftAdjustRedValue = $$v
+                                },
+                                expression: "liftAdjustRedValue"
+                              }
+                            })
+                          ],
+                          1
+                        )
+                      ]),
                       _vm._v(" "),
-                      _c(
-                        "td",
-                        [
-                          _c("custom-slider", {
-                            key: "sliderLiftAdjustGreen",
-                            attrs: {
-                              raising: "",
-                              min: "-2.0",
-                              max: "2.0",
-                              step: "0.1"
-                            },
-                            model: {
-                              value: _vm.liftAdjustGreenValue,
-                              callback: function($$v) {
-                                _vm.liftAdjustGreenValue = $$v
+                      _c("tr", [
+                        _c("td", [_vm._v("Green")]),
+                        _vm._v(" "),
+                        _c(
+                          "td",
+                          [
+                            _c("custom-slider", {
+                              key: "sliderLiftAdjustGreen",
+                              attrs: {
+                                raising: "",
+                                min: "-2.0",
+                                max: "2.0",
+                                step: "0.1"
                               },
-                              expression: "liftAdjustGreenValue"
-                            }
-                          })
-                        ],
-                        1
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("tr", [
-                      _c("td", [_vm._v("Blue")]),
+                              model: {
+                                value: _vm.liftAdjustGreenValue,
+                                callback: function($$v) {
+                                  _vm.liftAdjustGreenValue = $$v
+                                },
+                                expression: "liftAdjustGreenValue"
+                              }
+                            })
+                          ],
+                          1
+                        )
+                      ]),
                       _vm._v(" "),
-                      _c(
-                        "td",
-                        [
-                          _c("custom-slider", {
-                            key: "sliderLiftAdjustBlue",
-                            attrs: {
-                              raising: "",
-                              min: "-2.0",
-                              max: "2.0",
-                              step: "0.1"
-                            },
-                            model: {
-                              value: _vm.liftAdjustBlueValue,
-                              callback: function($$v) {
-                                _vm.liftAdjustBlueValue = $$v
+                      _c("tr", [
+                        _c("td", [_vm._v("Blue")]),
+                        _vm._v(" "),
+                        _c(
+                          "td",
+                          [
+                            _c("custom-slider", {
+                              key: "sliderLiftAdjustBlue",
+                              attrs: {
+                                raising: "",
+                                min: "-2.0",
+                                max: "2.0",
+                                step: "0.1"
                               },
-                              expression: "liftAdjustBlueValue"
-                            }
-                          })
-                        ],
-                        1
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("tr", [
-                      _c("td", [_vm._v("Luma")]),
+                              model: {
+                                value: _vm.liftAdjustBlueValue,
+                                callback: function($$v) {
+                                  _vm.liftAdjustBlueValue = $$v
+                                },
+                                expression: "liftAdjustBlueValue"
+                              }
+                            })
+                          ],
+                          1
+                        )
+                      ]),
                       _vm._v(" "),
-                      _c(
-                        "td",
-                        [
-                          _c("custom-slider", {
-                            key: "sliderLiftAdjustLuma",
-                            attrs: {
-                              raising: "",
-                              min: "-2.0",
-                              max: "2.0",
-                              step: "0.1"
-                            },
-                            model: {
-                              value: _vm.liftAdjustLumaValue,
-                              callback: function($$v) {
-                                _vm.liftAdjustLumaValue = $$v
+                      _c("tr", [
+                        _c("td", [_vm._v("Luma")]),
+                        _vm._v(" "),
+                        _c(
+                          "td",
+                          [
+                            _c("custom-slider", {
+                              key: "sliderLiftAdjustLuma",
+                              attrs: {
+                                raising: "",
+                                min: "-2.0",
+                                max: "2.0",
+                                step: "0.1"
                               },
-                              expression: "liftAdjustLumaValue"
-                            }
-                          })
-                        ],
-                        1
-                      )
+                              model: {
+                                value: _vm.liftAdjustLumaValue,
+                                callback: function($$v) {
+                                  _vm.liftAdjustLumaValue = $$v
+                                },
+                                expression: "liftAdjustLumaValue"
+                              }
+                            })
+                          ],
+                          1
+                        )
+                      ])
                     ])
                   ])
-                ])
-              ]),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-primary",
-                  attrs: { id: "btnLiftAdjust" },
-                  on: { click: _vm.setLiftAdjust }
-                },
-                [_vm._v("Set")]
-              )
-            ]
-          )
-        : _vm._e(),
-      _vm._v(" "),
-      this.showGammaAdjust
-        ? _c(
-            "div",
-            { staticClass: "form-group", attrs: { id: "gamma-adjust-body" } },
-            [
-              _c("div", { staticClass: "col-sm-8" }, [
-                _c("table", { staticClass: "table" }, [
-                  _c("tbody", [
-                    _c("tr", [
-                      _c("td", { attrs: { width: "40%" } }, [_vm._v("Red")]),
-                      _vm._v(" "),
-                      _c(
-                        "td",
-                        { attrs: { width: "60%" } },
-                        [
-                          _c("custom-slider", {
-                            key: "sliderGammaAdjustRed",
-                            attrs: {
-                              raising: "",
-                              min: "-4.0",
-                              max: "4.0",
-                              step: "0.1"
-                            },
-                            model: {
-                              value: _vm.gammaAdjustRedValue,
-                              callback: function($$v) {
-                                _vm.gammaAdjustRedValue = $$v
-                              },
-                              expression: "gammaAdjustRedValue"
-                            }
-                          })
-                        ],
-                        1
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("tr", [
-                      _c("td", [_vm._v("Green")]),
-                      _vm._v(" "),
-                      _c(
-                        "td",
-                        [
-                          _c("custom-slider", {
-                            key: "sliderGammaAdjustGreen",
-                            attrs: {
-                              raising: "",
-                              min: "-4.0",
-                              max: "4.0",
-                              step: "0.1"
-                            },
-                            model: {
-                              value: _vm.gammaAdjustGreenValue,
-                              callback: function($$v) {
-                                _vm.gammaAdjustGreenValue = $$v
-                              },
-                              expression: "gammaAdjustGreenValue"
-                            }
-                          })
-                        ],
-                        1
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("tr", [
-                      _c("td", [_vm._v("Blue")]),
-                      _vm._v(" "),
-                      _c(
-                        "td",
-                        [
-                          _c("custom-slider", {
-                            key: "sliderGammaAdjustBlue",
-                            attrs: {
-                              raising: "",
-                              min: "-4.0",
-                              max: "4.0",
-                              step: "0.1"
-                            },
-                            model: {
-                              value: _vm.gammaAdjustBlueValue,
-                              callback: function($$v) {
-                                _vm.gammaAdjustBlueValue = $$v
-                              },
-                              expression: "gammaAdjustBlueValue"
-                            }
-                          })
-                        ],
-                        1
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("tr", [
-                      _c("td", [_vm._v("Luma")]),
-                      _vm._v(" "),
-                      _c(
-                        "td",
-                        [
-                          _c("custom-slider", {
-                            key: "sliderGammaAdjustLuma",
-                            attrs: {
-                              raising: "",
-                              min: "-4.0",
-                              max: "4.0",
-                              step: "0.1"
-                            },
-                            model: {
-                              value: _vm.gammaAdjustLumaValue,
-                              callback: function($$v) {
-                                _vm.gammaAdjustLumaValue = $$v
-                              },
-                              expression: "gammaAdjustLumaValue"
-                            }
-                          })
-                        ],
-                        1
-                      )
-                    ])
-                  ])
-                ])
-              ]),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-primary",
-                  attrs: { id: "btnGammaAdjust" },
-                  on: { click: _vm.setGammaAdjust }
-                },
-                [_vm._v("Set")]
-              )
-            ]
-          )
-        : _vm._e(),
-      _vm._v(" "),
-      this.showGainAdjust
-        ? _c(
-            "div",
-            { staticClass: "form-group", attrs: { id: "gain-adjust-body" } },
-            [
-              _c("div", { staticClass: "col-sm-8" }, [
-                _c("table", { staticClass: "table" }, [
-                  _c("tbody", [
-                    _c("tr", [
-                      _c("td", { attrs: { width: "40%" } }, [_vm._v("Red")]),
-                      _vm._v(" "),
-                      _c(
-                        "td",
-                        { attrs: { width: "60%" } },
-                        [
-                          _c("custom-slider", {
-                            key: "sliderGainAdjustRed",
-                            attrs: {
-                              raising: "",
-                              min: "0.0",
-                              max: "16.0",
-                              step: "0.1"
-                            },
-                            model: {
-                              value: _vm.gainAdjustRedValue,
-                              callback: function($$v) {
-                                _vm.gainAdjustRedValue = $$v
-                              },
-                              expression: "gainAdjustRedValue"
-                            }
-                          })
-                        ],
-                        1
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("tr", [
-                      _c("td", [_vm._v("Green")]),
-                      _vm._v(" "),
-                      _c(
-                        "td",
-                        [
-                          _c("custom-slider", {
-                            key: "sliderGainAdjustGreen",
-                            attrs: {
-                              raising: "",
-                              min: "0.0",
-                              max: "16.0",
-                              step: "0.1"
-                            },
-                            model: {
-                              value: _vm.gainAdjustGreenValue,
-                              callback: function($$v) {
-                                _vm.gainAdjustGreenValue = $$v
-                              },
-                              expression: "gainAdjustGreenValue"
-                            }
-                          })
-                        ],
-                        1
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("tr", [
-                      _c("td", [_vm._v("Blue")]),
-                      _vm._v(" "),
-                      _c(
-                        "td",
-                        [
-                          _c("custom-slider", {
-                            key: "sliderGainAdjustBlue",
-                            attrs: {
-                              raising: "",
-                              min: "0.0",
-                              max: "16.0",
-                              step: "0.1"
-                            },
-                            model: {
-                              value: _vm.gainAdjustBlueValue,
-                              callback: function($$v) {
-                                _vm.gainAdjustBlueValue = $$v
-                              },
-                              expression: "gainAdjustBlueValue"
-                            }
-                          })
-                        ],
-                        1
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("tr", [
-                      _c("td", [_vm._v("Luma")]),
-                      _vm._v(" "),
-                      _c(
-                        "td",
-                        [
-                          _c("custom-slider", {
-                            key: "sliderGainAdjustLuma",
-                            attrs: {
-                              raising: "",
-                              min: "0.0",
-                              max: "16.0",
-                              step: "0.1"
-                            },
-                            model: {
-                              value: _vm.gainAdjustLumaValue,
-                              callback: function($$v) {
-                                _vm.gainAdjustLumaValue = $$v
-                              },
-                              expression: "gainAdjustLumaValue"
-                            }
-                          })
-                        ],
-                        1
-                      )
-                    ])
-                  ])
-                ])
-              ]),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-primary",
-                  attrs: { id: "btnGainAdjust" },
-                  on: { click: _vm.setGainAdjust }
-                },
-                [_vm._v("Set")]
-              )
-            ]
-          )
-        : _vm._e(),
-      _vm._v(" "),
-      this.showOffsetAdjust
-        ? _c(
-            "div",
-            { staticClass: "form-group", attrs: { id: "offset-adjust-body" } },
-            [
-              _c("div", { staticClass: "col-sm-8" }, [
-                _c("table", { staticClass: "table" }, [
-                  _c("tbody", [
-                    _c("tr", [
-                      _c("td", { attrs: { width: "40%" } }, [_vm._v("Red")]),
-                      _vm._v(" "),
-                      _c(
-                        "td",
-                        { attrs: { width: "60%" } },
-                        [
-                          _c("custom-slider", {
-                            key: "sliderOffsetAdjustRed",
-                            attrs: {
-                              raising: "",
-                              min: "-8.0",
-                              max: "8.0",
-                              step: "0.1"
-                            },
-                            model: {
-                              value: _vm.offsetAdjustRedValue,
-                              callback: function($$v) {
-                                _vm.offsetAdjustRedValue = $$v
-                              },
-                              expression: "offsetAdjustRedValue"
-                            }
-                          })
-                        ],
-                        1
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("tr", [
-                      _c("td", [_vm._v("Green")]),
-                      _vm._v(" "),
-                      _c(
-                        "td",
-                        [
-                          _c("custom-slider", {
-                            key: "sliderOffsetAdjustGreen",
-                            attrs: {
-                              raising: "",
-                              min: "-8.0",
-                              max: "8.0",
-                              step: "0.1"
-                            },
-                            model: {
-                              value: _vm.offsetAdjustGreenValue,
-                              callback: function($$v) {
-                                _vm.offsetAdjustGreenValue = $$v
-                              },
-                              expression: "offsetAdjustGreenValue"
-                            }
-                          })
-                        ],
-                        1
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("tr", [
-                      _c("td", [_vm._v("Blue")]),
-                      _vm._v(" "),
-                      _c(
-                        "td",
-                        [
-                          _c("custom-slider", {
-                            key: "sliderOffsetAdjustBlue",
-                            attrs: {
-                              raising: "",
-                              min: "-8.0",
-                              max: "8.0",
-                              step: "0.1"
-                            },
-                            model: {
-                              value: _vm.offsetAdjustBlueValue,
-                              callback: function($$v) {
-                                _vm.offsetAdjustBlueValue = $$v
-                              },
-                              expression: "offsetAdjustBlueValue"
-                            }
-                          })
-                        ],
-                        1
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("tr", [
-                      _c("td", [_vm._v("Luma")]),
-                      _vm._v(" "),
-                      _c(
-                        "td",
-                        [
-                          _c("custom-slider", {
-                            key: "sliderOffsetAdjustLuma",
-                            attrs: {
-                              raising: "",
-                              min: "-8.0",
-                              max: "8.0",
-                              step: "0.1"
-                            },
-                            model: {
-                              value: _vm.offsetAdjustLumaValue,
-                              callback: function($$v) {
-                                _vm.offsetAdjustLumaValue = $$v
-                              },
-                              expression: "offsetAdjustLumaValue"
-                            }
-                          })
-                        ],
-                        1
-                      )
-                    ])
-                  ])
-                ])
-              ]),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-primary",
-                  attrs: { id: "btnOffsetAdjust" },
-                  on: { click: _vm.setOffsetAdjust }
-                },
-                [_vm._v("Set")]
-              )
-            ]
-          )
-        : _vm._e(),
-      _vm._v(" "),
-      this.showContrastAdjust
-        ? _c(
-            "div",
-            {
-              staticClass: "form-group",
-              attrs: { id: "contrast-adjust-body" }
-            },
-            [
-              _c("div", { staticClass: "col-sm-8" }, [
-                _c("table", { staticClass: "table" }, [
-                  _c("tbody", [
-                    _c("tr", [
-                      _c("td", { attrs: { width: "40%" } }, [_vm._v("Pivot")]),
-                      _vm._v(" "),
-                      _c(
-                        "td",
-                        { attrs: { width: "60%" } },
-                        [
-                          _c("custom-slider", {
-                            key: "sliderContractAdjustRed",
-                            attrs: {
-                              raising: "",
-                              min: "0.0",
-                              max: "1.0",
-                              step: "0.1"
-                            },
-                            model: {
-                              value: _vm.contractAdjustRedValue,
-                              callback: function($$v) {
-                                _vm.contractAdjustRedValue = $$v
-                              },
-                              expression: "contractAdjustRedValue"
-                            }
-                          })
-                        ],
-                        1
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("tr", [
-                      _c("td", [_vm._v("Adj")]),
-                      _vm._v(" "),
-                      _c(
-                        "td",
-                        [
-                          _c("custom-slider", {
-                            key: "sliderContractAdjustGreen",
-                            attrs: {
-                              raising: "",
-                              min: "0.0",
-                              max: "2.0",
-                              step: "0.1"
-                            },
-                            model: {
-                              value: _vm.contractAdjustGreenValue,
-                              callback: function($$v) {
-                                _vm.contractAdjustGreenValue = $$v
-                              },
-                              expression: "contractAdjustGreenValue"
-                            }
-                          })
-                        ],
-                        1
-                      )
-                    ])
-                  ])
-                ])
-              ]),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-primary",
-                  attrs: { id: "btnContrastAdjust" },
-                  on: { click: _vm.setContrastAdjust }
-                },
-                [_vm._v("Set")]
-              )
-            ]
-          )
-        : _vm._e(),
-      _vm._v(" "),
-      this.showLumaMix
-        ? _c(
-            "div",
-            { staticClass: "form-group", attrs: { id: "luma-mix-body" } },
-            [
-              _c("div", { staticClass: "row" }, [
+                ]),
+                _vm._v(" "),
                 _c(
-                  "div",
-                  { staticClass: "col-sm-6" },
-                  [
-                    _c("label", [_vm._v("Luma Mix")]),
-                    _vm._v(" "),
-                    _c("custom-slider", {
-                      attrs: {
-                        raising: "",
-                        min: "0.0",
-                        max: "1.0",
-                        step: "0.05"
-                      },
-                      model: {
-                        value: _vm.lumaMixValue,
-                        callback: function($$v) {
-                          _vm.lumaMixValue = $$v
-                        },
-                        expression: "lumaMixValue"
-                      }
-                    })
-                  ],
-                  1
+                  "button",
+                  {
+                    staticClass: "btn btn-primary",
+                    attrs: { id: "btnLiftAdjust" },
+                    on: { click: _vm.setLiftAdjust }
+                  },
+                  [_vm._v("Set")]
                 )
-              ]),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-primary",
-                  attrs: { id: "btnLumaMix" },
-                  on: { click: _vm.setLumaMix }
-                },
-                [_vm._v("Set")]
-              )
-            ]
-          )
-        : _vm._e(),
-      _vm._v(" "),
-      this.showColorAdjust
-        ? _c(
-            "div",
-            { staticClass: "form-group", attrs: { id: "color-adjust-body" } },
-            [
-              _c("div", { staticClass: "col-sm-8" }, [
-                _c("table", { staticClass: "table" }, [
-                  _c("tbody", [
-                    _c("tr", [
-                      _c("td", { attrs: { width: "40%" } }, [_vm._v("Hue")]),
-                      _vm._v(" "),
-                      _c(
-                        "td",
-                        { attrs: { width: "60%" } },
-                        [
-                          _c("custom-slider", {
-                            key: "sliderHueColorAdjustRed",
-                            attrs: {
-                              raising: "",
-                              min: "-1.0",
-                              max: "1.0",
-                              step: "0.1"
-                            },
-                            model: {
-                              value: _vm.hueColorAdjustValue,
-                              callback: function($$v) {
-                                _vm.hueColorAdjustValue = $$v
+              ]
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        this.showGammaAdjust
+          ? _c(
+              "div",
+              { staticClass: "form-group", attrs: { id: "gamma-adjust-body" } },
+              [
+                _c("div", { staticClass: "col-sm-8" }, [
+                  _c("table", { staticClass: "table" }, [
+                    _c("tbody", [
+                      _c("tr", [
+                        _c("td", { attrs: { width: "40%" } }, [_vm._v("Red")]),
+                        _vm._v(" "),
+                        _c(
+                          "td",
+                          { attrs: { width: "60%" } },
+                          [
+                            _c("custom-slider", {
+                              key: "sliderGammaAdjustRed",
+                              attrs: {
+                                raising: "",
+                                min: "-4.0",
+                                max: "4.0",
+                                step: "0.1"
                               },
-                              expression: "hueColorAdjustValue"
-                            }
-                          })
-                        ],
-                        1
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("tr", [
-                      _c("td", [_vm._v("Sat")]),
+                              model: {
+                                value: _vm.gammaAdjustRedValue,
+                                callback: function($$v) {
+                                  _vm.gammaAdjustRedValue = $$v
+                                },
+                                expression: "gammaAdjustRedValue"
+                              }
+                            })
+                          ],
+                          1
+                        )
+                      ]),
                       _vm._v(" "),
-                      _c(
-                        "td",
-                        [
-                          _c("custom-slider", {
-                            key: "sliderSatColorAdjustGreen",
-                            attrs: {
-                              raising: "",
-                              min: "0.0",
-                              max: "2.0",
-                              step: "0.1"
-                            },
-                            model: {
-                              value: _vm.satColorAdjustValue,
-                              callback: function($$v) {
-                                _vm.satColorAdjustValue = $$v
+                      _c("tr", [
+                        _c("td", [_vm._v("Green")]),
+                        _vm._v(" "),
+                        _c(
+                          "td",
+                          [
+                            _c("custom-slider", {
+                              key: "sliderGammaAdjustGreen",
+                              attrs: {
+                                raising: "",
+                                min: "-4.0",
+                                max: "4.0",
+                                step: "0.1"
                               },
-                              expression: "satColorAdjustValue"
-                            }
-                          })
-                        ],
-                        1
-                      )
+                              model: {
+                                value: _vm.gammaAdjustGreenValue,
+                                callback: function($$v) {
+                                  _vm.gammaAdjustGreenValue = $$v
+                                },
+                                expression: "gammaAdjustGreenValue"
+                              }
+                            })
+                          ],
+                          1
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("tr", [
+                        _c("td", [_vm._v("Blue")]),
+                        _vm._v(" "),
+                        _c(
+                          "td",
+                          [
+                            _c("custom-slider", {
+                              key: "sliderGammaAdjustBlue",
+                              attrs: {
+                                raising: "",
+                                min: "-4.0",
+                                max: "4.0",
+                                step: "0.1"
+                              },
+                              model: {
+                                value: _vm.gammaAdjustBlueValue,
+                                callback: function($$v) {
+                                  _vm.gammaAdjustBlueValue = $$v
+                                },
+                                expression: "gammaAdjustBlueValue"
+                              }
+                            })
+                          ],
+                          1
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("tr", [
+                        _c("td", [_vm._v("Luma")]),
+                        _vm._v(" "),
+                        _c(
+                          "td",
+                          [
+                            _c("custom-slider", {
+                              key: "sliderGammaAdjustLuma",
+                              attrs: {
+                                raising: "",
+                                min: "-4.0",
+                                max: "4.0",
+                                step: "0.1"
+                              },
+                              model: {
+                                value: _vm.gammaAdjustLumaValue,
+                                callback: function($$v) {
+                                  _vm.gammaAdjustLumaValue = $$v
+                                },
+                                expression: "gammaAdjustLumaValue"
+                              }
+                            })
+                          ],
+                          1
+                        )
+                      ])
                     ])
                   ])
-                ])
-              ]),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-primary",
-                  attrs: { id: "btnColorAdjust" },
-                  on: { click: _vm.setColorAdjust }
-                },
-                [_vm._v("Set")]
-              )
-            ]
-          )
-        : _vm._e(),
-      _vm._v(" "),
-      this.showCorrectionResetDefault
-        ? _c(
-            "div",
-            {
-              staticClass: "form-group",
-              attrs: { id: "correction-reset-body" }
-            },
-            [
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-primary",
-                  attrs: { id: "btnCorrectionReset" },
-                  on: { click: _vm.setCorrectionResetDefault }
-                },
-                [_vm._v("Set")]
-              )
-            ]
-          )
-        : _vm._e()
-    ])
+                ]),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-primary",
+                    attrs: { id: "btnGammaAdjust" },
+                    on: { click: _vm.setGammaAdjust }
+                  },
+                  [_vm._v("Set")]
+                )
+              ]
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        this.showGainAdjust
+          ? _c(
+              "div",
+              { staticClass: "form-group", attrs: { id: "gain-adjust-body" } },
+              [
+                _c("div", { staticClass: "col-sm-8" }, [
+                  _c("table", { staticClass: "table" }, [
+                    _c("tbody", [
+                      _c("tr", [
+                        _c("td", { attrs: { width: "40%" } }, [_vm._v("Red")]),
+                        _vm._v(" "),
+                        _c(
+                          "td",
+                          { attrs: { width: "60%" } },
+                          [
+                            _c("custom-slider", {
+                              key: "sliderGainAdjustRed",
+                              attrs: {
+                                raising: "",
+                                min: "0.0",
+                                max: "16.0",
+                                step: "0.1"
+                              },
+                              model: {
+                                value: _vm.gainAdjustRedValue,
+                                callback: function($$v) {
+                                  _vm.gainAdjustRedValue = $$v
+                                },
+                                expression: "gainAdjustRedValue"
+                              }
+                            })
+                          ],
+                          1
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("tr", [
+                        _c("td", [_vm._v("Green")]),
+                        _vm._v(" "),
+                        _c(
+                          "td",
+                          [
+                            _c("custom-slider", {
+                              key: "sliderGainAdjustGreen",
+                              attrs: {
+                                raising: "",
+                                min: "0.0",
+                                max: "16.0",
+                                step: "0.1"
+                              },
+                              model: {
+                                value: _vm.gainAdjustGreenValue,
+                                callback: function($$v) {
+                                  _vm.gainAdjustGreenValue = $$v
+                                },
+                                expression: "gainAdjustGreenValue"
+                              }
+                            })
+                          ],
+                          1
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("tr", [
+                        _c("td", [_vm._v("Blue")]),
+                        _vm._v(" "),
+                        _c(
+                          "td",
+                          [
+                            _c("custom-slider", {
+                              key: "sliderGainAdjustBlue",
+                              attrs: {
+                                raising: "",
+                                min: "0.0",
+                                max: "16.0",
+                                step: "0.1"
+                              },
+                              model: {
+                                value: _vm.gainAdjustBlueValue,
+                                callback: function($$v) {
+                                  _vm.gainAdjustBlueValue = $$v
+                                },
+                                expression: "gainAdjustBlueValue"
+                              }
+                            })
+                          ],
+                          1
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("tr", [
+                        _c("td", [_vm._v("Luma")]),
+                        _vm._v(" "),
+                        _c(
+                          "td",
+                          [
+                            _c("custom-slider", {
+                              key: "sliderGainAdjustLuma",
+                              attrs: {
+                                raising: "",
+                                min: "0.0",
+                                max: "16.0",
+                                step: "0.1"
+                              },
+                              model: {
+                                value: _vm.gainAdjustLumaValue,
+                                callback: function($$v) {
+                                  _vm.gainAdjustLumaValue = $$v
+                                },
+                                expression: "gainAdjustLumaValue"
+                              }
+                            })
+                          ],
+                          1
+                        )
+                      ])
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-primary",
+                    attrs: { id: "btnGainAdjust" },
+                    on: { click: _vm.setGainAdjust }
+                  },
+                  [_vm._v("Set")]
+                )
+              ]
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        this.showOffsetAdjust
+          ? _c(
+              "div",
+              {
+                staticClass: "form-group",
+                attrs: { id: "offset-adjust-body" }
+              },
+              [
+                _c("div", { staticClass: "col-sm-8" }, [
+                  _c("table", { staticClass: "table" }, [
+                    _c("tbody", [
+                      _c("tr", [
+                        _c("td", { attrs: { width: "40%" } }, [_vm._v("Red")]),
+                        _vm._v(" "),
+                        _c(
+                          "td",
+                          { attrs: { width: "60%" } },
+                          [
+                            _c("custom-slider", {
+                              key: "sliderOffsetAdjustRed",
+                              attrs: {
+                                raising: "",
+                                min: "-8.0",
+                                max: "8.0",
+                                step: "0.1"
+                              },
+                              model: {
+                                value: _vm.offsetAdjustRedValue,
+                                callback: function($$v) {
+                                  _vm.offsetAdjustRedValue = $$v
+                                },
+                                expression: "offsetAdjustRedValue"
+                              }
+                            })
+                          ],
+                          1
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("tr", [
+                        _c("td", [_vm._v("Green")]),
+                        _vm._v(" "),
+                        _c(
+                          "td",
+                          [
+                            _c("custom-slider", {
+                              key: "sliderOffsetAdjustGreen",
+                              attrs: {
+                                raising: "",
+                                min: "-8.0",
+                                max: "8.0",
+                                step: "0.1"
+                              },
+                              model: {
+                                value: _vm.offsetAdjustGreenValue,
+                                callback: function($$v) {
+                                  _vm.offsetAdjustGreenValue = $$v
+                                },
+                                expression: "offsetAdjustGreenValue"
+                              }
+                            })
+                          ],
+                          1
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("tr", [
+                        _c("td", [_vm._v("Blue")]),
+                        _vm._v(" "),
+                        _c(
+                          "td",
+                          [
+                            _c("custom-slider", {
+                              key: "sliderOffsetAdjustBlue",
+                              attrs: {
+                                raising: "",
+                                min: "-8.0",
+                                max: "8.0",
+                                step: "0.1"
+                              },
+                              model: {
+                                value: _vm.offsetAdjustBlueValue,
+                                callback: function($$v) {
+                                  _vm.offsetAdjustBlueValue = $$v
+                                },
+                                expression: "offsetAdjustBlueValue"
+                              }
+                            })
+                          ],
+                          1
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("tr", [
+                        _c("td", [_vm._v("Luma")]),
+                        _vm._v(" "),
+                        _c(
+                          "td",
+                          [
+                            _c("custom-slider", {
+                              key: "sliderOffsetAdjustLuma",
+                              attrs: {
+                                raising: "",
+                                min: "-8.0",
+                                max: "8.0",
+                                step: "0.1"
+                              },
+                              model: {
+                                value: _vm.offsetAdjustLumaValue,
+                                callback: function($$v) {
+                                  _vm.offsetAdjustLumaValue = $$v
+                                },
+                                expression: "offsetAdjustLumaValue"
+                              }
+                            })
+                          ],
+                          1
+                        )
+                      ])
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-primary",
+                    attrs: { id: "btnOffsetAdjust" },
+                    on: { click: _vm.setOffsetAdjust }
+                  },
+                  [_vm._v("Set")]
+                )
+              ]
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        this.showContrastAdjust
+          ? _c(
+              "div",
+              {
+                staticClass: "form-group",
+                attrs: { id: "contrast-adjust-body" }
+              },
+              [
+                _c("div", { staticClass: "col-sm-8" }, [
+                  _c("table", { staticClass: "table" }, [
+                    _c("tbody", [
+                      _c("tr", [
+                        _c("td", { attrs: { width: "40%" } }, [
+                          _vm._v("Pivot")
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "td",
+                          { attrs: { width: "60%" } },
+                          [
+                            _c("custom-slider", {
+                              key: "sliderContrastAdjustPivot",
+                              attrs: {
+                                raising: "",
+                                min: "0.0",
+                                max: "1.0",
+                                step: "0.1"
+                              },
+                              model: {
+                                value: _vm.contrastAdjustPivotValue,
+                                callback: function($$v) {
+                                  _vm.contrastAdjustPivotValue = $$v
+                                },
+                                expression: "contrastAdjustPivotValue"
+                              }
+                            })
+                          ],
+                          1
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("tr", [
+                        _c("td", [_vm._v("Adj")]),
+                        _vm._v(" "),
+                        _c(
+                          "td",
+                          [
+                            _c("custom-slider", {
+                              key: "sliderContrastAdjust",
+                              attrs: {
+                                raising: "",
+                                min: "0.0",
+                                max: "2.0",
+                                step: "0.1"
+                              },
+                              model: {
+                                value: _vm.contrastAdjustValue,
+                                callback: function($$v) {
+                                  _vm.contrastAdjustValue = $$v
+                                },
+                                expression: "contrastAdjustValue"
+                              }
+                            })
+                          ],
+                          1
+                        )
+                      ])
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-primary",
+                    attrs: { id: "btnContrastAdjust" },
+                    on: { click: _vm.setContrastAdjust }
+                  },
+                  [_vm._v("Set")]
+                )
+              ]
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        this.showLumaMix
+          ? _c(
+              "div",
+              { staticClass: "form-group", attrs: { id: "luma-mix-body" } },
+              [
+                _c("div", { staticClass: "row" }, [
+                  _c(
+                    "div",
+                    { staticClass: "col-sm-6" },
+                    [
+                      _c("label", [_vm._v("Luma Mix")]),
+                      _vm._v(" "),
+                      _c("custom-slider", {
+                        attrs: {
+                          raising: "",
+                          min: "0.0",
+                          max: "1.0",
+                          step: "0.05"
+                        },
+                        model: {
+                          value: _vm.lumaMixValue,
+                          callback: function($$v) {
+                            _vm.lumaMixValue = $$v
+                          },
+                          expression: "lumaMixValue"
+                        }
+                      })
+                    ],
+                    1
+                  )
+                ]),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-primary",
+                    attrs: { id: "btnLumaMix" },
+                    on: { click: _vm.setLumaMix }
+                  },
+                  [_vm._v("Set")]
+                )
+              ]
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        this.showColorAdjust
+          ? _c(
+              "div",
+              { staticClass: "form-group", attrs: { id: "color-adjust-body" } },
+              [
+                _c("div", { staticClass: "col-sm-8" }, [
+                  _c("table", { staticClass: "table" }, [
+                    _c("tbody", [
+                      _c("tr", [
+                        _c("td", { attrs: { width: "40%" } }, [_vm._v("Hue")]),
+                        _vm._v(" "),
+                        _c(
+                          "td",
+                          { attrs: { width: "60%" } },
+                          [
+                            _c("custom-slider", {
+                              key: "sliderHueColorAdjustRed",
+                              attrs: {
+                                raising: "",
+                                min: "-1.0",
+                                max: "1.0",
+                                step: "0.1"
+                              },
+                              model: {
+                                value: _vm.hueColorAdjustValue,
+                                callback: function($$v) {
+                                  _vm.hueColorAdjustValue = $$v
+                                },
+                                expression: "hueColorAdjustValue"
+                              }
+                            })
+                          ],
+                          1
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("tr", [
+                        _c("td", [_vm._v("Sat")]),
+                        _vm._v(" "),
+                        _c(
+                          "td",
+                          [
+                            _c("custom-slider", {
+                              key: "sliderSatColorAdjustGreen",
+                              attrs: {
+                                raising: "",
+                                min: "0.0",
+                                max: "2.0",
+                                step: "0.1"
+                              },
+                              model: {
+                                value: _vm.satColorAdjustValue,
+                                callback: function($$v) {
+                                  _vm.satColorAdjustValue = $$v
+                                },
+                                expression: "satColorAdjustValue"
+                              }
+                            })
+                          ],
+                          1
+                        )
+                      ])
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-primary",
+                    attrs: { id: "btnColorAdjust" },
+                    on: { click: _vm.setColorAdjust }
+                  },
+                  [_vm._v("Set")]
+                )
+              ]
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        this.showCorrectionResetDefault
+          ? _c(
+              "div",
+              {
+                staticClass: "form-group",
+                attrs: { id: "correction-reset-body" }
+              },
+              [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-primary",
+                    attrs: { id: "btnCorrectionReset" },
+                    on: { click: _vm.setCorrectionResetDefault }
+                  },
+                  [_vm._v("Set")]
+                )
+              ]
+            )
+          : _vm._e()
+      ]
+    )
   ])
 }
 var staticRenderFns = [
@@ -44374,7 +44458,16 @@ var render = function() {
     _c("div", { staticClass: "card-header" }, [
       _c("div", { staticClass: "row" }, [
         _c("div", { staticClass: "col-sm-4 text-left" }, [
-          _c("h5", { staticClass: "card-category" }, [_vm._v("Configuration")]),
+          _c(
+            "a",
+            {
+              attrs: {
+                "data-toggle": "collapse",
+                href: "#collapseConfiguration"
+              }
+            },
+            [_vm._v("Configuration")]
+          ),
           _vm._v(" "),
           _c("h3", { staticClass: "card-title" }, [_vm._v(_vm._s(this.title))])
         ]),
@@ -44492,1124 +44585,1131 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "card-body" }, [
-      this.showRealTimeClock
-        ? _c(
-            "div",
-            { staticClass: "form-group", attrs: { id: "realtime-clock-body" } },
-            [
-              _c("div", { staticClass: "row" }, [
-                _c("div", { staticClass: "col-sm-4" }, [
-                  _c("label", [_vm._v(" Date : ")]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.rtcDateValue,
-                        expression: "rtcDateValue"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: {
-                      type: "date",
-                      id: "rtcDate",
-                      name: "rtcDate",
-                      min: "0000-00-00",
-                      max: "2099-12-31",
-                      required: ""
-                    },
-                    domProps: { value: _vm.rtcDateValue },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
+    _c(
+      "div",
+      { staticClass: "card-body", attrs: { id: "collapseConfiguration" } },
+      [
+        this.showRealTimeClock
+          ? _c(
+              "div",
+              {
+                staticClass: "form-group",
+                attrs: { id: "realtime-clock-body" }
+              },
+              [
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "col-sm-4" }, [
+                    _c("label", [_vm._v(" Date : ")]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.rtcDateValue,
+                          expression: "rtcDateValue"
                         }
-                        _vm.rtcDateValue = $event.target.value
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "date",
+                        id: "rtcDate",
+                        name: "rtcDate",
+                        min: "0000-00-00",
+                        max: "2099-12-31",
+                        required: ""
+                      },
+                      domProps: { value: _vm.rtcDateValue },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.rtcDateValue = $event.target.value
+                        }
                       }
-                    }
-                  })
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-sm-4" }, [
+                    _c("label", [_vm._v(" Time : ")]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.rtcTimeValue,
+                          expression: "rtcTimeValue"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "time",
+                        id: "rtcTime",
+                        name: "rtcTime",
+                        min: "00:00:00",
+                        max: "23:59:59",
+                        required: ""
+                      },
+                      domProps: { value: _vm.rtcTimeValue },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.rtcTimeValue = $event.target.value
+                        }
+                      }
+                    })
+                  ])
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "col-sm-4" }, [
-                  _c("label", [_vm._v(" Time : ")]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-primary",
+                    attrs: { id: "btnRealTimeClock" },
+                    on: { click: _vm.setRealTimeClock }
+                  },
+                  [_vm._v("Set Real Time Clock")]
+                )
+              ]
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        this.showSystemLanguage
+          ? _c(
+              "div",
+              {
+                staticClass: "form-group",
+                attrs: { id: "system-language-body" }
+              },
+              [
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "col-sm-6" }, [
+                    _c("label", [_vm._v("System Language")]),
+                    _vm._v(" "),
+                    _c(
+                      "select",
                       {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.rtcTimeValue,
-                        expression: "rtcTimeValue"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: {
-                      type: "time",
-                      id: "rtcTime",
-                      name: "rtcTime",
-                      min: "00:00:00",
-                      max: "23:59:59",
-                      required: ""
-                    },
-                    domProps: { value: _vm.rtcTimeValue },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.systemLanguageValue,
+                            expression: "systemLanguageValue"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { id: "systemLanguage" },
+                        on: {
+                          change: function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.systemLanguageValue = $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          }
                         }
-                        _vm.rtcTimeValue = $event.target.value
-                      }
-                    }
-                  })
-                ])
-              ]),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-primary",
-                  attrs: { id: "btnRealTimeClock" },
-                  on: { click: _vm.setRealTimeClock }
-                },
-                [_vm._v("Set Real Time Clock")]
-              )
-            ]
-          )
-        : _vm._e(),
-      _vm._v(" "),
-      this.showSystemLanguage
-        ? _c(
-            "div",
-            {
-              staticClass: "form-group",
-              attrs: { id: "system-language-body" }
-            },
-            [
-              _c("div", { staticClass: "row" }, [
-                _c("div", { staticClass: "col-sm-6" }, [
-                  _c("label", [_vm._v("System Language")]),
-                  _vm._v(" "),
-                  _c(
-                    "select",
-                    {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.systemLanguageValue,
-                          expression: "systemLanguageValue"
+                      },
+                      [
+                        _c("option", { attrs: { value: "aa" } }, [
+                          _vm._v("aa (Afar)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "ab" } }, [
+                          _vm._v("ab (Abkhazian)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "af" } }, [
+                          _vm._v("af (Afrikaans)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "ak" } }, [
+                          _vm._v("ak (Akan)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "sq" } }, [
+                          _vm._v("sq (Albanian)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "am" } }, [
+                          _vm._v("am (Amharic)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "ar" } }, [
+                          _vm._v("ar (Arabic)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "an" } }, [
+                          _vm._v("an (Aragonese)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "hy" } }, [
+                          _vm._v("hy (Armenian)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "as" } }, [
+                          _vm._v("as (Assamese)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "av" } }, [
+                          _vm._v("av (Avaric)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "ae" } }, [
+                          _vm._v("ae (Avestan)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "ay" } }, [
+                          _vm._v("ay (Aymara)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "az" } }, [
+                          _vm._v("az (Azerbaijani)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "ba" } }, [
+                          _vm._v("ba (Bashkir)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "bm" } }, [
+                          _vm._v("bm (Bambara)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "eu" } }, [
+                          _vm._v("eu (Basque)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "be" } }, [
+                          _vm._v("be (Belarusian)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "bn" } }, [
+                          _vm._v("bn (Bengali)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "bh" } }, [
+                          _vm._v("bh (Bihari languages)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "bi" } }, [
+                          _vm._v("bi (Bislama)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "bo" } }, [
+                          _vm._v("bo (Tibetan)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "bs" } }, [
+                          _vm._v("bs (Bosnian)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "br" } }, [
+                          _vm._v("br (Breton)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "bg" } }, [
+                          _vm._v("bg (Bulgarian)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "my" } }, [
+                          _vm._v("my (Burmese)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "ca" } }, [
+                          _vm._v("ca (Catalan)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "cs" } }, [
+                          _vm._v("cs (Czech)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "ch" } }, [
+                          _vm._v("ch (Chamorro)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "ce" } }, [
+                          _vm._v("ce (Chechen)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "zh" } }, [
+                          _vm._v("zh (Chinese)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "cu" } }, [
+                          _vm._v("cu (Church Slavic)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "cv" } }, [
+                          _vm._v("cv (Chuvash)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "kw" } }, [
+                          _vm._v("kw (Cornish)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "co" } }, [
+                          _vm._v("co (Corsican)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "cr" } }, [
+                          _vm._v("cr (Cree)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "cy" } }, [
+                          _vm._v("cy (Welsh)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "cs" } }, [
+                          _vm._v("cs (Czesh)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "da" } }, [
+                          _vm._v("da (Danish)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "de" } }, [
+                          _vm._v("de (German)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "dv" } }, [
+                          _vm._v("dv (Divehi)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "nl" } }, [
+                          _vm._v("nl (Dutch)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "dz" } }, [
+                          _vm._v("dz (Dzongkha)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "el" } }, [
+                          _vm._v("el (Greek)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "en" } }, [
+                          _vm._v("en (English)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "eo" } }, [
+                          _vm._v("eo (Esperanto)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "et" } }, [
+                          _vm._v("et (Estonian)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "eu" } }, [
+                          _vm._v("eu (Basque)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "ee" } }, [
+                          _vm._v("ee (Ewe)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "f0" } }, [
+                          _vm._v("fo (Faroese)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "fa" } }, [
+                          _vm._v("fa (Persian)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "fj" } }, [
+                          _vm._v("fj (Fijian)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "fi" } }, [
+                          _vm._v("fi (Finnish)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "fr" } }, [
+                          _vm._v("fr (French)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "fy" } }, [
+                          _vm._v("fy (Western Frisian)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "ff" } }, [
+                          _vm._v("ff (Fulah)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "ka" } }, [
+                          _vm._v("ka (Georgian)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "de" } }, [
+                          _vm._v("de (German)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "gd" } }, [
+                          _vm._v("gd (Gaelic)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "ga" } }, [
+                          _vm._v("ga (Irish)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "gl" } }, [
+                          _vm._v("gl (Galician)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "gv" } }, [
+                          _vm._v("gv (Manx)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "el" } }, [
+                          _vm._v("el (Greek)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "gn" } }, [
+                          _vm._v("gn (Guarani)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "gu" } }, [
+                          _vm._v("gu (Gujarati)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "ht" } }, [
+                          _vm._v("ht (Haitian)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "ha" } }, [
+                          _vm._v("ha (Hausa)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "he" } }, [
+                          _vm._v("he (Hebrew)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "hz" } }, [
+                          _vm._v("hz (Herero)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "hi" } }, [
+                          _vm._v("hi (Hindi)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "ho" } }, [
+                          _vm._v("ho (Hiri Motu)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "hr" } }, [
+                          _vm._v("hr (Croatian)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "hu" } }, [
+                          _vm._v("hu (Hungarian)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "hy" } }, [
+                          _vm._v("hy (Armenian)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "ig" } }, [
+                          _vm._v("ig (Lgbo)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "is" } }, [
+                          _vm._v("is (Icelandic)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "io" } }, [
+                          _vm._v("io (Ido)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "ii" } }, [
+                          _vm._v("ii (Sichuan Yi)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "iu" } }, [
+                          _vm._v("iu (Inuktitut)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "ie" } }, [
+                          _vm._v("ie (Interlingue)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "ia" } }, [
+                          _vm._v("ia (Interlingua)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "id" } }, [
+                          _vm._v("id (Indonesian)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "ik" } }, [
+                          _vm._v("ik (Inupiaq)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "is" } }, [
+                          _vm._v("is (Icelandic)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "it" } }, [
+                          _vm._v("it (Italian)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "jv" } }, [
+                          _vm._v("jv (Javanese)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "ja" } }, [
+                          _vm._v("ja (Japanese)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "kl" } }, [
+                          _vm._v("kl (Kalaallisut)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "kn" } }, [
+                          _vm._v("kn (Kannada)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "ks" } }, [
+                          _vm._v("ks (Kashmiri)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "ka" } }, [
+                          _vm._v("ka (Georgian)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "kr" } }, [
+                          _vm._v("kr (Kanuri)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "kk" } }, [
+                          _vm._v("kk (Kazakh)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "km" } }, [
+                          _vm._v("km (Central Khmer)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "ki" } }, [
+                          _vm._v("ki (Kikuyu)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "rw" } }, [
+                          _vm._v("rw (Kinyarwanda)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "ky" } }, [
+                          _vm._v("ky (Kirghiz)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "kv" } }, [
+                          _vm._v("kv (Komi)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "kg" } }, [
+                          _vm._v("kg (Kongo)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "ko" } }, [
+                          _vm._v("ko (Korean)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "kj" } }, [
+                          _vm._v("kj (Kuanyama)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "ku" } }, [
+                          _vm._v("ku (Kurdish)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "lo" } }, [
+                          _vm._v("lo (Lao)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "la" } }, [
+                          _vm._v("la (Latin)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "lv" } }, [
+                          _vm._v("lv (Latvian)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "li" } }, [
+                          _vm._v("li (Limburgan)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "ln" } }, [
+                          _vm._v("ln (Lingala)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "lt" } }, [
+                          _vm._v("lt (Lithuanian)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "lb" } }, [
+                          _vm._v("lb (Luxembourgish)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "lu" } }, [
+                          _vm._v("lu (Luba-Katanga)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "lg" } }, [
+                          _vm._v("lg (Ganda)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "mk" } }, [
+                          _vm._v("mk (Macedonian)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "mh" } }, [
+                          _vm._v("mh (Marshallese)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "ml" } }, [
+                          _vm._v("ml (Malayalam)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "mi" } }, [
+                          _vm._v("mi (Maori)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "mr" } }, [
+                          _vm._v("mr (Marathi)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "ms" } }, [
+                          _vm._v("ms (Malay)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "mk" } }, [
+                          _vm._v("mk (Macedonian)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "mg" } }, [
+                          _vm._v("mg (Malagasy)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "mt" } }, [
+                          _vm._v("mt (Maltese)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "mn" } }, [
+                          _vm._v("mn (Mongolian)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "mi" } }, [
+                          _vm._v("mi (Maori)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "ms" } }, [
+                          _vm._v("ms (Malay)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "my" } }, [
+                          _vm._v("my (Burmese)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "na" } }, [
+                          _vm._v("na (Nauru)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "nv" } }, [
+                          _vm._v("nv (Navajo)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "nr" } }, [
+                          _vm._v("nr (Ndebele)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "nd" } }, [
+                          _vm._v("nd (Ndebele)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "ng" } }, [
+                          _vm._v("ng (Ndonga)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "ne" } }, [
+                          _vm._v("ne (Nepali)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "nl" } }, [
+                          _vm._v("nl (Dutch)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "nn" } }, [
+                          _vm._v("nn (Norwegian Nynorsk)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "nb" } }, [
+                          _vm._v("nb (Bokmal)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "no" } }, [
+                          _vm._v("no (Norwegian)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "ny" } }, [
+                          _vm._v("ny (Chichewa)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "oc" } }, [
+                          _vm._v("oc (Occitan)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "oj" } }, [
+                          _vm._v("oj (Ojibwa)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "or" } }, [
+                          _vm._v("or (Oriya)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "om" } }, [
+                          _vm._v("om (Oromo)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "os" } }, [
+                          _vm._v("os (Ossetian)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "pa" } }, [
+                          _vm._v("pa (Panjabi)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "fa" } }, [
+                          _vm._v("fa (Persian)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "pi" } }, [
+                          _vm._v("pi (Pali)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "pl" } }, [
+                          _vm._v("pl (Polish)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "pt" } }, [
+                          _vm._v("pt (Portuguese)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "ps" } }, [
+                          _vm._v("ps (Pushto)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "qu" } }, [
+                          _vm._v("qu (Quechua)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "rm" } }, [
+                          _vm._v("rm (Romansh)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "ro" } }, [
+                          _vm._v("ro (Romanian)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "rn" } }, [
+                          _vm._v("rn (Rundi)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "ru" } }, [
+                          _vm._v("ru (Russian)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "sg" } }, [
+                          _vm._v("sg (Sango)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "sa" } }, [
+                          _vm._v("sa (Sanskrit)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "si" } }, [
+                          _vm._v("si (Sinhala)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "sk" } }, [
+                          _vm._v("sk (Slovak)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "sl" } }, [
+                          _vm._v("sl (Slovenian)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "se" } }, [
+                          _vm._v("se (Northern Sami)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "sm" } }, [
+                          _vm._v("sm (Samoan)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "sn" } }, [
+                          _vm._v("sn (Shona)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "sd" } }, [
+                          _vm._v("sd (Sindhi)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "so" } }, [
+                          _vm._v("so (Somali)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "st" } }, [
+                          _vm._v("st (Sotho)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "es" } }, [
+                          _vm._v("es (Spanish)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "sq" } }, [
+                          _vm._v("sq (Albanian)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "sc" } }, [
+                          _vm._v("sc (Sardinian)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "sr" } }, [
+                          _vm._v("sr (Serbian)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "ss" } }, [
+                          _vm._v("ss (Swati)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "su" } }, [
+                          _vm._v("su (Sundanese)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "sw" } }, [
+                          _vm._v("sw (Swahili)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "sv" } }, [
+                          _vm._v("sv (Swedish)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "ty" } }, [
+                          _vm._v("ty (Tahitian)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "ta" } }, [
+                          _vm._v("ta (Tamil)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "tt" } }, [
+                          _vm._v("tt (Tatar)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "te" } }, [
+                          _vm._v("te (Telugu)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "tg" } }, [
+                          _vm._v("tg (Tajik)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "tl" } }, [
+                          _vm._v("tl (Tagalog)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "th" } }, [
+                          _vm._v("th (Thai)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "bo" } }, [
+                          _vm._v("bo (Tibetan)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "ti" } }, [
+                          _vm._v("ti (Tigrinya)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "to" } }, [
+                          _vm._v("to (Tonga)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "tn" } }, [
+                          _vm._v("tn (Tswana)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "ts" } }, [
+                          _vm._v("ts (Tsonga)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "tk" } }, [
+                          _vm._v("tk (Turkmen)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "tr" } }, [
+                          _vm._v("tr (Turkish)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "tw" } }, [
+                          _vm._v("tw (Twi)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "ug" } }, [
+                          _vm._v("ug (Uighur)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "uk" } }, [
+                          _vm._v("uk (Ukrainian)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "ur" } }, [
+                          _vm._v("ur (Urdu)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "uz" } }, [
+                          _vm._v("uz (Uzbek)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "ve" } }, [
+                          _vm._v("ve (Venda)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "vi" } }, [
+                          _vm._v("vi (Vietnamese)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "vo" } }, [
+                          _vm._v("vo (Volapuk)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "cy" } }, [
+                          _vm._v("cy (Welsh)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "wa" } }, [
+                          _vm._v("wa (Walloon)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "wo" } }, [
+                          _vm._v("wo (Wolof)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "xh" } }, [
+                          _vm._v("xh (Xhosa)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "yi" } }, [
+                          _vm._v("yi (Yiddish)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "yo" } }, [
+                          _vm._v("yo (Yoruba)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "za" } }, [
+                          _vm._v("za (Zhuang)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "zh" } }, [
+                          _vm._v("zh (Chinese)")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "zu" } }, [
+                          _vm._v("zu (Zulu)")
+                        ])
+                      ]
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-primary",
+                    attrs: { id: "btnSystemLanguage" },
+                    on: { click: _vm.setSystemLanguage }
+                  },
+                  [_vm._v("Set System Language")]
+                )
+              ]
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        this.showTimezone
+          ? _c(
+              "div",
+              { staticClass: "form-group", attrs: { id: "timezone-body" } },
+              [
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "col-sm-6" }, [
+                    _c("label", [_vm._v("Timezone")]),
+                    _vm._v(" "),
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.timeZoneValue,
+                            expression: "timeZoneValue"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { id: "utcTimeZone" },
+                        on: {
+                          change: function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.timeZoneValue = $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          }
                         }
-                      ],
-                      staticClass: "form-control",
-                      attrs: { id: "systemLanguage" },
-                      on: {
-                        change: function($event) {
-                          var $$selectedVal = Array.prototype.filter
-                            .call($event.target.options, function(o) {
-                              return o.selected
-                            })
-                            .map(function(o) {
-                              var val = "_value" in o ? o._value : o.value
-                              return val
-                            })
-                          _vm.systemLanguageValue = $event.target.multiple
-                            ? $$selectedVal
-                            : $$selectedVal[0]
-                        }
-                      }
-                    },
-                    [
-                      _c("option", { attrs: { value: "aa" } }, [
-                        _vm._v("aa (Afar)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "ab" } }, [
-                        _vm._v("ab (Abkhazian)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "af" } }, [
-                        _vm._v("af (Afrikaans)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "ak" } }, [
-                        _vm._v("ak (Akan)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "sq" } }, [
-                        _vm._v("sq (Albanian)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "am" } }, [
-                        _vm._v("am (Amharic)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "ar" } }, [
-                        _vm._v("ar (Arabic)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "an" } }, [
-                        _vm._v("an (Aragonese)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "hy" } }, [
-                        _vm._v("hy (Armenian)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "as" } }, [
-                        _vm._v("as (Assamese)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "av" } }, [
-                        _vm._v("av (Avaric)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "ae" } }, [
-                        _vm._v("ae (Avestan)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "ay" } }, [
-                        _vm._v("ay (Aymara)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "az" } }, [
-                        _vm._v("az (Azerbaijani)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "ba" } }, [
-                        _vm._v("ba (Bashkir)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "bm" } }, [
-                        _vm._v("bm (Bambara)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "eu" } }, [
-                        _vm._v("eu (Basque)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "be" } }, [
-                        _vm._v("be (Belarusian)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "bn" } }, [
-                        _vm._v("bn (Bengali)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "bh" } }, [
-                        _vm._v("bh (Bihari languages)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "bi" } }, [
-                        _vm._v("bi (Bislama)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "bo" } }, [
-                        _vm._v("bo (Tibetan)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "bs" } }, [
-                        _vm._v("bs (Bosnian)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "br" } }, [
-                        _vm._v("br (Breton)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "bg" } }, [
-                        _vm._v("bg (Bulgarian)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "my" } }, [
-                        _vm._v("my (Burmese)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "ca" } }, [
-                        _vm._v("ca (Catalan)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "cs" } }, [
-                        _vm._v("cs (Czech)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "ch" } }, [
-                        _vm._v("ch (Chamorro)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "ce" } }, [
-                        _vm._v("ce (Chechen)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "zh" } }, [
-                        _vm._v("zh (Chinese)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "cu" } }, [
-                        _vm._v("cu (Church Slavic)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "cv" } }, [
-                        _vm._v("cv (Chuvash)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "kw" } }, [
-                        _vm._v("kw (Cornish)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "co" } }, [
-                        _vm._v("co (Corsican)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "cr" } }, [
-                        _vm._v("cr (Cree)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "cy" } }, [
-                        _vm._v("cy (Welsh)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "cs" } }, [
-                        _vm._v("cs (Czesh)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "da" } }, [
-                        _vm._v("da (Danish)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "de" } }, [
-                        _vm._v("de (German)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "dv" } }, [
-                        _vm._v("dv (Divehi)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "nl" } }, [
-                        _vm._v("nl (Dutch)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "dz" } }, [
-                        _vm._v("dz (Dzongkha)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "el" } }, [
-                        _vm._v("el (Greek)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "en" } }, [
-                        _vm._v("en (English)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "eo" } }, [
-                        _vm._v("eo (Esperanto)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "et" } }, [
-                        _vm._v("et (Estonian)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "eu" } }, [
-                        _vm._v("eu (Basque)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "ee" } }, [
-                        _vm._v("ee (Ewe)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "f0" } }, [
-                        _vm._v("fo (Faroese)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "fa" } }, [
-                        _vm._v("fa (Persian)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "fj" } }, [
-                        _vm._v("fj (Fijian)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "fi" } }, [
-                        _vm._v("fi (Finnish)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "fr" } }, [
-                        _vm._v("fr (French)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "fy" } }, [
-                        _vm._v("fy (Western Frisian)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "ff" } }, [
-                        _vm._v("ff (Fulah)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "ka" } }, [
-                        _vm._v("ka (Georgian)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "de" } }, [
-                        _vm._v("de (German)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "gd" } }, [
-                        _vm._v("gd (Gaelic)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "ga" } }, [
-                        _vm._v("ga (Irish)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "gl" } }, [
-                        _vm._v("gl (Galician)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "gv" } }, [
-                        _vm._v("gv (Manx)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "el" } }, [
-                        _vm._v("el (Greek)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "gn" } }, [
-                        _vm._v("gn (Guarani)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "gu" } }, [
-                        _vm._v("gu (Gujarati)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "ht" } }, [
-                        _vm._v("ht (Haitian)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "ha" } }, [
-                        _vm._v("ha (Hausa)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "he" } }, [
-                        _vm._v("he (Hebrew)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "hz" } }, [
-                        _vm._v("hz (Herero)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "hi" } }, [
-                        _vm._v("hi (Hindi)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "ho" } }, [
-                        _vm._v("ho (Hiri Motu)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "hr" } }, [
-                        _vm._v("hr (Croatian)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "hu" } }, [
-                        _vm._v("hu (Hungarian)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "hy" } }, [
-                        _vm._v("hy (Armenian)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "ig" } }, [
-                        _vm._v("ig (Lgbo)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "is" } }, [
-                        _vm._v("is (Icelandic)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "io" } }, [
-                        _vm._v("io (Ido)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "ii" } }, [
-                        _vm._v("ii (Sichuan Yi)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "iu" } }, [
-                        _vm._v("iu (Inuktitut)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "ie" } }, [
-                        _vm._v("ie (Interlingue)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "ia" } }, [
-                        _vm._v("ia (Interlingua)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "id" } }, [
-                        _vm._v("id (Indonesian)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "ik" } }, [
-                        _vm._v("ik (Inupiaq)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "is" } }, [
-                        _vm._v("is (Icelandic)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "it" } }, [
-                        _vm._v("it (Italian)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "jv" } }, [
-                        _vm._v("jv (Javanese)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "ja" } }, [
-                        _vm._v("ja (Japanese)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "kl" } }, [
-                        _vm._v("kl (Kalaallisut)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "kn" } }, [
-                        _vm._v("kn (Kannada)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "ks" } }, [
-                        _vm._v("ks (Kashmiri)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "ka" } }, [
-                        _vm._v("ka (Georgian)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "kr" } }, [
-                        _vm._v("kr (Kanuri)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "kk" } }, [
-                        _vm._v("kk (Kazakh)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "km" } }, [
-                        _vm._v("km (Central Khmer)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "ki" } }, [
-                        _vm._v("ki (Kikuyu)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "rw" } }, [
-                        _vm._v("rw (Kinyarwanda)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "ky" } }, [
-                        _vm._v("ky (Kirghiz)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "kv" } }, [
-                        _vm._v("kv (Komi)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "kg" } }, [
-                        _vm._v("kg (Kongo)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "ko" } }, [
-                        _vm._v("ko (Korean)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "kj" } }, [
-                        _vm._v("kj (Kuanyama)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "ku" } }, [
-                        _vm._v("ku (Kurdish)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "lo" } }, [
-                        _vm._v("lo (Lao)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "la" } }, [
-                        _vm._v("la (Latin)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "lv" } }, [
-                        _vm._v("lv (Latvian)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "li" } }, [
-                        _vm._v("li (Limburgan)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "ln" } }, [
-                        _vm._v("ln (Lingala)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "lt" } }, [
-                        _vm._v("lt (Lithuanian)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "lb" } }, [
-                        _vm._v("lb (Luxembourgish)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "lu" } }, [
-                        _vm._v("lu (Luba-Katanga)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "lg" } }, [
-                        _vm._v("lg (Ganda)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "mk" } }, [
-                        _vm._v("mk (Macedonian)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "mh" } }, [
-                        _vm._v("mh (Marshallese)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "ml" } }, [
-                        _vm._v("ml (Malayalam)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "mi" } }, [
-                        _vm._v("mi (Maori)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "mr" } }, [
-                        _vm._v("mr (Marathi)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "ms" } }, [
-                        _vm._v("ms (Malay)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "mk" } }, [
-                        _vm._v("mk (Macedonian)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "mg" } }, [
-                        _vm._v("mg (Malagasy)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "mt" } }, [
-                        _vm._v("mt (Maltese)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "mn" } }, [
-                        _vm._v("mn (Mongolian)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "mi" } }, [
-                        _vm._v("mi (Maori)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "ms" } }, [
-                        _vm._v("ms (Malay)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "my" } }, [
-                        _vm._v("my (Burmese)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "na" } }, [
-                        _vm._v("na (Nauru)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "nv" } }, [
-                        _vm._v("nv (Navajo)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "nr" } }, [
-                        _vm._v("nr (Ndebele)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "nd" } }, [
-                        _vm._v("nd (Ndebele)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "ng" } }, [
-                        _vm._v("ng (Ndonga)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "ne" } }, [
-                        _vm._v("ne (Nepali)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "nl" } }, [
-                        _vm._v("nl (Dutch)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "nn" } }, [
-                        _vm._v("nn (Norwegian Nynorsk)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "nb" } }, [
-                        _vm._v("nb (Bokmal)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "no" } }, [
-                        _vm._v("no (Norwegian)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "ny" } }, [
-                        _vm._v("ny (Chichewa)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "oc" } }, [
-                        _vm._v("oc (Occitan)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "oj" } }, [
-                        _vm._v("oj (Ojibwa)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "or" } }, [
-                        _vm._v("or (Oriya)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "om" } }, [
-                        _vm._v("om (Oromo)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "os" } }, [
-                        _vm._v("os (Ossetian)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "pa" } }, [
-                        _vm._v("pa (Panjabi)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "fa" } }, [
-                        _vm._v("fa (Persian)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "pi" } }, [
-                        _vm._v("pi (Pali)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "pl" } }, [
-                        _vm._v("pl (Polish)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "pt" } }, [
-                        _vm._v("pt (Portuguese)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "ps" } }, [
-                        _vm._v("ps (Pushto)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "qu" } }, [
-                        _vm._v("qu (Quechua)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "rm" } }, [
-                        _vm._v("rm (Romansh)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "ro" } }, [
-                        _vm._v("ro (Romanian)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "rn" } }, [
-                        _vm._v("rn (Rundi)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "ru" } }, [
-                        _vm._v("ru (Russian)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "sg" } }, [
-                        _vm._v("sg (Sango)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "sa" } }, [
-                        _vm._v("sa (Sanskrit)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "si" } }, [
-                        _vm._v("si (Sinhala)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "sk" } }, [
-                        _vm._v("sk (Slovak)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "sl" } }, [
-                        _vm._v("sl (Slovenian)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "se" } }, [
-                        _vm._v("se (Northern Sami)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "sm" } }, [
-                        _vm._v("sm (Samoan)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "sn" } }, [
-                        _vm._v("sn (Shona)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "sd" } }, [
-                        _vm._v("sd (Sindhi)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "so" } }, [
-                        _vm._v("so (Somali)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "st" } }, [
-                        _vm._v("st (Sotho)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "es" } }, [
-                        _vm._v("es (Spanish)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "sq" } }, [
-                        _vm._v("sq (Albanian)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "sc" } }, [
-                        _vm._v("sc (Sardinian)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "sr" } }, [
-                        _vm._v("sr (Serbian)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "ss" } }, [
-                        _vm._v("ss (Swati)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "su" } }, [
-                        _vm._v("su (Sundanese)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "sw" } }, [
-                        _vm._v("sw (Swahili)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "sv" } }, [
-                        _vm._v("sv (Swedish)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "ty" } }, [
-                        _vm._v("ty (Tahitian)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "ta" } }, [
-                        _vm._v("ta (Tamil)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "tt" } }, [
-                        _vm._v("tt (Tatar)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "te" } }, [
-                        _vm._v("te (Telugu)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "tg" } }, [
-                        _vm._v("tg (Tajik)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "tl" } }, [
-                        _vm._v("tl (Tagalog)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "th" } }, [
-                        _vm._v("th (Thai)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "bo" } }, [
-                        _vm._v("bo (Tibetan)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "ti" } }, [
-                        _vm._v("ti (Tigrinya)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "to" } }, [
-                        _vm._v("to (Tonga)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "tn" } }, [
-                        _vm._v("tn (Tswana)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "ts" } }, [
-                        _vm._v("ts (Tsonga)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "tk" } }, [
-                        _vm._v("tk (Turkmen)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "tr" } }, [
-                        _vm._v("tr (Turkish)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "tw" } }, [
-                        _vm._v("tw (Twi)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "ug" } }, [
-                        _vm._v("ug (Uighur)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "uk" } }, [
-                        _vm._v("uk (Ukrainian)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "ur" } }, [
-                        _vm._v("ur (Urdu)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "uz" } }, [
-                        _vm._v("uz (Uzbek)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "ve" } }, [
-                        _vm._v("ve (Venda)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "vi" } }, [
-                        _vm._v("vi (Vietnamese)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "vo" } }, [
-                        _vm._v("vo (Volapuk)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "cy" } }, [
-                        _vm._v("cy (Welsh)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "wa" } }, [
-                        _vm._v("wa (Walloon)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "wo" } }, [
-                        _vm._v("wo (Wolof)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "xh" } }, [
-                        _vm._v("xh (Xhosa)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "yi" } }, [
-                        _vm._v("yi (Yiddish)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "yo" } }, [
-                        _vm._v("yo (Yoruba)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "za" } }, [
-                        _vm._v("za (Zhuang)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "zh" } }, [
-                        _vm._v("zh (Chinese)")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "zu" } }, [
-                        _vm._v("zu (Zulu)")
-                      ])
-                    ]
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-primary",
-                  attrs: { id: "btnSystemLanguage" },
-                  on: { click: _vm.setSystemLanguage }
-                },
-                [_vm._v("Set System Language")]
-              )
-            ]
-          )
-        : _vm._e(),
-      _vm._v(" "),
-      this.showTimezone
-        ? _c(
-            "div",
-            { staticClass: "form-group", attrs: { id: "timezone-body" } },
-            [
-              _c("div", { staticClass: "row" }, [
-                _c("div", { staticClass: "col-sm-6" }, [
-                  _c("label", [_vm._v("Timezone")]),
-                  _vm._v(" "),
-                  _c(
-                    "select",
-                    {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.timeZoneValue,
-                          expression: "timeZoneValue"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: { id: "utcTimeZone" },
-                      on: {
-                        change: function($event) {
-                          var $$selectedVal = Array.prototype.filter
-                            .call($event.target.options, function(o) {
-                              return o.selected
-                            })
-                            .map(function(o) {
-                              var val = "_value" in o ? o._value : o.value
-                              return val
-                            })
-                          _vm.timeZoneValue = $event.target.multiple
-                            ? $$selectedVal
-                            : $$selectedVal[0]
-                        }
-                      }
-                    },
-                    [
-                      _c("option", { attrs: { value: "-660" } }, [
-                        _vm._v("UTC - 11:00")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "-600" } }, [
-                        _vm._v("UTC - 10:00")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "-540" } }, [
-                        _vm._v("UTC - 09:00")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "-480" } }, [
-                        _vm._v("UTC - 08:00")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "-420" } }, [
-                        _vm._v("UTC - 07:00")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "-360" } }, [
-                        _vm._v("UTC - 06:00")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "-300" } }, [
-                        _vm._v("UTC - 05:00")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "-240" } }, [
-                        _vm._v("UTC - 04:00")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "-180" } }, [
-                        _vm._v("UTC - 03:00")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "-120" } }, [
-                        _vm._v("UTC - 02:00")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "-60" } }, [
-                        _vm._v("UTC - 01:00")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "0", selected: "" } }, [
-                        _vm._v("UTC")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "60" } }, [
-                        _vm._v("UTC + 01:00")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "120" } }, [
-                        _vm._v("UTC + 02:00")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "180" } }, [
-                        _vm._v("UTC + 03:00")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "240" } }, [
-                        _vm._v("UTC + 04:00")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "300" } }, [
-                        _vm._v("UTC + 05:00")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "360" } }, [
-                        _vm._v("UTC + 06:00")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "420" } }, [
-                        _vm._v("UTC + 07:00")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "480" } }, [
-                        _vm._v("UTC + 08:00")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "540" } }, [
-                        _vm._v("UTC + 09:00")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "600" } }, [
-                        _vm._v("UTC + 10:00")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "660" } }, [
-                        _vm._v("UTC + 11:00")
-                      ])
-                    ]
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-primary",
-                  attrs: { id: "btnTimezone" },
-                  on: { click: _vm.setTimezone }
-                },
-                [_vm._v("Set Timezone")]
-              )
-            ]
-          )
-        : _vm._e(),
-      _vm._v(" "),
-      this.showLocation
-        ? _c(
-            "div",
-            { staticClass: "form-group", attrs: { id: "overlays-body" } },
-            [
-              _vm._m(4),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-primary",
-                  attrs: { id: "btnLocation" },
-                  on: { click: _vm.setLocation }
-                },
-                [_vm._v("Set Location")]
-              )
-            ]
-          )
-        : _vm._e()
-    ])
+                      },
+                      [
+                        _c("option", { attrs: { value: "-660" } }, [
+                          _vm._v("UTC - 11:00")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "-600" } }, [
+                          _vm._v("UTC - 10:00")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "-540" } }, [
+                          _vm._v("UTC - 09:00")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "-480" } }, [
+                          _vm._v("UTC - 08:00")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "-420" } }, [
+                          _vm._v("UTC - 07:00")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "-360" } }, [
+                          _vm._v("UTC - 06:00")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "-300" } }, [
+                          _vm._v("UTC - 05:00")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "-240" } }, [
+                          _vm._v("UTC - 04:00")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "-180" } }, [
+                          _vm._v("UTC - 03:00")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "-120" } }, [
+                          _vm._v("UTC - 02:00")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "-60" } }, [
+                          _vm._v("UTC - 01:00")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "0", selected: "" } }, [
+                          _vm._v("UTC")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "60" } }, [
+                          _vm._v("UTC + 01:00")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "120" } }, [
+                          _vm._v("UTC + 02:00")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "180" } }, [
+                          _vm._v("UTC + 03:00")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "240" } }, [
+                          _vm._v("UTC + 04:00")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "300" } }, [
+                          _vm._v("UTC + 05:00")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "360" } }, [
+                          _vm._v("UTC + 06:00")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "420" } }, [
+                          _vm._v("UTC + 07:00")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "480" } }, [
+                          _vm._v("UTC + 08:00")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "540" } }, [
+                          _vm._v("UTC + 09:00")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "600" } }, [
+                          _vm._v("UTC + 10:00")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "660" } }, [
+                          _vm._v("UTC + 11:00")
+                        ])
+                      ]
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-primary",
+                    attrs: { id: "btnTimezone" },
+                    on: { click: _vm.setTimezone }
+                  },
+                  [_vm._v("Set Timezone")]
+                )
+              ]
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        this.showLocation
+          ? _c(
+              "div",
+              { staticClass: "form-group", attrs: { id: "overlays-body" } },
+              [
+                _vm._m(4),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-primary",
+                    attrs: { id: "btnLocation" },
+                    on: { click: _vm.setLocation }
+                  },
+                  [_vm._v("Set Location")]
+                )
+              ]
+            )
+          : _vm._e()
+      ]
+    )
   ])
 }
 var staticRenderFns = [
@@ -45681,7 +45781,11 @@ var render = function() {
     _c("div", { staticClass: "card-header" }, [
       _c("div", { staticClass: "row" }, [
         _c("div", { staticClass: "col-sm-4 text-left" }, [
-          _c("h5", { staticClass: "card-category" }, [_vm._v("Display")]),
+          _c(
+            "a",
+            { attrs: { "data-toggle": "collapse", href: "#collapseDisplay" } },
+            [_vm._v("Display")]
+          ),
           _vm._v(" "),
           _c("h3", { staticClass: "card-title" }, [_vm._v(_vm._s(this.title))])
         ]),
@@ -45799,7 +45903,7 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "card-body" }, [
+    _c("div", { staticClass: "card-body", attrs: { id: "collapseDisplay" } }, [
       this.showBrightness
         ? _c(
             "div",
@@ -46305,7 +46409,11 @@ var render = function() {
     _c("div", { staticClass: "card-header" }, [
       _c("div", { staticClass: "row" }, [
         _c("div", { staticClass: "col-sm-4 text-left" }, [
-          _c("h5", { staticClass: "card-category" }, [_vm._v("Lens")]),
+          _c(
+            "a",
+            { attrs: { "data-toggle": "collapse", href: "#collapseLens" } },
+            [_vm._v("Lens")]
+          ),
           _vm._v(" "),
           _c("h2", { staticClass: "card-title" }, [_vm._v(_vm._s(this.title))])
         ]),
@@ -46449,7 +46557,7 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "card-body" }, [
+    _c("div", { staticClass: "card-body", attrs: { id: "collapseLens" } }, [
       this.showAuto
         ? _c(
             "div",
@@ -46927,7 +47035,11 @@ var render = function() {
     _c("div", { staticClass: "card-header" }, [
       _c("div", { staticClass: "row" }, [
         _c("div", { staticClass: "col-sm-6 text-left" }, [
-          _c("h5", { staticClass: "card-category" }, [_vm._v("Output")]),
+          _c(
+            "a",
+            { attrs: { "data-toggle": "collapse", href: "#collapseOutput" } },
+            [_vm._v("Output")]
+          ),
           _vm._v(" "),
           _c("h3", { staticClass: "card-title" }, [_vm._v(_vm._s(this.title))])
         ]),
@@ -47022,7 +47134,7 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "card-body" }, [
+    _c("div", { staticClass: "card-body", attrs: { id: "collapseOutput" } }, [
       this.showFrameGuidesStyle
         ? _c(
             "div",
@@ -47434,9 +47546,124 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "card" }, [
-    _vm._m(0),
+    _c("div", { staticClass: "card-header" }, [
+      _c("div", { staticClass: "row" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-sm-8" }, [
+          _c(
+            "div",
+            {
+              staticClass: "btn-group btn-group-toggle float-right",
+              attrs: { "data-toggle": "buttons" }
+            },
+            [
+              _c(
+                "label",
+                {
+                  staticClass: "btn btn-sm btn-primary btn-simple active",
+                  attrs: { id: "0" },
+                  on: { click: _vm.onRecord }
+                },
+                [
+                  _c("input", {
+                    attrs: { type: "radio", name: "options", checked: "" }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      staticClass:
+                        "d-none d-sm-block d-md-block d-lg-block d-xl-block"
+                    },
+                    [_vm._v("Record")]
+                  ),
+                  _vm._v(" "),
+                  _vm._m(1)
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "label",
+                {
+                  staticClass: "btn btn-sm btn-primary btn-simple active",
+                  attrs: { id: "1" },
+                  on: { click: _vm.onCodec }
+                },
+                [
+                  _c("input", { attrs: { type: "radio", name: "options" } }),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      staticClass:
+                        "d-none d-sm-block d-md-block d-lg-block d-xl-block"
+                    },
+                    [_vm._v("Codec")]
+                  ),
+                  _vm._v(" "),
+                  _vm._m(2)
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "label",
+                {
+                  staticClass: "btn btn-sm btn-primary btn-simple",
+                  attrs: { id: "2" },
+                  on: { click: _vm.onTransportMode }
+                },
+                [
+                  _c("input", {
+                    staticClass: "d-none d-sm-none",
+                    attrs: { type: "radio", name: "options" }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      staticClass:
+                        "d-none d-sm-block d-md-block d-lg-block d-xl-block"
+                    },
+                    [_vm._v("Transport mode")]
+                  ),
+                  _vm._v(" "),
+                  _vm._m(3)
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "label",
+                {
+                  staticClass: "btn btn-sm btn-primary btn-simple",
+                  attrs: { id: "2" },
+                  on: { click: _vm.onPlaybackControl }
+                },
+                [
+                  _c("input", {
+                    staticClass: "d-none d-sm-none",
+                    attrs: { type: "radio", name: "options" }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      staticClass:
+                        "d-none d-sm-block d-md-block d-lg-block d-xl-block"
+                    },
+                    [_vm._v("Playback Control")]
+                  ),
+                  _vm._v(" "),
+                  _vm._m(4)
+                ]
+              )
+            ]
+          )
+        ])
+      ])
+    ]),
     _vm._v(" "),
-    _c("div", { staticClass: "card-body" }, [
+    _c("div", { staticClass: "card-body", attrs: { id: "collapseMedia" } }, [
       _c(
         "button",
         {
@@ -47457,7 +47684,7 @@ var render = function() {
         [_vm._v("Stop")]
       ),
       _vm._v(" "),
-      _vm._m(1)
+      _vm._m(5)
     ])
   ])
 }
@@ -47466,14 +47693,46 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-header" }, [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-sm-6 text-left" }, [
-          _c("h5", { staticClass: "card-category" }, [_vm._v("Media")]),
-          _vm._v(" "),
-          _c("h3", { staticClass: "card-title" }, [_vm._v("Recording....")])
-        ])
-      ])
+    return _c("div", { staticClass: "col-sm-4 text-left" }, [
+      _c(
+        "a",
+        { attrs: { "data-toggle": "collapse", href: "#collapseMedia" } },
+        [_vm._v("Media")]
+      ),
+      _vm._v(" "),
+      _c("h3", { staticClass: "card-title" }, [_vm._v("Recording....")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "d-block d-sm-none" }, [
+      _c("i", { staticClass: "tim-icons icon-single-02" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "d-block d-sm-none" }, [
+      _c("i", { staticClass: "tim-icons icon-single-02" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "d-block d-sm-none" }, [
+      _c("i", { staticClass: "tim-icons icon-gift-2" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "d-block d-sm-none" }, [
+      _c("i", { staticClass: "tim-icons icon-gift-2" })
     ])
   },
   function() {
@@ -47562,14 +47821,18 @@ var render = function() {
     _c("div", { staticClass: "card-header" }, [
       _c("div", { staticClass: "row" }, [
         _c("div", { staticClass: "col-sm-6 text-left" }, [
-          _c("h5", { staticClass: "card-category" }, [_vm._v("Tally")]),
+          _c(
+            "a",
+            { attrs: { "data-toggle": "collapse", href: "#collapseTally" } },
+            [_vm._v("Tally")]
+          ),
           _vm._v(" "),
           _c("h3", { staticClass: "card-title" }, [_vm._v(_vm._s(this.title))])
         ])
       ])
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "card-body" }, [
+    _c("div", { staticClass: "card-body", attrs: { id: "collapseTally" } }, [
       _c("div", { staticClass: "form-group", attrs: { id: "overlays-body" } }, [
         _c("table", { staticClass: "table" }, [
           _c("tbody", [
@@ -47724,7 +47987,11 @@ var render = function() {
     _c("div", { staticClass: "card-header" }, [
       _c("div", { staticClass: "row" }, [
         _c("div", { staticClass: "col-sm-4 text-left" }, [
-          _c("h5", { staticClass: "card-category" }, [_vm._v("Video")]),
+          _c(
+            "a",
+            { attrs: { "data-toggle": "collapse", href: "#collapseVideo" } },
+            [_vm._v("Video")]
+          ),
           _vm._v(" "),
           _c("h3", { staticClass: "card-title" }, [_vm._v(_vm._s(this.title))])
         ]),
@@ -47894,7 +48161,7 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "card-body" }, [
+    _c("div", { staticClass: "card-body", attrs: { id: "collapseVideo" } }, [
       this.showVideoMode
         ? _c(
             "div",

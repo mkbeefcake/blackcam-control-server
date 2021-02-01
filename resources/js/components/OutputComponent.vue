@@ -3,7 +3,7 @@
         <div class="card-header">
             <div class="row">
                 <div class="col-sm-6 text-left">
-                    <h5 class="card-category">Output</h5>
+                    <a data-toggle="collapse" href="#collapseOutput">Output</a>
                     <h3 class="card-title">{{this.title}}</h3>
                 </div>
                 <div class="col-sm-6">
@@ -40,7 +40,7 @@
                 </div>
             </div>
         </div>
-        <div class="card-body">
+        <div id="collapseOutput" class="card-body">
 
             <!-- <div class="form-group" id="mic-level-body" v-if="this.showOverlayEnables">
                 <div class="row">

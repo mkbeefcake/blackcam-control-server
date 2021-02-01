@@ -3,7 +3,7 @@
         <div class="card-header">
             <div class="row">
                 <div class="col-sm-4 text-left">
-                    <h5 class="card-category">Configuration</h5>
+                    <a data-toggle="collapse" href="#collapseConfiguration">Configuration</a>
                     <h3 class="card-title">{{this.title}}</h3>
                 </div>
                 <div class="col-sm-8">
@@ -40,7 +40,7 @@
                 </div>
             </div>
         </div>
-        <div class="card-body">
+        <div id="collapseConfiguration" class="card-body">
             <div class="form-group" id="realtime-clock-body" v-if="this.showRealTimeClock">
                 <div class="row">
                     <div class="col-sm-4">
