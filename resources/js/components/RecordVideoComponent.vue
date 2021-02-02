@@ -69,6 +69,7 @@
                         </select>
                     </div>
                 </div>
+                <button class="btn btn-primary" id="btnCodec" v-on:click="setCodec">Set Codec</button>
             </div>
             <div class="form-group" id="show-transportmode-body" v-if="this.showTransportMode">
                 <div class="row">
@@ -117,6 +118,7 @@
                         </select>
                     </div>
                 </div>
+                <button class="btn btn-primary" id="btnTransportMode" v-on:click="setTransportMode">Set Transport Mode</button>
             </div>
             <div class="form-group" id="show-playbackcontrol-body" v-if="this.showPlaybackControl">
                 <button class="btn btn-primary" id="playbackPrevious" v-on:click="goPlaybackPrevious"><< Prev </button>
@@ -235,7 +237,50 @@ export default {
 
             this.sendTransportModeCommand(command);
             alert('Sent Stop command');
-        }
+        },
+        setCodec: function(event) {
+            debugger;
+            var command = {
+                type : 'set-codec',
+                basicCodecValue: this.basicCodecValue,
+                codeVariantValue: this.codeVariantValue,                
+            };
+
+            this.sendTransportModeCommand(command);
+            alert('Sent Codec command');
+        },
+        setTransportMode: function(event) {
+            debugger;
+            var command = {
+                type : 'set-transportmode',
+                transportModeValue: this.transportModeValue,
+                transportSpeedValue: this.transportSpeedValue,
+                transportFlagsValue: this.transportFlagsValue,
+                slot1StorageValue: this.slot1StorageValue,                                                
+                slot2StorageValue: this.slot2StorageValue,
+            };
+
+            this.sendTransportModeCommand(command);
+            alert('Sent TransportMode command');
+        },
+        goPlaybackPrevious: function(event) {
+            debugger;
+            var command = {
+                type : 'playback-previous',
+            };
+
+            this.sendTransportModeCommand(command);
+            alert('Sent Previous command');
+        },
+        goPlaybackNext: function(event) {
+            debugger;
+            var command = {
+                type : 'playback-next',
+            };
+
+            this.sendTransportModeCommand(command);
+            alert('Sent Next command');
+        },
     }
 }
 </script>

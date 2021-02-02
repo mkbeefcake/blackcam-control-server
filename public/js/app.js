@@ -4130,6 +4130,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -4230,6 +4232,45 @@ __webpack_require__.r(__webpack_exports__);
       };
       this.sendTransportModeCommand(command);
       alert('Sent Stop command');
+    },
+    setCodec: function setCodec(event) {
+      debugger;
+      var command = {
+        type: 'set-codec',
+        basicCodecValue: this.basicCodecValue,
+        codeVariantValue: this.codeVariantValue
+      };
+      this.sendTransportModeCommand(command);
+      alert('Sent Codec command');
+    },
+    setTransportMode: function setTransportMode(event) {
+      debugger;
+      var command = {
+        type: 'set-transportmode',
+        transportModeValue: this.transportModeValue,
+        transportSpeedValue: this.transportSpeedValue,
+        transportFlagsValue: this.transportFlagsValue,
+        slot1StorageValue: this.slot1StorageValue,
+        slot2StorageValue: this.slot2StorageValue
+      };
+      this.sendTransportModeCommand(command);
+      alert('Sent TransportMode command');
+    },
+    goPlaybackPrevious: function goPlaybackPrevious(event) {
+      debugger;
+      var command = {
+        type: 'playback-previous'
+      };
+      this.sendTransportModeCommand(command);
+      alert('Sent Previous command');
+    },
+    goPlaybackNext: function goPlaybackNext(event) {
+      debugger;
+      var command = {
+        type: 'playback-next'
+      };
+      this.sendTransportModeCommand(command);
+      alert('Sent Next command');
     }
   }
 });
@@ -47941,7 +47982,17 @@ var render = function() {
                     0
                   )
                 ])
-              ])
+              ]),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary",
+                  attrs: { id: "btnCodec" },
+                  on: { click: _vm.setCodec }
+                },
+                [_vm._v("Set Codec")]
+              )
             ]
           )
         : _vm._e(),
@@ -48196,7 +48247,17 @@ var render = function() {
                     ]
                   )
                 ])
-              ])
+              ]),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary",
+                  attrs: { id: "btnTransportMode" },
+                  on: { click: _vm.setTransportMode }
+                },
+                [_vm._v("Set Transport Mode")]
+              )
             ]
           )
         : _vm._e(),
