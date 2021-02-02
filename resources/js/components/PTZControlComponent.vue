@@ -117,7 +117,7 @@ export default {
                 tiltVelocityValue: this.tiltVelocityValue,
             };
 
-            this.sendTransportModeCommand(command);
+            this.sendPTZControlCommand(command);
             alert('Sent Pan/Tilt Velocity command');
         },
         setMemoryPreset: function(event) {
@@ -128,7 +128,7 @@ export default {
                 presetSlotValue: this.presetSlotValue,
             };
 
-            this.sendTransportModeCommand(command);
+            this.sendPTZControlCommand(command);
             alert('Sent Memory Preset command');
         },
     }
