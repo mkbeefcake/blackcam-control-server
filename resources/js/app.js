@@ -29,6 +29,7 @@ Vue.component('output-component', require('./components/OutputComponent.vue').de
 Vue.component('tally-component', require('./components/TallyComponent.vue').default);
 Vue.component('configuration-component', require('./components/ConfigurationComponent.vue').default);
 Vue.component('colorcorrection-component', require('./components/ColorCorrectionComponent.vue').default);
+Vue.component('ptzcontrol-component', require('./components/PTZControlComponent.vue').default);
 
 Vue.component('systeminfo-component', require('./components/SystemInfoComponent.vue').default);
 
