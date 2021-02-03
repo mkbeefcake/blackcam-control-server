@@ -4115,7 +4115,7 @@ __webpack_require__.r(__webpack_exports__);
         panVelocityValue: this.panVelocityValue,
         tiltVelocityValue: this.tiltVelocityValue
       };
-      this.sendTransportModeCommand(command);
+      this.sendPTZControlCommand(command);
       alert('Sent Pan/Tilt Velocity command');
     },
     setMemoryPreset: function setMemoryPreset(event) {
@@ -4125,7 +4125,7 @@ __webpack_require__.r(__webpack_exports__);
         presetCommandValue: this.presetCommandValue,
         presetSlotValue: this.presetSlotValue
       };
-      this.sendTransportModeCommand(command);
+      this.sendPTZControlCommand(command);
       alert('Sent Memory Preset command');
     }
   }
@@ -4568,6 +4568,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_custom_range_slider__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue_custom_range_slider__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var vue_custom_range_slider_dist_vue_custom_range_slider_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-custom-range-slider/dist/vue-custom-range-slider.css */ "./node_modules/vue-custom-range-slider/dist/vue-custom-range-slider.css");
 /* harmony import */ var vue_custom_range_slider_dist_vue_custom_range_slider_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue_custom_range_slider_dist_vue_custom_range_slider_css__WEBPACK_IMPORTED_MODULE_1__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -49881,53 +49897,129 @@ var render = function() {
                 _c("div", { staticClass: "col-sm-3" }, [
                   _c("label", [_vm._v("Frame Width")]),
                   _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.recordFrameWidth,
-                        expression: "recordFrameWidth"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: { type: "text", placeholder: "in Pixels" },
-                    domProps: { value: _vm.recordFrameWidth },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.recordFrameWidth,
+                          expression: "recordFrameWidth"
                         }
-                        _vm.recordFrameWidth = $event.target.value
+                      ],
+                      staticClass: "form-control",
+                      attrs: { id: "flags" },
+                      on: {
+                        change: function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.recordFrameWidth = $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        }
                       }
-                    }
-                  })
+                    },
+                    [
+                      _c("option", { attrs: { value: "6144" } }, [
+                        _vm._v("6144")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "5744" } }, [
+                        _vm._v("5744")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "4096" } }, [
+                        _vm._v("4096")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "3840" } }, [
+                        _vm._v("3840")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "3728" } }, [
+                        _vm._v("3728")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "2868" } }, [
+                        _vm._v("2868")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "1920" } }, [
+                        _vm._v("1920")
+                      ])
+                    ]
+                  )
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "col-sm-3" }, [
                   _c("label", [_vm._v("Frame Height")]),
                   _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.recordFrameHeight,
-                        expression: "recordFrameHeight"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: { type: "text", placeholder: "in Pixels" },
-                    domProps: { value: _vm.recordFrameHeight },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.recordFrameHeight,
+                          expression: "recordFrameHeight"
                         }
-                        _vm.recordFrameHeight = $event.target.value
+                      ],
+                      staticClass: "form-control",
+                      attrs: { id: "flags" },
+                      on: {
+                        change: function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.recordFrameHeight = $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        }
                       }
-                    }
-                  })
+                    },
+                    [
+                      _c("option", { attrs: { value: "3456" } }, [
+                        _vm._v("3456")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "2560" } }, [
+                        _vm._v("2560")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "3024" } }, [
+                        _vm._v("3024")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "2106" } }, [
+                        _vm._v("2160")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "3104" } }, [
+                        _vm._v("3104")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "1512" } }, [
+                        _vm._v("1512")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "1080" } }, [
+                        _vm._v("1080")
+                      ])
+                    ]
+                  )
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "col-sm-3" }, [

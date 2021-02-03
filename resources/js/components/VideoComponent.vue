@@ -181,11 +181,27 @@
                     </div>
                     <div class="col-sm-3">
                         <label>Frame Width</label>
-                        <input type="text" class="form-control" placeholder="in Pixels" v-model="recordFrameWidth">
+                        <select class="form-control" id="flags" v-model="recordFrameWidth">
+                            <option value=6144>6144</option>
+                            <option value=5744>5744</option>
+                            <option value=4096>4096</option>
+                            <option value=3840>3840</option>
+                            <option value=3728>3728</option>
+                            <option value=2868>2868</option>
+                            <option value=1920>1920</option>
+                        </select>
                     </div>
                     <div class="col-sm-3">
                         <label>Frame Height</label>
-                        <input type="text" class="form-control" placeholder="in Pixels" v-model="recordFrameHeight">
+                        <select class="form-control" id="flags" v-model="recordFrameHeight">
+                            <option value=3456>3456</option>
+                            <option value=2560>2560</option>
+                            <option value=3024>3024</option>
+                            <option value=2106>2160</option>
+                            <option value=3104>3104</option>
+                            <option value=1512>1512</option>
+                            <option value=1080>1080</option>
+                        </select>
                     </div>
                     <div class="col-sm-3">
                         <label>Flags</label>
