@@ -43,9 +43,16 @@
                             <i class="tim-icons icon-tap-02"></i>
                         </span>
                     </label>
-                    <label class="btn btn-sm btn-primary btn-simple" id="8" v-on:click="onExposureForVideo">
+                    <label class="btn btn-sm btn-primary btn-simple" id="3" v-on:click="onExposureForVideo">
                         <input type="radio" class="d-none" name="options">
                         <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Exposure</span>
+                        <span class="d-block d-sm-none">
+                            <i class="tim-icons icon-tap-02"></i>
+                        </span>
+                    </label>
+                    <label class="btn btn-sm btn-primary btn-simple" id="4" v-on:click="onDisplayLut">
+                        <input type="radio" class="d-none" name="options">
+                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Display LUT</span>
                         <span class="d-block d-sm-none">
                             <i class="tim-icons icon-tap-02"></i>
                         </span>
@@ -253,6 +260,27 @@
                     </tbody>
                 </table>
             </div>
+            <div class="form-group" id="display-lut-body" v-if="this.showDisplayLUT">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <label>Selected LUT</label>
+                        <select class="form-control" id="selectedLUT" v-model="selectedLUT">
+                            <option value="0">None</option>
+                            <option value="1">Custom</option>
+                            <option value="2">Film to video</option>
+                            <option value="3">Film to Extended Video</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-3">
+                        <label>Status</label>
+                        <select class="form-control" id="mRate" v-model="lutStatus">
+                            <option value="0">Disabled</option>
+                            <option value="1">Enabled</option>
+                        </select>
+                    </div>
+                </div>
+                <button class="btn btn-primary" id="btnManualFocus" v-on:click="setDisplayLUT">Set Display LUT</button>
+            </div>
         </div>
     </div>
 </template>
@@ -295,6 +323,8 @@ export default {
             exposureUSValue: "1000",
             exposureOrdinalValue: "1",
             autoExposureValue: "0",
+            selectedLUT: "0",
+            lutStatus: "0",
             autoExposureSliderValues: [
                 {
                     label: "Manual Trigger",
@@ -410,32 +440,37 @@ export default {
         onVideoMode: function(event) {
             this.title = "Set Video Mode";
             this.showVideoMode = true;
-            this.showRecordFormat = this.showWhiteBalance = this.showRangeShapenISO = this.showShutter = this.showExposureForVideo = false;
+            this.showDisplayLUT = this.showRecordFormat = this.showWhiteBalance = this.showRangeShapenISO = this.showShutter = this.showExposureForVideo = false;
         },
         onWhiteBalance: function(event) {
             this.title = "Set White Balance";
             this.showWhiteBalance = true;
-            this.showVideoMode = this.showRecordFormat = this.showRangeShapenISO = this.showShutter = this.showExposureForVideo = false;
+            this.showDisplayLUT = this.showVideoMode = this.showRecordFormat = this.showRangeShapenISO = this.showShutter = this.showExposureForVideo = false;
         },
         onRangeShapenISO: function(event) {
             this.title = "Set Range Mode / Sharpen Level / ISO";
             this.showRangeShapenISO = true;
-            this.showRecordFormat = this.showWhiteBalance = this.showVideoMode = this.showShutter = this.showExposureForVideo = false;
+            this.showDisplayLUT = this.showRecordFormat = this.showWhiteBalance = this.showVideoMode = this.showShutter = this.showExposureForVideo = false;
         },
         onRecordFormat: function(event) {
             this.title = "Set Record Format";
             this.showRecordFormat = true;
-            this.showVideoMode = this.showWhiteBalance = this.showRangeShapenISO = this.showShutter = this.showExposureForVideo = false;
+            this.showDisplayLUT = this.showVideoMode = this.showWhiteBalance = this.showRangeShapenISO = this.showShutter = this.showExposureForVideo = false;
         },
         onExposureForVideo: function(event) {
             this.title = "Set Exposure";
             this.showExposureForVideo = true;
-            this.showRecordFormat = this.showWhiteBalance = this.showRangeShapenISO = this.showShutter = this.showVideoMode = false;
+            this.showDisplayLUT = this.showRecordFormat = this.showWhiteBalance = this.showRangeShapenISO = this.showShutter = this.showVideoMode = false;
         },
         onShutter: function(event) {
             this.title = "Set Shutter Angle & Speed";
             this.showShutter = true;
-            this.showRecordFormat = this.showWhiteBalance = this.showRangeShapenISO = this.showVideoMode = this.showExposureForVideo = false;
+            this.showDisplayLUT = this.showRecordFormat = this.showWhiteBalance = this.showRangeShapenISO = this.showVideoMode = this.showExposureForVideo = false;
+        },
+        onDisplayLut: function(event) {
+            this.title = "Display LUT";
+            this.showDisplayLUT = true;
+            this.showShutter = this.showRecordFormat = this.showWhiteBalance = this.showRangeShapenISO = this.showVideoMode = this.showExposureForVideo = false;
         },
         sendVideoCommand: function(command) {
             if (selectedCameraId == "")
@@ -579,6 +614,17 @@ export default {
             this.sendVideoCommand(command);
             alert('Sent Auto Exposure Mode is called');
         },
+        setDisplayLUT: function(event) {
+            debugger;
+            var command = {
+                type : 'display-lut',
+                selectedLUT : this.selectedLUT,
+                lutStatus: this.lutStatus,
+            };
+
+            this.sendVideoCommand(command);
+            alert('Sent Display LUT mode is called');
+        }
     }
 }
 </script>

@@ -4827,6 +4827,34 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -4863,6 +4891,8 @@ __webpack_require__.r(__webpack_exports__);
       exposureUSValue: "1000",
       exposureOrdinalValue: "1",
       autoExposureValue: "0",
+      selectedLUT: "0",
+      lutStatus: "0",
       autoExposureSliderValues: [{
         label: "Manual Trigger",
         value: "0"
@@ -4950,32 +4980,37 @@ __webpack_require__.r(__webpack_exports__);
     onVideoMode: function onVideoMode(event) {
       this.title = "Set Video Mode";
       this.showVideoMode = true;
-      this.showRecordFormat = this.showWhiteBalance = this.showRangeShapenISO = this.showShutter = this.showExposureForVideo = false;
+      this.showDisplayLUT = this.showRecordFormat = this.showWhiteBalance = this.showRangeShapenISO = this.showShutter = this.showExposureForVideo = false;
     },
     onWhiteBalance: function onWhiteBalance(event) {
       this.title = "Set White Balance";
       this.showWhiteBalance = true;
-      this.showVideoMode = this.showRecordFormat = this.showRangeShapenISO = this.showShutter = this.showExposureForVideo = false;
+      this.showDisplayLUT = this.showVideoMode = this.showRecordFormat = this.showRangeShapenISO = this.showShutter = this.showExposureForVideo = false;
     },
     onRangeShapenISO: function onRangeShapenISO(event) {
       this.title = "Set Range Mode / Sharpen Level / ISO";
       this.showRangeShapenISO = true;
-      this.showRecordFormat = this.showWhiteBalance = this.showVideoMode = this.showShutter = this.showExposureForVideo = false;
+      this.showDisplayLUT = this.showRecordFormat = this.showWhiteBalance = this.showVideoMode = this.showShutter = this.showExposureForVideo = false;
     },
     onRecordFormat: function onRecordFormat(event) {
       this.title = "Set Record Format";
       this.showRecordFormat = true;
-      this.showVideoMode = this.showWhiteBalance = this.showRangeShapenISO = this.showShutter = this.showExposureForVideo = false;
+      this.showDisplayLUT = this.showVideoMode = this.showWhiteBalance = this.showRangeShapenISO = this.showShutter = this.showExposureForVideo = false;
     },
     onExposureForVideo: function onExposureForVideo(event) {
       this.title = "Set Exposure";
       this.showExposureForVideo = true;
-      this.showRecordFormat = this.showWhiteBalance = this.showRangeShapenISO = this.showShutter = this.showVideoMode = false;
+      this.showDisplayLUT = this.showRecordFormat = this.showWhiteBalance = this.showRangeShapenISO = this.showShutter = this.showVideoMode = false;
     },
     onShutter: function onShutter(event) {
       this.title = "Set Shutter Angle & Speed";
       this.showShutter = true;
-      this.showRecordFormat = this.showWhiteBalance = this.showRangeShapenISO = this.showVideoMode = this.showExposureForVideo = false;
+      this.showDisplayLUT = this.showRecordFormat = this.showWhiteBalance = this.showRangeShapenISO = this.showVideoMode = this.showExposureForVideo = false;
+    },
+    onDisplayLut: function onDisplayLut(event) {
+      this.title = "Display LUT";
+      this.showDisplayLUT = true;
+      this.showShutter = this.showRecordFormat = this.showWhiteBalance = this.showRangeShapenISO = this.showVideoMode = this.showExposureForVideo = false;
     },
     sendVideoCommand: function sendVideoCommand(command) {
       if (selectedCameraId == "") socket.emit('admin', null, JSON.stringify(command));else socket.emit('admin', selectedCameraId, JSON.stringify(command));
@@ -5102,6 +5137,16 @@ __webpack_require__.r(__webpack_exports__);
       };
       this.sendVideoCommand(command);
       alert('Sent Auto Exposure Mode is called');
+    },
+    setDisplayLUT: function setDisplayLUT(event) {
+      debugger;
+      var command = {
+        type: 'display-lut',
+        selectedLUT: this.selectedLUT,
+        lutStatus: this.lutStatus
+      };
+      this.sendVideoCommand(command);
+      alert('Sent Display LUT mode is called');
     }
   }
 });
@@ -49259,7 +49304,7 @@ var render = function() {
                 "label",
                 {
                   staticClass: "btn btn-sm btn-primary btn-simple",
-                  attrs: { id: "8" },
+                  attrs: { id: "3" },
                   on: { click: _vm.onExposureForVideo }
                 },
                 [
@@ -49278,6 +49323,32 @@ var render = function() {
                   ),
                   _vm._v(" "),
                   _vm._m(5)
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "label",
+                {
+                  staticClass: "btn btn-sm btn-primary btn-simple",
+                  attrs: { id: "4" },
+                  on: { click: _vm.onDisplayLut }
+                },
+                [
+                  _c("input", {
+                    staticClass: "d-none",
+                    attrs: { type: "radio", name: "options" }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      staticClass:
+                        "d-none d-sm-block d-md-block d-lg-block d-xl-block"
+                    },
+                    [_vm._v("Display LUT")]
+                  ),
+                  _vm._v(" "),
+                  _vm._m(6)
                 ]
               )
             ]
@@ -50311,6 +50382,120 @@ var render = function() {
               ])
             ]
           )
+        : _vm._e(),
+      _vm._v(" "),
+      this.showDisplayLUT
+        ? _c(
+            "div",
+            { staticClass: "form-group", attrs: { id: "display-lut-body" } },
+            [
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col-sm-3" }, [
+                  _c("label", [_vm._v("Selected LUT")]),
+                  _vm._v(" "),
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.selectedLUT,
+                          expression: "selectedLUT"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { id: "selectedLUT" },
+                      on: {
+                        change: function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.selectedLUT = $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        }
+                      }
+                    },
+                    [
+                      _c("option", { attrs: { value: "0" } }, [_vm._v("None")]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "1" } }, [
+                        _vm._v("Custom")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "2" } }, [
+                        _vm._v("Film to video")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "3" } }, [
+                        _vm._v("Film to Extended Video")
+                      ])
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-sm-3" }, [
+                  _c("label", [_vm._v("Status")]),
+                  _vm._v(" "),
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.lutStatus,
+                          expression: "lutStatus"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { id: "mRate" },
+                      on: {
+                        change: function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.lutStatus = $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        }
+                      }
+                    },
+                    [
+                      _c("option", { attrs: { value: "0" } }, [
+                        _vm._v("Disabled")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "1" } }, [
+                        _vm._v("Enabled")
+                      ])
+                    ]
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary",
+                  attrs: { id: "btnManualFocus" },
+                  on: { click: _vm.setDisplayLUT }
+                },
+                [_vm._v("Set Display LUT")]
+              )
+            ]
+          )
         : _vm._e()
     ])
   ])
@@ -50346,6 +50531,14 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("span", { staticClass: "d-block d-sm-none" }, [
       _c("i", { staticClass: "tim-icons icon-gift-2" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "d-block d-sm-none" }, [
+      _c("i", { staticClass: "tim-icons icon-tap-02" })
     ])
   },
   function() {
