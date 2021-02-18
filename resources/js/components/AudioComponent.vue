@@ -98,8 +98,8 @@
                     <div class="col-sm-4">
                         <label>Phantom Power</label>
                         <select class="form-control" id="phantomPower" v-model="phantomPowerValue">
-                            <option value="true">True</option>
-                            <option value="false">False</option>
+                            <option value="1">True</option>
+                            <option value="0">False</option>
                         </select>
                     </div>
                 </div>
@@ -132,7 +132,7 @@ export default {
             inputTypeValue: "0",
             inputLevelCh0Value: "0",
             inputLevelCh1Value: "0",
-            phantomPowerValue: "true"
+            phantomPowerValue: "1"
         }
     },
     mounted() {
