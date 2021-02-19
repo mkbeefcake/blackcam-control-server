@@ -7,7 +7,7 @@
         <div class="card-body">
             <label id="ipAddress">IP Address : </label><br/>
             <label id="osType" >Operating System: </label><br/>
-            <label id="cameraStatus" style="max-height:400px; overflow:auto !important"></label>
+            <label id="cameraStatus" style="max-height:400px; overflow:auto !important; width:-webkit-fill-available;"></label>
         </div>
     </div>
 </template>

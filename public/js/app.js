@@ -49078,7 +49078,11 @@ var staticRenderFns = [
         _c("br"),
         _vm._v(" "),
         _c("label", {
-          staticStyle: { "max-height": "400px", overflow: "auto !important" },
+          staticStyle: {
+            "max-height": "400px",
+            overflow: "auto !important",
+            width: "-webkit-fill-available"
+          },
           attrs: { id: "cameraStatus" }
         })
       ])
