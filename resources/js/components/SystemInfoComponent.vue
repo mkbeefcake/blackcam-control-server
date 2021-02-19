@@ -6,8 +6,8 @@
         </div>
         <div class="card-body">
             <label id="ipAddress">IP Address : </label><br/>
-            <label id="osType" >Operating System: </label>
-            <label id="cameraStatus"></label>
+            <label id="osType" >Operating System: </label><br/>
+            <label id="cameraStatus" style="height:400px"></label>
         </div>
     </div>
 </template>

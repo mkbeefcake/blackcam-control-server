@@ -8,6 +8,12 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
+// support vuex
+import Vuex from 'vuex'
+Vue.use(Vuex)
+
+import storeData from './store/index'
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -39,6 +45,11 @@ Vue.component('systeminfo-component', require('./components/SystemInfoComponent.
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+const store = new Vuex.Store(
+    storeData
+)
+
 const app = new Vue({
     el: '#app',
+    store: store
 });
