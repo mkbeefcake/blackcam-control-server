@@ -3494,6 +3494,25 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -3515,8 +3534,11 @@ __webpack_require__.r(__webpack_exports__);
       apertureNormalised: "0",
       apertureOrdinal: "0",
       absoluteZoomMM: "0",
+      absoluteZoomMMForOffset: "0",
       absoluteZoomNormalised: "0",
+      absoluteZoomNormalisedForOffset: "0",
       continuousZoomSpeed: "0",
+      continuousZoomSpeedForOffset: "0",
       fstopSliderValues: [{
         label: "1.2",
         value: "1077"
@@ -3712,7 +3734,8 @@ __webpack_require__.r(__webpack_exports__);
       debugger;
       var command = {
         type: 'absolute-zoom-mm',
-        absoluteZoomMM: this.absoluteZoomMM
+        absoluteZoomMM: this.isRelativeFocus == true ? this.absoluteZoomMMForOffset : this.absoluteZoomMM,
+        isRelativeFocus: this.isRelativeFocus
       };
       this.sendLensCommand(command);
       alert('Sent Absolute Zoom (mm) command');
@@ -3721,7 +3744,8 @@ __webpack_require__.r(__webpack_exports__);
       debugger;
       var command = {
         type: 'absolute-zoom-normalised',
-        absoluteZoomNormalised: this.absoluteZoomNormalised
+        absoluteZoomNormalised: this.isRelativeFocus == true ? this.absoluteZoomNormalisedForOffset : this.absoluteZoomNormalised,
+        isRelativeFocus: this.isRelativeFocus
       };
       this.sendLensCommand(command);
       alert('Sent Absolute Zoom (Normalised) command');
@@ -3730,7 +3754,8 @@ __webpack_require__.r(__webpack_exports__);
       debugger;
       var command = {
         type: 'continuous-zoom-speed',
-        continuousZoomSpeed: this.continuousZoomSpeed
+        continuousZoomSpeed: this.isRelativeFocus == true ? this.continuousZoomSpeedForOffset : this.continuousZoomSpeed,
+        isRelativeFocus: this.isRelativeFocus
       };
       this.sendLensCommand(command);
       alert('Sent Continuous Zoom (Speed) command');
@@ -47238,7 +47263,35 @@ var render = function() {
       _vm._v(" "),
       this.showZoom
         ? _c("div", { staticClass: "form-group", attrs: { id: "zoom-body" } }, [
-            _c("table", { staticClass: "table" }, [
+            _c("div", { staticClass: "row" }, [
+              _c("div", { staticClass: "col-sm-6" }, [
+                _c("label", [_vm._v("Lens Type")]),
+                _vm._v(" "),
+                _c(
+                  "select",
+                  {
+                    staticClass: "form-control",
+                    attrs: { id: "relativeFocusType" },
+                    on: {
+                      change: function($event) {
+                        return _vm.onChangedLensType($event)
+                      }
+                    }
+                  },
+                  [
+                    _c("option", { attrs: { value: "MFT", checked: "" } }, [
+                      _vm._v("MFT Lens")
+                    ]),
+                    _vm._v(" "),
+                    _c("option", { attrs: { value: "EF" } }, [
+                      _vm._v("EF Lens")
+                    ])
+                  ]
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("table", { staticClass: "table mt-3" }, [
               _c("tbody", [
                 _c("tr", [
                   _c("td", { attrs: { width: "30%" } }, [
@@ -47249,21 +47302,43 @@ var render = function() {
                     "td",
                     { attrs: { width: "40%" } },
                     [
-                      _c("custom-slider", {
-                        attrs: {
-                          raising: "",
-                          min: "0",
-                          max: "100",
-                          step: "10"
-                        },
-                        model: {
-                          value: _vm.absoluteZoomMM,
-                          callback: function($$v) {
-                            _vm.absoluteZoomMM = $$v
-                          },
-                          expression: "absoluteZoomMM"
-                        }
-                      })
+                      !this.isRelativeFocus
+                        ? _c("custom-slider", {
+                            key: "sliderAbsoluteZoom",
+                            attrs: {
+                              raising: "",
+                              min: "0",
+                              max: "100",
+                              step: "10"
+                            },
+                            model: {
+                              value: _vm.absoluteZoomMM,
+                              callback: function($$v) {
+                                _vm.absoluteZoomMM = $$v
+                              },
+                              expression: "absoluteZoomMM"
+                            }
+                          })
+                        : _vm._e(),
+                      _vm._v(" "),
+                      this.isRelativeFocus
+                        ? _c("custom-slider", {
+                            key: "sliderRelativeZoom",
+                            attrs: {
+                              raising: "",
+                              min: "-20",
+                              max: "20",
+                              step: "5"
+                            },
+                            model: {
+                              value: _vm.absoluteZoomMMForOffset,
+                              callback: function($$v) {
+                                _vm.absoluteZoomMMForOffset = $$v
+                              },
+                              expression: "absoluteZoomMMForOffset"
+                            }
+                          })
+                        : _vm._e()
                     ],
                     1
                   ),
@@ -47287,21 +47362,43 @@ var render = function() {
                   _c(
                     "td",
                     [
-                      _c("custom-slider", {
-                        attrs: {
-                          raising: "",
-                          min: "0.0",
-                          max: "1.0",
-                          step: "0.01"
-                        },
-                        model: {
-                          value: _vm.absoluteZoomNormalised,
-                          callback: function($$v) {
-                            _vm.absoluteZoomNormalised = $$v
-                          },
-                          expression: "absoluteZoomNormalised"
-                        }
-                      })
+                      !this.isRelativeFocus
+                        ? _c("custom-slider", {
+                            key: "sliderAbsoluteZoomNormalised",
+                            attrs: {
+                              raising: "",
+                              min: "0.0",
+                              max: "1.0",
+                              step: "0.01"
+                            },
+                            model: {
+                              value: _vm.absoluteZoomNormalised,
+                              callback: function($$v) {
+                                _vm.absoluteZoomNormalised = $$v
+                              },
+                              expression: "absoluteZoomNormalised"
+                            }
+                          })
+                        : _vm._e(),
+                      _vm._v(" "),
+                      this.isRelativeFocus
+                        ? _c("custom-slider", {
+                            key: "sliderAbsoluteZoomNormalisedForOffset",
+                            attrs: {
+                              raising: "",
+                              min: "-1.0",
+                              max: "1.0",
+                              step: "0.01"
+                            },
+                            model: {
+                              value: _vm.absoluteZoomNormalisedForOffset,
+                              callback: function($$v) {
+                                _vm.absoluteZoomNormalisedForOffset = $$v
+                              },
+                              expression: "absoluteZoomNormalisedForOffset"
+                            }
+                          })
+                        : _vm._e()
                     ],
                     1
                   ),
@@ -47325,21 +47422,43 @@ var render = function() {
                   _c(
                     "td",
                     [
-                      _c("custom-slider", {
-                        attrs: {
-                          raising: "",
-                          min: "0.0",
-                          max: "1.0",
-                          step: "0.01"
-                        },
-                        model: {
-                          value: _vm.continuousZoomSpeed,
-                          callback: function($$v) {
-                            _vm.continuousZoomSpeed = $$v
-                          },
-                          expression: "continuousZoomSpeed"
-                        }
-                      })
+                      !this.isRelativeFocus
+                        ? _c("custom-slider", {
+                            key: "sliderContinuousZoomSpeed",
+                            attrs: {
+                              raising: "",
+                              min: "0.0",
+                              max: "1.0",
+                              step: "0.01"
+                            },
+                            model: {
+                              value: _vm.continuousZoomSpeed,
+                              callback: function($$v) {
+                                _vm.continuousZoomSpeed = $$v
+                              },
+                              expression: "continuousZoomSpeed"
+                            }
+                          })
+                        : _vm._e(),
+                      _vm._v(" "),
+                      this.isRelativeFocus
+                        ? _c("custom-slider", {
+                            key: "sliderContinuousZoomSpeedForOffset",
+                            attrs: {
+                              raising: "",
+                              min: "-1.0",
+                              max: "1.0",
+                              step: "0.01"
+                            },
+                            model: {
+                              value: _vm.continuousZoomSpeedForOffset,
+                              callback: function($$v) {
+                                _vm.continuousZoomSpeedForOffset = $$v
+                              },
+                              expression: "continuousZoomSpeedForOffset"
+                            }
+                          })
+                        : _vm._e()
                     ],
                     1
                   ),

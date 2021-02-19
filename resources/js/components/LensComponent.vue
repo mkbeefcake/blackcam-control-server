@@ -92,21 +92,40 @@
             </table>
         </div>
         <div class="form-group" id="zoom-body" v-if="this.showZoom">
-            <table class="table">
+            <div class="row">
+                <div class="col-sm-6">            
+                    <label>Lens Type</label>
+                    <select class="form-control" id="relativeFocusType" v-on:change="onChangedLensType($event)">
+                        <option value="MFT" checked>MFT Lens</option>
+                        <option value="EF">EF Lens</option>
+                    </select>
+                </div>
+            </div>
+
+            <table class="table mt-3">
                 <tbody>
                     <tr>
                         <td width="30%">Set absolute zoom (mm)</td>
-                        <td width="40%"><custom-slider raising min="0" max="100" step="10" v-model="absoluteZoomMM"/></td>
+                        <td width="40%">
+                            <custom-slider raising min="0" max="100" step="10" v-if="!this.isRelativeFocus" v-model="absoluteZoomMM" key="sliderAbsoluteZoom"/>
+                            <custom-slider raising min="-20" max="20" step="5" v-if="this.isRelativeFocus" v-model="absoluteZoomMMForOffset" key="sliderRelativeZoom"/>
+                        </td>
                         <td width="30%"><button class="btn btn-primary" id="btnSetZoomMM" v-on:click="setAbsoluteZoomMM" >Set</button></td>
                     </tr>
                     <tr>
                         <td>Set absolute zoom (normalised)</td>
-                        <td><custom-slider raising min="0.0" max="1.0" step="0.01" v-model="absoluteZoomNormalised"/></td>
+                        <td>
+                            <custom-slider raising min="0.0" max="1.0" step="0.01" v-if="!this.isRelativeFocus" v-model="absoluteZoomNormalised" key="sliderAbsoluteZoomNormalised"/>
+                            <custom-slider raising min="-1.0" max="1.0" step="0.01" v-if="this.isRelativeFocus" v-model="absoluteZoomNormalisedForOffset" key="sliderAbsoluteZoomNormalisedForOffset"/>
+                        </td>
                         <td><button class="btn btn-primary" id="btnZoomNormalised" v-on:click="setAbsoluteZoomNormalised">Set</button></td>
                     </tr>
                     <tr>
                         <td>Set continuous zoom (speed)</td>
-                        <td><custom-slider raising min="0.0" max="1.0" step="0.01" v-model="continuousZoomSpeed"/></td>
+                        <td>
+                            <custom-slider raising min="0.0" max="1.0" step="0.01" v-if="!this.isRelativeFocus" v-model="continuousZoomSpeed" key="sliderContinuousZoomSpeed"/>
+                            <custom-slider raising min="-1.0" max="1.0" step="0.01" v-if="this.isRelativeFocus" v-model="continuousZoomSpeedForOffset" key="sliderContinuousZoomSpeedForOffset"/>
+                        </td>
                         <td><button class="btn btn-primary" id="btnZoomSpeed" v-on:click="setContinuousZoomSpeed">Set</button></td>
                     </tr>
                 </tbody>
@@ -143,8 +162,11 @@ export default {
             apertureNormalised: "0",
             apertureOrdinal: "0",
             absoluteZoomMM: "0",
+            absoluteZoomMMForOffset: "0",
             absoluteZoomNormalised: "0",
+            absoluteZoomNormalisedForOffset: "0",
             continuousZoomSpeed: "0",
+            continuousZoomSpeedForOffset: "0",
             fstopSliderValues: [
                 {
                     label: "1.2",
@@ -383,7 +405,8 @@ export default {
             debugger;
             var command = {
                 type : 'absolute-zoom-mm',
-                absoluteZoomMM: this.absoluteZoomMM
+                absoluteZoomMM: this.isRelativeFocus == true ? this.absoluteZoomMMForOffset : this.absoluteZoomMM,
+                isRelativeFocus: this.isRelativeFocus,
             };
 
             this.sendLensCommand(command);
@@ -393,7 +416,8 @@ export default {
             debugger;
             var command = {
                 type : 'absolute-zoom-normalised',
-                absoluteZoomNormalised: this.absoluteZoomNormalised
+                absoluteZoomNormalised: this.isRelativeFocus == true? this.absoluteZoomNormalisedForOffset : this.absoluteZoomNormalised,
+                isRelativeFocus: this.isRelativeFocus,
             };
 
             this.sendLensCommand(command);
@@ -403,7 +427,8 @@ export default {
             debugger;
             var command = {
                 type : 'continuous-zoom-speed',
-                continuousZoomSpeed: this.continuousZoomSpeed
+                continuousZoomSpeed: this.isRelativeFocus == true ? this.continuousZoomSpeedForOffset : this.continuousZoomSpeed,
+                isRelativeFocus: this.isRelativeFocus,
             };
 
             this.sendLensCommand(command);
