@@ -86,16 +86,17 @@
         socket.on('status-code', function(socketId, msg) {
             console.log('status-code callback is called');
 
-            // updateCameraInfo(socketId, JSON.parse(msg));
+            updateCameraInfo(socketId, JSON.parse(msg));
         });
 
     })
 
-    // function updateCameraInfo(socketId, statusObject) {
-    //     Vue.$store.commit('status-code', socketId, statusObject);
-    // }
+    function updateCameraInfo(socketId, statusObject) {
+        store.commit('status-code', socketId, statusObject);
+    }
 
     function updateSelectedCamera(statusObject) {
+
         if (statusObject.type == "get-info") {
             console.log("get-info is called");
 
