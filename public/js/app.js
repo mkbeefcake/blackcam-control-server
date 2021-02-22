@@ -64167,6 +64167,7 @@ Vue.component('systeminfo-component', __webpack_require__(/*! ./components/Syste
  */
 
 var store = new vuex__WEBPACK_IMPORTED_MODULE_0__["default"].Store(_store_index__WEBPACK_IMPORTED_MODULE_1__["default"]);
+window.VueStore = store;
 var app = new Vue({
   el: '#app',
   store: store

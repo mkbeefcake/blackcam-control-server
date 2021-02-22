@@ -69,6 +69,7 @@
                 console.log('New device: ' + msg);
             }
             refreshCameraList(JSON.parse(msg));
+            updateCameraInfo(socketId, JSON.parse(msg));
         });
 
         socket.on('device-removed', function(socketId, msg){
@@ -92,7 +93,7 @@
     })
 
     function updateCameraInfo(socketId, statusObject) {
-        store.commit('status-code', socketId, statusObject);
+        VueStore.commit('status-code', socketId, statusObject);
     }
 
     function updateSelectedCamera(statusObject) {

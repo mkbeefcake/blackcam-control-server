@@ -48,6 +48,7 @@ Vue.component('systeminfo-component', require('./components/SystemInfoComponent.
 const store = new Vuex.Store(
     storeData
 )
+window.VueStore = store;
 
 const app = new Vue({
     el: '#app',
