@@ -65270,7 +65270,11 @@ var state = {};
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ({});
+/* harmony default export */ __webpack_exports__["default"] = ({
+  updateCameraStatusCode: function updateCameraStatusCode(state, cameraId, statusObject) {
+    console.log("VueX.store.updateCameraStatus Code is called");
+  }
+});
 
 /***/ }),
 

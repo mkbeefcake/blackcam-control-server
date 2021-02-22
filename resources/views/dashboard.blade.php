@@ -69,7 +69,6 @@
                 console.log('New device: ' + msg);
             }
             refreshCameraList(JSON.parse(msg));
-            updateCameraInfo(socketId, JSON.parse(msg));
         });
 
         socket.on('device-removed', function(socketId, msg){
@@ -87,13 +86,13 @@
         socket.on('status-code', function(socketId, msg) {
             console.log('status-code callback is called');
 
-            updateCameraInfo(socketId, JSON.parse(msg));
+            updateCameraStatusCode(socketId, JSON.parse(msg));
         });
 
     })
 
-    function updateCameraInfo(socketId, statusObject) {
-        VueStore.commit('status-code', socketId, statusObject);
+    function updateCameraStatusCode(socketId, statusObject) {
+        VueStore.commit('updateCameraStatusCode', socketId, statusObject);
     }
 
     function updateSelectedCamera(statusObject) {
