@@ -304,6 +304,7 @@ export default {
             showISO : false,
             showShutter: false,
             showExposureForVideo: false,
+            showDisplayLUT: false,
             colorTemperature: "2500",
             tint: "0",
             dimensions: 0,

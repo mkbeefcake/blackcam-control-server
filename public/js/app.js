@@ -4897,6 +4897,7 @@ __webpack_require__.r(__webpack_exports__);
       showISO: false,
       showShutter: false,
       showExposureForVideo: false,
+      showDisplayLUT: false,
       colorTemperature: "2500",
       tint: "0",
       dimensions: 0,

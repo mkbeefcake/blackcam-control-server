@@ -58,6 +58,12 @@ io.on('connection', (socket) => {
         io.emit('status', socket.id, status);
     });
 
+    socket.on('status-code', (information) => {
+        console.log(socket.id + " : (status-code) : " + information);
+
+        io.emit('status-code', socket.id, information);
+    })
+
     /** admin control communication channel */
     socket.on('admin', (socketId, msg) => {
         console.log(msg);

@@ -81,9 +81,19 @@
 
             if (socketId == selectedCameraId) 
                 updateSelectedCamera(JSON.parse(msg));
-        })
+        });
+
+        socket.on('status-code', function(socketId, msg) {
+            console.log('status-code callback is called');
+
+            // updateCameraInfo(socketId, JSON.parse(msg));
+        });
 
     })
+
+    // function updateCameraInfo(socketId, statusObject) {
+    //     Vue.$store.commit('status-code', socketId, statusObject);
+    // }
 
     function updateSelectedCamera(statusObject) {
         if (statusObject.type == "get-info") {
