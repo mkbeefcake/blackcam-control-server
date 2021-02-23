@@ -65274,9 +65274,10 @@ var state = {
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   updateCameraStatusCode: function updateCameraStatusCode(state, _ref) {
-    var cameraId = _ref.cameraId,
+    var socketId = _ref.socketId,
         statusObject = _ref.statusObject;
-    console.log("VueX.store.updateCameraStatus Code is called"); //  cameras[cameraId] = statusObject;
+    console.log("VueX.store.updateCameraStatus Code is called");
+    var cameraId = socketId; //  cameras[cameraId] = statusObject;
 
     if (statusObject.type == "aperture-fstop") {
       cameras[cameraId].apertureFStop = statusObject.apertureFStop;

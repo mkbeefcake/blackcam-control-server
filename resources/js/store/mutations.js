@@ -1,6 +1,8 @@
 export default {
-    updateCameraStatusCode(state, {cameraId, statusObject}) {
+    updateCameraStatusCode(state, {socketId, statusObject}) {
         console.log("VueX.store.updateCameraStatus Code is called");
+
+        var cameraId = socketId;
         
         //  cameras[cameraId] = statusObject;
         if (statusObject.type == "aperture-fstop") {
