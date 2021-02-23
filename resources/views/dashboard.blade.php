@@ -92,7 +92,7 @@
     })
 
     function updateCameraStatusCode(socketId, statusObject) {
-        VueStore.commit('updateCameraStatusCode', socketId, statusObject);
+        VueStore.commit('updateCameraStatusCode', {socketId, statusObject});
     }
 
     function updateSelectedCamera(statusObject) {
