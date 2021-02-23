@@ -65251,7 +65251,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var state = {};
+var state = {
+  cameras: {}
+};
 /* harmony default export */ __webpack_exports__["default"] = ({
   state: state,
   getters: _getters__WEBPACK_IMPORTED_MODULE_1__["default"],
@@ -65273,6 +65275,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   updateCameraStatusCode: function updateCameraStatusCode(state, cameraId, statusObject) {
     console.log("VueX.store.updateCameraStatus Code is called");
+    cameras[cameraId] = statusObject;
   }
 });
 
