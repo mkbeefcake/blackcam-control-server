@@ -4,65 +4,65 @@ export default {
 
         var cameraId = socketId;
         
-        //  cameras[cameraId] = statusObject;
+        //  state.cameras[cameraId] = statusObject;
         if (statusObject.type == "aperture-fstop") {
-            cameras[cameraId].apertureFStop = statusObject.apertureFStop;
+            state.cameras[cameraId].apertureFStop = statusObject.apertureFStop;
         }
         else if (statusObject.type == "aperture-normalised") {
-            cameras[cameraId].apertureNormalised = statusObject.apertureNormalised;
+            state.cameras[cameraId].apertureNormalised = statusObject.apertureNormalised;
         }
         else if (statusObject.type == "absolute-zoom-mm") {
-            cameras[cameraId].absoluteZoomMM = statusObject.absoluteZoomMM;
+            state.cameras[cameraId].absoluteZoomMM = statusObject.absoluteZoomMM;
         }
         else if (statusObject.type == "set-iso") {
-            cameras[cameraId].isoValue = statusObject.isoValue;
+            state.cameras[cameraId].isoValue = statusObject.isoValue;
         }
         else if (statusObject.type == "range-mode") {
-            cameras[cameraId].rangeMode = statusObject.rangeMode;
+            state.cameras[cameraId].rangeMode = statusObject.rangeMode;
         }
         else if (statusObject.type == "display-lut") {
-            cameras[cameraId].selectedLUT = statusObject.selectedLUT;
-            cameras[cameraId].lutStatus = statusObject.lutStatus;
+            state.cameras[cameraId].selectedLUT = statusObject.selectedLUT;
+            state.cameras[cameraId].lutStatus = statusObject.lutStatus;
         }
         else if (statusObject.type == "sharpen-level") {
-            cameras[cameraId].sharpenLevel = statusObject.sharpenLevel;
+            state.cameras[cameraId].sharpenLevel = statusObject.sharpenLevel;
         }
         else if (statusObject.type == "record-format") {
-            cameras[cameraId].recordFrameRate = statusObject.recordFrameRate;
-            cameras[cameraId].recordSensorFrameRate = statusObject.recordSensorFrameRate;
-            cameras[cameraId].recordFrameWidth = statusObject.recordFrameWidth;
-            cameras[cameraId].recordFrameHeight = statusObject.recordFrameHeight;
-            cameras[cameraId].recordFlags = statusObject.recordFlags;
+            state.cameras[cameraId].recordFrameRate = statusObject.recordFrameRate;
+            state.cameras[cameraId].recordSensorFrameRate = statusObject.recordSensorFrameRate;
+            state.cameras[cameraId].recordFrameWidth = statusObject.recordFrameWidth;
+            state.cameras[cameraId].recordFrameHeight = statusObject.recordFrameHeight;
+            state.cameras[cameraId].recordFlags = statusObject.recordFlags;
         }
         else if (statusObject.type == "shutter-angle") {
-            cameras[cameraId].shutterAngleValue = statusObject.shutterAngleValue;
+            state.cameras[cameraId].shutterAngleValue = statusObject.shutterAngleValue;
         }
         else if (statusObject.type == "auto-exposure") {
-            cameras[cameraId].autoExposureValue = statusObject.autoExposureValue;
+            state.cameras[cameraId].autoExposureValue = statusObject.autoExposureValue;
         }
         else if (statusObject.type == "video-mode") {
-            cameras[cameraId].frameRate = statusObject.frameRate;
-            cameras[cameraId].mRate = statusObject.mRate;
-            cameras[cameraId].dimensions = statusObject.dimensions;
-            cameras[cameraId].interlaced = statusObject.interlaced;
+            state.cameras[cameraId].frameRate = statusObject.frameRate;
+            state.cameras[cameraId].mRate = statusObject.mRate;
+            state.cameras[cameraId].dimensions = statusObject.dimensions;
+            state.cameras[cameraId].interlaced = statusObject.interlaced;
         }
         else if (statusObject.type == "white-balance") {
-            cameras[cameraId].colorTemperature = statusObject.colorTemperature;
-            cameras[cameraId].tint = statusObject.tint;
+            state.cameras[cameraId].colorTemperature = statusObject.colorTemperature;
+            state.cameras[cameraId].tint = statusObject.tint;
         }
         else if (statusObject.type == "shutter-speed") {
-            cameras[cameraId].shutterSpeedValue = statusObject.shutterSpeedValue;
+            state.cameras[cameraId].shutterSpeedValue = statusObject.shutterSpeedValue;
         }
         else if (statusObject.type == "set-transportmode") {
-            cameras[cameraId].transportModeValue = statusObject.transportModeValue;
-            cameras[cameraId].transportSpeedValue = statusObject.transportSpeedValue;
-            cameras[cameraId].transportFlagsValue = statusObject.transportFlagsValue;
-            cameras[cameraId].slot1StorageValue = statusObject.slot1StorageValue;
-            cameras[cameraId].slot2StorageValue = statusObject.slot2StorageValue;
+            state.cameras[cameraId].transportModeValue = statusObject.transportModeValue;
+            state.cameras[cameraId].transportSpeedValue = statusObject.transportSpeedValue;
+            state.cameras[cameraId].transportFlagsValue = statusObject.transportFlagsValue;
+            state.cameras[cameraId].slot1StorageValue = statusObject.slot1StorageValue;
+            state.cameras[cameraId].slot2StorageValue = statusObject.slot2StorageValue;
         }
         else if (statusObject.type == "set-transportmode") {
-            cameras[cameraId].basicCodecValue = statusObject.basicCodecValue;
-            cameras[cameraId].codeVariantValue = statusObject.codeVariantValue;
+            state.cameras[cameraId].basicCodecValue = statusObject.basicCodecValue;
+            state.cameras[cameraId].codeVariantValue = statusObject.codeVariantValue;
         }
 
 
