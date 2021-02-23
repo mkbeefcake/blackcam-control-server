@@ -65839,7 +65839,8 @@ __webpack_require__.r(__webpack_exports__);
 var state = {
   cameras: []
 };
-var vuexLocal = new VuexPersistence({
+var vuexLocalStorage = new vuex_persist__WEBPACK_IMPORTED_MODULE_3__["default"]({
+  key: 'vuex',
   storage: window.localStorage
 });
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -65847,7 +65848,7 @@ var vuexLocal = new VuexPersistence({
   getters: _getters__WEBPACK_IMPORTED_MODULE_1__["default"],
   actions: _actions__WEBPACK_IMPORTED_MODULE_0__["default"],
   mutations: _mutations__WEBPACK_IMPORTED_MODULE_2__["default"],
-  plugins: [vuexLocal.plugin]
+  plugins: [vuexLocalStorage.plugin]
 });
 
 /***/ }),
