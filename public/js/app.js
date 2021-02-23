@@ -64137,7 +64137,6 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 
 
 Vue.use(vuex__WEBPACK_IMPORTED_MODULE_0__["default"]);
-
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -64165,6 +64164,7 @@ Vue.component('systeminfo-component', __webpack_require__(/*! ./components/Syste
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
+
 
 var store = new vuex__WEBPACK_IMPORTED_MODULE_0__["default"].Store(_store_index__WEBPACK_IMPORTED_MODULE_1__["default"]);
 window.VueStore = store;
@@ -65254,11 +65254,15 @@ __webpack_require__.r(__webpack_exports__);
 var state = {
   cameras: []
 };
+var vuexLocal = new VuexPersistence({
+  storage: window.localStorage
+});
 /* harmony default export */ __webpack_exports__["default"] = ({
   state: state,
   getters: _getters__WEBPACK_IMPORTED_MODULE_1__["default"],
   actions: _actions__WEBPACK_IMPORTED_MODULE_0__["default"],
-  mutations: _mutations__WEBPACK_IMPORTED_MODULE_2__["default"]
+  mutations: _mutations__WEBPACK_IMPORTED_MODULE_2__["default"],
+  plugins: [vuexLocal.plugin]
 });
 
 /***/ }),

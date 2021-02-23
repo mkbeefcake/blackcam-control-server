@@ -6,9 +6,14 @@ const state = {
     cameras : [],
 }
 
+const vuexLocal = new VuexPersistence({
+    storage: window.localStorage,
+});
+
 export default {
     state, 
     getters,
     actions,
-    mutations
+    mutations,
+    plugins: [vuexLocal.plugin],
 }
