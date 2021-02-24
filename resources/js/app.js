@@ -39,6 +39,7 @@ Vue.component('ptzcontrol-component', require('./components/PTZControlComponent.
 Vue.component('systeminfo-component', require('./components/SystemInfoComponent.vue').default);
 Vue.component('cameralist-component', require('./components/CameraListComponent.vue').default);
 
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

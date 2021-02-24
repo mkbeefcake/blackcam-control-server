@@ -66051,20 +66051,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-Vue.mixin({
-  methods: {
-    getSelectedCamera: function getSelectedCamera() {
-      var selectedCameraId = this.$store.state.selectedCameraId;
-      if (selectedCameraId == "") return undefined;
-      var cameras = this.$store.state.cameras;
-      var index = cameras.findIndex(function (_) {
-        return _.cameraId === selectedCameraId;
-      });
-      if (index == -1) return undefined;
-      return cameras[index];
-    }
-  }
-});
 var state = {
   cameras: [],
   selectedCameraId: ""
@@ -66078,7 +66064,21 @@ var vuexLocalStorage = new vuex_persist__WEBPACK_IMPORTED_MODULE_3__["default"](
   getters: _getters__WEBPACK_IMPORTED_MODULE_1__["default"],
   actions: _actions__WEBPACK_IMPORTED_MODULE_0__["default"],
   mutations: _mutations__WEBPACK_IMPORTED_MODULE_2__["default"],
-  plugins: [vuexLocalStorage.plugin]
+  plugins: [vuexLocalStorage.plugin],
+  mixin: {
+    methods: {
+      getSelectedCamera: function getSelectedCamera() {
+        var selectedCameraId = this.$store.state.selectedCameraId;
+        if (selectedCameraId == "") return undefined;
+        var cameras = this.$store.state.cameras;
+        var index = cameras.findIndex(function (_) {
+          return _.cameraId === selectedCameraId;
+        });
+        if (index == -1) return undefined;
+        return cameras[index];
+      }
+    }
+  }
 });
 
 /***/ }),
