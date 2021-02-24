@@ -19,7 +19,7 @@ export default {
     actions,
     mutations,
     plugins: [vuexLocalStorage.plugin],
-    mixin: {
+    mixins: {
         methods: {
             getSelectedCamera: function() {
                 var selectedCameraId = state.selectedCameraId;

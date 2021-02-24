@@ -66065,7 +66065,7 @@ var vuexLocalStorage = new vuex_persist__WEBPACK_IMPORTED_MODULE_3__["default"](
   actions: _actions__WEBPACK_IMPORTED_MODULE_0__["default"],
   mutations: _mutations__WEBPACK_IMPORTED_MODULE_2__["default"],
   plugins: [vuexLocalStorage.plugin],
-  mixin: {
+  mixins: {
     methods: {
       getSelectedCamera: function getSelectedCamera() {
         var selectedCameraId = state.selectedCameraId;
