@@ -1,4 +1,7 @@
 export default {
+    updateSelectedCameraId(state, cameraId) {
+        state.selectedCameraId = cameraId;
+    },
     addNewCamera(state, {cameraId, cameraObject}, commit) {
         // remove empty camera structures
         var cameras = state.cameras.filter(item => item != null && item != undefined && item.cameraId != undefined);
@@ -16,6 +19,10 @@ export default {
         // remove empty camera structures
         var cameras = state.cameras.filter(item => item != null && item != undefined && item.cameraId != undefined);
         state.cameras = cameras;
+
+        if (cameraId == state.selectedCameraId) {
+            state.selectedCameraId = "";
+        }
 
         // remove camera
         const index = state.cameras.findIndex(_ => _.cameraId === cameraId);

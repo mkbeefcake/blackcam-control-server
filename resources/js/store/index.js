@@ -5,6 +5,7 @@ import VuexPersist from 'vuex-persist';
 
 const state = {
     cameras : [],
+    selectedCameraId : "",
 }
 
 const vuexLocalStorage = new VuexPersist({

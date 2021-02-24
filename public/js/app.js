@@ -2224,8 +2224,9 @@ __webpack_require__.r(__webpack_exports__);
         cameras[i].classList.remove('active');
         if (cameras[i].id == camera.cameraId) cameras[i].classList.add('active');
       }
-      /** Update information */
 
+      store.commit('updateSelectedCameraId', camera.cameraId);
+      /** Update information */
 
       selectedCameraId = camera.cameraId;
       var command = {
@@ -66013,7 +66014,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var state = {
-  cameras: []
+  cameras: [],
+  selectedCameraId: ""
 };
 var vuexLocalStorage = new vuex_persist__WEBPACK_IMPORTED_MODULE_3__["default"]({
   key: 'vuex',
@@ -66051,6 +66053,9 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToAr
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  updateSelectedCameraId: function updateSelectedCameraId(state, cameraId) {
+    state.selectedCameraId = cameraId;
+  },
   addNewCamera: function addNewCamera(state, _ref, commit) {
     var cameraId = _ref.cameraId,
         cameraObject = _ref.cameraObject;
@@ -66078,7 +66083,12 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     var cameras = state.cameras.filter(function (item) {
       return item != null && item != undefined && item.cameraId != undefined;
     });
-    state.cameras = cameras; // remove camera
+    state.cameras = cameras;
+
+    if (cameraId == state.selectedCameraId) {
+      state.selectedCameraId = "";
+    } // remove camera
+
 
     var index = state.cameras.findIndex(function (_) {
       return _.cameraId === cameraId;

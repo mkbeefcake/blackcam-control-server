@@ -26,6 +26,8 @@ export default {
                     cameras[i].classList.add('active');
             }    
 
+            store.commit('updateSelectedCameraId', camera.cameraId);
+
             /** Update information */
             selectedCameraId = camera.cameraId;
             var command = {
