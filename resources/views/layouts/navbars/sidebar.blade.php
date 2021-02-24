@@ -1,14 +1,10 @@
-<div class="sidebar">
+<div id="sidebar" class="sidebar">
     <div class="sidebar-wrapper">
         <div class="logo">
             <a href="{{ route('home') }}" class="simple-text logo-mini">{{ __('BM') }}</a>
             <a href="{{ route('home') }}" class="simple-text logo-normal">{{ __('Camera List') }}</a>
         </div>
-        <ul class="nav" id="cameraList">
-            <li v-for="camera in VueStore.state.cameras" :id="camera.cameraId">
-                {{ camera.cameraName }}
-            </li>            
-        </ul>
+        <camera-list></camera-list>
     </div>
 </div>
 <script>

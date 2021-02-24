@@ -37,6 +37,7 @@ Vue.component('colorcorrection-component', require('./components/ColorCorrection
 Vue.component('ptzcontrol-component', require('./components/PTZControlComponent.vue').default);
 
 Vue.component('systeminfo-component', require('./components/SystemInfoComponent.vue').default);
+Vue.component('camera-list', require('./components/CameraListComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -51,5 +52,10 @@ window.VueStore = store;
 
 const app = new Vue({
     el: '#app',
+    store: store
+});
+
+const sidebar = new Vue({
+    el: '#sidebar',
     store: store
 });
