@@ -441,7 +441,7 @@ export default {
         colorTemperature: {
             get: function() {
                 var selectedCamera = this.getSelectedCamera();
-                if (selectedCamera == undefined)
+                if (selectedCamera == undefined || selectedCamera.colorTemperature == undefined)
                     return "2500";
 
                 return selectedCamera.colorTemperature.toString();
@@ -457,7 +457,7 @@ export default {
         tint: {
             get: function() {
                 var selectedCamera = this.getSelectedCamera();
-                if (selectedCamera == undefined)
+                if (selectedCamera == undefined || selectedCamera.tint == undefined)
                     return "0";
 
                 return selectedCamera.tint.toString();
@@ -473,7 +473,7 @@ export default {
         dimensions: {
             get: function() {
                 var selectedCamera = this.getSelectedCamera();
-                if (selectedCamera == undefined)
+                if (selectedCamera == undefined || selectedCamera.dimensions == undefined)
                     return 0;
                 
                 return selectedCamera.dimensions;
@@ -489,9 +489,9 @@ export default {
         frameRate: {
             get: function() {
                 var selectedCamera = this.getSelectedCamera();
-                if (selectedCamera == undefined)
+                if (selectedCamera == undefined || selectedCamera.frameRate == undefined)
                     return 24;
-                
+
                 return selectedCamera.frameRate;
             },
             set: function(newValue) {
@@ -505,7 +505,7 @@ export default {
         mRate: {
             get: function() {
                 var selectedCamera = this.getSelectedCamera();
-                if (selectedCamera == undefined)
+                if (selectedCamera == undefined || selectedCamera.mRate == undefined)
                     return 0;
                     
                 return selectedCamera.mRate;
@@ -521,9 +521,9 @@ export default {
         interlaced: {
             get: function() {
                 var selectedCamera = this.getSelectedCamera();
-                if (selectedCamera == undefined)
+                if (selectedCamera == undefined || selectedCamera.interlaced == undefined)
                     return 0;
-
+                
                 return selectedCamera.interlaced;
             },
             set: function(newValue) {
@@ -537,9 +537,9 @@ export default {
         shutterAngleValue: {
             get: function() {
                 var selectedCamera = this.getSelectedCamera();
-                if (selectedCamera == undefined)
-                    return "18000";
-                
+                if (selectedCamera == undefined || selectedCamera.shutterAngleValue == undefined)
+                    return "18000";                
+
                 return selectedCamera.shutterAngleValue.toString();
             },
             set: function(newValue) {
@@ -553,7 +553,7 @@ export default {
         shutterSpeedValue: {
             get: function() {
                 var selectedCamera = this.getSelectedCamera();
-                if (selectedCamera == undefined)
+                if (selectedCamera == undefined || selectedCamera.shutterSpeedValue == undefined)
                     return "24";
                 
                 return selectedCamera.shutterSpeedValue.toString();
@@ -569,7 +569,7 @@ export default {
         selectedLUT: {
             get: function() {
                 var selectedCamera = this.getSelectedCamera();
-                if (selectedCamera == undefined)
+                if (selectedCamera == undefined || selectedCamera.selectedLUT == undefined)
                     return "0";
                 
                 return selectedCamera.selectedLUT.toString();
@@ -585,7 +585,7 @@ export default {
         lutStatus: {
             get: function() {
                 var selectedCamera = this.getSelectedCamera();
-                if (selectedCamera == undefined)
+                if (selectedCamera == undefined || selectedCamera.lutStatus == undefined)
                     return "0";
                 
                 return selectedCamera.lutStatus.toString();
@@ -601,7 +601,7 @@ export default {
         sharpenLevel: {
             get: function() {
                 var selectedCamera = this.getSelectedCamera();
-                if (selectedCamera == undefined)
+                if (selectedCamera == undefined || selectedCamera.sharpenLevel == undefined)
                     return 0;
 
                 return selectedCamera.sharpenLevel;
@@ -617,9 +617,9 @@ export default {
         isoValue: {
             get: function() {
                 var selectedCamera = this.getSelectedCamera();
-                if (selectedCamera == undefined)
+                if (selectedCamera == undefined || selectedCamera.isoValue == undefined)
                     return "0";
-                
+
                 return selectedCamera.isoValue.toString();
             },
             set: function(newValue) {
@@ -633,7 +633,7 @@ export default {
         rangeMode: {
             get: function() {
                 var selectedCamera = this.getSelectedCamera();
-                if (selectedCamera == undefined)
+                if (selectedCamera == undefined || selectedCamera.rangeMode == undefined)
                     return 0;
 
                 return selectedCamera.rangeMode;
@@ -649,9 +649,9 @@ export default {
         recordFrameRate: {
             get: function() {
                 var selectedCamera = this.getSelectedCamera();
-                if (selectedCamera == undefined)
+                if (selectedCamera == undefined || selectedCamera.recordFrameRate == undefined)
                     return 24;
-                
+
                 return selectedCamera.recordFrameRate;
             },
             set: function(newValue) {
@@ -665,7 +665,7 @@ export default {
         recordSensorFrameRate: {
             get: function() {
                 var selectedCamera = this.getSelectedCamera();
-                if (selectedCamera == undefined)
+                if (selectedCamera == undefined || selectedCamera.recordSensorFrameRate == undefined)
                     return 0;
 
                 return selectedCamera.recordSensorFrameRate;
@@ -681,7 +681,7 @@ export default {
         recordFrameWidth: {
             get: function() {
                 var selectedCamera = this.getSelectedCamera();
-                if (selectedCamera == undefined)
+                if (selectedCamera == undefined || selectedCamera.recordFrameWidth == undefined)
                     return 1920;
 
                 return selectedCamera.recordFrameWidth;
@@ -697,7 +697,7 @@ export default {
         recordFrameHeight: {
             get: function() {
                 var selectedCamera = this.getSelectedCamera();
-                if (selectedCamera == undefined)
+                if (selectedCamera == undefined || selectedCamera.recordFrameHeight == undefined)
                     return 1080;
 
                 return selectedCamera.recordFrameHeight;
@@ -713,7 +713,7 @@ export default {
         recordFlags: {
             get: function() {
                 var selectedCamera = this.getSelectedCamera();
-                if (selectedCamera == undefined)
+                if (selectedCamera == undefined || selectedCamera.recordFlags == undefined)
                     return 0;
 
                 return selectedCamera.recordFlags;
@@ -729,7 +729,7 @@ export default {
         autoExposureValue: {
             get: function() {
                 var selectedCamera = this.getSelectedCamera();
-                if (selectedCamera == undefined)
+                if (selectedCamera == undefined || selectedCamera.autoExposureValue == undefined)
                     return "0";
                 
                 return selectedCamera.autoExposureValue.toString();

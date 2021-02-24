@@ -3701,7 +3701,7 @@ __webpack_require__.r(__webpack_exports__);
     apertureFStop: {
       get: function get() {
         var selectedCamera = this.getSelectedCamera();
-        if (selectedCamera == undefined) return "0";
+        if (selectedCamera == undefined || selectedCamera.apertureFStop == undefined) return "0";
         return selectedCamera.apertureFStop.toString();
       },
       set: function set(newValue) {
@@ -3713,7 +3713,7 @@ __webpack_require__.r(__webpack_exports__);
     apertureNormalised: {
       get: function get() {
         var selectedCamera = this.getSelectedCamera();
-        if (selectedCamera == undefined) return "0";
+        if (selectedCamera == undefined || selectedCamera.apertureNormalised == undefined) return "0";
         return selectedCamera.apertureNormalised.toString();
       },
       set: function set(newValue) {
@@ -3725,7 +3725,7 @@ __webpack_require__.r(__webpack_exports__);
     absoluteZoomMM: {
       get: function get() {
         var selectedCamera = this.getSelectedCamera();
-        if (selectedCamera == undefined) return "0";
+        if (selectedCamera == undefined || selectedCamera.absoluteZoomMM == undefined) return "0";
         return selectedCamera.absoluteZoomMM.toString();
       },
       set: function set(newValue) {
@@ -4439,7 +4439,7 @@ __webpack_require__.r(__webpack_exports__);
     transportModeValue: {
       get: function get() {
         var selectedCamera = this.getSelectedCamera();
-        if (selectedCamera == undefined) return "0";
+        if (selectedCamera == undefined || selectedCamera.transportModeValue == undefined) return "0";
         return selectedCamera.transportModeValue.toString();
       },
       set: function set(newValue) {
@@ -4451,7 +4451,7 @@ __webpack_require__.r(__webpack_exports__);
     transportSpeedValue: {
       get: function get() {
         var selectedCamera = this.getSelectedCamera();
-        if (selectedCamera == undefined) return "0";
+        if (selectedCamera == undefined || selectedCamera.transportSpeedValue == undefined) return "0";
         return selectedCamera.transportSpeedValue.toString();
       },
       set: function set(newValue) {
@@ -4463,7 +4463,7 @@ __webpack_require__.r(__webpack_exports__);
     transportFlagsValue: {
       get: function get() {
         var selectedCamera = this.getSelectedCamera();
-        if (selectedCamera == undefined) return "1";
+        if (selectedCamera == undefined || selectedCamera.transportFlagsValue == undefined) return "1";
         return selectedCamera.transportFlagsValue.toString();
       },
       set: function set(newValue) {
@@ -4475,7 +4475,7 @@ __webpack_require__.r(__webpack_exports__);
     slot1StorageValue: {
       get: function get() {
         var selectedCamera = this.getSelectedCamera();
-        if (selectedCamera == undefined) return "0";
+        if (selectedCamera == undefined || selectedCamera.slot1StorageValue == undefined) return "0";
         return selectedCamera.slot1StorageValue.toString();
       },
       set: function set(newValue) {
@@ -4487,7 +4487,7 @@ __webpack_require__.r(__webpack_exports__);
     slot2StorageValue: {
       get: function get() {
         var selectedCamera = this.getSelectedCamera();
-        if (selectedCamera == undefined) return "0";
+        if (selectedCamera == undefined || selectedCamera.slot2StorageValue == undefined) return "0";
         return selectedCamera.slot2StorageValue.toString();
       },
       set: function set(newValue) {
@@ -4499,7 +4499,7 @@ __webpack_require__.r(__webpack_exports__);
     basicCodecValue: {
       get: function get() {
         var selectedCamera = this.getSelectedCamera();
-        if (selectedCamera == undefined) return "0";
+        if (selectedCamera == undefined || selectedCamera.basicCodecValue == undefined) return "0";
         return selectedCamera.basicCodecValue.toString();
       },
       set: function set(newValue) {
@@ -4511,7 +4511,7 @@ __webpack_require__.r(__webpack_exports__);
     codeVariantValue: {
       get: function get() {
         var selectedCamera = this.getSelectedCamera();
-        if (selectedCamera == undefined) return "0";
+        if (selectedCamera == undefined || selectedCamera.codeVariantValue == undefined) return "0";
         return selectedCamera.codeVariantValue.toString();
       },
       set: function set(newValue) {
@@ -5206,7 +5206,7 @@ __webpack_require__.r(__webpack_exports__);
     colorTemperature: {
       get: function get() {
         var selectedCamera = this.getSelectedCamera();
-        if (selectedCamera == undefined) return "2500";
+        if (selectedCamera == undefined || selectedCamera.colorTemperature == undefined) return "2500";
         return selectedCamera.colorTemperature.toString();
       },
       set: function set(newValue) {
@@ -5218,7 +5218,7 @@ __webpack_require__.r(__webpack_exports__);
     tint: {
       get: function get() {
         var selectedCamera = this.getSelectedCamera();
-        if (selectedCamera == undefined) return "0";
+        if (selectedCamera == undefined || selectedCamera.tint == undefined) return "0";
         return selectedCamera.tint.toString();
       },
       set: function set(newValue) {
@@ -5230,7 +5230,7 @@ __webpack_require__.r(__webpack_exports__);
     dimensions: {
       get: function get() {
         var selectedCamera = this.getSelectedCamera();
-        if (selectedCamera == undefined) return 0;
+        if (selectedCamera == undefined || selectedCamera.dimensions == undefined) return 0;
         return selectedCamera.dimensions;
       },
       set: function set(newValue) {
@@ -5242,7 +5242,7 @@ __webpack_require__.r(__webpack_exports__);
     frameRate: {
       get: function get() {
         var selectedCamera = this.getSelectedCamera();
-        if (selectedCamera == undefined) return 24;
+        if (selectedCamera == undefined || selectedCamera.frameRate == undefined) return 24;
         return selectedCamera.frameRate;
       },
       set: function set(newValue) {
@@ -5254,7 +5254,7 @@ __webpack_require__.r(__webpack_exports__);
     mRate: {
       get: function get() {
         var selectedCamera = this.getSelectedCamera();
-        if (selectedCamera == undefined) return 0;
+        if (selectedCamera == undefined || selectedCamera.mRate == undefined) return 0;
         return selectedCamera.mRate;
       },
       set: function set(newValue) {
@@ -5266,7 +5266,7 @@ __webpack_require__.r(__webpack_exports__);
     interlaced: {
       get: function get() {
         var selectedCamera = this.getSelectedCamera();
-        if (selectedCamera == undefined) return 0;
+        if (selectedCamera == undefined || selectedCamera.interlaced == undefined) return 0;
         return selectedCamera.interlaced;
       },
       set: function set(newValue) {
@@ -5278,7 +5278,7 @@ __webpack_require__.r(__webpack_exports__);
     shutterAngleValue: {
       get: function get() {
         var selectedCamera = this.getSelectedCamera();
-        if (selectedCamera == undefined) return "18000";
+        if (selectedCamera == undefined || selectedCamera.shutterAngleValue == undefined) return "18000";
         return selectedCamera.shutterAngleValue.toString();
       },
       set: function set(newValue) {
@@ -5290,7 +5290,7 @@ __webpack_require__.r(__webpack_exports__);
     shutterSpeedValue: {
       get: function get() {
         var selectedCamera = this.getSelectedCamera();
-        if (selectedCamera == undefined) return "24";
+        if (selectedCamera == undefined || selectedCamera.shutterSpeedValue == undefined) return "24";
         return selectedCamera.shutterSpeedValue.toString();
       },
       set: function set(newValue) {
@@ -5302,7 +5302,7 @@ __webpack_require__.r(__webpack_exports__);
     selectedLUT: {
       get: function get() {
         var selectedCamera = this.getSelectedCamera();
-        if (selectedCamera == undefined) return "0";
+        if (selectedCamera == undefined || selectedCamera.selectedLUT == undefined) return "0";
         return selectedCamera.selectedLUT.toString();
       },
       set: function set(newValue) {
@@ -5314,7 +5314,7 @@ __webpack_require__.r(__webpack_exports__);
     lutStatus: {
       get: function get() {
         var selectedCamera = this.getSelectedCamera();
-        if (selectedCamera == undefined) return "0";
+        if (selectedCamera == undefined || selectedCamera.lutStatus == undefined) return "0";
         return selectedCamera.lutStatus.toString();
       },
       set: function set(newValue) {
@@ -5326,7 +5326,7 @@ __webpack_require__.r(__webpack_exports__);
     sharpenLevel: {
       get: function get() {
         var selectedCamera = this.getSelectedCamera();
-        if (selectedCamera == undefined) return 0;
+        if (selectedCamera == undefined || selectedCamera.sharpenLevel == undefined) return 0;
         return selectedCamera.sharpenLevel;
       },
       set: function set(newValue) {
@@ -5338,7 +5338,7 @@ __webpack_require__.r(__webpack_exports__);
     isoValue: {
       get: function get() {
         var selectedCamera = this.getSelectedCamera();
-        if (selectedCamera == undefined) return "0";
+        if (selectedCamera == undefined || selectedCamera.isoValue == undefined) return "0";
         return selectedCamera.isoValue.toString();
       },
       set: function set(newValue) {
@@ -5350,7 +5350,7 @@ __webpack_require__.r(__webpack_exports__);
     rangeMode: {
       get: function get() {
         var selectedCamera = this.getSelectedCamera();
-        if (selectedCamera == undefined) return 0;
+        if (selectedCamera == undefined || selectedCamera.rangeMode == undefined) return 0;
         return selectedCamera.rangeMode;
       },
       set: function set(newValue) {
@@ -5362,7 +5362,7 @@ __webpack_require__.r(__webpack_exports__);
     recordFrameRate: {
       get: function get() {
         var selectedCamera = this.getSelectedCamera();
-        if (selectedCamera == undefined) return 24;
+        if (selectedCamera == undefined || selectedCamera.recordFrameRate == undefined) return 24;
         return selectedCamera.recordFrameRate;
       },
       set: function set(newValue) {
@@ -5374,7 +5374,7 @@ __webpack_require__.r(__webpack_exports__);
     recordSensorFrameRate: {
       get: function get() {
         var selectedCamera = this.getSelectedCamera();
-        if (selectedCamera == undefined) return 0;
+        if (selectedCamera == undefined || selectedCamera.recordSensorFrameRate == undefined) return 0;
         return selectedCamera.recordSensorFrameRate;
       },
       set: function set(newValue) {
@@ -5386,7 +5386,7 @@ __webpack_require__.r(__webpack_exports__);
     recordFrameWidth: {
       get: function get() {
         var selectedCamera = this.getSelectedCamera();
-        if (selectedCamera == undefined) return 1920;
+        if (selectedCamera == undefined || selectedCamera.recordFrameWidth == undefined) return 1920;
         return selectedCamera.recordFrameWidth;
       },
       set: function set(newValue) {
@@ -5398,7 +5398,7 @@ __webpack_require__.r(__webpack_exports__);
     recordFrameHeight: {
       get: function get() {
         var selectedCamera = this.getSelectedCamera();
-        if (selectedCamera == undefined) return 1080;
+        if (selectedCamera == undefined || selectedCamera.recordFrameHeight == undefined) return 1080;
         return selectedCamera.recordFrameHeight;
       },
       set: function set(newValue) {
@@ -5410,7 +5410,7 @@ __webpack_require__.r(__webpack_exports__);
     recordFlags: {
       get: function get() {
         var selectedCamera = this.getSelectedCamera();
-        if (selectedCamera == undefined) return 0;
+        if (selectedCamera == undefined || selectedCamera.recordFlags == undefined) return 0;
         return selectedCamera.recordFlags;
       },
       set: function set(newValue) {
@@ -5422,7 +5422,7 @@ __webpack_require__.r(__webpack_exports__);
     autoExposureValue: {
       get: function get() {
         var selectedCamera = this.getSelectedCamera();
-        if (selectedCamera == undefined) return "0";
+        if (selectedCamera == undefined || selectedCamera.autoExposureValue == undefined) return "0";
         return selectedCamera.autoExposureValue.toString();
       },
       set: function set(newValue) {

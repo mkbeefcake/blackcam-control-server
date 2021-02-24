@@ -306,9 +306,9 @@ export default {
         apertureFStop: {
             get: function() {
                 var selectedCamera = this.getSelectedCamera();
-                if (selectedCamera == undefined)
+                if (selectedCamera == undefined || selectedCamera.apertureFStop == undefined)
                     return "0";
-                
+
                 return selectedCamera.apertureFStop.toString();
             },
             set: function(newValue) {
@@ -322,7 +322,7 @@ export default {
         apertureNormalised: {
             get: function() {
                 var selectedCamera = this.getSelectedCamera();
-                if (selectedCamera == undefined)
+                if (selectedCamera == undefined || selectedCamera.apertureNormalised == undefined)
                     return "0";
                 
                 return selectedCamera.apertureNormalised.toString();
@@ -338,7 +338,7 @@ export default {
         absoluteZoomMM: {
             get: function() {
                 var selectedCamera = this.getSelectedCamera();
-                if (selectedCamera == undefined)
+                if (selectedCamera == undefined || selectedCamera.absoluteZoomMM == undefined)
                     return "0";
 
                 return selectedCamera.absoluteZoomMM.toString();

@@ -164,7 +164,7 @@ export default {
         transportModeValue: {
             get: function() {
                 var selectedCamera = this.getSelectedCamera();
-                if (selectedCamera == undefined)
+                if (selectedCamera == undefined || selectedCamera.transportModeValue == undefined)
                     return "0";
 
                 return selectedCamera.transportModeValue.toString();
@@ -180,7 +180,7 @@ export default {
         transportSpeedValue: {
             get: function() {
                 var selectedCamera = this.getSelectedCamera();
-                if (selectedCamera == undefined)
+                if (selectedCamera == undefined || selectedCamera.transportSpeedValue == undefined)
                     return "0";
 
                 return selectedCamera.transportSpeedValue.toString();
@@ -196,7 +196,7 @@ export default {
         transportFlagsValue: {
             get: function() {
                 var selectedCamera = this.getSelectedCamera();
-                if (selectedCamera == undefined)
+                if (selectedCamera == undefined || selectedCamera.transportFlagsValue == undefined)
                     return "1";
                 
                 return selectedCamera.transportFlagsValue.toString();
@@ -212,7 +212,7 @@ export default {
         slot1StorageValue: {
             get: function() {
                 var selectedCamera = this.getSelectedCamera();
-                if (selectedCamera == undefined)
+                if (selectedCamera == undefined || selectedCamera.slot1StorageValue == undefined)
                     return "0";
 
                 return selectedCamera.slot1StorageValue.toString();
@@ -228,7 +228,7 @@ export default {
         slot2StorageValue: {
             get: function() {
                 var selectedCamera = this.getSelectedCamera();
-                if (selectedCamera == undefined) 
+                if (selectedCamera == undefined || selectedCamera.slot2StorageValue == undefined) 
                     return "0";
 
                 return selectedCamera.slot2StorageValue.toString();
@@ -244,7 +244,7 @@ export default {
         basicCodecValue: {
             get: function() {
                 var selectedCamera = this.getSelectedCamera();
-                if (selectedCamera == undefined)
+                if (selectedCamera == undefined || selectedCamera.basicCodecValue == undefined)
                     return "0";
 
                 return selectedCamera.basicCodecValue.toString();
@@ -260,7 +260,7 @@ export default {
         codeVariantValue: {
             get: function() {
                 var selectedCamera = this.getSelectedCamera();
-                if (selectedCamera == undefined)
+                if (selectedCamera == undefined || selectedCamera.codeVariantValue == undefined)
                     return "0";
 
                 return selectedCamera.codeVariantValue.toString();
