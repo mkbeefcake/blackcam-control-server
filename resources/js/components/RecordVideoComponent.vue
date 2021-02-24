@@ -146,21 +146,147 @@ export default {
             showCodec : false,
             showTransportMode : false,
             showPlaybackControl : false,
-            basicCodecValue: "0",
-            codeVariantValue: "0",
+            // basicCodecValue: "0",
+            // codeVariantValue: "0",
             codeVariantArray: {
                 "uncompressed" : "0",
                 "lossy 3:1" : "1",
                 "lossy 4:1" : "2",
             },
-            transportModeValue: "0",
-            transportSpeedValue: "0",
-            transportFlagsValue: "1",
-            slot1StorageValue: "0",
-            slot2StorageValue: "0",
+            // transportModeValue: "0",
+            // transportSpeedValue: "0",
+            // transportFlagsValue: "1",
+            // slot1StorageValue: "0",
+            // slot2StorageValue: "0",
+        }
+    },
+    computed: {
+        transportModeValue: {
+            get: function() {
+                var selectedCamera = this.getSelectedCamera();
+                if (selectedCamera == undefined)
+                    return "0";
+
+                return selectedCamera.transportModeValue.toString();
+            },
+            set: function(newValue) {
+                var selectedCamera = this.getSelectedCamera();
+                if (selectedCamera == undefined)
+                    return;
+
+                selectedCamera.transportModeValue = parseInt(newValue);
+            }
+        },
+        transportSpeedValue: {
+            get: function() {
+                var selectedCamera = this.getSelectedCamera();
+                if (selectedCamera == undefined)
+                    return "0";
+
+                return selectedCamera.transportSpeedValue.toString();
+            },
+            set: function(newValue) {
+                var selectedCamera = this.getSelectedCamera();
+                if (selectedCamera == undefined)
+                    return;
+
+                selectedCamera.transportSpeedValue = parseInt(newValue);
+            }
+        },
+        transportFlagsValue: {
+            get: function() {
+                var selectedCamera = this.getSelectedCamera();
+                if (selectedCamera == undefined)
+                    return "1";
+                
+                return selectedCamera.transportFlagsValue.toString();
+            },
+            set: function(newValue) {
+                var selectedCamera = this.getSelectedCamera();
+                if (selectedCamera == undefined)
+                    return;
+
+                selectedCamera.transportFlagsValue = parseInt(newValue);
+            }
+        },
+        slot1StorageValue: {
+            get: function() {
+                var selectedCamera = this.getSelectedCamera();
+                if (selectedCamera == undefined)
+                    return "0";
+
+                return selectedCamera.slot1StorageValue.toString();
+            },
+            set: function(newValue) {
+                var selectedCamera = this.getSelectedCamera();
+                if (selectedCamera == undefined)
+                    return;
+
+                selectedCamera.slot1StorageValue = parseInt(newValue);
+            }
+        },
+        slot2StorageValue: {
+            get: function() {
+                var selectedCamera = this.getSelectedCamera();
+                if (selectedCamera == undefined) 
+                    return "0";
+
+                return selectedCamera.slot2StorageValue.toString();
+            },
+            set: function(newValue) {
+                var selectedCamera = this.getSelectedCamera();
+                if (selectedCamera == undefined)
+                    return;
+
+                selectedCamera.slot2StorageValue = parseInt(newValue);
+            }
+        },
+        basicCodecValue: {
+            get: function() {
+                var selectedCamera = this.getSelectedCamera();
+                if (selectedCamera == undefined)
+                    return "0";
+
+                return selectedCamera.basicCodecValue.toString();
+            },
+            set: function(newValue) {
+                var selectedCamera = this.getSelectedCamera();
+                if (selectedCamera == undefined)
+                    return;
+
+                selectedCamera.basicCodecValue = parseInt(newValue);
+            }
+        },
+        codeVariantValue: {
+            get: function() {
+                var selectedCamera = this.getSelectedCamera();
+                if (selectedCamera == undefined)
+                    return "0";
+
+                return selectedCamera.codeVariantValue.toString();
+            },
+            set: function(newValue) {
+                var selectedCamera = this.getSelectedCamera();
+                if (selectedCamera == undefined)
+                    return "0";
+
+                selectedCamera.codeVariantValue = parseInt(newValue);
+            }
         }
     },
     methods: {
+        getSelectedCamera: function() {
+            var selectedCameraId = this.$store.state.selectedCameraId;
+            if (selectedCameraId == "")
+                return undefined;
+            
+            var cameras = this.$store.state.cameras;
+            var index = cameras.findIndex(_ => _.cameraId === selectedCameraId);
+            if (index == -1)
+                return undefined;
+
+            return cameras[index];
+        },
         onRecord: function(event) {
             this.title = "Record";
             this.showRecord = true;

@@ -158,10 +158,10 @@ export default {
             isRelativeFocus: false,
             manualRelativeFocusValue: "0",
             manualAbsoluteFocusValue: "0",
-            apertureFStop: "0",
-            apertureNormalised: "0",
+            // apertureFStop: "0",
+            // apertureNormalised: "0",
             apertureOrdinal: "0",
-            absoluteZoomMM: "0",
+            // absoluteZoomMM: "0",
             absoluteZoomMMForOffset: "0",
             absoluteZoomNormalised: "0",
             absoluteZoomNormalisedForOffset: "0",
@@ -302,7 +302,70 @@ export default {
     mounted() {
         console.log('Lens-Component mounted.')
     },
+    computed: {
+        apertureFStop: {
+            get: function() {
+                var selectedCamera = this.getSelectedCamera();
+                if (selectedCamera == undefined)
+                    return "0";
+                
+                return selectedCamera.apertureFStop.toString();
+            },
+            set: function(newValue) {
+                var selectedCamera = this.getSelectedCamera();
+                if (selectedCamera == undefined)
+                    return;
+
+                selectedCamera.apertureFStop = parseInt(newValue);
+            }
+        },
+        apertureNormalised: {
+            get: function() {
+                var selectedCamera = this.getSelectedCamera();
+                if (selectedCamera == undefined)
+                    return "0";
+                
+                return selectedCamera.apertureNormalised.toString();
+            },
+            set: function(newValue) {
+                var selectedCamera = this.getSelectedCamera();
+                if (selectedCamera == undefined)
+                    return;
+                
+                selectedCamera.apertureNormalised = parseInt(newValue);
+            }
+        },
+        absoluteZoomMM: {
+            get: function() {
+                var selectedCamera = this.getSelectedCamera();
+                if (selectedCamera == undefined)
+                    return "0";
+
+                return selectedCamera.absoluteZoomMM.toString();
+            },
+            set: function(newValue) {
+                var selectedCamera = this.getSelectedCamera();
+                if (selectedCamera == undefined)
+                    return;
+                
+                selectedCamera.absoluteZoomMM = parseInt(newValue);
+            }
+        }
+
+    },
     methods: {
+        getSelectedCamera: function() {
+            var selectedCameraId = this.$store.state.selectedCameraId;
+            if (selectedCameraId == "")
+                return undefined;
+            
+            var cameras = this.$store.state.cameras;
+            var index = cameras.findIndex(_ => _.cameraId === selectedCameraId);
+            if (index == -1)
+                return undefined;
+
+            return cameras[index];
+        },
         auto: function(event) {
             this.title = "Set Auto Focus";
             this.showAuto = true;

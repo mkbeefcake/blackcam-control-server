@@ -3586,10 +3586,10 @@ __webpack_require__.r(__webpack_exports__);
       isRelativeFocus: false,
       manualRelativeFocusValue: "0",
       manualAbsoluteFocusValue: "0",
-      apertureFStop: "0",
-      apertureNormalised: "0",
+      // apertureFStop: "0",
+      // apertureNormalised: "0",
       apertureOrdinal: "0",
-      absoluteZoomMM: "0",
+      // absoluteZoomMM: "0",
       absoluteZoomMMForOffset: "0",
       absoluteZoomNormalised: "0",
       absoluteZoomNormalisedForOffset: "0",
@@ -3697,7 +3697,55 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     console.log('Lens-Component mounted.');
   },
+  computed: {
+    apertureFStop: {
+      get: function get() {
+        var selectedCamera = this.getSelectedCamera();
+        if (selectedCamera == undefined) return "0";
+        return selectedCamera.apertureFStop.toString();
+      },
+      set: function set(newValue) {
+        var selectedCamera = this.getSelectedCamera();
+        if (selectedCamera == undefined) return;
+        selectedCamera.apertureFStop = parseInt(newValue);
+      }
+    },
+    apertureNormalised: {
+      get: function get() {
+        var selectedCamera = this.getSelectedCamera();
+        if (selectedCamera == undefined) return "0";
+        return selectedCamera.apertureNormalised.toString();
+      },
+      set: function set(newValue) {
+        var selectedCamera = this.getSelectedCamera();
+        if (selectedCamera == undefined) return;
+        selectedCamera.apertureNormalised = parseInt(newValue);
+      }
+    },
+    absoluteZoomMM: {
+      get: function get() {
+        var selectedCamera = this.getSelectedCamera();
+        if (selectedCamera == undefined) return "0";
+        return selectedCamera.absoluteZoomMM.toString();
+      },
+      set: function set(newValue) {
+        var selectedCamera = this.getSelectedCamera();
+        if (selectedCamera == undefined) return;
+        selectedCamera.absoluteZoomMM = parseInt(newValue);
+      }
+    }
+  },
   methods: {
+    getSelectedCamera: function getSelectedCamera() {
+      var selectedCameraId = this.$store.state.selectedCameraId;
+      if (selectedCameraId == "") return undefined;
+      var cameras = this.$store.state.cameras;
+      var index = cameras.findIndex(function (_) {
+        return _.cameraId === selectedCameraId;
+      });
+      if (index == -1) return undefined;
+      return cameras[index];
+    },
     auto: function auto(event) {
       this.title = "Set Auto Focus";
       this.showAuto = true;
@@ -4373,21 +4421,117 @@ __webpack_require__.r(__webpack_exports__);
       showCodec: false,
       showTransportMode: false,
       showPlaybackControl: false,
-      basicCodecValue: "0",
-      codeVariantValue: "0",
+      // basicCodecValue: "0",
+      // codeVariantValue: "0",
       codeVariantArray: {
         "uncompressed": "0",
         "lossy 3:1": "1",
         "lossy 4:1": "2"
-      },
-      transportModeValue: "0",
-      transportSpeedValue: "0",
-      transportFlagsValue: "1",
-      slot1StorageValue: "0",
-      slot2StorageValue: "0"
+      } // transportModeValue: "0",
+      // transportSpeedValue: "0",
+      // transportFlagsValue: "1",
+      // slot1StorageValue: "0",
+      // slot2StorageValue: "0",
+
     };
   },
+  computed: {
+    transportModeValue: {
+      get: function get() {
+        var selectedCamera = this.getSelectedCamera();
+        if (selectedCamera == undefined) return "0";
+        return selectedCamera.transportModeValue.toString();
+      },
+      set: function set(newValue) {
+        var selectedCamera = this.getSelectedCamera();
+        if (selectedCamera == undefined) return;
+        selectedCamera.transportModeValue = parseInt(newValue);
+      }
+    },
+    transportSpeedValue: {
+      get: function get() {
+        var selectedCamera = this.getSelectedCamera();
+        if (selectedCamera == undefined) return "0";
+        return selectedCamera.transportSpeedValue.toString();
+      },
+      set: function set(newValue) {
+        var selectedCamera = this.getSelectedCamera();
+        if (selectedCamera == undefined) return;
+        selectedCamera.transportSpeedValue = parseInt(newValue);
+      }
+    },
+    transportFlagsValue: {
+      get: function get() {
+        var selectedCamera = this.getSelectedCamera();
+        if (selectedCamera == undefined) return "1";
+        return selectedCamera.transportFlagsValue.toString();
+      },
+      set: function set(newValue) {
+        var selectedCamera = this.getSelectedCamera();
+        if (selectedCamera == undefined) return;
+        selectedCamera.transportFlagsValue = parseInt(newValue);
+      }
+    },
+    slot1StorageValue: {
+      get: function get() {
+        var selectedCamera = this.getSelectedCamera();
+        if (selectedCamera == undefined) return "0";
+        return selectedCamera.slot1StorageValue.toString();
+      },
+      set: function set(newValue) {
+        var selectedCamera = this.getSelectedCamera();
+        if (selectedCamera == undefined) return;
+        selectedCamera.slot1StorageValue = parseInt(newValue);
+      }
+    },
+    slot2StorageValue: {
+      get: function get() {
+        var selectedCamera = this.getSelectedCamera();
+        if (selectedCamera == undefined) return "0";
+        return selectedCamera.slot2StorageValue.toString();
+      },
+      set: function set(newValue) {
+        var selectedCamera = this.getSelectedCamera();
+        if (selectedCamera == undefined) return;
+        selectedCamera.slot2StorageValue = parseInt(newValue);
+      }
+    },
+    basicCodecValue: {
+      get: function get() {
+        var selectedCamera = this.getSelectedCamera();
+        if (selectedCamera == undefined) return "0";
+        return selectedCamera.basicCodecValue.toString();
+      },
+      set: function set(newValue) {
+        var selectedCamera = this.getSelectedCamera();
+        if (selectedCamera == undefined) return;
+        selectedCamera.basicCodecValue = parseInt(newValue);
+      }
+    },
+    codeVariantValue: {
+      get: function get() {
+        var selectedCamera = this.getSelectedCamera();
+        if (selectedCamera == undefined) return "0";
+        return selectedCamera.codeVariantValue.toString();
+      },
+      set: function set(newValue) {
+        var selectedCamera = this.getSelectedCamera();
+        if (selectedCamera == undefined) return "0";
+        selectedCamera.codeVariantValue = parseInt(newValue);
+      }
+    }
+  },
   methods: {
+    getSelectedCamera: function getSelectedCamera() {
+      var selectedCameraId = this.$store.state.selectedCameraId;
+      if (selectedCameraId == "") return undefined;
+      var cameras = this.$store.state.cameras;
+      var index = cameras.findIndex(function (_) {
+        return _.cameraId === selectedCameraId;
+      });
+      if (index == -1) return undefined;
+      return cameras[index];
+    },
     onRecord: function onRecord(event) {
       this.title = "Record";
       this.showRecord = true;
@@ -4960,21 +5104,21 @@ __webpack_require__.r(__webpack_exports__);
       // frameRate:24, 
       // mRate:0,
       // interlaced:0,
-      sharpenLevel: 0,
-      recordFrameRate: 24,
-      recordSensorFrameRate: 0,
-      recordFrameWidth: 1920,
-      recordFrameHeight: 1080,
-      recordFlags: 0,
-      isoValue: "0",
-      rangeMode: 0,
-      shutterSpeedValue: "24",
-      shutterAngleValue: "18000",
+      // sharpenLevel: 0,
+      // recordFrameRate: 24,
+      // recordSensorFrameRate: 0,
+      // recordFrameWidth: 1920,
+      // recordFrameHeight: 1080,
+      // recordFlags: 0,
+      // isoValue: "0",
+      // rangeMode:0,
+      // shutterSpeedValue : "24",
+      // shutterAngleValue : "18000",
       exposureUSValue: "1000",
       exposureOrdinalValue: "1",
-      autoExposureValue: "0",
-      selectedLUT: "0",
-      lutStatus: "0",
+      // autoExposureValue: "0",
+      // selectedLUT: "0",
+      // lutStatus: "0",
       autoExposureSliderValues: [{
         label: "Manual Trigger",
         value: "0"
@@ -5073,28 +5217,220 @@ __webpack_require__.r(__webpack_exports__);
     },
     tint: {
       get: function get() {
-        var selectedCameraId = this.$store.state.selectedCameraId;
-        if (selectedCameraId == "") return "0";
-        var cameras = this.$store.state.cameras;
-        var index = cameras.findIndex(function (_) {
-          return _.cameraId === selectedCameraId;
-        });
-        return cameras[index].tint.toString();
+        var selectedCamera = this.getSelectedCamera();
+        if (selectedCamera == undefined) return "0";
+        return selectedCamera.tint.toString();
       },
       set: function set(newValue) {
-        var selectedCameraId = this.$store.state.selectedCameraId;
-        if (selectedCameraId == "") return;
-        var cameras = this.$store.state.cameras;
-        var index = cameras.findIndex(function (_) {
-          return _.cameraId === selectedCameraId;
-        });
-        cameras[index].tint = parseInt(newValue);
+        var selectedCamera = this.getSelectedCamera();
+        if (selectedCamera == undefined) return;
+        selectedCamera.tint = parseInt(newValue);
       }
-    } // dimensions: 0,
-    // frameRate:24, 
-    // mRate:0,
-    // interlaced:0,
-
+    },
+    dimensions: {
+      get: function get() {
+        var selectedCamera = this.getSelectedCamera();
+        if (selectedCamera == undefined) return 0;
+        return selectedCamera.dimensions;
+      },
+      set: function set(newValue) {
+        var selectedCamera = this.getSelectedCamera();
+        if (selectedCamera == undefined) return;
+        selectedCamera.dimensions = newValue;
+      }
+    },
+    frameRate: {
+      get: function get() {
+        var selectedCamera = this.getSelectedCamera();
+        if (selectedCamera == undefined) return 24;
+        return selectedCamera.frameRate;
+      },
+      set: function set(newValue) {
+        var selectedCamera = this.getSelectedCamera();
+        if (selectedCamera == undefined) return;
+        selectedCamera.frameRate = newValue;
+      }
+    },
+    mRate: {
+      get: function get() {
+        var selectedCamera = this.getSelectedCamera();
+        if (selectedCamera == undefined) return 0;
+        return selectedCamera.mRate;
+      },
+      set: function set(newValue) {
+        var selectedCamera = this.getSelectedCamera();
+        if (selectedCamera == undefined) return;
+        selectedCamera.mRate = newValue;
+      }
+    },
+    interlaced: {
+      get: function get() {
+        var selectedCamera = this.getSelectedCamera();
+        if (selectedCamera == undefined) return 0;
+        return selectedCamera.interlaced;
+      },
+      set: function set(newValue) {
+        var selectedCamera = this.getSelectedCamera();
+        if (selectedCamera == undefined) return;
+        selectedCamera.interlaced = interlaced;
+      }
+    },
+    shutterAngleValue: {
+      get: function get() {
+        var selectedCamera = this.getSelectedCamera();
+        if (selectedCamera == undefined) return "18000";
+        return selectedCamera.shutterAngleValue.toString();
+      },
+      set: function set(newValue) {
+        var selectedCamera = this.getSelectedCamera();
+        if (selectedCamera == undefined) return;
+        selectedCamera.shutterAngleValue = parseInt(newValue);
+      }
+    },
+    shutterSpeedValue: {
+      get: function get() {
+        var selectedCamera = this.getSelectedCamera();
+        if (selectedCamera == undefined) return "24";
+        return selectedCamera.shutterSpeedValue.toString();
+      },
+      set: function set(newValue) {
+        var selectedCamera = this.getSelectedCamera();
+        if (selectedCamera == undefined) return;
+        selectedCamera.shutterSpeedValue = parseInt(newValue);
+      }
+    },
+    selectedLUT: {
+      get: function get() {
+        var selectedCamera = this.getSelectedCamera();
+        if (selectedCamera == undefined) return "0";
+        return selectedCamera.selectedLUT.toString();
+      },
+      set: function set(newValue) {
+        var selectedCamera = this.getSelectedCamera();
+        if (selectedCamera == undefined) return;
+        selectedCamera.selectedLUT = parseInt(newValue);
+      }
+    },
+    lutStatus: {
+      get: function get() {
+        var selectedCamera = this.getSelectedCamera();
+        if (selectedCamera == undefined) return "0";
+        return selectedCamera.lutStatus.toString();
+      },
+      set: function set(newValue) {
+        var selectedCamera = this.getSelectedCamera();
+        if (selectedCamera == undefined) return;
+        selectedCamera.lutStatus = parseInt(newValue);
+      }
+    },
+    sharpenLevel: {
+      get: function get() {
+        var selectedCamera = this.getSelectedCamera();
+        if (selectedCamera == undefined) return 0;
+        return selectedCamera.sharpenLevel;
+      },
+      set: function set(newValue) {
+        var selectedCamera = this.getSelectedCamera();
+        if (selectedCamera == undefined) return;
+        selectedCamera.sharpenLevel = newValue;
+      }
+    },
+    isoValue: {
+      get: function get() {
+        var selectedCamera = this.getSelectedCamera();
+        if (selectedCamera == undefined) return "0";
+        return selectedCamera.isoValue.toString();
+      },
+      set: function set(newValue) {
+        var selectedCamera = this.getSelectedCamera();
+        if (selectedCamera == undefined) return;
+        selectedCamera.isoValue = parseInt(newValue);
+      }
+    },
+    rangeMode: {
+      get: function get() {
+        var selectedCamera = this.getSelectedCamera();
+        if (selectedCamera == undefined) return 0;
+        return selectedCamera.rangeMode;
+      },
+      set: function set(newValue) {
+        var selectedCamera = this.getSelectedCamera();
+        if (selectedCamera == undefined) return;
+        selectedCamera.rangeMode = newValue;
+      }
+    },
+    recordFrameRate: {
+      get: function get() {
+        var selectedCamera = this.getSelectedCamera();
+        if (selectedCamera == undefined) return 24;
+        return selectedCamera.recordFrameRate;
+      },
+      set: function set(newValue) {
+        var selectedCamera = this.getSelectedCamera();
+        if (selectedCamera == undefined) return;
+        selectedCamera.recordFrameRate = newValue;
+      }
+    },
+    recordSensorFrameRate: {
+      get: function get() {
+        var selectedCamera = this.getSelectedCamera();
+        if (selectedCamera == undefined) return 0;
+        return selectedCamera.recordSensorFrameRate;
+      },
+      set: function set(newValue) {
+        var selectedCamera = this.getSelectedCamera();
+        if (selectedCamera == undefined) return;
+        selectedCamera.recordSensorFrameRate = newValue;
+      }
+    },
+    recordFrameWidth: {
+      get: function get() {
+        var selectedCamera = this.getSelectedCamera();
+        if (selectedCamera == undefined) return 1920;
+        return selectedCamera.recordFrameWidth;
+      },
+      set: function set(newValue) {
+        var selectedCamera = this.getSelectedCamera();
+        if (selectedCamera == undefined) return;
+        selectedCamera.recordFrameWidth = newValue;
+      }
+    },
+    recordFrameHeight: {
+      get: function get() {
+        var selectedCamera = this.getSelectedCamera();
+        if (selectedCamera == undefined) return 1080;
+        return selectedCamera.recordFrameHeight;
+      },
+      set: function set(newValue) {
+        var selectedCamera = this.getSelectedCamera();
+        if (selectedCamera == undefined) return;
+        selectedCamera.recordFrameHeight = newValue;
+      }
+    },
+    recordFlags: {
+      get: function get() {
+        var selectedCamera = this.getSelectedCamera();
+        if (selectedCamera == undefined) return 0;
+        return selectedCamera.recordFlags;
+      },
+      set: function set(newValue) {
+        var selectedCamera = this.getSelectedCamera();
+        if (selectedCamera == undefined) return;
+        selectedCamera.recordFlags = newValue;
+      }
+    },
+    autoExposureValue: {
+      get: function get() {
+        var selectedCamera = this.getSelectedCamera();
+        if (selectedCamera == undefined) return "0";
+        return selectedCamera.autoExposureValue.toString();
+      },
+      set: function set(newValue) {
+        var selectedCamera = this.getSelectedCamera();
+        if (selectedCamera == undefined) return;
+        selectedCamera.autoExposureValue = parseInt(newValue);
+      }
+    }
   },
   methods: {
     getSelectedCamera: function getSelectedCamera() {

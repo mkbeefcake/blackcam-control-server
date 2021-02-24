@@ -311,21 +311,21 @@ export default {
             // frameRate:24, 
             // mRate:0,
             // interlaced:0,
-            sharpenLevel: 0,
-            recordFrameRate: 24,
-            recordSensorFrameRate: 0,
-            recordFrameWidth: 1920,
-            recordFrameHeight: 1080,
-            recordFlags: 0,
-            isoValue: "0",
-            rangeMode:0,
-            shutterSpeedValue : "24",
-            shutterAngleValue : "18000",
+            // sharpenLevel: 0,
+            // recordFrameRate: 24,
+            // recordSensorFrameRate: 0,
+            // recordFrameWidth: 1920,
+            // recordFrameHeight: 1080,
+            // recordFlags: 0,
+            // isoValue: "0",
+            // rangeMode:0,
+            // shutterSpeedValue : "24",
+            // shutterAngleValue : "18000",
             exposureUSValue: "1000",
             exposureOrdinalValue: "1",
-            autoExposureValue: "0",
-            selectedLUT: "0",
-            lutStatus: "0",
+            // autoExposureValue: "0",
+            // selectedLUT: "0",
+            // lutStatus: "0",
             autoExposureSliderValues: [
                 {
                     label: "Manual Trigger",
@@ -456,30 +456,292 @@ export default {
         },
         tint: {
             get: function() {
-                var selectedCameraId = this.$store.state.selectedCameraId;
-                if (selectedCameraId == "")
+                var selectedCamera = this.getSelectedCamera();
+                if (selectedCamera == undefined)
                     return "0";
 
-                var cameras = this.$store.state.cameras;
-                var index = cameras.findIndex(_ => _.cameraId === selectedCameraId);
-                return cameras[index].tint.toString();
-
+                return selectedCamera.tint.toString();
             },
             set: function(newValue) {
-                var selectedCameraId = this.$store.state.selectedCameraId;
-                if (selectedCameraId == "")
+                var selectedCamera = this.getSelectedCamera();
+                if (selectedCamera == undefined)
                     return;
 
-                var cameras = this.$store.state.cameras;
-                var index = cameras.findIndex(_ => _.cameraId === selectedCameraId);
-                cameras[index].tint = parseInt(newValue);
+                selectedCamera.tint = parseInt(newValue);
             }
         },
-        // dimensions: 0,
-        // frameRate:24, 
-        // mRate:0,
-        // interlaced:0,
+        dimensions: {
+            get: function() {
+                var selectedCamera = this.getSelectedCamera();
+                if (selectedCamera == undefined)
+                    return 0;
+                
+                return selectedCamera.dimensions;
+            },
+            set: function(newValue) {
+                var selectedCamera = this.getSelectedCamera();
+                if (selectedCamera == undefined)
+                    return;
 
+                selectedCamera.dimensions = newValue;
+            }
+        },
+        frameRate: {
+            get: function() {
+                var selectedCamera = this.getSelectedCamera();
+                if (selectedCamera == undefined)
+                    return 24;
+                
+                return selectedCamera.frameRate;
+            },
+            set: function(newValue) {
+                var selectedCamera = this.getSelectedCamera();
+                if (selectedCamera == undefined)
+                    return;
+                
+                selectedCamera.frameRate = newValue;
+            }
+        },
+        mRate: {
+            get: function() {
+                var selectedCamera = this.getSelectedCamera();
+                if (selectedCamera == undefined)
+                    return 0;
+                    
+                return selectedCamera.mRate;
+            },
+            set: function(newValue) {
+                var selectedCamera = this.getSelectedCamera();
+                if (selectedCamera == undefined)
+                    return;
+                    
+                selectedCamera.mRate = newValue;
+            }
+        },
+        interlaced: {
+            get: function() {
+                var selectedCamera = this.getSelectedCamera();
+                if (selectedCamera == undefined)
+                    return 0;
+
+                return selectedCamera.interlaced;
+            },
+            set: function(newValue) {
+                var selectedCamera = this.getSelectedCamera();
+                if (selectedCamera == undefined)
+                    return;
+
+                selectedCamera.interlaced = interlaced;
+            }
+        },
+        shutterAngleValue: {
+            get: function() {
+                var selectedCamera = this.getSelectedCamera();
+                if (selectedCamera == undefined)
+                    return "18000";
+                
+                return selectedCamera.shutterAngleValue.toString();
+            },
+            set: function(newValue) {
+                var selectedCamera = this.getSelectedCamera();
+                if (selectedCamera == undefined)
+                    return;
+                
+                selectedCamera.shutterAngleValue = parseInt(newValue);
+            }
+        },
+        shutterSpeedValue: {
+            get: function() {
+                var selectedCamera = this.getSelectedCamera();
+                if (selectedCamera == undefined)
+                    return "24";
+                
+                return selectedCamera.shutterSpeedValue.toString();
+            },
+            set: function(newValue) {
+                var selectedCamera = this.getSelectedCamera();
+                if (selectedCamera == undefined)
+                    return;
+
+                selectedCamera.shutterSpeedValue = parseInt(newValue);
+            }
+        },
+        selectedLUT: {
+            get: function() {
+                var selectedCamera = this.getSelectedCamera();
+                if (selectedCamera == undefined)
+                    return "0";
+                
+                return selectedCamera.selectedLUT.toString();
+            },
+            set: function(newValue) {
+                var selectedCamera = this.getSelectedCamera();
+                if (selectedCamera == undefined)
+                    return;
+
+                selectedCamera.selectedLUT = parseInt(newValue);
+            }
+        },
+        lutStatus: {
+            get: function() {
+                var selectedCamera = this.getSelectedCamera();
+                if (selectedCamera == undefined)
+                    return "0";
+                
+                return selectedCamera.lutStatus.toString();
+            },
+            set: function(newValue) {
+                var selectedCamera = this.getSelectedCamera();
+                if (selectedCamera == undefined)
+                    return;
+                
+                selectedCamera.lutStatus = parseInt(newValue);
+            }
+        },
+        sharpenLevel: {
+            get: function() {
+                var selectedCamera = this.getSelectedCamera();
+                if (selectedCamera == undefined)
+                    return 0;
+
+                return selectedCamera.sharpenLevel;
+            },
+            set: function(newValue) {
+                var selectedCamera = this.getSelectedCamera();
+                if (selectedCamera == undefined)
+                    return;
+                
+                selectedCamera.sharpenLevel = newValue;
+            }
+        },
+        isoValue: {
+            get: function() {
+                var selectedCamera = this.getSelectedCamera();
+                if (selectedCamera == undefined)
+                    return "0";
+                
+                return selectedCamera.isoValue.toString();
+            },
+            set: function(newValue) {
+                var selectedCamera = this.getSelectedCamera();
+                if (selectedCamera == undefined)
+                    return;
+                
+                selectedCamera.isoValue = parseInt(newValue);
+            }
+        },
+        rangeMode: {
+            get: function() {
+                var selectedCamera = this.getSelectedCamera();
+                if (selectedCamera == undefined)
+                    return 0;
+
+                return selectedCamera.rangeMode;
+            },
+            set: function(newValue) {
+                var selectedCamera = this.getSelectedCamera();
+                if (selectedCamera == undefined)
+                    return;
+                
+                selectedCamera.rangeMode = newValue;
+            }
+        },
+        recordFrameRate: {
+            get: function() {
+                var selectedCamera = this.getSelectedCamera();
+                if (selectedCamera == undefined)
+                    return 24;
+                
+                return selectedCamera.recordFrameRate;
+            },
+            set: function(newValue) {
+                var selectedCamera = this.getSelectedCamera();
+                if (selectedCamera == undefined)
+                    return;
+                
+                selectedCamera.recordFrameRate = newValue;
+            }
+        },
+        recordSensorFrameRate: {
+            get: function() {
+                var selectedCamera = this.getSelectedCamera();
+                if (selectedCamera == undefined)
+                    return 0;
+
+                return selectedCamera.recordSensorFrameRate;
+            },
+            set: function(newValue) {
+                var selectedCamera = this.getSelectedCamera();
+                if (selectedCamera == undefined)
+                    return;
+
+                selectedCamera.recordSensorFrameRate = newValue;
+            }
+        },
+        recordFrameWidth: {
+            get: function() {
+                var selectedCamera = this.getSelectedCamera();
+                if (selectedCamera == undefined)
+                    return 1920;
+
+                return selectedCamera.recordFrameWidth;
+            },
+            set: function(newValue) {
+                var selectedCamera = this.getSelectedCamera();
+                if (selectedCamera == undefined)
+                    return;
+                
+                selectedCamera.recordFrameWidth = newValue;
+            }
+        },
+        recordFrameHeight: {
+            get: function() {
+                var selectedCamera = this.getSelectedCamera();
+                if (selectedCamera == undefined)
+                    return 1080;
+
+                return selectedCamera.recordFrameHeight;
+            },
+            set: function(newValue) {
+                var selectedCamera = this.getSelectedCamera();
+                if (selectedCamera == undefined)
+                    return;
+
+                selectedCamera.recordFrameHeight = newValue;
+            }
+        },
+        recordFlags: {
+            get: function() {
+                var selectedCamera = this.getSelectedCamera();
+                if (selectedCamera == undefined)
+                    return 0;
+
+                return selectedCamera.recordFlags;
+            },
+            set: function(newValue) {
+                var selectedCamera = this.getSelectedCamera();
+                if (selectedCamera == undefined)
+                    return;
+
+                selectedCamera.recordFlags = newValue;
+            }
+        },
+        autoExposureValue: {
+            get: function() {
+                var selectedCamera = this.getSelectedCamera();
+                if (selectedCamera == undefined)
+                    return "0";
+                
+                return selectedCamera.autoExposureValue.toString();
+            },
+            set: function(newValue) {
+                var selectedCamera = this.getSelectedCamera();
+                if (selectedCamera == undefined)
+                    return;
+
+                selectedCamera.autoExposureValue = parseInt(newValue);
+            }
+        }
     },
     methods: {
         getSelectedCamera: function() {
