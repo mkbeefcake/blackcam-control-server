@@ -4,7 +4,7 @@
             <a href="{{ route('home') }}" class="simple-text logo-mini">{{ __('BM') }}</a>
             <a href="{{ route('home') }}" class="simple-text logo-normal">{{ __('Camera List') }}</a>
         </div>
-        <camera-list></camera-list>
+        <cameralist-component></cameralist-component>
     </div>
 </div>
 <script>

@@ -37,7 +37,7 @@ Vue.component('colorcorrection-component', require('./components/ColorCorrection
 Vue.component('ptzcontrol-component', require('./components/PTZControlComponent.vue').default);
 
 Vue.component('systeminfo-component', require('./components/SystemInfoComponent.vue').default);
-Vue.component('camera-list', require('./components/CameraListComponent.vue').default);
+Vue.component('cameralist-component', require('./components/CameraListComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

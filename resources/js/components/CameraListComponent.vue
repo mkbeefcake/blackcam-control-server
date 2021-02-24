@@ -1,6 +1,6 @@
 <template>
     <ul class="nav" id="cameraList">
-        <li v-for="camera in VueStore.state.cameras" :key="camera.cameraId">
+        <li v-for="camera in cameras" :id="camera.cameraId">
             {{ camera.cameraName }}
         </li>            
     </ul>
@@ -18,5 +18,3 @@ export default {
     })
 }
 </script>
-<style scoped>
-</style>

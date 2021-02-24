@@ -85,7 +85,8 @@
 
         socket.on('status-code', function(socketId, msg) {
             console.log('status-code callback is called');
-            VueStore.commit('updateCameraStatusCode', {socketId, JSON.parse(msg)});
+            var statusObject = JSON.parse(msg);
+            VueStore.commit('updateCameraStatusCode', { socketId, statusObject });
         });
 
     })

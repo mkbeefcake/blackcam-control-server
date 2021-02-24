@@ -37,6 +37,7 @@
     <body class="{{ $class ?? '' }}">
         @stack('socketjs')
         @auth()
+        
             <div class="wrapper">
                     @include('layouts.navbars.sidebar')
                 <div class="main-panel">
