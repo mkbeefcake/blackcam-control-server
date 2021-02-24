@@ -1,27 +1,29 @@
 export default {
-    refreshCameraList(state, cameraList) {
-
+    addNewCamera(state, {cameraId, cameraObject}, commit) {
         // remove empty camera structures
-        var cameras = state.cameras.filter(item => item.cameraName != undefined);
+        var cameras = state.cameras.filter(item => item != null && item != undefined && item.cameraId != undefined);
         state.cameras = cameras;
 
-        // update
-        for (const [key, value] of Object.entries(cameraList)) {
-            var cameraId = key;
-            var cameraObject = JSON.parse(value);
+        // add new camera
+        const camera = state.cameras.find(u => u.cameraId === cameraId);
+        if (camera == undefined) 
+            state.cameras = [...state.cameras, {cameraId: cameraId}];
 
-            const camera = state.cameras.find(u => u.cameraId === cameraId);
-            if (camera == undefined) 
-                state.cameras = [...state.cameras, {cameraId: cameraId}];
-    
-            const index = state.cameras.findIndex(_ => _.cameraId === cameraId);
-            state.cameras[index].cameraName = cameraObject.cameraName;
-        }
+        const index = state.cameras.findIndex(_ => _.cameraId === cameraId);
+        state.cameras[index] = Object.assign(state.cameras[index], cameraObject);
     },
-    updateCameraStatusCode(state, {socketId, statusObject}) {
+    removeExistCamera(state, {cameraId, cameraObject}, commit) {
+        // remove empty camera structures
+        var cameras = state.cameras.filter(item => item != null && item != undefined && item.cameraId != undefined);
+        state.cameras = cameras;
+
+        // remove camera
+        const index = state.cameras.findIndex(_ => _.cameraId === cameraId);
+        delete state.cameras[index];
+    },
+    updateCameraStatusCode(state, {cameraId, statusObject}) {
         console.log("VueX.store.updateCameraStatus Code is called");
 
-        var cameraId = socketId;                
         const camera = state.cameras.find(u => u.cameraId === cameraId);
         if (camera == undefined) 
             state.cameras = [...state.cameras, {cameraId: cameraId}];

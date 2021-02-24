@@ -67,13 +67,25 @@
             }
             else {
                 console.log('New device: ' + msg);
+
+                var cameraId = socketId;
+                var cameraObject = JSON.parse(msg);
+                VueStore.commit('addNewCamera', {cameraId, cameraObject});
             }
-            VueStore.commit('refreshCameraList', JSON.parse(msg));
         });
 
         socket.on('device-removed', function(socketId, msg){
             console.log('device-removed callback is called');
-            VueStore.commit('refreshCameraList', JSON.parse(msg));
+            if (socket.id == socketId) {
+                console.log('This is me');
+            }
+            else {
+                console.log('Delete device: ' + msg);
+
+                var cameraId = socketId;
+                var cameraObject = JSON.parse(msg);
+                VueStore.commit('removeExistCamera', {cameraId, cameraObject});
+            }
         });
 
         socket.on('status', function(socketId, msg) {
