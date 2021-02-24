@@ -5061,29 +5061,29 @@ __webpack_require__.r(__webpack_exports__);
   computed: {
     colorTemperature: {
       get: function get() {
-        var selectedCameraId = state.selectedCameraId;
+        var selectedCameraId = this.$store.state.selectedCameraId;
         if (selectedCameraId == "") return "2500";
-        var selectedCamera = state.cameras[selectedCameraId];
+        var selectedCamera = this.$store.state.cameras[selectedCameraId];
         if (selectedCamera != undefined) return selectedCamera.colorTemperature.toString();
       },
       set: function set(newValue) {
-        var selectedCameraId = state.selectedCameraId;
+        var selectedCameraId = this.$store.state.selectedCameraId;
         if (selectedCameraId == "") return;
-        var selectedCamera = state.cameras[selectedCameraId];
+        var selectedCamera = this.$store.state.cameras[selectedCameraId];
         if (selectedCamera != undefined) return selectedCamera.colorTemperature = parseInt(newValue);
       }
     },
     tint: {
       get: function get() {
-        var selectedCameraId = state.selectedCameraId;
+        var selectedCameraId = this.$store.state.selectedCameraId;
         if (selectedCameraId == "") return "0";
-        var selectedCamera = state.cameras[selectedCameraId];
+        var selectedCamera = this.$store.state.cameras[selectedCameraId];
         if (selectedCamera != undefined) return selectedCamera.tint.toString();
       },
       set: function set(newValue) {
-        var selectedCameraId = state.selectedCameraId;
+        var selectedCameraId = this.$store.state.selectedCameraId;
         if (selectedCameraId == "") return;
-        var selectedCamera = state.cameras[selectedCameraId];
+        var selectedCamera = this.$store.state.cameras[selectedCameraId];
         if (selectedCamera != undefined) return selectedCamera.tint = parseInt(newValue);
       }
     }
