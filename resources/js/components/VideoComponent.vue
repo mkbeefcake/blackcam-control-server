@@ -440,14 +440,14 @@ export default {
     computed: {
         colorTemperature: {
             get: function() {
-                var selectedCamera = this.$store.getSelectedCamera();
+                var selectedCamera = getSelectedCamera();
                 if (selectedCamera == undefined)
                     return "2500";
 
                 return selectedCamera.colorTemperature.toString();
             },
             set: function(newValue) {
-                var selectedCamera = this.$store.getSelectedCamera();
+                var selectedCamera = getSelectedCamera();
                 if (selectedCamera == undefined)
                     return;
 
