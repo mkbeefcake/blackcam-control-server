@@ -4954,8 +4954,8 @@ __webpack_require__.r(__webpack_exports__);
       showShutter: false,
       showExposureForVideo: false,
       showDisplayLUT: false,
-      colorTemperature: "2500",
-      tint: "0",
+      // colorTemperature: "2500",
+      // tint: "0",
       dimensions: 0,
       frameRate: 24,
       mRate: 0,
@@ -5057,6 +5057,36 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     console.log('RecordVideo-Component mounted.');
+  },
+  computed: {
+    colorTemperature: {
+      get: function get() {
+        var selectedCameraId = state.selectedCameraId;
+        if (selectedCameraId == "") return "2500";
+        var selectedCamera = state.cameras[selectedCameraId];
+        if (selectedCamera != undefined) return selectedCamera.colorTemperature.toString();
+      },
+      set: function set(newValue) {
+        var selectedCameraId = state.selectedCameraId;
+        if (selectedCameraId == "") return;
+        var selectedCamera = state.cameras[selectedCameraId];
+        if (selectedCamera != undefined) return selectedCamera.colorTemperature = parseInt(newValue);
+      }
+    },
+    tint: {
+      get: function get() {
+        var selectedCameraId = state.selectedCameraId;
+        if (selectedCameraId == "") return "0";
+        var selectedCamera = state.cameras[selectedCameraId];
+        if (selectedCamera != undefined) return selectedCamera.tint.toString();
+      },
+      set: function set(newValue) {
+        var selectedCameraId = state.selectedCameraId;
+        if (selectedCameraId == "") return;
+        var selectedCamera = state.cameras[selectedCameraId];
+        if (selectedCamera != undefined) return selectedCamera.tint = parseInt(newValue);
+      }
+    }
   },
   methods: {
     onVideoMode: function onVideoMode(event) {

@@ -305,8 +305,8 @@ export default {
             showShutter: false,
             showExposureForVideo: false,
             showDisplayLUT: false,
-            colorTemperature: "2500",
-            tint: "0",
+            // colorTemperature: "2500",
+            // tint: "0",
             dimensions: 0,
             frameRate:24, 
             mRate:0,
@@ -436,6 +436,49 @@ export default {
     },
     mounted() {
         console.log('RecordVideo-Component mounted.')
+    },
+    computed: {
+        colorTemperature: {
+            get: function() {
+                var selectedCameraId = state.selectedCameraId;
+                if (selectedCameraId == "")
+                    return "2500";
+
+                var selectedCamera = state.cameras[selectedCameraId];
+                if (selectedCamera != undefined) 
+                    return selectedCamera.colorTemperature.toString();
+            },
+            set: function(newValue) {
+                var selectedCameraId = state.selectedCameraId;
+                if (selectedCameraId == "")
+                    return;
+
+                var selectedCamera = state.cameras[selectedCameraId];
+                if (selectedCamera != undefined) 
+                    return selectedCamera.colorTemperature = parseInt(newValue);
+            }
+        },
+        tint: {
+            get: function() {
+                var selectedCameraId = state.selectedCameraId;
+                if (selectedCameraId == "")
+                    return "0";
+
+                var selectedCamera = state.cameras[selectedCameraId];
+                if (selectedCamera != undefined) 
+                    return selectedCamera.tint.toString();
+
+            },
+            set: function(newValue) {
+                var selectedCameraId = state.selectedCameraId;
+                if (selectedCameraId == "")
+                    return;
+
+                var selectedCamera = state.cameras[selectedCameraId];
+                if (selectedCamera != undefined) 
+                    return selectedCamera.tint = parseInt(newValue);
+            }
+        }
     },
     methods: {
         onVideoMode: function(event) {
