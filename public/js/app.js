@@ -5061,12 +5061,12 @@ __webpack_require__.r(__webpack_exports__);
   computed: {
     colorTemperature: {
       get: function get() {
-        var selectedCamera = getSelectedCamera();
+        var selectedCamera = this.getSelectedCamera();
         if (selectedCamera == undefined) return "2500";
         return selectedCamera.colorTemperature.toString();
       },
       set: function set(newValue) {
-        var selectedCamera = getSelectedCamera();
+        var selectedCamera = this.getSelectedCamera();
         if (selectedCamera == undefined) return;
         selectedCamera.colorTemperature = parseInt(newValue);
       }
