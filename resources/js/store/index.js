@@ -18,5 +18,6 @@ export default {
     getters,
     actions,
     mutations,
-    plugins: [vuexLocalStorage.plugin],  
+    plugins: [vuexLocalStorage.plugin],
+   
 }

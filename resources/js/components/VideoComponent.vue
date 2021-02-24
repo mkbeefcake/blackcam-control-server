@@ -482,6 +482,18 @@ export default {
 
     },
     methods: {
+        getSelectedCamera: function() {
+            var selectedCameraId = this.$store.state.selectedCameraId;
+            if (selectedCameraId == "")
+                return undefined;
+            
+            var cameras = this.$store.state.cameras;
+            var index = cameras.findIndex(_ => _.cameraId === selectedCameraId);
+            if (index == -1)
+                return undefined;
+
+            return cameras[index];
+        },
         onVideoMode: function(event) {
             this.title = "Set Video Mode";
             this.showVideoMode = true;

@@ -39,19 +39,6 @@ Vue.component('ptzcontrol-component', require('./components/PTZControlComponent.
 Vue.component('systeminfo-component', require('./components/SystemInfoComponent.vue').default);
 Vue.component('cameralist-component', require('./components/CameraListComponent.vue').default);
 
-Vue.getSelectedCamera = function() {
-    var selectedCameraId = this.$store.state.selectedCameraId;
-    if (selectedCameraId == "")
-        return undefined;
-    
-    var cameras = this.$store.state.cameras;
-    var index = cameras.findIndex(_ => _.cameraId === selectedCameraId);
-    if (index == -1)
-        return undefined;
-
-    return cameras[index];
-}
-
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -65,7 +52,7 @@ window.VueStore = store;
 
 const app = new Vue({
     el: '#app',
-    store: store
+    store: store,
 });
 
 const sidebar = new Vue({
