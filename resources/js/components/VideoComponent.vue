@@ -444,18 +444,18 @@ export default {
                 if (selectedCameraId == "")
                     return "2500";
 
-                var selectedCamera = this.$store.state.cameras[selectedCameraId];
-                if (selectedCamera != undefined) 
-                    return selectedCamera.colorTemperature.toString();
+                var cameras = this.$store.state.cameras;
+                var index = cameras.findIndex(_ => _.cameraId === selectedCameraId);
+                return cameras[index].colorTemperature.toString();
             },
             set: function(newValue) {
                 var selectedCameraId = this.$store.state.selectedCameraId;
                 if (selectedCameraId == "")
                     return;
 
-                var selectedCamera = this.$store.state.cameras[selectedCameraId];
-                if (selectedCamera != undefined) 
-                    return selectedCamera.colorTemperature = parseInt(newValue);
+                var cameras = this.$store.state.cameras;
+                var index = cameras.findIndex(_ => _.cameraId === selectedCameraId);
+                cameras[index].colorTemperature = parseInt(newValue);
             }
         },
         tint: {
@@ -464,9 +464,9 @@ export default {
                 if (selectedCameraId == "")
                     return "0";
 
-                var selectedCamera = this.$store.state.cameras[selectedCameraId];
-                if (selectedCamera != undefined) 
-                    return selectedCamera.tint.toString();
+                var cameras = this.$store.state.cameras;
+                var index = cameras.findIndex(_ => _.cameraId === selectedCameraId);
+                return cameras[index].tint.toString();
 
             },
             set: function(newValue) {
@@ -474,9 +474,9 @@ export default {
                 if (selectedCameraId == "")
                     return;
 
-                var selectedCamera = this.$store.state.cameras[selectedCameraId];
-                if (selectedCamera != undefined) 
-                    return selectedCamera.tint = parseInt(newValue);
+                var cameras = this.$store.state.cameras;
+                var index = cameras.findIndex(_ => _.cameraId === selectedCameraId);
+                cameras[index].tint = parseInt(newValue);
             }
         }
     },
