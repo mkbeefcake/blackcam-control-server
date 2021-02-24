@@ -1,4 +1,17 @@
 export default {
+    refreshCameraList(state, camearList) {
+        for (const [key, value] of Object.entries(cameraList)) {
+            var cameraId = key;
+            var cameraObject = JSON.parse(value);
+
+            const camera = state.cameras.find(u => u.cameraId === cameraId);
+            if (camera == undefined) 
+                state.cameras = [...state.cameras, {cameraId: cameraId}];
+    
+            const index = state.cameras.findIndex(_ => _.cameraId === cameraId);
+            state.cameras[index].cameraName = cameraObject.cameraName;
+        }
+    },
     updateCameraStatusCode(state, {socketId, statusObject}) {
         console.log("VueX.store.updateCameraStatus Code is called");
 
