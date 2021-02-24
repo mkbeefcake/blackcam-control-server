@@ -1,8 +1,14 @@
 export default {
     refreshCameraList(state, cameraList) {
+
+        // remove empty camera structures
+        var cameras = state.cameras.filter(item => item.cameraName != undefined);
+        state.cameras = cameras;
+
+        // update
         for (const [key, value] of Object.entries(cameraList)) {
             var cameraId = key;
-            var cameraObject = value;
+            var cameraObject = JSON.parse(value);
 
             const camera = state.cameras.find(u => u.cameraId === cameraId);
             if (camera == undefined) 

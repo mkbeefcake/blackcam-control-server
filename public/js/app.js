@@ -2208,10 +2208,31 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     console.log('CameraList-Component mounted.');
+  },
+  methods: {
+    onCameraSelected: function onCameraSelected(camera) {
+      console.log('onCameraSelected is called');
+      var cameras = document.getElementById("cameraList").getElementsByTagName("li");
+
+      for (var i = 0; i < cameras.length; i++) {
+        cameras[i].classList.remove('active');
+        if (cameras[i].id == camera.cameraId) cameras[i].classList.add('active');
+      }
+      /** Update information */
+
+
+      selectedCameraId = camera.cameraId;
+      var command = {
+        type: 'get-info'
+      };
+      socket.emit('admin', selectedCameraId, JSON.stringify(command));
+    }
   },
   computed: Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])({
     cameras: function cameras(state) {
@@ -44000,9 +44021,23 @@ var render = function() {
     "ul",
     { staticClass: "nav", attrs: { id: "cameraList" } },
     _vm._l(_vm.cameras, function(camera) {
-      return _c("li", { attrs: { id: camera.cameraId } }, [
-        _vm._v("\n        " + _vm._s(camera.cameraName) + "\n    ")
-      ])
+      return _c(
+        "li",
+        {
+          attrs: { id: camera.cameraId },
+          on: {
+            click: function($event) {
+              return _vm.onCameraSelected(camera)
+            }
+          }
+        },
+        [
+          _c("a", [
+            _c("i", { staticClass: "tim-icons icon-camera-18" }),
+            _c("p", [_vm._v(_vm._s(camera.cameraName))])
+          ])
+        ]
+      )
     }),
     0
   )
@@ -66023,13 +66058,19 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   refreshCameraList: function refreshCameraList(state, cameraList) {
+    // remove empty camera structures
+    var cameras = state.cameras.filter(function (item) {
+      return item.cameraName != undefined;
+    });
+    state.cameras = cameras; // update
+
     for (var _i = 0, _Object$entries = Object.entries(cameraList); _i < _Object$entries.length; _i++) {
       var _Object$entries$_i = _slicedToArray(_Object$entries[_i], 2),
           key = _Object$entries$_i[0],
           value = _Object$entries$_i[1];
 
       var cameraId = key;
-      var cameraObject = value;
+      var cameraObject = JSON.parse(value);
       var camera = state.cameras.find(function (u) {
         return u.cameraId === cameraId;
       });

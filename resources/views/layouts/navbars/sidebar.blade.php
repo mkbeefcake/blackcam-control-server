@@ -23,20 +23,20 @@
 //     }
 // }
 
-function onCameraSelected(selected) {
-    var cameras = document.getElementById("cameraList").getElementsByTagName("li");
-    for (let i = 0; i < cameras.length; i++) {
-        cameras[i].classList.remove('active');
-    }    
+// function onCameraSelected(selected) {
+//     var cameras = document.getElementById("cameraList").getElementsByTagName("li");
+//     for (let i = 0; i < cameras.length; i++) {
+//         cameras[i].classList.remove('active');
+//     }    
 
-    selected.classList.add('active');
+//     selected.classList.add('active');
 
-    /** Update information */
-    selectedCameraId = selected.id;
-    var command = {
-        type : 'get-info'
-    };
-    socket.emit('admin', selectedCameraId, JSON.stringify(command));
-}
+//     /** Update information */
+//     selectedCameraId = selected.id;
+//     var command = {
+//         type : 'get-info'
+//     };
+//     socket.emit('admin', selectedCameraId, JSON.stringify(command));
+// }
 
 </script>
