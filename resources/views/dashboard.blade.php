@@ -97,8 +97,9 @@
 
         socket.on('status-code', function(socketId, msg) {
             console.log('status-code callback is called');
+            var cameraId = socketId;
             var statusObject = JSON.parse(msg);
-            VueStore.commit('updateCameraStatusCode', { socketId, statusObject });
+            VueStore.commit('updateCameraStatusCode', { cameraId, statusObject });
         });
 
     })
