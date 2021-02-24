@@ -2225,7 +2225,7 @@ __webpack_require__.r(__webpack_exports__);
         if (cameras[i].id == camera.cameraId) cameras[i].classList.add('active');
       }
 
-      store.commit('updateSelectedCameraId', camera.cameraId);
+      VueStore.commit('updateSelectedCameraId', camera.cameraId);
       /** Update information */
 
       selectedCameraId = camera.cameraId;

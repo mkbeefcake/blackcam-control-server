@@ -26,7 +26,7 @@ export default {
                     cameras[i].classList.add('active');
             }    
 
-            store.commit('updateSelectedCameraId', camera.cameraId);
+            VueStore.commit('updateSelectedCameraId', camera.cameraId);
 
             /** Update information */
             selectedCameraId = camera.cameraId;
