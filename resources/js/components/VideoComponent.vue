@@ -307,10 +307,10 @@ export default {
             showDisplayLUT: false,
             // colorTemperature: "2500",
             // tint: "0",
-            dimensions: 0,
-            frameRate:24, 
-            mRate:0,
-            interlaced:0,
+            // dimensions: 0,
+            // frameRate:24, 
+            // mRate:0,
+            // interlaced:0,
             sharpenLevel: 0,
             recordFrameRate: 24,
             recordSensorFrameRate: 0,
@@ -440,22 +440,18 @@ export default {
     computed: {
         colorTemperature: {
             get: function() {
-                var selectedCameraId = this.$store.state.selectedCameraId;
-                if (selectedCameraId == "")
+                var selectedCamera = getSelectedCamera();
+                if (selectedCamera == undefined)
                     return "2500";
 
-                var cameras = this.$store.state.cameras;
-                var index = cameras.findIndex(_ => _.cameraId === selectedCameraId);
-                return cameras[index].colorTemperature.toString();
+                return selectedCamera.colorTemperature.toString();
             },
             set: function(newValue) {
-                var selectedCameraId = this.$store.state.selectedCameraId;
-                if (selectedCameraId == "")
+                var selectedCamera = getSelectedCamera();
+                if (selectedCamera == undefined)
                     return;
 
-                var cameras = this.$store.state.cameras;
-                var index = cameras.findIndex(_ => _.cameraId === selectedCameraId);
-                cameras[index].colorTemperature = parseInt(newValue);
+                selectedCamera.colorTemperature = parseInt(newValue);
             }
         },
         tint: {
@@ -478,7 +474,12 @@ export default {
                 var index = cameras.findIndex(_ => _.cameraId === selectedCameraId);
                 cameras[index].tint = parseInt(newValue);
             }
-        }
+        },
+        // dimensions: 0,
+        // frameRate:24, 
+        // mRate:0,
+        // interlaced:0,
+
     },
     methods: {
         onVideoMode: function(event) {

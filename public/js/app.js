@@ -4956,10 +4956,10 @@ __webpack_require__.r(__webpack_exports__);
       showDisplayLUT: false,
       // colorTemperature: "2500",
       // tint: "0",
-      dimensions: 0,
-      frameRate: 24,
-      mRate: 0,
-      interlaced: 0,
+      // dimensions: 0,
+      // frameRate:24, 
+      // mRate:0,
+      // interlaced:0,
       sharpenLevel: 0,
       recordFrameRate: 24,
       recordSensorFrameRate: 0,
@@ -5061,22 +5061,14 @@ __webpack_require__.r(__webpack_exports__);
   computed: {
     colorTemperature: {
       get: function get() {
-        var selectedCameraId = this.$store.state.selectedCameraId;
-        if (selectedCameraId == "") return "2500";
-        var cameras = this.$store.state.cameras;
-        var index = cameras.findIndex(function (_) {
-          return _.cameraId === selectedCameraId;
-        });
-        return cameras[index].colorTemperature.toString();
+        var selectedCamera = getSelectedCamera();
+        if (selectedCamera == undefined) return "2500";
+        return selectedCamera.colorTemperature.toString();
       },
       set: function set(newValue) {
-        var selectedCameraId = this.$store.state.selectedCameraId;
-        if (selectedCameraId == "") return;
-        var cameras = this.$store.state.cameras;
-        var index = cameras.findIndex(function (_) {
-          return _.cameraId === selectedCameraId;
-        });
-        cameras[index].colorTemperature = parseInt(newValue);
+        var selectedCamera = getSelectedCamera();
+        if (selectedCamera == undefined) return;
+        selectedCamera.colorTemperature = parseInt(newValue);
       }
     },
     tint: {
@@ -5098,7 +5090,11 @@ __webpack_require__.r(__webpack_exports__);
         });
         cameras[index].tint = parseInt(newValue);
       }
-    }
+    } // dimensions: 0,
+    // frameRate:24, 
+    // mRate:0,
+    // interlaced:0,
+
   },
   methods: {
     onVideoMode: function onVideoMode(event) {
@@ -66055,6 +66051,20 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+Vue.mixin({
+  methods: {
+    getSelectedCamera: function getSelectedCamera() {
+      var selectedCameraId = this.$store.state.selectedCameraId;
+      if (selectedCameraId == "") return undefined;
+      var cameras = this.$store.state.cameras;
+      var index = cameras.findIndex(function (_) {
+        return _.cameraId === selectedCameraId;
+      });
+      if (index == -1) return undefined;
+      return cameras[index];
+    }
+  }
+});
 var state = {
   cameras: [],
   selectedCameraId: ""
