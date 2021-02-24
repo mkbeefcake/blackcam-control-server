@@ -66068,9 +66068,9 @@ var vuexLocalStorage = new vuex_persist__WEBPACK_IMPORTED_MODULE_3__["default"](
   mixin: {
     methods: {
       getSelectedCamera: function getSelectedCamera() {
-        var selectedCameraId = this.$store.state.selectedCameraId;
+        var selectedCameraId = state.selectedCameraId;
         if (selectedCameraId == "") return undefined;
-        var cameras = this.$store.state.cameras;
+        var cameras = state.cameras;
         var index = cameras.findIndex(function (_) {
           return _.cameraId === selectedCameraId;
         });
