@@ -35,7 +35,7 @@ export default {
         }
     },
     computed: mapState({
-        cameras: state => state.cameras,
+        cameras: state => state.cameras.filter(item => item.cameraName != undefined),
     })
 }
 </script>

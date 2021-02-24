@@ -2236,7 +2236,9 @@ __webpack_require__.r(__webpack_exports__);
   },
   computed: Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])({
     cameras: function cameras(state) {
-      return state.cameras;
+      return state.cameras.filter(function (item) {
+        return item.cameraName != undefined;
+      });
     }
   })
 });
