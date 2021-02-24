@@ -18,21 +18,5 @@ export default {
     getters,
     actions,
     mutations,
-    plugins: [vuexLocalStorage.plugin],
-    mixins: {
-        methods: {
-            getSelectedCamera: function() {
-                var selectedCameraId = state.selectedCameraId;
-                if (selectedCameraId == "")
-                    return undefined;
-                
-                var cameras = state.cameras;
-                var index = cameras.findIndex(_ => _.cameraId === selectedCameraId);
-                if (index == -1)
-                    return undefined;
-    
-                return cameras[index];
-            }
-        }
-    }
+    plugins: [vuexLocalStorage.plugin],  
 }

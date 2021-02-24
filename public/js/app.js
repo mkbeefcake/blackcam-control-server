@@ -64884,6 +64884,20 @@ Vue.component('colorcorrection-component', __webpack_require__(/*! ./components/
 Vue.component('ptzcontrol-component', __webpack_require__(/*! ./components/PTZControlComponent.vue */ "./resources/js/components/PTZControlComponent.vue")["default"]);
 Vue.component('systeminfo-component', __webpack_require__(/*! ./components/SystemInfoComponent.vue */ "./resources/js/components/SystemInfoComponent.vue")["default"]);
 Vue.component('cameralist-component', __webpack_require__(/*! ./components/CameraListComponent.vue */ "./resources/js/components/CameraListComponent.vue")["default"]);
+Vue.mixin({
+  methods: {
+    getSelectedCamera: function getSelectedCamera() {
+      var selectedCameraId = this.$store.state.selectedCameraId;
+      if (selectedCameraId == "") return undefined;
+      var cameras = this.$store.state.cameras;
+      var index = cameras.findIndex(function (_) {
+        return _.cameraId === selectedCameraId;
+      });
+      if (index == -1) return undefined;
+      return cameras[index];
+    }
+  }
+});
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -66064,21 +66078,7 @@ var vuexLocalStorage = new vuex_persist__WEBPACK_IMPORTED_MODULE_3__["default"](
   getters: _getters__WEBPACK_IMPORTED_MODULE_1__["default"],
   actions: _actions__WEBPACK_IMPORTED_MODULE_0__["default"],
   mutations: _mutations__WEBPACK_IMPORTED_MODULE_2__["default"],
-  plugins: [vuexLocalStorage.plugin],
-  mixins: {
-    methods: {
-      getSelectedCamera: function getSelectedCamera() {
-        var selectedCameraId = state.selectedCameraId;
-        if (selectedCameraId == "") return undefined;
-        var cameras = state.cameras;
-        var index = cameras.findIndex(function (_) {
-          return _.cameraId === selectedCameraId;
-        });
-        if (index == -1) return undefined;
-        return cameras[index];
-      }
-    }
-  }
+  plugins: [vuexLocalStorage.plugin]
 });
 
 /***/ }),
