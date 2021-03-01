@@ -3,7 +3,17 @@ export default {
         state.selectedCameraId = cameraId;
     },
     refreshCameraList(state, cameraObjects) {
+        // remove empty camera structure
+        debugger
+        var newCameras;
+        for (camera in state.cameras) {
+            if (cameraObjects[camera.cameraId] != undefined) 
+            {
+                newCameras = [...newCameras, camera];
+            }
+        }
 
+        state.cameras = newCameras;
     },
     addNewCamera(state, {cameraId, cameraObject}, commit) {
         // remove empty camera structures

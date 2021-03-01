@@ -66440,7 +66440,19 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
   updateSelectedCameraId: function updateSelectedCameraId(state, cameraId) {
     state.selectedCameraId = cameraId;
   },
-  refreshCameraList: function refreshCameraList(state, cameraObjects) {},
+  refreshCameraList: function refreshCameraList(state, cameraObjects) {
+    // remove empty camera structure
+    debugger;
+    var newCameras;
+
+    for (camera in state.cameras) {
+      if (cameraObjects[camera.cameraId] != undefined) {
+        newCameras = [].concat(_toConsumableArray(newCameras), [camera]);
+      }
+    }
+
+    state.cameras = newCameras;
+  },
   addNewCamera: function addNewCamera(state, _ref, commit) {
     var cameraId = _ref.cameraId,
         cameraObject = _ref.cameraObject;
