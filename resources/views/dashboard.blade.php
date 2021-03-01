@@ -60,14 +60,16 @@
             socket.emit('peername', 'admin');
         });
 
+        socket.on('devices-refresh', function(socketId, msg) {
+            // remove un-existed camera list
+            var cameraObjects = JSON.parse(msg);
+            VueStore.commit('refreshCameraList', cameraObjects);
+        });
+
         socket.on('device-added', function(socketId, msg) {
             console.log('device-added callback is called');
             if (socket.id == socketId) {
                 console.log('This is me : ' + msg);
-
-                // remove un-existed camera list
-                var cameraObjects = JSON.parse(msg);
-                VueStore.commit('refreshCameraList', cameraObjects);
             }
             else {
                 console.log('New device: ' + msg);

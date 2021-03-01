@@ -48,7 +48,7 @@ io.on('connection', (socket) => {
         console.log('Socket List = ' + JSON.stringify(socketList));
 
         if (peername == 'admin') {
-            io.emit('device-added', socket.id, JSON.stringify(socketList));
+            io.emit('devices-refresh', socket.id, JSON.stringify(socketList));
         }
         else {
             io.emit('device-added', socket.id, peername);
