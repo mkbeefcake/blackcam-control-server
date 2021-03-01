@@ -66444,10 +66444,11 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     // remove empty camera structure
     debugger;
     var newCameras;
+    var length = state.cameras.length;
 
-    for (var camera in state.cameras) {
-      if (cameraObjects[camera.cameraId] != undefined) {
-        newCameras = [].concat(_toConsumableArray(newCameras), [camera]);
+    for (var i = 0; i < length; i++) {
+      if (cameraObjects[state.cameras[i].cameraId] != undefined) {
+        newCameras = [].concat(_toConsumableArray(newCameras), [state.cameras[i]]);
       }
     }
 

@@ -4,12 +4,15 @@ export default {
     },
     refreshCameraList(state, cameraObjects) {
         // remove empty camera structure
-        debugger
+        debugger;
+        
         var newCameras;
-        for (const camera in state.cameras) {
-            if (cameraObjects[camera.cameraId] != undefined) 
+        var length = state.cameras.length;
+        for (var i = 0; i < length; i++) 
+        {
+            if (cameraObjects[state.cameras[i].cameraId] != undefined) 
             {
-                newCameras = [...newCameras, camera];
+                newCameras = [...newCameras, state.cameras[i]];
             }
         }
 
