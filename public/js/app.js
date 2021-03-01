@@ -66443,7 +66443,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
   refreshCameraList: function refreshCameraList(state, cameraObjects) {
     // remove empty camera structure
     debugger;
-    var newCameras = {};
+    var newCameras = [];
     var length = state.cameras.length;
 
     for (var i = 0; i < length; i++) {

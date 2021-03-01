@@ -6,7 +6,7 @@ export default {
         // remove empty camera structure
         debugger;
         
-        var newCameras = {};
+        var newCameras = [];
         var length = state.cameras.length;
         for (var i = 0; i < length; i++) 
         {
