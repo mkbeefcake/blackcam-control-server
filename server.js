@@ -47,7 +47,12 @@ io.on('connection', (socket) => {
         socketList[socket.id] = peername;
         console.log('Socket List = ' + JSON.stringify(socketList));
 
-        io.emit('device-added', socket.id, peername);
+        if (peername == 'admin') {
+            io.emit('device-added', socket.id, JSON.stringify(socketList));
+        }
+        else {
+            io.emit('device-added', socket.id, peername);
+        }
     });
     
     /** camera device status channel */

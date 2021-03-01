@@ -2,6 +2,9 @@ export default {
     updateSelectedCameraId(state, cameraId) {
         state.selectedCameraId = cameraId;
     },
+    refreshCameraList(state, cameraObjects) {
+
+    },
     addNewCamera(state, {cameraId, cameraObject}, commit) {
         // remove empty camera structures
         var cameras = state.cameras.filter(item => item != null && item != undefined && item.cameraId != undefined);
