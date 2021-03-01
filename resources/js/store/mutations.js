@@ -6,7 +6,7 @@ export default {
         // remove empty camera structure
         debugger
         var newCameras;
-        for (camera in state.cameras) {
+        for (const camera in state.cameras) {
             if (cameraObjects[camera.cameraId] != undefined) 
             {
                 newCameras = [...newCameras, camera];
