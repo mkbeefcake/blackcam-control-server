@@ -66447,7 +66447,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     var length = state.cameras.length;
 
     for (var i = 0; i < length; i++) {
-      if (cameraObjects[state.cameras[i].cameraId] != undefined) {
+      if (state.cameras[i] != null && state.cameras[i] != undefined && cameraObjects[state.cameras[i].cameraId] != undefined) {
         newCameras = [].concat(_toConsumableArray(newCameras), [state.cameras[i]]);
       }
     }
