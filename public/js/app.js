@@ -66440,6 +66440,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
   updateSelectedCameraId: function updateSelectedCameraId(state, cameraId) {
     state.selectedCameraId = cameraId;
   },
+  refreshCameraList: function refreshCameraList(state, cameraObjects) {},
   addNewCamera: function addNewCamera(state, _ref, commit) {
     var cameraId = _ref.cameraId,
         cameraObject = _ref.cameraObject;
