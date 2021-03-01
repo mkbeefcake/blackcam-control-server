@@ -66443,13 +66443,17 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
   refreshCameraList: function refreshCameraList(state, cameraObjects) {
     // remove empty camera structure
     debugger;
-    var newCameras;
+    var newCameras = {};
     var length = state.cameras.length;
 
     for (var i = 0; i < length; i++) {
       if (state.cameras[i] != null && state.cameras[i] != undefined && cameraObjects[state.cameras[i].cameraId] != undefined) {
         newCameras = [].concat(_toConsumableArray(newCameras), [state.cameras[i]]);
       }
+    }
+
+    for (var i = 0; i < length; i++) {
+      delete state.cameras[0];
     }
 
     state.cameras = newCameras;
